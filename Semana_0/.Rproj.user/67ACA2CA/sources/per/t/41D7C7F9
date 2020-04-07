@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585953490946.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4224898877",
+    "id" : "41D7C7F9",
+    "lastKnownWriteTime" : 1586144609,
+    "last_content_update" : 1586144609,
+    "path" : "~/UTEC/Ciclo 2020-1/Estadistica/Semana 0/Semana_0.Rmd",
+    "project_path" : "Semana_0.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "90,52",
+        "ignored_words" : "Notebook,csv\n",
+        "scrollLine" : "88",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

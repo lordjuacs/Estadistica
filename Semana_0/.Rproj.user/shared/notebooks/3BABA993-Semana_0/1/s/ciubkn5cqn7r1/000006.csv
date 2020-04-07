@@ -1,0 +1,2 @@
+"0","DFCompleto <- DF[complete.cases(DF),]"
+"0","DFCompleto"

@@ -1,0 +1,1 @@
+"0","hist(DF$Estatura[DF$Estatura>3], col=""lightgreen"")"
