@@ -1,0 +1,95 @@
+---
+title: "R Notebook"
+output: html_notebook
+
+
+---
+```{r}
+library(readr)
+```
+
+# Limpieza de datos
+```{r}
+DF <- read_csv("Datos diversos.csv")
+```
+
+
+```{r}
+summary(DF)
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+names(DF)
+```
+
+```{r}
+DF$ `Signo del zodiaco`
+```
+
+
+#Renombrar datos
+```{r}
+DF %>% rename(Seccion=Sección, Signo=`Signo del zodiaco`, Tiempo = `Tiempo de reacción`, Videojuegos=`Juega videojuegos`, Deporte=`Hace deporte`) -> DF
+```
+
+
+```{r}
+summary(DF)
+```
+
+```{r}
+summary(DF$Tiempo)
+```
+
+```{r}
+hist(DF$Tiempo)
+```
+
+```{r}
+DF$Tiempo<200
+```
+
+
+```{r}
+DF[DF$Tiempo<200,]
+```
+
+```{r}
+DF %>% filter(Tiempo<200) 
+```
+
+
+```{r}
+boxplot(DF$Tiempo)
+```
+
+```{r}
+
+DF[DF$Tiempo<1,]
+```
+
+```{r}
+DF[DF$Codigo==201910123,]
+```
+
+```{r}
+DF%>% filter(Codigo==201910123) %>% mutate(Tiempo = NA)
+```
+
+```{r}
+DF[DF$Codigo==201910123,"Tiempo"]
+```
+
+```{r}
+DF[DF$Codigo==201910123,]$Tiempo <- NA
+
+```
+
+# Descripción de datos
+
+
+
