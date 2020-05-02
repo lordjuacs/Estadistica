@@ -1,1 +1,0 @@
-"0","DF %>% rename(Seccion=Sección, Signo=`Signo del zodiaco`, Tiempo = `Tiempo de reacción`, Videojuegos=`Juega videojuegos`, Deporte=`Hace deporte`) -> DF"

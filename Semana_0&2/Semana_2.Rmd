@@ -33,13 +33,225 @@ DF$ `Signo del zodiaco`
 
 #Renombrar datos
 ```{r}
-DF %>% rename(Seccion=Sección, Signo=`Signo del zodiaco`, Tiempo = `Tiempo de reacción`, Videojuegos=`Juega videojuegos`, Deporte=`Hace deporte`) -> DF
+DF %>% rename(Seccion=Sección, Signo=`Signo del zodiaco`, Tiempo = `Tiempo de reacción`, Videojuegos=`Juega videojuegos`, Deporte=`Hace deporte`) -> DFN
+```
+
+¿Donde están los valores faltantes? : is.na
+¿Cuántos son?: sum(is.na)
+```{r}
+sum(is.na(DFN))
+
 ```
 
 
 ```{r}
-summary(DF)
+table(is.na(DFN))
 ```
+
+
+```{r}
+!complete.cases(DFN)
+```
+
+```{r}
+table(!complete.cases(DFN))
+#111 son completos
+```
+#Que hacemos con los datos restantes o los registros incompletos?
++Eliminamos los registros con datos incompletos
++Aprendemos a vivir con los datos incompletos
++Podríamos intentar obtener los datos valtantes
+
+Yo trataré de vivir con los datos faltantes
+
+
+```{r}
+names(DFN)
+```
+
+#Chequeo de sensatez
+Todos los códigos son distintos
+```{r}
+length(DFN$Codigo) == length(unique(DFN$Codigo))
+```
+
+```{r}
+length(DFN$Codigo)
+```
+
+
+```{r}
+length(unique(DFN$Codigo))
+```
+
+¿Códigos repetidos? ¿Códigos faltantes?
+```{r}
+sum(is.na(DFN$Codigo))1
+```
+
+```{r}
+unique(DFN$Codigo)
+```
+
+```{r}
+DFN$Codigo
+```
+Hay un error claro en el registro 78 (tiene 10 dígitos), que probablemente podríamos corregir si quitamos el 0 extra en el año.
+
+```{r}
+Cod <-DFN$Codigo
+```
+
+```{r}
+sort(Cod)
+```
+Sort "bota" los NA
+
+Diff toma diferencias de elementos consecutivos
+si es 0, significa q el consecutivo es igual al anterior
+```{r}
+diff(sort(Cod))
+```
+
+
+
+```{r}
+duplicated(DFN$Codigo)
+```
+
+
+
+```{r}
+DFN[duplicated(DFN$Codigo),]
+```
+
+
+
+
+```{r}
+names(DFN)
+```
+
+```{r}
+table(DFN$Seccion)
+```
+
+
+
+```{r}
+any(is.na(DFN$Seccion))
+```
+
+any es verdadero si al menos una d la lista es verdadera, all es solo si todos los elementos lo son
+
+
+
+```{r}
+summary(DFN$Estatura)
+```
+Podemos concluir que hay algunos errores en las estaturas
+
+```{r}
+plot(DFN$Estatura)
+```
+Las que están abajo claramente son errores
+
+
+```{r}
+hist(DFN$Estatura)
+```
+
+
+Vamos a resolver el problema de errores en la estatura
+En este caso, optaremos por colocar NA en los datos faltantes
+```{r}
+DFN$Estatura[DFN$Estatura<=100]<-NA
+```
+
+```{r}
+summary(DFN$Estatura)
+```
+
+```{r}
+plot(DFN$Estatura)
+```
+
+
+```{r}
+hist(DFN$Estatura, prob=TRUE)
+```
+¿Cómo calculamos la moda?
+```{r}
+table(DFN$Estatura)
+```
+
+```{r}
+table(DFN$Estatura)[table(DFN$Estatura) == max(table(DFN$Estatura))]
+```
+
+
+na.rm = TRUE, elimina los na para calcular el mean,
+igual a la hora de la desviación estándar promedio
+```{r}
+mean(DFN$Estatura, na.rm = TRUE)
+sd(DFN$Estatura, na.rm = TRUE)
+```
+
+```{r}
+xbarra <- mean(DF$Estatura, na.rm = TRUE)
+s <- sd(DFN$Estatura, na.rm = TRUE)
+```
+
+
+
+```{r}
+(xbarra - s <= DFN$Estatura) & (DFN$Estatura <= xbarra + s)
+```
+
+
+```{r}
+sum((xbarra - s <= DFN$Estatura) & (DFN$Estatura <= xbarra + s), na.rm = TRUE)
+```
+
+
+
+```{r}
+sum((xbarra - s <= DFN$Estatura) & (DFN$Estatura <= xbarra + s), na.rm = TRUE)/(length(DFN$Estatura) - sum(is.na(DFN$Estatura)))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```{r}
 summary(DF$Tiempo)
@@ -88,8 +300,12 @@ DF[DF$Codigo==201910123,"Tiempo"]
 DF[DF$Codigo==201910123,]$Tiempo <- NA
 
 ```
-
 # Descripción de datos
 
 
+
+
+```{r}
+?
+```
 
