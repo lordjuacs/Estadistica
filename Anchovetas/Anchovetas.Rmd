@@ -1,0 +1,73 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(readr)
+library(dplyr)
+```
+
+```{r}
+DF <- read_csv("Anchoveta_07_17.csv")
+```
+
+
+```{r}
+redo <- function(x){return (round(x,digits=2))}
+```
+
+
+```{r}
+table(DF$Barco)/100
+```
+
+
+
+```{r}
+redo(mean(table(DF$Barco)/100))
+```
+
+
+```{r}
+which.max((table(DF$Barco)/100))
+```
+
+```{r}
+(table(DF$Barco)/100)[(table(DF$Barco)/100) == max(table(DF$Barco)/100)]
+```
+
+```{r}
+range((table(DF$Barco)/100))
+```
+
+
+```{r}
+redo(table(DF$Sexo)/sum(table(DF$Sexo))*100)
+```
+
+```{r}
+redo(table(DF$Estacion,DF$Sexo)/rowSums(table(DF$Estacion,DF$Sexo))*100)
+```
+
+
+```{r}
+redo(median(DF$Largo))
+```
+
+```{r}
+redo(IQR(DF$Peso))
+```
+
+```{r}
+redo(diff(range(DF$Peso)))
+```
+```{r}
+hist(DF$Peso, breaks=30)
+abline(v=c(median(DF$Peso), mean(DF$Peso)), col = c("red","blue"))
+```
+
+
+```{r}
+
+```
+
