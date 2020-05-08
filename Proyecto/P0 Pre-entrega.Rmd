@@ -4,7 +4,7 @@ output:
   html_document:
     df_print: paged
 ---
-## Entrega P1
+## P1 Primera entrega
 ### **Sección:** 1.01
 ### **Profesor:** José Miguel Renom
 
@@ -33,18 +33,30 @@ Estudiantes universitarios
 
 ### Unidad muestral
 
-Cualquier estudiante cursando ciclo II en adelante
+Cualquier estudiante de UTEC cursando ciclo II en adelante
 
+### Tipo de muestreo
+  Muestreo por conveniencia
 
+### Planificación
+
+Después 
+
+### Obtención de datos
+
+Al ser parte de la comunidad estudiantil de la misma universidad, tenemos acceso a los medios de comunicación pertinentes para realizar encuestas en línea. Es así que se elaborará una encuesta en SurveyMonkey o GoogleForms, y se distribuirá vía el grupo de Facebook de los alumnos.
+
+### Preguntas planteadas
 
 N°|Preguntas
 --|---------
-1|¿Cuál es la edad de los encuestados?
-2|¿En qué ciclo se encuentran?
-3|¿Cuántos cursos llevaron el ciclo 2019-2?
-4|¿A qué grupo de mérito pertenecen?
-5|¿Cuál es su promedio ponderado?
-6|¿?
-7|¿Cuál es la edad de los encuestados?
-8|¿Cuál es la edad de los encuestados?
-9|¿Cuál es la edad de los encuestados?
+
+
+### Variables identificadas
+
+Variable|Relación con pregunta|Tipo de variable
+--------|---------------------|----------------
+
+
+
+
