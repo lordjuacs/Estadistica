@@ -4,6 +4,7 @@ output:
   html_document:
     df_print: paged
 ---
+## Título corto: Tiempo_Salud_Rendimiento
 ## P1 Primera entrega
 ### **Sección:** 1.01
 ### **Profesor:** José Miguel Renom
@@ -25,7 +26,13 @@ Como estudiantes, consideramos que este tema es importante para nosotros y nuest
 
 ### Objetivo
 
-El objetivo de esta investigación es analizar e informar acerca del impacto del tiempo de viaje desde la residencia de un alumno hasta la universidad en su salud mental rendimiento académico.
+El objetivo de esta investigación es analizar e informar acerca del impacto del tiempo de viaje desde la residencia de un alumno hasta la universidad en su salud mental y rendimiento académico. Con la información recogida, se desea responder a las preguntas planteadas y llegar a conclusiones representativas.
+
+### Factibilidad
+
+Probablemente ya se han desarrollado investigaciones parecidas a la nuestra, las que buscan saber si hay una relación entre cuán lejos vive un alumno de su universidad y las notas que obtiene. Sin embargo, éstas se centran solo en el factor académico, no analizan más allá. Para poder entender el comportamiento del alumno es necesario analizar el plano mental, pues es el encargado de regir nuestras acciones.Es así que nuestro proyecto buscará comprender el impacto en la salud mental al igual que en el rendimiento académico, valorizando al estudiante en su totalidad.
+
+### Marco Teórico
 
 ### Población objetivo
 
@@ -38,25 +45,50 @@ Cualquier estudiante de UTEC cursando ciclo II en adelante
 ### Tipo de muestreo
   Muestreo por conveniencia
 
-### Planificación
-
-Después 
-
 ### Obtención de datos
 
-Al ser parte de la comunidad estudiantil de la misma universidad, tenemos acceso a los medios de comunicación pertinentes para realizar encuestas en línea. Es así que se elaborará una encuesta en SurveyMonkey o GoogleForms, y se distribuirá vía el grupo de Facebook de los alumnos.
+Al ser parte de la comunidad estudiantil de la misma universidad, tenemos acceso a los medios de comunicación pertinentes para realizar encuestas en línea. Es así que se elaborará una encuesta en SurveyMonkey o GoogleForms, y se distribuirá vía el grupo de Facebook de los alumnos. Si es necesario, solicitaremos ayuda del área de Bienestar Estudiantil, para que nos apoyen con la distribución de la encuesta.
+
+### Planificación
+
+Durante las primeras 4 semanas estuvimos planteando el tema y la viabilidad de ellos. Para la siguiente semana desarrollamos las preguntas e identificamos las variables concretas a estudiar. En las siguientes semanas se plantea elaborar la encuesta con la que se recogerán los datos y publicarla por Facebook. En las semanas posteriores se analizarán los datos y se buscarán respuestas a las preguntas.
 
 ### Preguntas planteadas
 
 N°|Preguntas
 --|---------
+1|¿Cuál es la edad de los encuestados?
+2|¿Cuánto tiempo les demora a los estudiantes de UTEC llegar a la universidad desde su lugar de residencia?
+3|¿En qué percentil se encuentra con respecto a su carrera (décimo, quinto, tercio, etc.)?
+4|¿Cómo se sienten al momento de transportarse?
+5|¿Es posible predecir el rendimiento académico de un estudiante en base al tiempo que le toma llegar a la UTEC ?
+6|¿Qué medio de transporte utiliza la mayoría de estudiantes de UTEC?
+7|¿Es posible relacionar el nivel de estrés al que se somete un estudiante según el medio de transporte que toma para ir a la UTEC?
+8|¿A los estudiantes de ciclos menores les cuesta más adaptarse al tiempo de movilización desde su domicilio a la UTEC?
+9|¿Los estudiantes de ciclos mayores presentan mayor o menor estabilidad emocional?
+10|¿Existe alguna cantidad de estudiantes que hagan uso eficiente del tiempo de transporte?
+11|¿El apoyo brindado por Bienestar Estudiantil tiene algún efecto positivo en la salud mental y/o rendimiento académico de los alumnos? 
+12|¿Qué factores determinan la cantidad de estrés que puede sufrir un estudiante durante el tiempo de viaje desde su residencia a la UTEC?
 
 
 ### Variables identificadas
 
 Variable|Relación con pregunta|Tipo de variable
 --------|---------------------|----------------
+Edad|1|Numérica discreta
+Ciclo cursante|8 y 9|Numérica discreta
+Cantidad de cursos que llevaste el ciclo 2019-2|3|Numérica discreta
+Medio de transporte|6|Categórica nominal
+Tiempo de transporte|2 y 5|Numérica continua
+Grupo de mérito|3|Categórica nominal
+Promedio ponderado|5|Numérica continua
+Emociones|4 y 9| Categórica nominal
+Nivel de eficiencia al transportarse|10|Categórica ordinal
+Nivel de estrés|7 y 12|Categórica ordinal
+Calidad de ayuda psicológica|11|Categórica ordinal
 
+### Bibliografía:
+https://gestion.pe/tendencias/lima-ciudades-peor-trafico-269483-noticia/ 
 
 
 
