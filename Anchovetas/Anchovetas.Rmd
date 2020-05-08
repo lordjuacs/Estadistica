@@ -29,6 +29,10 @@ redo(mean(table(DF$Barco)/100))
 
 
 ```{r}
+sort(table(DF$Barco)/100)
+```
+
+```{r}
 which.max((table(DF$Barco)/100))
 ```
 
@@ -51,8 +55,12 @@ redo(table(DF$Estacion,DF$Sexo)/rowSums(table(DF$Estacion,DF$Sexo))*100)
 
 
 ```{r}
-redo(median(DF$Largo))
+redo(mean(DF$Largo))
 ```
+```{r}
+redo(sd(DF$Largo))
+```
+
 
 ```{r}
 redo(IQR(DF$Peso))
@@ -68,6 +76,16 @@ abline(v=c(median(DF$Peso), mean(DF$Peso)), col = c("red","blue"))
 
 
 ```{r}
+redo(sd(DF$Peso)/mean(DF$Peso))
+```
 
+
+
+```{r}
+plot(DF$Largo, DF$Peso)
+```
+
+```{r}
+i
 ```
 

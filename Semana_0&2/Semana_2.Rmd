@@ -49,6 +49,7 @@ table(is.na(DFN))
 ```
 
 
+
 ```{r}
 !complete.cases(DFN)
 ```
@@ -68,6 +69,9 @@ Yo trataré de vivir con los datos faltantes
 ```{r}
 names(DFN)
 ```
+```{r}
+DFN %>%filter(Tiempo<200)
+```
 
 #Chequeo de sensatez
 Todos los códigos son distintos
@@ -79,14 +83,13 @@ length(DFN$Codigo) == length(unique(DFN$Codigo))
 length(DFN$Codigo)
 ```
 
-
 ```{r}
 length(unique(DFN$Codigo))
 ```
 
 ¿Códigos repetidos? ¿Códigos faltantes?
 ```{r}
-sum(is.na(DFN$Codigo))1
+sum(is.na(DFN$Codigo))
 ```
 
 ```{r}
@@ -176,7 +179,7 @@ summary(DFN$Estatura)
 plot(DFN$Estatura)
 ```
 
-
+prob=True, hace que cada rectángulo tenga área = 1
 ```{r}
 hist(DFN$Estatura, prob=TRUE)
 ```
@@ -186,51 +189,59 @@ table(DFN$Estatura)
 ```
 
 ```{r}
+which.max(table(DFN$Estatura))
+```
+
+```{r}
 table(DFN$Estatura)[table(DFN$Estatura) == max(table(DFN$Estatura))]
 ```
 
 
-na.rm = TRUE, elimina los na para calcular el mean,
-igual a la hora de la desviación estándar promedio
+
+na.rm = TRUE, elimina los NA para calcular el mean,
+igual a la hora de la desviación estándar
 ```{r}
 mean(DFN$Estatura, na.rm = TRUE)
 sd(DFN$Estatura, na.rm = TRUE)
 ```
 
 ```{r}
-xbarra <- mean(DF$Estatura, na.rm = TRUE)
-s <- sd(DFN$Estatura, na.rm = TRUE)
+mean(DF$Estatura, na.rm = TRUE) -> xbarra
+sd(DFN$Estatura, na.rm = TRUE) -> s
+```
+
+Se observa qué estaturas están a "una" desviación estándar por arriba o debajo del promedio
+```{r}
+(mean(DFN$Estatura, na.rm = TRUE)
+ - sd(DFN$Estatura, na.rm = TRUE) <= DFN$Estatura) & (DFN$Estatura <= mean(DFN$Estatura, na.rm = TRUE)
+ + sd(DFN$Estatura, na.rm = TRUE))
+```
+
+
+```{r}
+sum((mean(DFN$Estatura, na.rm = TRUE)
+ - sd(DFN$Estatura, na.rm = TRUE) <= DFN$Estatura) & (DFN$Estatura <= mean(DFN$Estatura, na.rm = TRUE)
+ + sd(DFN$Estatura, na.rm = TRUE)), na.rm = TRUE)
 ```
 
 
 
 ```{r}
-(xbarra - s <= DFN$Estatura) & (DFN$Estatura <= xbarra + s)
+sum((mean(DFN$Estatura, na.rm = TRUE)
+ - sd(DFN$Estatura, na.rm = TRUE) <= DFN$Estatura) & (DFN$Estatura <= mean(DFN$Estatura, na.rm = TRUE)
+ + sd(DFN$Estatura, na.rm = TRUE)), na.rm = TRUE)/(length(DFN$Estatura) - sum(is.na(DFN$Estatura)))
 ```
 
 
 ```{r}
-sum((xbarra - s <= DFN$Estatura) & (DFN$Estatura <= xbarra + s), na.rm = TRUE)
+hist(DFN$Estatura, prob=TRUE)
+abline(v=c((mean(DFN$Estatura, na.rm = TRUE) - sd(DFN$Estatura, na.rm = TRUE)), (mean(DFN$Estatura, na.rm = TRUE) + sd(DFN$Estatura, na.rm = TRUE))),col="red")
 ```
-
 
 
 ```{r}
-sum((xbarra - s <= DFN$Estatura) & (DFN$Estatura <= xbarra + s), na.rm = TRUE)/(length(DFN$Estatura) - sum(is.na(DFN$Estatura)))
+altos <- subset(DFN, DFN$Estatura > 180)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -293,11 +304,11 @@ DF%>% filter(Codigo==201910123) %>% mutate(Tiempo = NA)
 ```
 
 ```{r}
-DF[DF$Codigo==201910123,"Tiempo"]
+DFN[DFN$Codigo==201910123,"Tiempo"]
 ```
 
 ```{r}
-DF[DF$Codigo==201910123,]$Tiempo <- NA
+DFN[DFN$Codigo==201910123,]$Tiempo <- NA
 
 ```
 # Descripción de datos
@@ -306,6 +317,6 @@ DF[DF$Codigo==201910123,]$Tiempo <- NA
 
 
 ```{r}
-?
+smoothScatter(DF$Estatura, DF$Peso)
 ```
 

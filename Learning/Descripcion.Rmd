@@ -1,0 +1,354 @@
+---
+title: "Gráficas y descriptores"
+output: html_notebook
+---
+
+# Una variable
+
+## Gráficas de puntos y la media
+Cuando no son *demasiados* datos las gráficas de puntos son útiles, pues permiten distinguir las observaciónes individuales de una manera más sencilla que una tabla.
+En las gráficas de puntos se muestran las observaciones a lo largo de un segmento, usualmente se muestra el valor de la media en la gráfica para dar una idea del *punto de equilibrio* o *baricentro* de los datos cuando estos tienen todos el mismo peso.
+Las gráficas de puntos vienen en dos sabores, *superpuestos* y *apilados*.
+
+### Gráficas de puntos superpuestos
+```{r,echo=FALSE}
+n<-30 
+tpromedio<-10
+```
+
+Por ejemplo si queremos ver gráficamente `r n` observaciones de unos tiempos de llegada a un cajero automático donde los clientes llegan en promedio cada `r tpromedio` minutos.
+
+A continuación presentamos la tabla de dichas observaciones:
+```{r,echo=FALSE}
+DFT<-data.frame(cliente=1:n,tiempo=rexp(n,1/tpromedio)) 
+
+print(DFT)
+```
+El promedio de los datos es `r mean(DFT$tiempo)` y se calcula de la manera usual.
+
+En **R** se puede usar el comando `mean` para obtener promedios.
+
+Por ejemplo, si en `DFT$tiempo` están los tiempos de llegada, el promedio de estos se obtiene mediante mediante la invocación `mean(DFT$tiempo)`.
+
+En **R**, podemos hacer gráficas de puntos superpuestos mediante el comando `stripchart`. El valor por defecto del parámetro `method` es `"overplot"` que determina que deseamos ver los valores superpuestos.
+
+La invocación `stripchart(DFT$tiempo)` retorna un gráfico muy sencillo.
+
+```{r,echo=FALSE}
+stripchart(DFT$tiempo)
+```
+
+Si deseamos incluir el valor de la media y una línea que separe esta de los valores, debemos especificarlo a mano.
+
+Una gráfica de puntos superpuestos con estas decoraciones, títulos y ejes etiquetados es:
+```{r,echo=FALSE}
+library(graphics)
+y=0.025
+d=0.025
+stripchart(DFT$tiempo,method="overplot",pch=19,bty="n",frame.plot = FALSE,at=y+d,main="Gráfica de puntos superpuestos",ylim = c(0,1),xlab="tiempo de llegada")
+lines(c(min(DFT$tiempo),max(DFT$tiempo)),c(y,y),col="black")
+points(c(mean(DFT$tiempo)),c(y-d),pch=17,col="red")
+```
+Donde la posición del promedio está indicada por el triángulo rojo.
+
+Ocasionalmente, cuando la cantidad de puntos es *elevada* la superposición puede causar confusión ya que los puntos ya no se pueden separar visualmente. Para esto se puede usar la transparencia.
+
+```{r,echo=FALSE}
+y=0.025
+d=0.025
+stripchart(DFT$tiempo,method="overplot",pch=19,bty="n",frame.plot = FALSE,at=y+d,main="Gráfica de puntos superpuestos con transparencia",ylim = c(0,1),xlab="tiempo de llegada",col=rgb(0,0,0,0.2))
+lines(c(min(DFT$tiempo),max(DFT$tiempo)),c(y,y),col="black")
+points(c(mean(DFT$tiempo)),c(y-d),pch=17,col="red")
+
+```
+### Gráficas de puntos apilados
+Cuando la variable aleatoria es discreta o los valores pueden ser clasificados en categorías de manera razonable, se puede hacer una gráfica de puntos apilados, en este tipo de gráfica, se desglosan visualmente las coincidencias de valores colocando los puntos uno encima de otro.
+
+Por ejemplo, si tenemos estas `r n` observaciones de la suma de tres dados
+
+```{r,echo=FALSE}
+DFD<-data.frame(lanzamiento=1:n,suma=replicate(n,sum(sample(size=3,x=6,replace=TRUE)))) 
+
+print(as.data.frame(DFD))
+```
+El promedio de la suma de los lanzamientos es `r mean(DFD$suma)` y se calcula de la manera usual.
+
+El gráfico de puntos apilados sería:
+```{r,echo=FALSE}
+y=0.05
+d=0.05
+stripchart(DFD$suma,method="stack",pch=20,bty="n",frame.plot = FALSE,at=y,main="Gráfico de puntos apilados",xlab="suma de tres dados")
+lines(c(min(DFD$suma),max(DFD$suma)),c(y-d,y-d),col="black")
+points(c(mean(DFD$suma)),c(y-2*d),pch=17,col="red")
+
+```
+
+Es importante notar que las gráficas de puntos solo son realmente útiles cuando se tienen relativamente pocas observaciones.
+
+Las gráficas de puntos apilados realmente solo funcionan cuando tenemos observaciones de una variable aleatoria discreta que no puede tomar demasiados valores.
+
+En cierto sentido, las gráficas de puntos apilados, son un tipo de histograma, que nos sirve para tener una idea de la forma que tienen los datos de manera colectiva.
+
+## Histogramas y forma de la distribución
+En los histogramas, el rango de los datos se divide en categorías llamadas *clases* y en cada clase se cuenta el número de observaciones que caen en ella.
+
+En **R**, la función `hist` se utiliza para obtener un histograma de datos. El comando `hist` resuelve de manera automática el número de clases en las que se agrupan los datos y al igual que otras funciones gráficas de **R** tiene múltiples opciones que permiten controlar diversos aspectos de la gráfica.
+
+Por ejemplo, para nuestros datos de tiempos de llegada, un histograma es:
+```{r,echo=FALSE}
+HT<-hist(DFT$tiempo,main="Histograma de tiempos de llegada",xlab="tiempo",ylab="frecuencia",col="lightgreen")
+```
+
+En este histograma, las clases son todas del mismo tamaño y se asume que son de la forma $(a,b]$ donde $a$ y $b$ son valores consecutivos del vector de cortes de clase, salvo en la primera clase donde debemos incluir los valores más pequeños.
+
+En el histograma anterior, las clases son:
+```{r,echo=FALSE}
+cat(levels(cut(DFT$tiempo,HT$breaks,include.lowest = TRUE)))
+
+```
+
+Claramente, cambiar las clases, cambia el histograma aunque los datos sean los mismos, por ejemplo:
+```{r,echo=FALSE}
+HT<-hist(DFT$tiempo,main="Histograma de tiempos de llegada",xlab="tiempo",ylab="frecuencia",col="lightgray",breaks=2*(0:20))
+```
+Donde las clases son:
+```{r,echo=FALSE}
+cat(levels(cut(DFT$tiempo,HT$breaks,include.lowest = TRUE)))
+```
+
+Típicamente se pide que el área de cada barra sea proporcional al número de observaciones que caen en cada clase. Esto es conveniente pues visualmente las clases con más elementos tienen una mayor área y al convertir la escala vertical a frecuencia relativa, el histograma no cambia su forma como se puede ver a continuación:
+
+```{r,echo=FALSE}
+op=par(mfrow=c(1,2))
+HT<-hist(DFT$tiempo,main="Histograma de tiempos de llegada",xlab="tiempo",ylab="frecuencia",col="lightblue",breaks=3*(0:12),xaxt="n")
+axis(1,at=HT$mids,padj=0.5,cex.axis=0.8,las=3)
+hist(DFT$tiempo,main="Histograma de tiempos de llegada",xlab="tiempo",ylab="frecuencia relativa",col="lightblue",breaks=3*(0:12),xaxt="n",prob=TRUE)
+axis(1,at=HT$mids,padj=0.5,cex.axis=0.8,las=3)
+par(op)
+```
+Donde las clases son:
+```{r,echo=FALSE}
+cat(levels(cut(DFT$tiempo,HT$breaks,include.lowest = TRUE)))
+```
+
+Y sus puntos medios, que pueden servir como representantes (y están etiquetados en el gráfico anterior) son:
+
+```{r,echo=FALSE}
+cat(HT$mids)
+```
+A estos puntos medios a veces se les llama *representantes de clase* y son los valores que se toman cuando se debe obtener medidas en función a los datos agregados.
+
+Si los anchos de las clases son todos iguales, como el área de cada rectángulo es proporcional al número de observaciones que caen en ella, la altura de cada rectángulo también es proporcional al número de observaciones en la clase, por lo que podemos juzgar de manera sencilla que clase tiene más observaciones sin importar si el eje de las ordenadas muestra la frecuencia o la frecuencia relativa.
+
+La convención de que el área de cada barra debe ser proporcional al número de datos en la clase en **fundamental**. Violar la convención puede tener un efecto dramático.
+
+Un histograma de los tiempos de llegada con clases desiguales y respetando la convención se ve así:
+
+```{r,echo=FALSE}
+HT<-hist(DFT$tiempo,main="Histograma de tiempos de llegada",xlab="tiempo",ylab="frecuencia relativa",col="pink",breaks=c(0,2^(0:6)),xaxt="n")
+axis(1,at=HT$mids,padj=0.5,cex.axis=0.6,las=3)
+cat(levels(cut(DFT$tiempo,HT$breaks,include.lowest = TRUE)))
+```
+Donde las clases son:
+```{r,echo=FALSE}
+cat(levels(cut(DFT$tiempo,HT$breaks,include.lowest = TRUE)))
+```
+
+Y sus puntos medios, que pueden servir como representantes (y están etiquetados en el gráfico anterior) son:
+
+```{r,echo=FALSE}
+cat(HT$mids)
+```
+Podemos determinar que clases son más importantes simplemente observando que áreas son mayores. Mientras mayor es un rectángulo mayor es la cantidad de puntos que cayeron en la clase correspondiente.
+
+Si decidimos violar la convención se pierde esta noción, en particular **JAMAS** deberíamos pretender trabajar con clases desiguales y frecuencia absoluta.
+```{r,echo=FALSE,warning=FALSE}
+HT<-hist(DFT$tiempo,main="Histograma ERRÓNEO de tiempos de llegada",xlab="tiempo",ylab="frecuencia",col="red",breaks=c(0,2^(0:6)),xaxt="n",freq = TRUE)
+axis(1,at=HT$mids,padj=0.5,cex.axis=0.6,las=3)
+```
+
+Finalmente, cuando los datos son discretos, como en el caso de las sumas de tres dados, todo lo mencionado previamente aplica y dependiendo del número de clases, vale la pena mostrar las variables agregadas en clases o no.
+
+Por ejemplo, para los `r n` valores obtenidos, un histograma puede ser
+```{r,echo=FALSE}
+HD<-hist(DFD$suma,main="Histograma de suma de tres dados",xlab="suma",ylab="frecuencia",col="lightgreen")
+```
+Donde las clases son:
+```{r,echo=FALSE}
+cat(levels(cut(DFD$suma,HD$breaks,include.lowest = TRUE)))
+```
+
+Claramente esto puede causar problemas pues la primera clase, que tiene el mismo ancho que la última, podría tener muchas más observaciones adentro simplemente por aceptar más valores posibles.
+
+En este caso resulta claro que debemos picar nuestras clases de manera diferente. Por ejemplo:
+
+```{r,echo=FALSE}
+HD<-hist(DFD$suma,main="Histograma de suma de tres dados",xlab="suma",ylab="frecuencia",col="green",breaks=(3:19)-0.5,xaxt="n")
+axis(1,at=HD$mids,padj=0.5,cex.axis=1,las=3)
+```
+Donde las clases son:
+```{r,echo=FALSE}
+cat(levels(cut(DFD$suma,HD$breaks,include.lowest = TRUE)))
+```
+
+Y sus puntos medios son:
+
+```{r,echo=FALSE}
+cat(HD$mids)
+```
+Claramente esta gráfica es equivalente a la gráfica de puntos superpuestos, con una salvedad importante; las observaciónes individuales ya no son fácilmente distinguibles (o es imposible distinguirlas en caso de estar trabajando con frecuencias relativas).
+
+Esto en realidad es una ventaja pues si tenemos *muchas* observaciones, la verdadera forma de la distribución subyacente puede emerger.
+
+```{r,echo=FALSE}
+m<-30000
+DFDM<-data.frame(lanzamiento=1:m,suma=replicate(m,sum(sample(size=3,x=6,replace=TRUE))))
+```
+
+Por ejemplo, si tenemos `r format(m,digits=5)` observaciones de la suma de tres dados (para lo cual hace falta lanzar `r format(3*m,digits=5)` dados y sumarlos de tres en tres), revisar la tabla de lanzamientos deja de ser práctico, pero el histograma nos muestra una información interesante.
+
+```{r,echo=FALSE}
+HDM<-hist(DFDM$suma,main="Histograma de suma de tres dados",xlab="suma",ylab="frecuencia",col="lightgreen",breaks=(3:19)-0.5,xaxt="n")
+axis(1,at=HDM$mids,padj=0.5,cex.axis=1,las=3)
+```
+De hecho, a este nivel, las frecuencias absolutas dejan de ser relevantes y comienza a ser mejor trabajar con la frecuencia relativa, que en este caso coincide con la probabilidad de observar cada uno de los valores específicos.
+
+```{r,echo=FALSE}
+HDM<-hist(DFDM$suma,main="Histograma de suma de tres dados",xlab="suma",ylab="frecuencia relativa",col="green",breaks=(3:19)-0.5,xaxt="n",prob=TRUE)
+axis(1,at=HDM$mids,padj=0.5,cex.axis=1,las=3)
+```
+Esta forma que emerge, apenas si podía distinguirse en una muestra pequeña, pero en realidad veremos que rige el comportamiento de la variable observada. 
+
+El objeto matemático que controla la forma que vemos es la *función de masa de probabilidad* y lo estudiaremos posteriormente para variables aleatorias discretas.
+
+De manera similar, si observamos `r format(m,digits=5)` tiempos de llegada podemos ver la forma subyacente para los tiempos de llegada.
+
+```{r,echo=FALSE}
+DFTM<-data.frame(cliente=1:m,tiempo=rexp(m,1/tpromedio)) 
+```
+
+```{r,echo=FALSE}
+HTM<-hist(DFTM$tiempo,main="Histograma de tiempos de llegada",xlab="tiempo",ylab="frecuencia",col="lightgreen")
+```
+Donde las clases son:
+```{r,echo=FALSE}
+cat(levels(cut(DFTM$tiempo,HTM$breaks,include.lowest = TRUE)))
+```
+
+Y sus puntos medios son:
+
+```{r,echo=FALSE}
+cat(HTM$mids)
+```
+
+Al igual que antes, podemos graficar con un número distinto de clases y usando la frecuencia relativa:
+
+
+```{r,echo=FALSE}
+HTM<-hist(DFTM$tiempo,main="Histograma de tiempos de llegada",xlab="tiempo",ylab="frecuencia relativa",col="green",breaks=50,prob=TRUE)
+```
+Donde las clases son:
+```{r,echo=FALSE}
+cat(levels(cut(DFTM$tiempo,HTM$breaks,include.lowest = TRUE)))
+```
+
+Y sus puntos medios son:
+
+```{r,echo=FALSE}
+cat(HTM$mids)
+```
+Al igual que antes, la forma que emerge, es difícil de distinguir en una muestra pequeña.
+
+El objeto matemático que la controla es la *función de densidad* y lo estudiaremos posteriormente para variables aleatorias continuas.
+
+
+## Gráficos de caja y dispersión
+
+Una manera de estudiar la forma de un conjunto de variables aleatorias es mediante el *gráfico de caja*, que muestra con un bulto central una zona con muchos datos y con unos bigotes delgados zonas donde hay menos datos; por fuera de estos bigotes se muestran los datos que son potencialmente atípicos. Este tipo de gráfico puede servir una función exploratoria, fomentando la revisión y verificación de los datos potencialmente atípicos.
+
+El conjunto de `r n` tiempos de llegada se puede representar así:
+```{r,echo=FALSE}
+boxplot(DFT$tiempo,ylab="tiempo",main="Gráfico de caja de tiempos de llegada",sub="Pocos datos")
+```
+En este gráfico la mediana de los datos se representa con un segmento grueso, por lo que sabemos que al menos la mitad de los datos es menor o igual que el valor de la mediana y al menos la mitad de los datos es mayor o igual que el valor de la mediana.
+
+En los datos considerados, la mediana vale `r median(DFT$tiempo)`, cosa que se puede apreciar fácilmente en el gráfico.
+
+La caja (el bulto) va desde el primer cuartil y hasta el tercer cuartil, por lo que sabemos que al menos la mitad de los datos cae dentro de la caja.
+
+Los largos de los bigotes, usualmente corresponden a un factor fijo (típicamente 1.5 del ancho del compartimiento correspondiente de la caja)
+
+Se señalan individualmente como datos potencialmente atípicos a aquellos que caen fuera del bigote correspondiente.
+
+En **R** se puede hacer un gráfico de caja mendiante la función `boxplot`, el factor de largo de los bigotes se puede controlar con el parámetro `range` que tiene como valor por defecto 1.5.
+
+El gráfico de caja sirve para mostrar cuan concentrados están los datos y si se distribuyen de manera simétrica.
+
+En el caso de los `r format(m,digits=5)` tiempos de llegada, el gráfico de caja es diferente, y al igual que con el histograma, deberíamos obtener una mejor idea de como se ven los datos de manera colectiva.
+
+```{r,echo=FALSE}
+boxplot(DFTM$tiempo,ylab="tiempo",main="Gráfico de caja de tiempos de llegada",sub="Muchos datos")
+```
+Al igual que para las gráficas de puntos, la superposición de valores puede ser confusa, por lo que podemos trabajar con puntos más pequeños, o con transparencia de los mismos.
+
+
+```{r,echo=FALSE}
+op=par(mfrow=c(1,2))
+boxplot(DFTM$tiempo,ylab="tiempo",main="Tiempos de llegada",sub="Muchos datos",pch=".",ylim=c(0,max(DFTM$tiempo)))
+boxplot(DFTM$tiempo,ylab="tiempo",main="Tiempos de llegada",sub="Muchos datos",pch=20,border=rgb(0,0,0,0.02),ylim=c(0,max(DFTM$tiempo)))
+boxplot(DFTM$tiempo,outline=FALSE,add=TRUE,ylim=c(0,max(DFTM$tiempo)))
+
+par(op)
+```
+Se puede apreciar que al menos la mitad de los datos está por debajo de `r median(DFTM$tiempo)` y al menos la mitad de los datos está entre `r quantile(DFTM$tiempo,0.25)` y `r quantile(DFTM$tiempo,0.75)`. Los datos claramente tienen un carácter asimétrico ya que hay una gran cantidad de valores grandes (y una cantidad importante de puntos potencialmente atípicos), pero no hay valores menores que cero.
+
+Si queremos los gráficos de caja para las sumas de tres dados nos encontramos con las siguientes situaciones:
+
+
+```{r,echo=FALSE}
+op=par(mfrow=c(1,2))
+boxplot(DFD$suma,ylab="tiempo",main="Tiempos de llegada",sub="Pocos datos",pch=".",ylim=c(3,18),yaxt="n")
+axis(2,at=3:18,cex.axis=.5)
+boxplot(DFDM$suma,ylab="tiempo",main="Tiempos de llegada",sub="Muchos datos",pch=20,ylim=c(3,18),yaxt="n")
+axis(2,at=3:18,cex.axis=.5)
+par(op)
+```
+Donde casi no se pueden apreciar las diferencias entre la muestra pequeña, del lado izquierdo, con solo `r n` observaciones y la muestra grande, del lado derecho con `r format(m,digits=5)` observaciones.
+
+Es interesante notar que ninguno de los dos gráficos reporta puntos potencialmente atípicos, a pesar de que, en retrospectiva, podríamos pensar que hubo más valores pequeños en la muestra pequeña de los que esperabamos ver, por lo que el compartimiento inferior de la caja fue más grande.
+
+Ambos conjuntos de datos parecen ser relativamente simétricos.
+
+Distintos conjuntos de datos dan a lugar a distintos gráficos de caja; los siguentes ejemplos corresponden a 1000 observaciones de variables aleatorias simétricas en algún sentido relativamente fácil de comprender:
+```{r,echo=FALSE}
+op=par(mfrow=c(1,4))
+boxplot(runif(1000))
+boxplot(rcauchy(1000))
+boxplot(rnorm(1000))
+boxplot(rbeta(1000,shape1=0.15,shape2=0.15))
+par(op)
+```
+
+mientras que estos otros corresponden a 1000 observaciones de variables aleatorias asimétricas
+
+```{r,echo=FALSE}
+op=par(mfrow=c(1,4))
+boxplot(rexp(1000))
+boxplot(rgamma(1000,rate=1/2,shape=6))
+boxplot(rlnorm(1000))
+boxplot(rbeta(1000,shape1=3,shape2=0.15))
+par(op)
+```
+
+Los gráficos de caja también nos pueden dar una idea de la dispersión de los datos, las diferencias de los puntos más extremos corresponden al rango mientras que las diferencias entre los bordes de la caja corresponden al rango intercuartil.
+
+Estas cantidades se pueden ver de manera intuitiva en los gráficos de caja mientras que son casi imposibles de discernir en histogramas y gráficas de puntos.
+
+
+
+
+
+```{r}
+rm(list=ls())
+```
+

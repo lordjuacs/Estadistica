@@ -1,10 +1,10 @@
 ---
-title: "Estadística - 2020-1"
+title: "Impacto del transporte entre la residencia del alumno y la universidad en su salud mental y rendimiento académico"
 output:
   html_document:
     df_print: paged
 ---
-## P0 Pre Entrega
+## Entrega P1
 ### **Sección:** 1.01
 ### **Profesor:** José Miguel Renom
 
@@ -16,81 +16,35 @@ Oscar Gómez|201910179   |
 Joaquín Ramírez|201910277|
 _El 5to integrante era Josué Carrillo, pero se retiró del curso_
 
-Tenemos las siguientes propuestas para nuestro tema del proyecto:
+### Introducción
 
-1. **¿Cómo el cambio repentino a la educación virtual a distancia afecta el aprendizaje de los universitarios de UTEC?**
+El transporte urbano de Lima está en un estado deplorable debido a años de corrupción y manejo indebido de los recursos públicos. Uno de los principales problemas en una sociedad urbanizada es la movilización eficiente de los ciudadanos en el limitado espacio disponible.  Según un estudio realizado por la empresa holandesa TomTom (2018), Lima es la tercera ciudad con más tráfico en el mundo. Esto significa que muchos limeños debemos invertir una gran cantidad de horas en transportarnos, debido a que el tráfico nos impide llegar a lugares más rápidamente. 
 
-Ante la situación que vivimos actualmente a causa del COVID-19, la educación universitaria se ha visto  afectada. En muchos casos se ha hecho el cambio repentino a la educación virtual, como es el caso de UTEC, para que los alumnos no se detengan. Sin embargo, ¿este cambio garantiza el aprendizaje total? De esta manera, nos interesa indagar en los efectos que tiene el repentino cambio a la educación virtual en la vida de los alumnos de nuestra comunidad universitaria.
+Como estudiantes, consideramos que este tema es importante para nosotros y nuestros compañeros porque todos vivimos en Lima y debemos transportarnos a la universidad frecuentemente. Muchas de estas veces, nos topamos con el tráfico y largas horas de movilidad. Todo esto resulta en una carga físico-emocional que repercute en la vida diaria estudiantil, tanto en el ámbito académico como mental.
 
-  * Puntos:
-    + Presupuesto familiar
-    + Rendimiento académico
-    + Estabilidad emocional:
-      + Personal
-      + Familiar
-    + Calidad de servicio:
-      + Recursos de clases (material)
-      + Capacidad de profesores 
-  * Variables a medir:
-    + Ingresos familiares
-      + Ayuda financiera
-      + Impedimentos de continuación de educación
-    + Rendimiento académico:
-      + Notas
-      + Créditos
-    + ¿El alumno siente que está aprendiendo o no?
-    + Salud mental
-      + Situación personal
-      + Ambiente en casa
-    + Calidad de servicio: 
-      + ¿El profesor se adecuó bien?
-      + ¿El curso funciona al 100% virtual como sería presencial?
-    
-2. **¿Cómo afecta la contaminación a la ciudad de Lima?**
 
-Lima es considerada una de las ciudades más contaminadas en Latinoamérica. Las residentes de esta ciudad quizás ya están acostumbrados a ella, pero no es algo normal. Es interesante indagar los efectos que tiene la polución en distintas ámbitos del ecosistema limeño.
+### Objetivo
 
-  * Puntos:
-    + Escasez de agua debido a calentamiento global
-    + Fuentes de agua contaminadas por desechos (río Rímac)
-    + Smog en el aire
-    + Ecosistemas destruidos que causan inundaciones/sequías
-    + Radiación solar extrema
-  * Variables a medir:
-    + Variación de rango de temperaturas de Lima a lo largo de los años
-    + Duración de temporadas de lluvias y huaicos y caudal de los ríos
-    + Variación de radiación solar de Lima
-    + Índice de CO2 en el aire
-    + Días nublados/soleados al año
-    
-3. **¿Cuál es el impacto de la anemia en los niños peruanos?**
+El objetivo de esta investigación es analizar e informar acerca del impacto del tiempo de viaje desde la residencia de un alumno hasta la universidad en su salud mental rendimiento académico.
 
-La anemia es una enfermedad que afecta a miles de personas en nuestro país, con mayor énfasis en las comunidades rurales. Dentro de este segmento de la población, los niños son quienes presentan la enfermedad constantemente. Sin duda es un problema que tiene que ser atendido a la brevedad, pero por el momento no hay mucha atención por parte de la sociedad.
+### Población objetivo
 
-  * Puntos:
-    + Efecto económico
-    + Mortalidad según el grado de anemia
-    + Desarrollo infantil
-    + Anemia como factor de riesgo frente a otras enfermedades
-  * Variables a medir:
-    + Costo económico en los últimos 10 años
-    + Tipos de anemia con respecto a la tasa de mortalidad
-    + Ámbitos que más afecta la anemia en el desarrollo durante la niñez
-    + Presencia de otras enfermedades durante la anemia
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+Estudiantes universitarios
+
+### Unidad muestral
+
+Cualquier estudiante cursando ciclo II en adelante
+
+
+
+N°|Preguntas
+--|---------
+1|¿Cuál es la edad de los encuestados?
+2|¿En qué ciclo se encuentran?
+3|¿Cuántos cursos llevaron el ciclo 2019-2?
+4|¿A qué grupo de mérito pertenecen?
+5|¿Cuál es su promedio ponderado?
+6|¿?
+7|¿Cuál es la edad de los encuestados?
+8|¿Cuál es la edad de los encuestados?
+9|¿Cuál es la edad de los encuestados?
