@@ -1,0 +1,99 @@
+---
+title: "Impacto del transporte entre la residencia del alumno y la universidad en su salud mental y rendimiento académico"
+output:
+  html_document:
+    df_print: paged
+---
+## Título corto: CommUtec
+## P1 Primera entrega
+### **Sección:** 1.01
+### **Profesor:** José Miguel Renom
+
+**Alumno** | **Código** | **Líder**
+-----------|------------|----------
+Andrea Chu |201910124   |X
+Juan Diego Chu|201920069|
+Oscar Gómez|201910179   |
+Joaquín Ramírez|201910277|
+_El 5to integrante era Josué Carrillo, pero se retiró del curso_
+
+### Introducción
+
+El transporte urbano de Lima está en un estado deplorable debido a años de corrupción y manejo indebido de los recursos públicos. Uno de los principales problemas en una sociedad urbanizada es la movilización eficiente de los ciudadanos en el limitado espacio disponible.  Según un estudio realizado por la empresa holandesa TomTom (2018), Lima es la tercera ciudad con más tráfico en el mundo. Esto significa que muchos limeños debemos invertir una gran cantidad de horas en transportarnos, debido a que el tráfico nos impide llegar a lugares más rápidamente. 
+
+Como estudiantes, consideramos que este tema es importante para nosotros y nuestros compañeros porque todos vivimos en Lima y debemos transportarnos a la universidad frecuentemente. Muchas de estas veces, nos topamos con el tráfico y largas horas de movilidad. Todo esto resulta en una carga físico-emocional que repercute en la vida diaria estudiantil, tanto en el ámbito académico como mental.
+
+
+### Objetivo
+
+El objetivo de esta investigación es analizar e informar acerca del impacto del viaje desde la residencia de un alumno hasta la universidad en su salud mental y rendimiento académico. Con la información recogida, se desea responder a las preguntas planteadas y llegar a conclusiones representativas.
+
+### Factibilidad
+
+El transporte es una actividad en la que participan todos los alumnos con frecuencia diaria (antes de la actual pandemia). La pregunta es: **¿Influye el transporte entre la residencia del alumno a la universidad en su salud mental y rendimiento académico?** Nuestra actual hipótesis es la siguiente: **Sí influye, porque la experiencia de transportarse en Lima causa estrés y cansancio, y porque implica una cantidad significante de tiempo.** De esta manera, es importante entender el comportamiento del alumno analizando el plano mental, pues es el encargado de regir nuestras acciones, lo que tendrá impacto en nuestras notas. Es así que nuestro proyecto buscará comprender el impacto en la salud mental al igual que en el rendimiento académico, valorizando al estudiante en su totalidad.
+
+### Marco Teórico
+
+### Población objetivo
+
+Estudiantes universitarios
+
+### Unidad muestral
+
+Cualquier estudiante de UTEC cursando ciclo II en adelante
+
+### Tipo de muestreo
+  Muestreo por conveniencia: fácil acceso a nuestra unidad muestral
+
+### Obtención de datos
+
+Al ser parte de la comunidad estudiantil de la misma universidad, tenemos acceso a los medios de comunicación pertinentes para realizar encuestas en línea. Es así que se elaborará una encuesta en SurveyMonkey o GoogleForms, y se distribuirá vía el grupo de Facebook de los alumnos. Si es necesario, solicitaremos ayuda del área de Bienestar Estudiantil, para que nos apoyen con la distribución de la encuesta. Nota: para poder responder las preguntas que toman los factores de opinión y el plano emocional, utilizaremos escalas psicométricas, como la escala de Likert.
+
+### Planificación
+
+Durante las primeras 4 semanas estuvimos planteando el tema y la viabilidad de ellos. Para la siguiente semana desarrollamos las preguntas e identificamos las variables concretas a estudiar. En las siguientes semanas se plantea elaborar la encuesta con la que se recogerán los datos y publicarla por Facebook. En las semanas posteriores se analizarán los datos con R, y se buscará responder las preguntas. Es vital resaltar que conforme recibamos _feedback_ del profesor, mejoraremos las entregas del proyecto.
+
+### Preguntas planteadas
+
+N°|Preguntas
+--|---------
+1|¿Cuál es la edad de los encuestados?
+2|¿Cuánto tiempo les demora a los estudiantes de UTEC llegar a la universidad desde su lugar de residencia?
+3|¿En qué percentil se encuentra con respecto a su carrera (décimo, quinto, tercio, etc.)?
+4|¿Cómo se sienten al momento de transportarse?(marcar en el cuadro)
+5|¿Es posible predecir el rendimiento académico de un estudiante en base al tiempo que le toma llegar a la UTEC ?
+6|¿Qué medio de transporte utiliza la mayoría de estudiantes de UTEC?
+7|¿Es posible relacionar el nivel de estrés al que se somete un estudiante según el medio de transporte que toma para ir a la UTEC? (completar del 1 al 5)
+8|¿A los estudiantes de ciclos menores les cuesta más adaptarse al tiempo de movilización desde su domicilio a la UTEC? 
+9|¿Los estudiantes de ciclos mayores presentan mayor o menor estabilidad emocional?
+10|¿Existe alguna cantidad de estudiantes que hagan uso eficiente del tiempo de transporte?
+11|¿El apoyo brindado por Bienestar Estudiantil tiene algún efecto positivo en la salud mental y/o rendimiento académico de los alumnos? 
+12|¿Qué factores determinan la cantidad de estrés que puede sufrir un estudiante durante el tiempo de viaje desde su residencia a la UTEC?
+13|¿La cantidad de horas de viaje entre la residencia y UTEC influye en la cantidad de horas que duermen los alumnos?
+14|¿Se puede predecir cuántas horas estudian los alumnos en relación al tiempo que toman en trasladarse entre su residencia y UTEC ?
+15|¿La cantidad de tiempo dedicado a actividades extracurriculares está limitada por el tiempo de transporte?
+
+
+
+### Variables identificadas
+
+Variable|Relación con pregunta|Tipo de variable
+--------|---------------------|----------------
+Edad|1|Numérica discreta
+Cantidad de cursos que llevaron el ciclo 2019-2|3|Numérica discreta
+Medio de transporte|6|Categórica nominal
+Tiempo de transporte|2 y 5|Numérica continua 
+Grupo de mérito|3|Categórica nominal
+Promedio ponderado|5|Numérica continua
+Emociones|4 y 9|Categórica nominal
+Nivel de estrés|7 y 12|Categórica ordinal
+Calidad (muy bueno, bueno, malo)|11|Categórica ordinal
+Tiempo de sueño|13|Numérica continua
+Tiempo de estudio|14|Numérica continua
+Tiempo destinado a actividades extracurriculares|15|Numérica continua
+
+### Bibliografía:
+https://gestion.pe/tendencias/lima-ciudades-peor-trafico-269483-noticia/ 
+
+
+
