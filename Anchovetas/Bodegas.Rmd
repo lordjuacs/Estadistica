@@ -1,0 +1,212 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(stringi)
+```
+
+
+```{r}
+DF <- read_csv("BodegasEP.csv")
+DFT <- DF[complete.cases(DF),]
+
+```
+
+```{r}
+head(DF)
+```
+
+```{r}
+DFT <- cbind(DFT,c(DFT$Ventas1 + DFT$Ventas2 + DFT$Ventas3 + DFT$Ventas4))
+```
+
+
+```{r}
+cnames <- c(colnames(DFT[1:8]), "Total Ventas")
+colnames(DFT) <- cnames
+
+```
+
+
+
+DFD <- cbind(DFT$Distrito, DFT$`Total Ventas`)
+colnames(DFD) <- c("Distrito", "Total Ventas")
+DFD
+
+```{r}
+DFD <-aggregate(DFT$`Total Ventas`, by=list(DFT$Distrito), FUN=sum)
+colnames(DFD) <- c("Distrito", "Total Ventas")
+```
+
+
+
+
+
+
+```{r}
+table(DF$Distrito)
+```
+
+
+```{r}
+sum(DFT$`Total Ventas`)
+```
+
+
+```{r}
+which.min(DFT$`Total Ventas`)
+DFT[8464,]
+```
+
+
+```{r}
+dim(subset(DFT, DFT$Distrito == 'Breña'))
+```
+
+
+
+
+```{r}
+max(nchar(DFT$Bodega))
+```
+
+```{r}
+subset(DFT,nchar(DFT$Bodega) == 35)
+```
+
+
+
+```{r}
+which.min(DFT$`Total Ventas`)
+DFT[8464,]
+```
+
+
+```{r}
+sum(complete.cases(DF))
+```
+
+
+```{r}
+sum(DFT$`Total Ventas`)
+```
+
+```{r}
+which.min(DFT$`Total Ventas`)
+DFT[8464,]
+```
+
+```{r}
+which.max(DFD$`Total Ventas`)
+DFD[19,]
+```
+
+
+```{r}
+which.max(DFT$`Total Ventas`)
+DFT[101,]
+```
+
+
+```{r}
+
+sum(is.na(DF))
+```
+
+```{r}
+nrow(DF) - sum(complete.cases(DF))
+```
+
+
+
+```{r}
+sum(complete.cases(DF))
+```
+
+
+```{r}
+ brena <-subset(DFT, DF$Distrito=="Breña")
+dim(brena)
+```
+
+
+
+```{r}
+which.min(DF$Ventas1)
+which.min(DF$Ventas2)
+which.min(DF$Ventas3)
+which.min(DF$Ventas4)
+
+which.min(c(which.min(DF$Ventas1), which.min(DF$Ventas2),which.min(DF$Ventas3),which.min(DF$Ventas4)))
+```
+
+```{r}
+which.min(DF$Ventas3)
+DFT[5658,]
+```
+
+
+
+```{r}
+table(DFT$Distrito)
+```
+
+```{r}
+which.max(DFD$`Total Ventas`)
+DFD[19,]
+```
+
+
+
+```{r}
+which.max(DFT$Ventas1)
+which.max(DFT$Ventas2)
+which.max(DFT$Ventas3)
+which.max(DFT$Ventas4)
+```
+
+```{r}
+DFT[8755,]
+DFT[9566,]
+DFT[5609,]
+DFT[6933,]
+6919.14
+6691.19
+6826.43
+6389.96	
+
+```
+
+```{r}
+sum(is.na(DF))
+```
+
+
+```{r}
+sum(DFT$`Total Ventas`)
+```
+
+
+
+```{r}
+which.min(DFD$`Total Ventas`)
+DFD[25,]
+```
+
+
+
+```{r}
+which.max(DFT$`Total Ventas`)
+DFT[101,]
+```
+
+
+
+```{r}
+sum(complete.cases(DF))
+```
+
