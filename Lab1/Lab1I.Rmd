@@ -1,0 +1,289 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(stringi)
+```
+
+```{r}
+DC <- read_csv("C19.csv")
+DD <- read_csv("Demo.csv")
+```
+
+```{r}
+DC%>%filter(Pais== "United Kingdom")%>%group_by(Fecha)%>%summarize(sum(Muertos))
+```
+
+
+```{r}
+subset(DC, DC$Pais=="United Kingdom")
+```
+
+
+
+```{r}
+UK <- subset(DC, DC$Pais=="United Kingdom")
+```
+
+
+
+```{r}
+UK%>%group_by(UK$Fecha)%>%summarize(Muertos=sum(Muertos), Contagiados=sum(Contagiados),Recuperados=sum(Recuperados)) -> DFU
+```
+
+
+
+```{r}
+round((sum(!complete.cases(DC))/nrow(DC))*100,digits = 2)
+round((sum(!complete.cases(DD))/nrow(DD))*100,digits = 2)
+
+```
+
+```{r}
+sum(is.na(DC$Fecha))
+sum(is.na(DC$Pais))
+sum(is.na(DC$Provincia))
+sum(is.na(DC$Latitud))
+sum(is.na(DC$Longitud))
+sum(is.na(DC$Contagiados))
+sum(is.na(DC$Muertos))
+sum(is.na(DC$Recuperados))
+
+
+
+
+```
+
+
+
+```{r}
+sum(is.na(DD$Pais))
+sum(is.na(DD$Poblacion))
+sum(is.na(DD$Incremento))
+sum(is.na(DD$Densidad))
+sum(is.na(DD$Area))
+sum(is.na(DD$Migracion))
+sum(is.na(DD$Fertilidad))
+sum(is.na(DD$Edad))
+sum(is.na(DD$Urbana))
+
+```
+
+
+
+
+
+```{r}
+length(unique(DC$Pais))
+```
+
+```{r}
+length(DC$Provincia)
+```
+
+```{r}
+nrow(subset(DC, is.na(DC$Pais)))
+```
+
+```{r}
+length(DC$Provincia)-nrow(subset(DC, is.na(DC$Provincia)))
+
+```
+
+
+```{r}
+
+DFU[which(DFU$Contagiados != 0),]
+```
+
+```{r}
+nrow(DFU[which(DFU$Contagiados != 0),])
+DFU[which(DFU$Contagiados != 0),][104,]
+
+```
+
+
+
+
+```{r}
+DFU[which(DFU$Contagiados == max(DFU$Contagiados)),]
+```
+
+
+
+```{r}
+max(DFU$Contagiados[10:length(DFU)])
+length(UK)
+
+```
+
+
+```{r}
+UK -> DFU
+```
+
+
+
+```{r}
+DC %>% filter(Fecha == max(Fecha)) -> DF
+Mort <- DF$Muertos/DF$Contagiados
+Trop <- (-23 <= DF$Latitud) & (DF$Latitud <= 23)
+boxplot(Mort ~ Trop)
+```
+
+```{r}
+IQR(DF$Muertos/DF$Contagiados, r)
+```
+
+
+```{r}
+DFU <- cbind(DFU,"TMA"= 100*(DFU$Muertos/DFU$Contagiados))
+```
+
+
+```{r}
+
+dianterior <- DFU[2:nrow(DFU),]
+dianterior <- rbind(dianterior, c())
+DFU <- cbind(DFU, ContDia = DFU$Contagiados-dianterior$Contagiados)
+diff(DFU$Contagiados-DFU$Contagiados)
+```
+
+```{r}
+DFU %>%
+    DFU(id) %>%
+    arrange(date) %>%
+    mutate(diff = value - lag(value, default = first(value)))
+
+```
+
+
+
+```{r}
+nrow(DD)
+ncol(DD)
+
+```
+
+
+```{r}
+sum(!complete.cases(DC))/nrow(DC)*100
+sum(!complete.cases(DD))/nrow(DD)*100
+
+```
+
+```{r}
+max(DFU$Fecha) - min(DFU$Fecha)
+
+```
+
+
+
+```{r}
+unique(subset(DC$Provincia,DC$Pais=="United Kingdom"))
+```
+
+
+```{r}
+#DFU <- aggregate(DC$Contagiados[DC$Pais=="United Kingdom"], by=list(DC$Fecha[DC$Pais=="United Kingdom"]),    FUN=sum, na.rm=TRUE)
+
+```
+
+
+```{r}
+DC %>%
+    group_by() %>%
+    arrange(date) %>%
+    mutate(diff = value - lag(value, default = first(value)))
+```
+
+```{r}
+dfu <- aggregate(DC$Contagiados[DC$Pais=="United Kingdom"], by=list(DC$Fecha[DC$Pais=="United Kingdom"]),    FUN=sum, na.rm=TRUE) 
+summary(dfu)
+sd (dfu$x)
+max(dfu$x) - min(dfu$x)
+IQR(dfu$x)
+sd(dfu$x, na.rm=TRUE)/mean(dfu$x, na.rm=TRUE)*100 
+min(dfu$x)
+median(dfu$x)
+mean(dfu$x)
+max(dfu$x)
+
+```
+
+```{r}
+sd (dfu$x)
+max(dfu$x) - min(dfu$x)
+IQR(dfu$x)
+sd(dfu$x, na.rm=TRUE)/mean(dfu$x, na.rm=TRUE)*100 
+
+```
+
+
+```{r}
+dfu[which.max(dfu$x),]
+```
+
+
+
+```{r}
+plot(DFU$Fecha,DFU$TMA)
+
+```
+
+
+
+```{r}
+```
+
+
+```{r}
+DC %>% filter(Fecha == max(Fecha)) -> DF
+Mort <- DF$Muertos/DF$Contagiados
+Trop <- (-23 <= DF$Latitud) & (DF$Latitud <= 23)
+boxplot(Mort ~ Trop)
+```
+
+```{r}
+ DC %>% filter(Fecha == max(Fecha)) -> DF 
+Mort <- DF$Muertos/DF$Contagiados 
+Trop <- (-22 <= DF$Latitud) & (DF$Latitud <= 22) 
+boxplot(Mort ~ Trop,outline=FALSE)
+
+```
+
+
+
+
+
+```{r}
+hist(cut(dfu$x,breaks=seq(from=0,to=1000,by=1000)))
+```
+
+
+
+
+```{r}
+DC %>% filter(Fecha == max(Fecha)) -> DZ
+DX <- left_join(DZ,DD)
+DX$Mort <- DX$Muertos/DX$Contagiados
+DX <- DX[!is.na(DX$Mort),]
+Trop <- (-23 <= DX$Latitud) & (DX$Latitud <= 23)
+
+plot(
+  DX$Edad
+, DX$Fertilidad
+, cex=log10(DX$Contagiados)
+, pch = 21
+, col= rgb(0,0,1,0.1)
+, bg = rgb(Trop,0,0,DX$Mort)
+, bty = "n"
+, xlab = "mediana de la edad"
+, ylab = "fertilidad promedio"
+)
+```
+

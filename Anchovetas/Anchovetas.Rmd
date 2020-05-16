@@ -86,6 +86,33 @@ plot(DF$Largo, DF$Peso)
 ```
 
 ```{r}
-i
+redo(diff(range(DF$Peso)))
+```
+
+
+```{r}
+redo(sd(DF$Peso)/mean(DF$Peso))
+```
+
+
+
+```{r}
+mosaicplot(table(DF$Estacion,DF$Sexo),main="Proporción de sexo por estación",col=c("red","blue"))
+```
+
+
+
+
+
+
+```{r}
+table(DF$Estacion,DF$Sexo)/rowSums(table(DF$Estacion,DF$Sexo))*100
+```
+
+
+
+```{r}
+AnchovetasValidas <- subset(DF,DF$Largo>=7)
+nrow(AnchovetasValidas)
 ```
 

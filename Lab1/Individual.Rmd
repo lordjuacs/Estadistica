@@ -1,0 +1,52 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(stringi)
+```
+
+
+```{r}
+DC <- read_csv("C19.csv")
+DD <- read_csv("Demo.csv")
+```
+
+
+
+```{r}
+DFU <- subset(DC[,c(1,2,6,7,8)],DC[,c(1,2,6,7,8)]$Pais=="United Kingdom")
+DFU%>%group_by(Fecha)%>%summarize(Contagiados=sum(Contagiados),Muertos=sum(Muertos),Recuperados=sum(Recuperados)) -> DFU
+
+```
+
+
+```{r}
+extra <- c(0)
+i = 2
+while (i <= nrow(DFU)) {
+    extra[i] = DFU$Contagiados[i] - DFU$Contagiados[i-1]
+  i <- i + 1
+}
+```
+
+
+```{r}
+cbind(DFU,ContDia=extra) -> DFU
+```
+
+```{r}
+cbind(DFU, TMA = 100*(DFU$Muertos/DFU$Contagiados)) -> DFU
+```
+
+
+```{r}
+DC %>% filter(Fecha == max(Fecha)) -> DZ
+DX <- left_join(DZ,DD)
+DX$Mort <- DX$Muertos/DX$Contagiados
+DX <- DX[!is.na(DX$Mort),]
+```
+

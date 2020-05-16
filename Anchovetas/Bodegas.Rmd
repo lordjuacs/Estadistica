@@ -16,13 +16,17 @@ DFT <- DF[complete.cases(DF),]
 
 ```
 
+
 ```{r}
 head(DF)
+#rm(list=ls())
 ```
 
 ```{r}
 DFT <- cbind(DFT,c(DFT$Ventas1 + DFT$Ventas2 + DFT$Ventas3 + DFT$Ventas4))
+DFT
 ```
+
 
 
 ```{r}
@@ -33,13 +37,17 @@ colnames(DFT) <- cnames
 
 
 
-DFD <- cbind(DFT$Distrito, DFT$`Total Ventas`)
-colnames(DFD) <- c("Distrito", "Total Ventas")
-DFD
+```{r}
+#DFD <- cbind(DFT$Distrito, DFT$`Total Ventas`)
+#colnames(DFD) <- c("Distrito", "Total Ventas")
+#DFD
+```
+
 
 ```{r}
 DFD <-aggregate(DFT$`Total Ventas`, by=list(DFT$Distrito), FUN=sum)
 colnames(DFD) <- c("Distrito", "Total Ventas")
+DFD
 ```
 
 
@@ -130,7 +138,7 @@ sum(complete.cases(DF))
 
 ```{r}
  brena <-subset(DFT, DF$Distrito=="Breña")
-dim(brena)
+nrow(brena)
 ```
 
 
@@ -208,5 +216,87 @@ DFT[101,]
 
 ```{r}
 sum(complete.cases(DF))
+```
+
+
+
+```{r}
+length(table(DFT$Distrito))
+```
+
+
+```{r}
+table(stri_length(DF$Bodega))
+```
+
+```{r}
+DFT[which.max(stri_length(DF$Bodega)),]
+#stri_length(DFT[which.max(stri_length(DF$Bodega)),1])
+```
+```{r}
+min(DFT[,5:8]) -> minimo_semanal
+DFT[which(DFT$Ventas1 == minimo_semanal | DFT$Ventas2 == minimo_semanal | DFT$Ventas3 == minimo_semanal | DFT$Ventas4 == minimo_semanal),]
+
+```
+
+
+
+
+```{r}
+sum(DFD$`Total Ventas`)
+```
+
+
+```{r}
+ventasBarranco <- subset(DFD, DFD$Distrito=="Barranco")
+ventasBarranco
+```
+
+
+
+```{r}
+str(DF)
+```
+
+
+
+
+
+```{r}
+DFT %>% group_by(Distrito)%>%summarize("Total Ventas"=sum(`Total Ventas`))
+```
+
+
+
+
+```{r}
+which(DFT$`Total Ventas` == max(DFT$`Total Ventas`)) -> pos
+DFT[pos, ]
+DFT[which.max(DFT$`Total Ventas`),]
+```
+
+
+
+```{r}
+dim(DFT[which(DFT$Aforo == max(DFT$Aforo)),])
+table(DFT$Aforo)
+```
+
+```{r}
+DFT[complete.cases(DFT),c(1,9)]
+```
+
+
+
+```{r}
+plot(DFT$Ventas1,DFT$`Total Ventas`)
+abline(0,1, col="red")
+
+```
+
+
+
+
+```{r}
 ```
 
