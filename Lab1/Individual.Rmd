@@ -50,3 +50,24 @@ DX$Mort <- DX$Muertos/DX$Contagiados
 DX <- DX[!is.na(DX$Mort),]
 ```
 
+
+
+```{r}
+min(which(DFU$Contagiados != 0)) - max(which(DFU$Contagiados != 0))
+```
+
+```{r}
+prueba <- DFU[10:nrow(DFU),]
+prueba
+```
+
+```{r}
+min(prueba$ContDia)
+max(prueba$ContDia)
+mean(prueba$ContDia)
+sd(prueba$ContDia)
+sd(c(1,2,3,4,5))/mean(c(1,2,3,4,5))
+
+
+```
+

@@ -1,0 +1,505 @@
+---
+title: "Actividad de experimentos aleatorios"
+output: html_notebook
+---
+
+```{r}
+library(stringi)
+library(dplyr)
+```
+
+
+# Experimentos sencillos
+
+Primero estableceremos algunas herramientas sencillas para llevar a cabo experimentos aleatorizados.
+
+En el fondo estamos usando la función `sample` con parámetros pre-especificados.
+
+El lector interesado sabrá como utilizar esta función para escribir sus propios simuladores y ampliar su repertorio de herramientas.
+
+Una moneda justa.
+```{r}
+rMoneda <- function(){
+  return(sample(c("Cara", "Sello"), 1))
+}
+```
+
+
+
+
+
+
+Un dado justo.
+```{r}
+rDado <- function(){
+  return(sample(6, 1))
+}
+```
+
+Una mano de `k` cartas, extraídas sin reemplazo y sin orden de un mazo bien mezclado.
+
+El valor por defecto de `k` es 5, las cartas salen en el orden de extracción, pero en general se considera que las manos no tienen orden.
+
+Esto se deja sin especificar para versatilidad de la herramienta.
+```{r}
+rMano <- function(k = 5){
+  Ran <- rep(c("A", 2: 10, "J", "Q", "K"),4)
+  Pin <- c(rep("♠", 13), rep("♦", 13), rep("♣", 13), rep("♥", 13))
+  Mazo <- paste(Ran, Pin, sep = "")
+  return(sample(Mazo, k))
+}
+```
+
+
+
+
+
+Una colección de `k` objetos extraídos con o sin reemplazo (dependiendo del parámetro `reemplazo`) y con o sin orden (dependiendo del parámetro `orden`).
+
+Los objetos se especifican mediante el parámetro `Objetos` y sus cantidades se especifican mediante el parámetro `Cantidades`.
+
+Los objetos se manejan como objetos distinguibles desde el punto de vista físico (para efectos de la extracción), pero se pueden manejar de manera indistinguible de manera lógica.
+```{r}
+rCosas <- function(k, Objetos, Cantidades, reemplazo = FALSE, orden = FALSE){
+  Bolsa <- rep(Objetos,Cantidades)
+  X <- sample(Bolsa, k, replace = reemplazo)
+  if(!orden){
+    return(paste(sort(X), collapse = ""))
+  }
+  else{
+    return(paste(X, collapse = ""))
+  }
+}
+```
+
+```{r}
+rCosas(4, c("R", "V", "A"), c(4,3,3), reemplazo = FALSE, orden = TRUE)
+```
+
+# Réplicas independientes
+
+Para estudiar los distintos experimentos desde el punto de vista práctico, se puede utilizar la función `replicate`.
+
+Recuerden que si necesitan información adicional sobre el funcionamiento de un comando o función de R, pueden invocar la ayuda de R usando `?`.
+
+Por ejemplo, para saber como funciona `replicate` basta con ejecutar `? replicate`.
+
+Es importante entender que la función `replicate` también se puede utilizar para crear experimentos más complejos.
+
+Por ejemplo, si quisiéramos estudiar 30 lanzamientos de un dado justo podemos hacer: 
+```{r}
+replicate(30, rDado())
+```
+
+Evidentemente, para estudiar los resultados desde el punto de vista estadístico, habría que guardar los resultados en una variable para poder procesarlos con cuidado.
+
+Por ejemplo, podemos guardar 10 resultados en un vector `X` y luego estudiarlo desde el punto de vista estadístico.
+```{r}
+X <- replicate(10, rDado())
+```
+
+```{r}
+table(X)
+```
+
+```{r}
+barplot(table(X))
+```
+
+*Claramente* 10 réplicas independientes podrían no ser suficientes para explorar completamente el espacio de resultados.
+
+Una manera *empírica* de estudiar el espacio de resultados se puede lograr usando la función `unique`.
+
+```{r}
+unique(X)
+```
+
+Sabemos que desde el punto de vista teórico, el espacio de resultados de un dado justo es equiprobable y consiste de los números del 1 al 6.
+
+$\Omega = \{1, 2, 3, 4, 5, 6 \}$
+
+Un experimento interesante podría ser:
+
+## E1
+
+Lanzamos un dado justo 10 veces y anotamos si salieron todos los resultados posibles del dado.
+
+Este experimento tiene solo dos resultados posibles "Si" y "No", que representaremos mediante los valores `TRUE` y `FALSE`, es decir $\Omega_1 = \{TRUE ,FALSE\}$.
+
+En esencia, el experimento es simplemente considerar la siguiente evaluación una cierta cantidad de veces.
+```{r}
+length(unique(replicate(10, rDado()))) == 6
+```
+
+Como se vuelve engorroso escribir la expresión anterior muchas veces, es conveniente encapsularla en una función, de manera similar a como hicimos con la función `sample` para escribir `rMoneda`, `rDado`, `rMano` y el resto de las funciones.
+
+```{r}
+rE1 <- function(){
+  return(length(unique(replicate(10, rDado()))) == 6)
+}
+```
+
+
+Podemos considerar que ocurre cuando hacemos 100 replicas independientes del experimento E1.
+```{r}
+X1a <- replicate(100, rE1())
+```
+
+y en función de estos resultados podemos estimar empíricamente las probabilidades de los dos resultados posibles de E1.
+```{r}
+table(X1a)/length(X1a)
+```
+
+y si repitiésemos el experimento, casi con toda certeza, los resultados serían diferentes y los estimados empíricos de la probabilidad también cambiarían.
+
+```{r}
+X1b <- replicate(100, rE1())
+table(X1b)/length(X1b)
+```
+
+Podemos observar que los resultados son claramente diferentes por lo que las probabilidades probablemente también lo sean.
+
+La función `jitter` puede ser útil para la visualización, pues agrega una pequeña cantidad aleatoria a cada valor para evitar que las observaciones caigan una encima de la otra y parezcan menos de las que son.
+
+En R, los valores `TRUE` y `FALSE` son valores lógicos, pero se pueden convertir fácilmente a valores numéricos de manera automática; en el siguiente ejemplo logramos eso sumando 0 a cada valor.
+
+```{r}
+plot(X1a, X1b)
+```
+
+
+```{r}
+plot(jitter(X1a+0), jitter(X1b+0))
+```
+
+Finalmente, determinar la probabilidad correcta para cada resultado de E1, desde el punto de vista teórico, puede ser complicado, pues requiere de conocimientos de conteo.
+
+Desde el punto de vista teórico, la probabilidad `p` de ver todos los resultados posibles de un dado justo en 10 lanzamientos se calcula usando conteo y el principio de inclusión-exclusión.
+
+La probabilidad vale
+```{r}
+p <- sum(choose(6,6:1)*((6:1)^10)*((-1)^(6:1)))/6^10
+```
+
+Al contar con una herramienta como `rE1` simplemente podemos hacer _suficientes_ réplicas y estimar dichas probabilidades.
+
+```{r}
+X1 <- replicate(1000, rE1())
+```
+
+```{r}
+table(X1)/length(X1)
+```
+
+```{r}
+B <- barplot(table(X1) / length(X1), ylim = c(0 ,1))
+points(B,c(1-p, p), pch = 19)
+```
+
+Se puede ver que los estimados son razonables hasta para valores tan pequeños como 1000 réplicas.
+
+Al final del curso entenderemos que _grande_ o _pequeño_ en estadística tiene un significado flexible y que realmente depende del contexto.
+
+¿Qué retorna la función `barplot`?
+
+Para construir experimentos más complicados usando `replicate` y otras funciones de R, simplemente hay que pensar cual es el experimento que se desea estudiar.
+
+Por ejemplo, podemos estudiar la suma de tres dados justos.
+
+## E2
+
+Definiremos de un vez una función para generar nuestros resultados
+
+```{r}
+rE2 <- function(){
+  return(sum(replicate(3, rDado())))
+}
+```
+
+Claramente $\Omega_2 = \{ 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18\}$ y el espacio no es equiprobable.
+
+
+Veamos como se ven 1000 réplicas de E2.
+```{r}
+X2a <- replicate(1000, rE2())
+barplot(table(X2a))
+```
+
+Al ser la suma de tres dados justos una variable numérica discreta, podemos analizarla desde el punto de vista estadístico de la manera habitual.
+
+```{r}
+summary(X2a)
+```
+
+```{r}
+boxplot(X2a)
+```
+
+```{r}
+hist(X2a, breaks = (3:19) - 0.5, col = "lightgreen")
+```
+
+Recuerden que hasta el conjunto base de R para hacer gráficas es bastante sofisticado y uno puede hacer gráficas muy descriptivas con herramientas relativamente sencillas. 
+
+```{r}
+hist(X2a
+     , breaks = (3:19) - 0.5
+     , col = "lightgreen"
+     , prob = TRUE
+     , ylim = c(-0.08, 0.3)
+     , main = "Suma de tres dados justos"
+     , sub = paste("Muestra de", length(X2a), "experimentos")
+     , ylab = "probabilidad empírica"
+     , xlab = "valor"
+     )
+boxplot(X2a, horizontal = TRUE, add = TRUE, at = -0.05, boxwex = 0.05, col = "lightgreen")
+```
+
+
+## E3
+
+Consideremos el experimento extraemos dos cartas en orden de un mazo bien mezclado.
+
+Un resultado de este experimento es:
+```{r}
+rMano(2)
+```
+
+Este experimento es equiprobable y su número de resultados posibles es variaciones de 52 en 2 $V^{52}_2=\frac{52!}{(52-2)!}=\binom{52}{2}2!$.
+
+Si quisiéramos saber cual es la probabilidad de que ambas cartas fuesen reyes, desde el punto de vista teórico, la respuesta sería $\mathbb{P}(\text{ambas cartas son reyes}) = \frac{V^4_2}{V^{52}_2}=\frac{1}{221}$.
+
+Si quisiéramos estudiar la probabilidad calculada mediante un experimento, podemos pensar en el siguiente experimento accesorio.
+
+Replicamos el experimento E3 un número elevado de veces, por ejemplo 1000 veces y guardamos los resultados.
+
+Procesamos los resultados para adecuarlos al experimento que queremos estudiar.
+
+```{r}
+X3a <- replicate(1000, rMano(2), simplify = FALSE)
+```
+
+Ahora `X3a` es una lista de 1000 entradas correspondientes a las distintas réplicas de nuestro experimento, cada réplica consiste de una lista con dos cartas diferentes.
+
+Si quisiéramos el resultado de la primera replica podríamos acceder a esta mediante `X3a[[1]]`.
+
+Hay una diferencia sutil entre usar `[]` y usar `[[]]`.
+
+En el primer caso se enfatiza que el resultado es una sub-lista de la lista original (aunque tenga un solo elemento), mientras que en el segundo el resultado es un elemento de la lista original.
+
+Lista de largo 1.
+```{r}
+X3a[1]
+```
+
+Primer elemento de la lista `x3a` (que es un vector de largo 2).
+```{r}
+X3a[[1]]
+```
+
+Al igual que con los _data frames_, las funciones `head` y `tail` pueden servir para ver los primeros o últimos componentes de una lista.
+
+```{r}
+head(X3a)
+```
+
+Tener los resultados de `X3a` en una tabla puede ser conveniente para manipularlos.
+
+Para esto necesitamos un par de funciones:
+```{r}
+priCarta <- function(M){
+  return(M[1])
+}
+```
+
+```{r}
+segCarta <- function(M){
+  return(M[2])
+}
+```
+
+```{r}
+PrimeraCarta <- Vectorize(priCarta)
+```
+
+```{r}
+SegundaCarta <- Vectorize(segCarta)
+```
+
+```{r}
+TablaX3a <- data.frame(
+  Primera = PrimeraCarta(X3a)
+  , Segunda = SegundaCarta(X3a)
+  , stringsAsFactors = FALSE
+  )
+```
+
+Podemos revisar que nuestros datos siguen allí comparando `X3a` y `TablaX3a`.
+
+```{r}
+head(X3a)
+```
+
+Lamentablemente la visualización de _data frames_ no incluye todos los caracteres posibles como se puede observar.
+```{r}
+head(TablaX3a)
+```
+
+Pero la información se ha mantenido como se puede ver:
+```{r}
+head(TablaX3a$Primera)
+```
+
+```{r}
+head(TablaX3a$Segunda)
+```
+
+Finalmente, podemos determinar si ambas cartas son reyes de la siguiente manera.
+```{r}
+Rango <- function(M){
+  stri_sub(M, from = 1, to = 1)  
+}
+```
+
+```{r}
+TablaX3a$RangoPrimera <- Rango(TablaX3a$Primera)
+TablaX3a$RangoSegunda <- Rango(TablaX3a$Segunda)
+```
+
+```{r}
+head(TablaX3a)
+```
+
+```{r}
+TablaX3a$AmbasSonReyes <- (TablaX3a$RangoPrimera == "K") & (TablaX3a$RangoSegunda == "K")
+```
+
+Finalmente, podemos estimar, para la muestra obtenida, la probabilidad de que ambas cartas sean reyes.
+
+```{r}
+sum(TablaX3a$AmbasSonReyes)/nrow(TablaX3a)
+```
+
+Dos cosas deberían ser evidentes en este punto:
+
++ Nuestro estimado podría ser malo ya que el evento _Ambas cartas son reyes_ parece ser relativamente raro (sabemos cuán raro pues calculamos su probabilidad, por lo que en realidad no necesitamos estimarla).
+
++ Hicimos un montón de trabajo para responder una pregunta cuya respuesta ya conocíamos.
+
+Lo interesante es que para responder la pregunta no usamos *nunca* la probabilidad teórica, por lo que si pudiésemos resolver la primera observación, deberíamos poder usar este tipo de enfoque para atacar otros problemas donde en realidad no conocemos la probabilidad teórica.
+
+Veamos una segunda muestra con muchas más réplicas y sin tanta conversación:
+
+```{r}
+X3b <- replicate(100000, rMano(2), simplify = FALSE)
+
+TablaX3b <- data.frame(
+  Primera = PrimeraCarta(X3b)
+  , Segunda = SegundaCarta(X3b)
+  , stringsAsFactors = FALSE
+  )
+
+TablaX3b$RangoPrimera <- Rango(TablaX3b$Primera)
+TablaX3b$RangoSegunda <- Rango(TablaX3b$Segunda)
+
+TablaX3b$AmbasSonReyes <- (TablaX3b$RangoPrimera == "K") & (TablaX3b$RangoSegunda == "K")
+```
+
+La probabilidad estimada ahora es:
+```{r}
+qest <- sum(TablaX3b$AmbasSonReyes)/nrow(TablaX3b)
+qest
+```
+
+Y el error absoluto del estimado respecto a la probabilidad teórica es de:
+
+```{r}
+abs(qest - 1/221)
+```
+
+mientras que el error relativo es de:
+```{r}
+abs(qest - 1/221)/(1/221)
+```
+
+Todas estas cosas se hacen naturales con la práctica y alguien con un poco de experiencia, interés y perseverancia puede responder preguntas verdaderamente complejas con experimentos muy sencillos.
+
+## E4
+
+Por ejemplo, si quisiésemos saber cual es la probabilidad de que ninguna de las dos cartas sea un rey o una reina, podemos hacer los siguiente.
+
+```{r}
+niReyniReina <- function(Rangos){
+  return(!any((Rangos == "K") | (Rangos == "Q")))
+}
+```
+
+
+```{r}
+niReyniReina(Rango(rMano(2)))
+```
+
+```{r}
+X4a <- replicate(1000, niReyniReina(Rango(rMano(2))))
+```
+
+```{r}
+table(X4a)/length(X4a)
+```
+
+# Ejercicios...
+
+
+Una bolsa con 10 bolas, 4 rojas, 3 verdes, 3 azules
+Sacamos 4 bolas, una a la ve, sin reemplazo, SÍ importa el orden
+```{r}
+rE5 <- function(){
+  return(rCosas(4, c("R", "V", "A"),c(4,3,3), reemplazo = FALSE, orden=TRUE))
+}
+```
+
+```{r}
+rE5()
+```
+
+```{r}
+X5a <- replicate(10000, rE5())
+```
+
+
+```{r}
+length(unique(X5a))
+```
+
+
+```{r}
+barplot(table(X5a)/length(X5a), las=3, cex.names = 0.3)
+```
+
+
+
+Una bolsa con 10 bolas, 4 rojas, 3 verdes, 3 azules
+Sacamos 4 bolas, una a la ve, sin reemplazo, NO importa el orden
+```{r}
+rE6 <- function(){
+  return(rCosas(4, c("R", "V", "A"),c(4,3,3), reemplazo = FALSE, orden=FALSE))
+}
+```
+
+
+```{r}
+X6a <- replicate(1000, rE6())
+```
+
+
+```{r}
+length(unique(X6a))
+```
+
+
+
+
+```{r}
+
+```
+
