@@ -5,6 +5,7 @@ output: html_notebook
 
 ```{r}
 library(stringi)
+library(stringr)
 library(dplyr)
 ```
 
@@ -50,6 +51,12 @@ rMano <- function(k = 5){
 }
 ```
 
+```{r}
+  Ran <- rep(c("A", 2: 10, "J", "Q", "K"),4)
+  Pin <- c(rep("♠", 13), rep("♦", 13), rep("♣", 13), rep("♥", 13))
+  Mazo <- paste(Ran, Pin, sep = "")
+  length(Mazo)
+```
 
 
 
@@ -178,6 +185,10 @@ Desde el punto de vista teórico, la probabilidad `p` de ver todos los resultado
 
 La probabilidad vale
 ```{r}
+choose(6, 6:1)
+```
+
+```{r}
 p <- sum(choose(6,6:1)*((6:1)^10)*((-1)^(6:1)))/6^10
 ```
 
@@ -222,8 +233,18 @@ Claramente $\Omega_2 = \{ 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18\}$ y el espac
 Veamos como se ven 1000 réplicas de E2.
 ```{r}
 X2a <- replicate(1000, rE2())
+table(X2a)
 barplot(table(X2a))
 ```
+
+
+```{r}
+X2b <- replicate(10000, rE2())
+table(X2b)/length(X2b)
+B <- barplot(table(X2b) / length(X2b), ylim = c(0 ,1))
+
+```
+
 
 Al ser la suma de tres dados justos una variable numérica discreta, podemos analizarla desde el punto de vista estadístico de la manera habitual.
 
@@ -274,6 +295,10 @@ Si quisiéramos estudiar la probabilidad calculada mediante un experimento, pode
 Replicamos el experimento E3 un número elevado de veces, por ejemplo 1000 veces y guardamos los resultados.
 
 Procesamos los resultados para adecuarlos al experimento que queremos estudiar.
+
+```{r}
+length(rMano(2))
+```
 
 ```{r}
 X3a <- replicate(1000, rMano(2), simplify = FALSE)
@@ -332,6 +357,10 @@ TablaX3a <- data.frame(
   , Segunda = SegundaCarta(X3a)
   , stringsAsFactors = FALSE
   )
+```
+
+```{r}
+TablaX3a
 ```
 
 Podemos revisar que nuestros datos siguen allí comparando `X3a` y `TablaX3a`.
@@ -440,7 +469,7 @@ niReyniReina(Rango(rMano(2)))
 ```
 
 ```{r}
-X4a <- replicate(1000, niReyniReina(Rango(rMano(2))))
+X4a <- replicate(10000, niReyniReina(Rango(rMano(2))))
 ```
 
 ```{r}
@@ -500,6 +529,6 @@ length(unique(X6a))
 
 
 ```{r}
-
+factorial(9)*9 
 ```
 

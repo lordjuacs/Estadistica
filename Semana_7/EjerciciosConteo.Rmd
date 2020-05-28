@@ -1,0 +1,38 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+#Ejercicio 1
+```{r}
+dobledado <- function(){
+  f <- sample(1:6, 1)
+  a <- sample(1:6, 1)
+  return(paste(f,a))
+
+}
+```
+
+```{r}
+e1muchos <- replicate(100000, dobledado())
+```
+
+```{r}
+length(unique(e1muchos))
+```
+
+```{r}
+table(e1muchos)/length(e1muchos)
+```
+
+#La probabilidad de sacar dos 6 seguidos es
+$\frac{1}{6}\frac{1}{6}=0.02777...$
+Se puede ver que el caso "6 6" tiende a ese valor
+
+
+
+#Ejercicio 2
+
+
+#No importa el orden en que salgan el 4 y el 3, y además el 3 dado puede ser cualquier número:
+$\frac{1}{6}\frac{1}{6}\frac{6}{6}=0.02777....$
