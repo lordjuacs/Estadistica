@@ -1,0 +1,59 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(stringi)
+```
+
+```{r}
+DF <- read_csv("Eliminatoria.csv")
+```
+
+
+
+```{r}
+1/2
+a <- 1/8
+round(a,2)
+```
+
+
+```{r}
+DF <- cbind(DF, Ventaja = (3*DF$Primeros+2*DF$Segundos+DF$Terceros + 1/DF$Competencias + 1))
+```
+
+```{r}
+DF <- cbind(DF, InvVen = 1/DF$Ventaja)
+
+```
+
+
+
+```{r}
+DF
+```
+
+```{r}
+round(0.07655502,2)
+```
+
+```{r}
+table(DF$Camiseta)
+```
+
+```{r}
+round(DF[DF$Camiseta==5,10],2)
+round(DF[DF$Camiseta==7,10],2)
+round(DF[DF$Camiseta==10,10],2)
+round(DF[DF$Camiseta==12,10],2)
+round(DF[DF$Camiseta==13,10],2)
+round(DF[DF$Camiseta==15,10],2)
+DF[DF$Camiseta==22,10]
+DF[DF$Camiseta==25,10]
+
+```
+
