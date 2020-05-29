@@ -86,3 +86,50 @@ choose(15,4)*choose()
 
 ```
 
+
+
+
+```{r}
+sd(DF$n)/mean(DF$n)*100
+```
+
+
+
+```{r}
+hist(DF$n, breaks=1000)
+summary(DF$n)
+DF[DF$n==max(DF$n),]
+summary(DF$n)
+```
+
+
+```{r}
+pgmenor <- subset(DF, DF$p15<=15000000)
+probpg <- nrow(pgmenor)/nrow(DF)
+probpg
+```
+
+
+#p(vendido|pgmenor) = 
+```{r}
+nrow(pgmenor)/probpg
+```
+
+
+
+```{r}
+perdida <- DF %>% filter(gsorteo < 0)
+nrow(perdida)/nrow(DF)
+```
+
+```{r}
+cero <- DF%>%filter(g15 ==0)
+nrow(cero)/nrow(DF)
+```
+
+
+```{r}
+ambos <- DF %>% filter(g15==0 & gsorteo < 0)
+nrow(ambos)/nrow(DF)
+```
+
