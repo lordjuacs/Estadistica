@@ -1,0 +1,88 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(stringi)
+```
+
+```{r}
+DF <- read_csv("S500.csv")
+```
+
+```{r}
+summary(DF)
+sum(complete.cases(DF))
+```
+
+
+```{r}
+choose(25,15)
+```
+
+```{r}
+(choose(25,15)-choose(15,12))/choose(25,15)
+```
+
+```{r}
+sacarBola <- function()
+{
+    return(sample(1:25, 1))
+}  
+```
+
+```{r}
+replicate(15, sacarBola())
+ver6<- function(){
+  vec <- 
+  return(6 %in% replicate(15, sacarBola()))}
+```
+
+```{r}
+ver6()
+```
+
+```{r}
+X1 <- replicate(100000, ver6())
+```
+
+```{r}
+table(X1)/length(X1)
+```
+
+
+```{r}
+choose(4,3)
+```
+
+```{r}
+choose(15,1)/choose(25,15)
+```
+
+
+```{r}
+(choose(6,5)*choose(42,1))/choose(48,6)
+```
+
+```{r}
+(choose(6,1)*choose(47,5))/choose(48,6)
+```
+
+
+```{r}
+(choose(15,14)*choose(10,1))/choose(25,10)
+```
+
+```{r}
+choose(15,4)*choose()
+```
+
+
+```{r}
+(choose(25,15) - (choose(15,15)+choose(15,14)*choose(10,1)+choose(15,13)*choose(10,2)))/choose(25,15)
+
+```
+
