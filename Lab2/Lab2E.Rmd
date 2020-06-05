@@ -57,3 +57,19 @@ DF[DF$Camiseta==25,10]
 
 ```
 
+
+```{r}
+df <- subset(DF, DF$Camiseta < 26)
+```
+
+```{r}
+k <- 1/sum(df$Ventaja)
+df <- cbind(df[,1:8],Ventaja=k*df$Ventaja)
+```
+
+
+
+```{r}
+df
+```
+

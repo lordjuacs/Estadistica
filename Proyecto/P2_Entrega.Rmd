@@ -1,0 +1,115 @@
+---
+title: "Impacto del transporte entre la residencia del alumno y la universidad en su tiempo efectivo de trabajo y rendimiento académico"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+<div style="text-align: justify">
+## Título corto: CommUtec
+## P2 Segunda entrega
+### **Sección:** 1.01
+### **Profesor:** José Miguel Renom
+
+**Alumno** | **Código** | **Líder**
+-----------|------------|----------
+Kevin Aubert|201910000|
+Andrea Chu |201910124   |
+Juan Diego Chu|201920069|
+Oscar Gómez|201910179   |
+Joaquín Ramírez|201910277|
+
+### Introducción
+
+El transporte urbano de Lima está en un estado deplorable debido a años de corrupción y manejo indebido de los recursos públicos. Uno de los principales problemas en una sociedad urbanizada es la movilización eficiente de los ciudadanos en el limitado espacio disponible.  Según un estudio realizado por la empresa holandesa TomTom (2018), Lima es la tercera ciudad con más tráfico en el mundo. Esto significa que muchos limeños debemos invertir una gran cantidad de horas en transportarnos, debido a que el tráfico nos impide llegar a lugares más rápidamente. 
+
+Como estudiantes, consideramos que este tema es importante para nosotros y nuestros compañeros porque todos vivimos en Lima y debemos transportarnos a la universidad frecuentemente. Muchas de estas veces, nos topamos con el tráfico y largas horas de movilidad. Todo esto resulta en una carga físico-emocional que repercute en la vida diaria estudiantil, el cual no nos permite rendir a nuestro máximo potencial.
+
+
+
+### Objetivo
+
+El objetivo de esta investigación es analizar e informar acerca del impacto del viaje desde la residencia de un alumno hasta la universidad en su tiempo efectivo de trabajo y rendimiento académico. Con la información recogida, se desea responder a las preguntas planteadas y llegar a conclusiones representativas.
+
+### Factibilidad
+
+El transporte es una actividad en la que participan todos los alumnos con frecuencia diaria (antes de la actual pandemia). La pregunta es: **¿Influye el transporte entre la residencia del alumno a la universidad en su tiempo efectivo de trabajo y rendimiento académico?** 
+
+Nuestra actual **hipótesis** es la siguiente: **Sí influye, porque la experiencia de transportarse en Lima causa estrés y cansancio, e implica una cantidad significante de tiempo, lo cual limita nuestra productividad.** De esta manera, es importante entender el comportamiento del alumno analizando el plano mental, pues es el encargado de regir nuestras acciones, lo que tendrá impacto en nuestras notas. Es así que nuestro proyecto buscará comprender el impacto en la salud mental al igual que en el rendimiento académico, valorizando al estudiante en su totalidad.
+
+### Marco Teórico
+
+### Población objetivo
+
+Estudiantes universitarios
+
+### Unidad muestral
+
+Cualquier estudiante de UTEC cursando ciclo II en adelante
+
+### Tipo de muestreo
+  Muestreo por conveniencia: fácil acceso a nuestra unidad muestral
+
+### Obtención de datos
+
+Al ser parte de la comunidad estudiantil de la misma universidad, tenemos acceso a los medios de comunicación pertinentes para realizar encuestas en línea. Es así que se elaborará una encuesta en SurveyMonkey o GoogleForms, y se distribuirá vía el grupo de Facebook de los alumnos. Si es necesario, solicitaremos ayuda del área de Bienestar Estudiantil, para que nos apoyen con la distribución de la encuesta. Nota: para poder responder las preguntas que toman los factores de opinión y el plano emocional, utilizaremos escalas psicométricas, como la escala de Likert.
+
+### Planificación
+
+Durante las primeras 4 semanas estuvimos planteando el tema y la viabilidad de ellos. Para la siguiente semana desarrollamos las preguntas e identificamos las variables concretas a estudiar. En las siguientes semanas se plantea elaborar la encuesta con la que se recogerán los datos y publicarla por Facebook. En las semanas posteriores se analizarán los datos con R, y se buscará responder las preguntas. Es vital resaltar que conforme recibamos _feedback_ del profesor, mejoraremos las entregas del proyecto.
+### Preguntas planteadas
+
+N°|Pregunta|Tipo de pregunta
+--|-------------------------------------------------------------------------------------------------|-----------------
+1|¿Cuál es la edad de los encuestados?|Descriptiva
+2|¿Cuánto tiempo les demora a los estudiantes de UTEC llegar a la universidad desde su lugar de residencia?|Descriptiva
+3|¿Cómo califican los estudiantes la experiencia de transporte?|Descriptiva
+4|¿Cuál es el medio de transporte más utilizado?|Descriptiva
+5|¿Qué tan estresados se sentían los alumnos de UTEC el ciclo 2019-2?|Descriptiva
+6|¿Qué actividades realizarían los alumnos con el tiempo que utilizan para transportarse?|Descriptiva
+7|¿Cuántos días a la semana los estudiantes van por 3 horas o menos a la Universidad?|Descriptiva
+8|¿Existe una relación entre la edad y el tiempo que pasan en el transporte?|Exploratoria
+9|¿Existe una relación entre el número de horas que duermen los estudiantes y el nivel de estrés que presentan?|Exploratoria
+10|¿Existe alguna relación entre el tiempo que pasan en el transporte y la cantidad de cursos desaprobados del estudiante?|Exploratoria
+11|¿Existe alguna relación entre el tiempo que pasan en el transporte y el promedio del estudiante en el ciclo 2019-2?|Exploratoria
+12|¿Los estudiantes que tienen un mejor percentil son los que se demoran menos horas en transportarse semanalmente?|Inferencial
+13|¿Los estudiantes que viajan más a la semana dormirán una menor cantidad de horas?|Inferencial
+14|¿Es posible predecir el nivel de estrés que tendrán los alumnos en base al número de cursos y a la calificación de su experiencia en el transporte?|Predictiva
+15|¿Es posible predecir la calificación sobre el transporte conociendo únicamente el número de horas que se transportan a la semana?|Predictiva
+16|¿Qué factores y condiciones en los que se desarrolla el alumno determinan la calificación que tendrás sobre el transporte?|Causal 
+17|¿De qué manera  algunos factores afectan la calificación de los alumnos sobre el transporte?|Mecanística
+
+
+
+
+### Variables identificadas
+
+Variable|Relación con pregunta|Tipo de variable
+-----------------------------|--------------------|----------------
+Edad|1,8|Numérica discreta
+Cantidad de cursos que llevó el ciclo 2019-2|14|Numérica discreta
+Promedio ponderado|11|Numérica continua
+Cantidad de cursos desaprobados|10|Numérica discreta
+Grupo de mérito|12|Categórica ordinal
+Medios de transporte|4,16,17|Categórica nominal
+Experiencia de transporte|3,14,15,16,17|Categórica ordinal
+Tiempo de transporte|2,8,10,11,12,13,16,17|Numérica continua
+Actividades que hubieran hecho durante su tiempo de transporte|6|Categórica nominal
+Cantidad de días con clases|8,10,11,12,13|Numérica discreta
+Cantidad de horas semanales con clases|8,10,11,12|Numérica continua
+Tiempo de sueño|9,13,16|numperica continua
+Cantidad de días asistidos por clases de duración de tres horas a menos|7|Numérica continua
+Horas invertidas del tiempo libre asignadas para el estudio|12|Numérica continua
+Tiempo dedicado a pasatiempos|11|Numérica continua
+Nivel de estrés (referencial basado en escala)|5,9,14|Numérica discreta
+
+</div>
+
+![Imagen 1](estres1.jpg)
+![Imagen 2](estres2.jpg)
+Recuperada del Instituto Mexicano del Seguro Social
+
+### Bibliografía:
+* https://gestion.pe/tendencias/lima-ciudades-peor-trafico-269483-noticia/ 
+* https://amp.milenio.com/especiales/estres-cronico-como-identificarlo
