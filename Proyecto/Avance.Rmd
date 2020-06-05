@@ -379,14 +379,389 @@ while(otro){
 
 
 ```{r}
-alt
+table(alt$Actividad)
+```
+
+# ¿Qué actividades realizarían los alumnos con el tiempo que utilizan para transportarse?
+Este gráfico de barras muestra la representación porcentual respecto a las actividades que los alumnos realizarían con el tiempo que utilizan para transportarse. Se puede observar que dormir y estudiar son las actividades preferidas, con 30% aproximadamente cada una.
+```{r}
+barplot(table(alt$Actividad)/nrow(alt)*100, main="Actividades a realizar con el tiempo utilizado para el transporte", col = c("lightblue","pink","lightgreen", "orange", "gray"), width = c(1,2),ylim=c(0,100))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+carro <- DF[,16:19]=="Carro Particular"
+carro
+```
+
+
+```{r}
+Carro <- c()
+i <- 1
+while(i <= nrow(carro)){
+  
+  Carro[i] = carro[i,1] | carro[i,2] | carro[i,3] |carro[i,4]
+  if(is.na(Carro[i])){
+    Carro[i] <- FALSE
+  }
+  i = i + 1
+}
 ```
 
 ```{r}
-pie(table(alt$Actividad))
+DF3 <- cbind(DF,Carro=Carro)
 ```
 
 ```{r}
+barplot(table(DF3$Dormir))
+```
+
+
+```{r}
+taxi <- DF[,16:19]=="Taxi"
+Taxi <- c()
+i <- 1
+while(i <= nrow(taxi)){
+  
+  Taxi[i] = taxi[i,1] | taxi[i,2] | taxi[i,3] |taxi[i,4]
+  if(is.na(Taxi[i])){
+    Taxi[i] <- FALSE
+  }
+  i = i + 1
+}
+```
+
+
+
+```{r}
+DF3 <- cbind(DF3,Taxi=Taxi)
+
+```
+
+
+
+```{r}
+metropolitano <- DF[,16:19]=="Metropolitano / Corredor rojo"
+
+Metropolitano <- c()
+i <- 1
+while(i <= nrow(metropolitano)){
+  
+  Metropolitano[i] = metropolitano[i,1] | metropolitano[i,2] | metropolitano[i,3] |metropolitano[i,4]
+  if(is.na(Metropolitano[i])){
+    Metropolitano[i] <- FALSE
+  }
+  i = i + 1
+}
+
+DF3 <- cbind(DF3[,1:27],Metropolitano=Metropolitano)
+
+```
+
+
+```{r}
+micro <- DF[,16:19]=="Combi / micro"
+Micro <- c()
+i <- 1
+while(i <= nrow(micro)){
+  
+  Micro[i] = micro[i,1] | micro[i,2] | micro[i,3] |micro[i,4]
+  if(is.na(Micro[i])){
+    Micro[i] <- FALSE
+  }
+  i = i + 1
+}
+
+DF3 <- cbind(DF3,Micro=Micro)
+```
+
+
+
+```{r}
+bici <- DF[,16:19]=="Bicicleta / scooter"
+
+Bici <- c()
+i <- 1
+while(i <= nrow(bici)){
+  
+  Bici[i] = bici[i,1] | bici[i,2] | bici[i,3] |bici[i,4]
+  if(is.na(Bici[i])){
+    Bici[i] <- FALSE
+  }
+  i = i + 1
+}
+
+DF3 <- cbind(DF3,Bici=Bici)
+```
+
+
+```{r}
+camino <- DF[,16:19]=="Voy caminando"
+
+Camino <- c()
+i <- 1
+while(i <= nrow(camino)){
+  
+  Camino[i] = camino[i,1] | camino[i,2] | camino[i,3] |camino[i,4]
+  if(is.na(Camino[i])){
+    Camino[i] <- FALSE
+  }
+  i = i + 1
+}
+
+DF3 <- cbind(DF3,Camino=Camino)
+```
+
+```{r}
+a1 <- DF[,16:19]!=c("Carro Particular")
+i <-1
+while(i<=nrow(a1)){
+  if(is.na(a1[i,1])){
+    a1[i,1] = FALSE
+  }
+  if(is.na(a1[i,2])){
+    a1[i,2] = FALSE
+  }
+  if(is.na(a1[i,3])){
+    a1[i,3] = FALSE
+  }
+  if(is.na(a1[i,4])){
+    a1[i,4] = FALSE
+  }
+ 
+  i = i + 1
+}
+```
+
+
+```{r}
+a2 <- DF[,16:19]!=c("Taxi")
+i <-1
+while(i<=nrow(a2)){
+  if(is.na(a2[i,1])){
+    a2[i,1] = FALSE
+  }
+  if(is.na(a2[i,2])){
+    a2[i,2] = FALSE
+  }
+  if(is.na(a2[i,3])){
+    a2[i,3] = FALSE
+  }
+  if(is.na(a2[i,4])){
+    a2[i,4] = FALSE
+  }
+ 
+  i = i + 1
+}
+```
+
+
+```{r}
+a3 <- DF[,16:19]!=c("Metropolitano / Corredor rojo")
+i <-1
+while(i<=nrow(a3)){
+  if(is.na(a3[i,1])){
+    a3[i,1] = FALSE
+  }
+  if(is.na(a3[i,2])){
+    a3[i,2] = FALSE
+  }
+  if(is.na(a3[i,3])){
+    a3[i,3] = FALSE
+  }
+  if(is.na(a3[i,4])){
+    a3[i,4] = FALSE
+  }
+
+  i = i + 1
+}
+```
+
+
+```{r}
+a4 <- DF[,16:19]!=c("Combi / micro")
+i <-1
+while(i<=nrow(a4)){
+  if(is.na(a4[i,1])){
+    a4[i,1] = FALSE
+  }
+  if(is.na(a4[i,2])){
+    a4[i,2] = FALSE
+  }
+  if(is.na(a4[i,3])){
+    a4[i,3] = FALSE
+  }
+  if(is.na(a4[i,4])){
+    a4[i,4] = FALSE
+  }
+ 
+  i = i + 1
+}
+```
+
+
+```{r}
+a5 <- DF[,16:19]!=c("Bicicleta / scooter")
+i <-1
+while(i<=nrow(a5)){
+  if(is.na(a5[i,1])){
+    a5[i,1] = FALSE
+  }
+  if(is.na(a5[i,2])){
+    a5[i,2] = FALSE
+  }
+  if(is.na(a5[i,3])){
+    a5[i,3] = FALSE
+  }
+  if(is.na(a5[i,4])){
+    a5[i,4] = FALSE
+  }
+ 
+  i = i + 1
+}
+```
+
+
+```{r}
+a6 <- DF[,16:19]!=c("Voy caminando")
+i <-1
+while(i<=nrow(a6)){
+  if(is.na(a6[i,1])){
+    a6[i,1] = FALSE
+  }
+  if(is.na(a6[i,2])){
+    a6[i,2] = FALSE
+  }
+  if(is.na(a6[i,3])){
+    a6[i,3] = FALSE
+  }
+  if(is.na(a6[i,4])){
+    a6[i,4] = FALSE
+  }
+
+  i = i + 1
+}
+```
+
+
+```{r}
+ b1 <- a1[,1] &a2[,1] &a3[,1] &a4[,1] &a5[,1] &a6[,1]
+ b2 <- a1[,2] &a2[,2] &a3[,2] &a4[,2] &a5[,2] &a6[,2] 
+ b3 <- a1[,3] &a2[,3] &a3[,3] &a4[,3] &a5[,3] &a6[,3] 
+ b4 <- a1[,4] &a2[,4] &a3[,4] &a4[,4] &a5[,4] &a6[,4] 
+```
+
+
+```{r}
+Otro <- b1|b2|b3|b4|b5
+```
+
+```{r}
+
+DF3 <- cbind(DF3,OtroTransporte=Otro)
+```
+
+```{r}
+sum(DF3$OtroTransporte)
+```
+
+
+```{r}
+sum(DF3$Carro) ->carro
+sum(DF3$Taxi) -> taxi
+sum(DF3$Micro)->micro
+sum(DF3$Metropolitano)->metro
+sum(DF3$Camino)->camino
+sum(DF3$OtroTransporte)->otrotransporte
+```
+
+```{r}
+alt2 <- data.frame(Actividad=c("Carro"), stringsAsFactors = FALSE)
+
+
+```
+
+```{r}
+alt2
+```
+
+
+```{r}
+carro
+```
+
+```{r}
+carro <- carro -1
+while(carro >= 1){
+  alt2 <- rbind(alt2,"Carro")
+  carro <- carro -1
+}
+```
+
+```{r}
+alt2
+```
+
+
+```{r}
+```
+
+```{r}
+while(taxi){
+  alt2 <- rbind(alt2,"Taxi")
+  taxi <- taxi -1
+}
+```
+
+
+```{r}
+while(micro){
+  alt2 <- rbind(alt2,"Micro/combi")
+  micro <- micro -1
+}
+while(familiaamigos){
+  alt2 <- rbind(alt2,"Familia/amigos")
+  familiaamigos <- familiaamigos-1
+}
+while(camino){
+  alt2 <- rbind(alt2,"A pie")
+  camino <- camino -1
+}
+while(otrotransporte){
+  alt2 <- rbind(alt2,"Otro transporte")
+  otrotransporte <- otrotransporte -1
+}
+```
+
+
+```{r}
+table(alt2$Actividad)/nrow(alt2)*100
+```
+
+# ¿Cuál es el medio de transporte más utilizado?
+La gráfica presenta la distribución porcentual referente a los medios de transportes más utilizados para movilizarse entre la residencia de los alumnos y la universidad. Del gráfico se puede observar que el transporte más usado es el carro particular, seguido muy de cerca por el transporte en _micro/combi_.
+```{r}
+barplot(table(alt2$Actividad)/nrow(alt2)*100, main="Medio de transporte", col = c("lightblue","pink","lightgreen", "orange", "gray"), width = c(1,2),ylim=c(0,100))
+```
+
+```{r}
+write_csv(alt2, "Transporte.csv")
+```
+
+
+```{r}
+write_csv(alt, "Actividad.csv")
 
 ```
 

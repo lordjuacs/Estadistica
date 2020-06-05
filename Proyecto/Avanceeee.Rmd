@@ -1,0 +1,25 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+```
+
+```{r}
+medios <- read_csv("Transporte.csv")
+actividad <- read_csv("Actividad.csv")
+```
+
+# ¿Cuál es el medio de transporte más utilizado?
+La gráfica presenta la distribución porcentual referente a los medios de transportes más utilizados para movilizarse entre la residencia de los alumnos y la universidad. Del gráfico se puede observar que el transporte más usado es el carro particular, seguido muy de cerca por el transporte en _micro/combi_.
+```{r}
+barplot(table(alt2$Actividad)/nrow(alt2)*100, main="Medio de transporte", col = c("lightblue","pink","lightgreen", "orange", "gray"), width = c(1,2),ylim=c(0,100))
+```
+
+# ¿Qué actividades realizarían los alumnos con el tiempo que utilizan para transportarse?
+Este gráfico de barras muestra la representación porcentual respecto a las actividades que los alumnos realizarían con el tiempo que utilizan para transportarse. Se puede observar que dormir y estudiar son las actividades preferidas, con 30% aproximadamente cada una.
+```{r}
+barplot(table(alt$Actividad)/nrow(alt)*100, main="Actividades a realizar con el tiempo utilizado para el transporte", col = c("lightblue","pink","lightgreen", "orange", "gray"), width = c(1,2),ylim=c(0,100))
+```
