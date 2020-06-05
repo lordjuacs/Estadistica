@@ -1,0 +1,392 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+library(readr)
+library(dplyr)
+```
+
+
+
+
+```{r}
+DF <- read_csv("Base_Datos.csv")
+```
+
+
+
+
+```{r}
+dormir <- DF[,20:24]=="Dormir"
+```
+
+
+```{r}
+Dormir <- c()
+i <- 1
+while(i <= nrow(dormir)){
+  
+  Dormir[i] = dormir[i,1] | dormir[i,2] | dormir[i,3] |dormir[i,4]
+  if(is.na(Dormir[i])){
+    Dormir[i] <- FALSE
+  }
+  i = i + 1
+}
+```
+
+```{r}
+DF3 <- cbind(DF,Dormir=Dormir)
+```
+
+```{r}
+barplot(table(DF3$Dormir))
+```
+
+
+```{r}
+estudiar <- DF[,20:24]=="Estudiar"
+Estudiar <- c()
+i <- 1
+while(i <= nrow(estudiar)){
+  
+  Estudiar[i] = estudiar[i,1] | estudiar[i,2] | estudiar[i,3] |estudiar[i,4]
+  if(is.na(Estudiar[i])){
+    Estudiar[i] <- FALSE
+  }
+  i = i + 1
+}
+```
+
+
+
+```{r}
+DF3 <- cbind(DF3,Estudiar=Estudiar)
+
+```
+
+
+
+```{r}
+video <- DF[,20:24]=="Jugar videojuegos"
+
+Video <- c()
+i <- 1
+while(i <= nrow(video)){
+  
+  Video[i] = video[i,1] | video[i,2] | video[i,3] |video[i,4]
+  if(is.na(Video[i])){
+    Video[i] <- FALSE
+  }
+  i = i + 1
+}
+
+DF3 <- cbind(DF3,Videojuegos=Video)
+
+```
+
+
+
+```{r}
+deporte <- DF[,20:24]=="Deporte o alguna actividad fisica"
+Deporte <- c()
+i <- 1
+while(i <= nrow(deporte)){
+  
+  Deporte[i] = deporte[i,1] | deporte[i,2] | deporte[i,3] |deporte[i,4]
+  if(is.na(Deporte[i])){
+    Deporte[i] <- FALSE
+  }
+  i = i + 1
+}
+
+DF3 <- cbind(DF3,Deporte=Deporte)
+```
+
+
+
+```{r}
+familiaamigos <- DF[,20:24]=="Pasar tiempo con familia o amigos"
+
+FamiliaAmigos <- c()
+i <- 1
+while(i <= nrow(familiaamigos)){
+  
+  FamiliaAmigos[i] = familiaamigos[i,1] | familiaamigos[i,2] | familiaamigos[i,3] |familiaamigos[i,4]
+  if(is.na(FamiliaAmigos[i])){
+    FamiliaAmigos[i] <- FALSE
+  }
+  i = i + 1
+}
+
+DF3 <- cbind(DF3,FamiliaAmigos=FamiliaAmigos)
+```
+
+
+```{r}
+idioma <- DF[,20:24]=="Aprender algun idioma"
+
+Idioma <- c()
+i <- 1
+while(i <= nrow(idioma)){
+  
+  Idioma[i] = idioma[i,1] | idioma[i,2] | idioma[i,3] |idioma[i,4]
+  if(is.na(Idioma[i])){
+    Idioma[i] <- FALSE
+  }
+  i = i + 1
+}
+
+DF3 <- cbind(DF3,Idioma=Idioma)
+```
+
+```{r}
+a1 <- DF[,20:24]!=c("Deporte o alguna actividad fisica")
+i <-1
+while(i<=nrow(a1)){
+  if(is.na(a1[i,1])){
+    a1[i,1] = FALSE
+  }
+  if(is.na(a1[i,2])){
+    a1[i,2] = FALSE
+  }
+  if(is.na(a1[i,3])){
+    a1[i,3] = FALSE
+  }
+  if(is.na(a1[i,4])){
+    a1[i,4] = FALSE
+  }
+  if(is.na(a1[i,5])){
+    a1[i,5] = FALSE
+  }
+  i = i + 1
+}
+```
+
+
+```{r}
+a2 <- DF[,20:24]!=c("Dormir")
+i <-1
+while(i<=nrow(a2)){
+  if(is.na(a2[i,1])){
+    a2[i,1] = FALSE
+  }
+  if(is.na(a2[i,2])){
+    a2[i,2] = FALSE
+  }
+  if(is.na(a2[i,3])){
+    a2[i,3] = FALSE
+  }
+  if(is.na(a2[i,4])){
+    a2[i,4] = FALSE
+  }
+  if(is.na(a2[i,5])){
+    a2[i,5] = FALSE
+  }
+  i = i + 1
+}
+```
+
+
+```{r}
+a3 <- DF[,20:24]!=c("Aprender algun idioma")
+i <-1
+while(i<=nrow(a3)){
+  if(is.na(a3[i,1])){
+    a3[i,1] = FALSE
+  }
+  if(is.na(a3[i,2])){
+    a3[i,2] = FALSE
+  }
+  if(is.na(a3[i,3])){
+    a3[i,3] = FALSE
+  }
+  if(is.na(a3[i,4])){
+    a3[i,4] = FALSE
+  }
+  if(is.na(a3[i,5])){
+    a3[i,5] = FALSE
+  }
+  i = i + 1
+}
+```
+
+
+```{r}
+a4 <- DF[,20:24]!=c("Pasar tiempo con familia o amigos")
+i <-1
+while(i<=nrow(a4)){
+  if(is.na(a4[i,1])){
+    a4[i,1] = FALSE
+  }
+  if(is.na(a4[i,2])){
+    a4[i,2] = FALSE
+  }
+  if(is.na(a4[i,3])){
+    a4[i,3] = FALSE
+  }
+  if(is.na(a4[i,4])){
+    a4[i,4] = FALSE
+  }
+  if(is.na(a4[i,5])){
+    a4[i,5] = FALSE
+  }
+  i = i + 1
+}
+```
+
+
+```{r}
+a5 <- DF[,20:24]!=c("Estudiar")
+i <-1
+while(i<=nrow(a5)){
+  if(is.na(a5[i,1])){
+    a5[i,1] = FALSE
+  }
+  if(is.na(a5[i,2])){
+    a5[i,2] = FALSE
+  }
+  if(is.na(a5[i,3])){
+    a5[i,3] = FALSE
+  }
+  if(is.na(a5[i,4])){
+    a5[i,4] = FALSE
+  }
+  if(is.na(a5[i,5])){
+    a5[i,5] = FALSE
+  }
+  i = i + 1
+}
+```
+
+
+```{r}
+a6 <- DF[,20:24]!=c("Jugar videojuegos")
+i <-1
+while(i<=nrow(a6)){
+  if(is.na(a6[i,1])){
+    a6[i,1] = FALSE
+  }
+  if(is.na(a6[i,2])){
+    a6[i,2] = FALSE
+  }
+  if(is.na(a6[i,3])){
+    a6[i,3] = FALSE
+  }
+  if(is.na(a6[i,4])){
+    a6[i,4] = FALSE
+  }
+  if(is.na(a6[i,5])){
+    a6[i,5] = FALSE
+  }
+  i = i + 1
+}
+```
+
+
+```{r}
+ b1 <- a1[,1] &a2[,1] &a3[,1] &a4[,1] &a5[,1] &a6[,1]
+ b2 <- a1[,2] &a2[,2] &a3[,2] &a4[,2] &a5[,2] &a6[,2] 
+ b3 <- a1[,3] &a2[,3] &a3[,3] &a4[,3] &a5[,3] &a6[,3] 
+ b4 <- a1[,4] &a2[,4] &a3[,4] &a4[,4] &a5[,4] &a6[,4] 
+ b5 <- a1[,5] &a2[,5] &a3[,5] &a4[,5] &a5[,5] &a6[,5] 
+```
+
+
+```{r}
+Otro <- b1|b2|b3|b4|b5
+```
+
+```{r}
+
+DF3 <- cbind(DF3,Otro=Otro)
+```
+
+```{r}
+
+```
+
+
+```{r}
+sum(DF3$Dormir) ->dormir
+sum(DF3$Estudiar) -> estudiar
+sum(DF3$Videojuegos)->videojuegos
+sum(DF3$FamiliaAmigos)->familiaamigos
+sum(DF3$Idioma)->idioma
+sum(DF3$Otro)->otro
+```
+
+```{r}
+alt <- data.frame(Actividad=c("Dormir"), stringsAsFactors = FALSE)
+
+
+```
+
+```{r}
+alt
+```
+
+
+```{r}
+dormir
+```
+
+```{r}
+dormir <- dormir -1
+while(dormir >= 1){
+  alt <- rbind(alt,"Dormir")
+  dormir <- dormir -1
+}
+```
+
+```{r}
+alt
+```
+
+
+```{r}
+```
+
+```{r}
+while(estudiar){
+  alt <- rbind(alt,"Estudiar")
+  estudiar <- estudiar -1
+}
+```
+
+
+```{r}
+while(videojuegos){
+  alt <- rbind(alt,"Videojuegos")
+  videojuegos <- videojuegos -1
+}
+while(familiaamigos){
+  alt <- rbind(alt,"Familia/amigos")
+  familiaamigos <- familiaamigos-1
+}
+while(idioma){
+  alt <- rbind(alt,"Idioma")
+  idioma <- idioma -1
+}
+while(otro){
+  alt <- rbind(alt,"Otra")
+  otro <- otro -1
+}
+```
+
+
+```{r}
+alt
+```
+
+```{r}
+pie(table(alt$Actividad))
+```
+
+```{r}
+
+```
+

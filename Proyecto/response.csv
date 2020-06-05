@@ -1,0 +1,106 @@
+Timestamp,¿Cuántos años tiene?,¿En qué ciclo se encuentra?,¿Cuántos cursos llevó en 2019-2?,¿Cuántos créditos llevó en 2019-2?,¿Cuál fue su promedio del ciclo 2019-2?,¿Cuántos cursos desaprobó en 2019-2?,¿En qué percentil se encontraba respecto a su carrera en el ciclo 2019-2?,¿En qué distrito reside?,¿Qué medios de transporte usaba regularmente para ir a la universidad?,¿Cómo calificaría su experiencia de transporte?,¿Cuánto tiempo le tomaba transportarse hacia la universidad (ida y vuelta)?,¿Qué hubiera hecho con el tiempo que utilizaba para transportarse a la Universidad?,¿Cuántos días a la semana tenía clases el ciclo pasado?,¿Cuantas horas a la semana de clases tenía el ciclo pasado?,¿Cuántas horas en promedio dormía al día el ciclo pasado?,¿Cuántos días a la semana tenía que asistir a la Universidad por tres horas o menos de clases?,¿Cuántas horas en promedio estudiaba al día durante su tiempo libre? (Sin contar las horas de clases),¿Cuántas horas al día le dedicaba a actividades extracurriculares o pasatiempos?,De acuerdo a la escala de la anteriores imagenes ¿Qué tan estresado se sentía el ciclo pasado? Número entre el 12 y el  72 
+6/3/2020 0:49:10,18,Ciclo 3,6,18,17.2,0,Décimo superior,Jesús María,"Carro Particular, Combi / micro",6,90,"Estudiar, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Netflix, cursos online, leer",5,26,8,Ningún día,5 o más,1,40
+6/3/2020 0:50:46,18,Ciclo 3,8,24,17,0,Décimo superior,Miraflores,"Combi / micro, Bicicleta / scooter, Voy caminando",8,16,Dormir,5,28,5,Ningún día,2,1,35
+6/3/2020 1:08:36,18,Ciclo 3,8,24,19.38,0,Décimo superior,San Isidro,"Taxi, Combi / micro",7,100,"Estudiar, Dormir, Deporte o alguna actividad física, Aprender algún idioma",5,32,6,Ningún día,3,1,41
+6/3/2020 1:15:53,18,Ciclo 3,6,19,17.84,0,Décimo superior,San Isidro,Combi / micro,8,60,"Estudiar, Dormir",5,27,8,1 día,2,1,26
+6/3/2020 1:18:09,18,Ciclo 3,7,21,15,0,Quinto superior,San Miguel,"Taxi, Metropolitano / Corredor rojo, Combi / micro",7,180,"Estudiar, Jugar videojuegos, Dormir, Aprender algún idioma",4,26,6,1 día,3,2,39
+6/3/2020 8:59:02,18,Ciclo 3,7,22,17.25,0,Décimo superior,La Molina,"Carro Particular, Taxi",7,130,"Estudiar, Pasar tiempo con familia o amigos, Dibujar, leer libros",5,24,7,2 días,4,1,12
+6/3/2020 9:19:36,18,Ciclo 3,6,19,17.62,0,Décimo superior,Santiago de Surco,"Carro Particular, Voy caminando",7,60,"Estudiar, Dormir",5,12,5,3 días,3,2,36
+6/3/2020 9:23:25,18,Ciclo 3,6,17,16.7,0,Décimo superior,La Molina,"Carro Particular, Taxi",7,170,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos",5,20,5,1 día,5 o más,2,24
+6/3/2020 9:26:56,18,Ciclo 3,7,21,14.85,0,Tercio superior,Santiago de Surco,"Carro Particular, Taxi, Metropolitano / Corredor rojo, Combi / micro",3,90,"Estudiar, Jugar videojuegos, Dormir",5,30,6,Ningún día,4,2,30
+6/3/2020 9:28:57,17,Ciclo 3,8,26,15.2,0,Quinto superior,Santiago de Surco,"Carro Particular, Carro de la empresa",10,60,"Estudiar, Jugar videojuegos, Dormir",4,34,8,Ningún día,3,1,72
+6/3/2020 9:36:38,18,Ciclo 3,5,+20,16,0,Décimo superior,San Borja,"Carro Particular, Taxi",5,60,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,12,5,2 días,3,2,65
+6/3/2020 10:00:18,19,Ciclo 2,6,11,18,0,Décimo superior,Santiago de Surco,"Carro Particular, Combi / micro",5,80,Dormir,4,24,7,Ningún día,3,1,20
+6/3/2020 10:04:07,20,Ciclo 7,4,14,14.5,0,Tercio superior,Magdalena del Mar,"Taxi, Combi / micro",6,80,"Estudiar, Jugar videojuegos",5,3,8,1 día,3,3,58
+6/3/2020 10:07:18,18,Ciclo 3,6,18,16.56,0,Décimo superior,Cercado de Lima,Metropolitano / Corredor rojo,7,40,"Estudiar, Jugar videojuegos, Dormir, Pasar tiempo con familia o amigos",6,6,5,1 día,3,2,24
+6/3/2020 10:07:55,17,Ciclo 3,6,20,16,0,Décimo superior,Ate,"Carro Particular, Metropolitano / Corredor rojo",6,150,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,26,7,1 día,5 o más,2,36
+6/3/2020 10:09:44,19,Ciclo 3,3,8,13,1,Menos de tercio superior,La Molina,"Taxi, Metropolitano / Corredor rojo",6,210,"Estudiar, Dormir, Deporte o alguna actividad física",4,12,5,2 días,2,1,31
+6/3/2020 10:10:04,24,Ciclo 10,5,20,20,3 a más,Quinto superior,Cercado de Lima,"Metropolitano / Corredor rojo, Bicicleta / scooter",7,50,Dormir,4,25,6,Ningún día,1,2,72
+6/3/2020 10:10:55,20,Ciclo 4,5,15,16.27,0,Quinto superior,Santiago de Surco,"Combi / micro, Bicicleta / scooter, Voy caminando",8,40,Dormir,5,19,7,2 días,5 o más,5 o más,24
+6/3/2020 10:11:15,19,Ciclo 4,7,20,16.7,0,Décimo superior,Lurín,Taxi,10,70,"Estudiar, Dormir",3,28,7,Ningún día,1,2,24
+6/3/2020 10:11:46,19,Ciclo 2,4,11,15.3,0,Quinto superior,San Isidro,"Carro Particular, Taxi, Combi / micro",7,60,"Dormir, Pasar tiempo con familia o amigos",4,20,8,1 día,1,3,17
+6/3/2020 10:16:22,18,Ciclo 3,7,20,10.65,2,Menos de tercio superior,Los Olivos,Metropolitano / Corredor rojo,8,120,Dormir,5,18,7,2 días,3,0,60
+6/3/2020 10:18:34,19,Ciclo 3,6,21,15.79,0,Quinto superior,Cieneguilla,"Combi / micro, Bicicleta / scooter, Voy caminando",7,90,Dormir,4,28,7,Ningún día,2,1,33
+6/3/2020 10:18:45,18,Ciclo 3,6,21,15.34,0,Tercio superior,Santiago de Surco,Taxi,10,80,"Estudiar, Jugar videojuegos, Dormir",4,26,5,Ningún día,3,1,60
+6/3/2020 10:19:45,19,Ciclo 5,6,18,16.56,0,Décimo superior,Barranco,"Carro Particular, Voy caminando",10,30,"Estudiar, Dormir",5,23,8,2 días,2,5 o más,18
+6/3/2020 10:21:37,18,Ciclo 3,6,18,13.08,2,Menos de tercio superior,Miraflores,Carro Particular,10,30,Dormir,6,26,8,3 días,3,3,24
+6/3/2020 10:22:01,18,Ciclo 3,8,25,15.42,0,Tercio superior,San Borja,"Taxi, Combi / micro, Long board",6,1.2,Montar tabla,4,27,7,4  días,1,2,23
+6/3/2020 10:22:43,17,Ciclo 3,7,22,15.4,0,Quinto superior,San Juan de Lurigancho,Metropolitano / Corredor rojo,4,120,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,25,6,2 días,3,2,48
+6/3/2020 10:25:52,18,Ciclo 4,6,19,15.6,0,Tercio superior,San Borja,"Carro Particular, Taxi, Combi / micro",10,50,"Jugar videojuegos, Dormir",5,22,7,2 días,1,0,56
+6/3/2020 10:26:17,19,Ciclo 5,7,22,15.3,0,Tercio superior,Santiago de Surco,"Carro Particular, Combi / micro",7,100,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos",6,30,7,4  días,3,2,20
+6/3/2020 10:28:27,18,Ciclo 5,6,20,16.5,0,Décimo superior,Santiago de Surco,Bicicleta / scooter,10,10,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física",6,26,8,2 días,1,5 o más,15
+6/3/2020 10:31:21,18,Ciclo 3,6,22,15.49,0,Tercio superior,San Borja,"Carro Particular, Taxi",10,100,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos",4,24,6,1 día,2,1,28
+6/3/2020 10:35:18,19,Ciclo 5,6,19,16.68,0,Décimo superior,Santiago de Surco,"Combi / micro, Bicicleta / scooter",7,90,"Estudiar, Jugar videojuegos, Pasar tiempo con familia o amigos",5,22,7,1 día,4,0,16
+6/3/2020 10:36:34,20,Ciclo 7,6,21,16,0,Tercio superior,Lurigancho-Chosica,"Taxi, Metropolitano / Corredor rojo",7,210,"Estudiar, Dormir, Deporte o alguna actividad física",5,20,5,1 día,4,1,23
+6/3/2020 10:40:07,20,Ciclo 3,7,23,14.87,0,Tercio superior,Miraflores,"Taxi, Bicicleta / scooter, Voy caminando",9,60,"Jugar videojuegos, Dormir, Pasar tiempo con familia o amigos",5,30,6,Ningún día,1,3,37
+6/3/2020 10:44:25,21,Ciclo 2,6,21,16.97,0,Décimo superior,San Miguel,"Taxi, Combi / micro",4,90,"Estudiar, Dormir, Deporte o alguna actividad física",4,12,6,Ningún día,3,2,27
+6/3/2020 10:51:00,21,Ciclo 9,5,21,13.5,0,Tercio superior,San Isidro,"Carro Particular, Metropolitano / Corredor rojo, Bicicleta / scooter",8,30,"Dormir, Pasar tiempo con familia o amigos",5,21,6,1 día,2,2,25
+6/3/2020 11:02:38,17,Ciclo 3,6,17,11,2,Menos de tercio superior,Jesús María,"Taxi, Combi / micro",6,120,"Deporte o alguna actividad física, Aprender algún idioma",6,18.5,6,2 días,2,1,48
+6/3/2020 11:06:06,18,Ciclo 2,7,23,15.6,0,Tercio superior,San Miguel,Combi / micro,5,120,"Estudiar, Jugar videojuegos, Aprender algún idioma",5,20,4,5 o más días,3,1,35
+6/3/2020 11:06:28,19,Ciclo 3,4,16,14,0,Quinto superior,San Isidro,Carro Particular,10,30,"Estudiar, Dormir, Deporte o alguna actividad física",4,20,6,2 días,1,2,33
+6/3/2020 11:08:56,18,Ciclo 5,7,20,16.25,0,Quinto superior,La Molina,Metropolitano / Corredor rojo,5,240,"Estudiar, Dormir, Pasar tiempo con familia o amigos",4,26,6,1 día,3,3,24
+6/3/2020 11:26:39,19,Ciclo 3,6,22,11.33,2,Menos de tercio superior,Santiago de Surco,"Carro Particular, Combi / micro, Voy caminando",8,135,"Estudiar, Deporte o alguna actividad física",5,20,7,Ningún día,4,2,36
+6/3/2020 11:31:16,19,Ciclo 3,6,21,15.14,0,Tercio superior,San Borja,Carro Particular,8,70,"Estudiar, Dormir, Deporte o alguna actividad física",5,28,8,1 día,Menos de 1,2,34
+6/3/2020 11:32:25,22,Ciclo 10,3,9,15,0,Tercio superior,Santiago de Surco,Carro Particular,6,30,Dormir,3,9,5,2 días,Menos de 1,2,42
+6/3/2020 11:37:58,18,Ciclo 3,7,22,14,2,Décimo superior,San Isidro,"Carro Particular, Metropolitano / Corredor rojo",6,30,Dormir,5,18,6,1 día,5 o más,2,23
+6/3/2020 11:40:46,19,Ciclo 3,7,22,15.25,0,Tercio superior,Chorrillos,"Carro Particular, Taxi, Combi / micro",9,30,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos",5,40,6,1 día,4,1,40
+6/3/2020 11:42:11,19,Ciclo 3,6,21,13.9,1,Menos de tercio superior,San Borja,Carro Particular,10,45,"Estudiar, Dormir",6,21,7,1 día,5 o más,0,39
+6/3/2020 11:47:51,19,Ciclo 3,6,21,15,0,Menos de tercio superior,San Borja,"Taxi, Combi / micro",6,150,"Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,28,6,1 día,1,2,40
+6/3/2020 11:49:51,19,Ciclo 3,7,22,14,1,Menos de tercio superior,San Isidro,Bicicleta / scooter,8,30,"Estudiar, Dormir",5,28,6,1 día,1,2,24
+6/3/2020 11:57:03,18,Ciclo 3,7,22,14,0,Tercio superior,Santiago de Surco,"Taxi, Combi / micro",5,160,"Estudiar, Dormir",5,27,5,2 días,3,0,60
+6/3/2020 12:02:28,18,Ciclo 3,7,21,16.2,0,Décimo superior,San Borja,"Taxi, Metropolitano / Corredor rojo",6,120,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,12,8,1 día,5 o más,1,68
+6/3/2020 12:02:54,20,Ciclo 7,6,19,14.63,0,Tercio superior,Barranco,Voy caminando,5,5,No sé,5,30,6,1 día,2,3,34
+6/3/2020 12:39:57,17,Ciclo 3,7,22,18,0,Décimo superior,San Martín de Porres,Metropolitano / Corredor rojo,6,210,"Estudiar, Dormir, Pasar tiempo con familia o amigos, Aprender algún idioma",5,4,6,2 días,5 o más,1,42
+6/3/2020 12:48:39,22,Ciclo 3,5,19,16.17,0,Décimo superior,San Juan de Miraflores,Combi / micro,7,140,"Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,24,6,2 días,5 o más,1,36
+6/3/2020 12:48:55,17,Ciclo 3,6,19,15.8,0,Décimo superior,Callao (Provincia Constitucional),"Metropolitano / Corredor rojo, Voy caminando",5,300,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,28,7,Ningún día,5 o más,1,40
+6/3/2020 13:24:42,18,Ciclo 2,6,21,15,0,Quinto superior,San Juan de Miraflores,"Taxi, Combi / micro, Tren eléctrico",8,80,"Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos",4,18,8,Ningún día,Menos de 1,3,16
+6/3/2020 13:34:35,21,Ciclo 4,6,19,14.3,0,Tercio superior,La Molina,Metropolitano / Corredor rojo,5,120,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",6,21,6,1 día,5 o más,3,48
+6/3/2020 13:45:09,19,Ciclo 3,7,18,13.11,1,Menos de tercio superior,Magdalena del Mar,"Carro Particular, Combi / micro, Bicicleta / scooter",8,50,"Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,30,6,5 o más días,1,2,24
+6/3/2020 13:49:29,21,Ciclo 8,6,23,16.3,0,Quinto superior,La Molina,Carro Particular,9,120,"Jugar videojuegos, Dormir, Pasar tiempo con familia o amigos",6,22,8,Ningún día,2,2,14
+6/3/2020 13:54:46,18,Ciclo 3,6,19,14.68,0,Menos de tercio superior,Santiago de Surco,Taxi,7,70,"Estudiar, Dormir, Deporte o alguna actividad física",5,23,6,1 día,1,2,26
+6/3/2020 14:17:14,18,Ciclo 3,6,22,14,2,Tercio superior,Santiago de Surco,"Carro Particular, Taxi, Metropolitano / Corredor rojo, Combi / micro, Bicicleta / scooter",5,80,"Estudiar, Jugar videojuegos, Deporte o alguna actividad física",6,30,6,2 días,2,2,48
+6/3/2020 15:34:44,21,Ciclo 4,6,21,13.23,1,Menos de tercio superior,San Juan de Lurigancho,Carro Particular,6,200,"Estudiar, Pasar tiempo con familia o amigos, Aprender algún idioma",5,26,6,Ningún día,5 o más,3,26
+6/3/2020 15:39:06,19,Ciclo 3,5,11,13,0,Menos de tercio superior,La Molina,"Carro Particular, Taxi, Metropolitano / Corredor rojo, Bicicleta / scooter",6,120,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,18,7,2 días,2,2,25
+6/3/2020 16:15:10,17,Ciclo 3,4,12,16,0,Menos de tercio superior,Los Olivos,Metropolitano / Corredor rojo,5,180,"Estudiar, Pasar tiempo con familia o amigos, Aprender algún idioma",5,15,6,1 día,4,1,50
+6/3/2020 16:32:09,18,Ciclo 3,5,15,14,0,Menos de tercio superior,Miraflores,"Bicicleta / scooter, Voy caminando",10,10,Deporte o alguna actividad física,5,20,8,4  días,3,2,13
+6/3/2020 16:38:56,23,Ciclo 9,4,16,13,1,Tercio superior,Villa María del Triunfo,Tren eléctrico,7,120,"Estudiar, Dormir, Pasar tiempo con familia o amigos, Aprender algún idioma",5,15,7,4  días,2,1,60
+6/3/2020 16:41:34,17,Ciclo 3,6,19,14,0,Tercio superior,Santiago de Surco,"Carro Particular, Metropolitano / Corredor rojo, Combi / micro",1,80,"Estudiar, Dormir, Pasar tiempo con familia o amigos",5,29,6,Ningún día,3,1,60
+6/3/2020 16:52:55,18,Ciclo 3,8,24,15.28,0,Quinto superior,Rímac,"Carro Particular, Taxi, Metropolitano / Corredor rojo",7,420,Estudiar,5,24,5,1 día,3,1,38
+6/3/2020 16:53:01,18,Ciclo 3,6,21,14,1,Tercio superior,Santiago de Surco,Bicicleta / scooter,9,40,"Deporte o alguna actividad física, Pasar tiempo con familia o amigos",5,6,8,2 días,4,3,36
+6/3/2020 16:55:19,18,Ciclo 3,8,24,17,0,Décimo superior,Santiago de Surco,Taxi,7,60,Deporte o alguna actividad física,5,32,8,5 o más días,3,1,70
+6/3/2020 16:58:47,17,Ciclo 3,5,21,16.5,0,Décimo superior,Callao (Provincia Constitucional),"Metropolitano / Corredor rojo, Combi / micro",5,300,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos",6,20,Menos de 4,2 días,5 o más,2,60
+6/3/2020 16:59:55,17,Ciclo 2,6,14,14,0,Tercio superior,Villa María del Triunfo,Tren eléctrico,5,120,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Aprender algún idioma",5,18,6,2 días,3,2,28
+6/3/2020 17:06:16,18,Ciclo 3,7,20,14.52,0,Tercio superior,Chorrillos,"Combi / micro, Bicicleta / scooter",6,90,"Estudiar, Jugar videojuegos, Dormir, Pasar tiempo con familia o amigos",5,26,6,1 día,4,2,36
+6/3/2020 17:07:05,18,Ciclo 3,7,23,17.47,0,Décimo superior,Barranco,Voy caminando,9,10,"Estudiar, Pasar tiempo con familia o amigos",5,30,5,Ningún día,5 o más,1,33
+6/3/2020 17:13:25,22,Ciclo 8,5,15,12,1,Tercio superior,San Isidro,Carro Particular,9,40,Practica Pre Profesional,5,21,7,3 días,1,4,30
+6/3/2020 17:16:03,18,Ciclo 3,7,22,16,0,Quinto superior,San Isidro,Metropolitano / Corredor rojo,8,50,Dormir,5,30,Menos de 4,1 día,3,0,37
+6/3/2020 17:20:57,20,Ciclo 4,6,20,14.6,0,Menos de tercio superior,Villa María del Triunfo,"Combi / micro, Tren eléctrico",7,90,"Estudiar, Deporte o alguna actividad física, Aprender algún idioma",5,23,4,1 día,4,2,34
+6/3/2020 17:22:28,19,Ciclo 5,5,16,16.56,0,Décimo superior,Santiago de Surco,Taxi,10,75,Estudiar,4,23,7,Ningún día,5 o más,1,31
+6/3/2020 17:30:15,23,Ciclo 9,4,14,12.69,0,Menos de tercio superior,Jesús María,"Carro Particular, Bicicleta / scooter",7,60,"Estudiar, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Pasear a mi perrita",5,17,8,4  días,3,2,24
+6/3/2020 17:39:27,23,Ciclo 10,5,20,15,0,Tercio superior,San Borja,Carro Particular,4,100,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Aprender algún idioma",5,15,8,3 días,5 o más,1,37
+6/3/2020 19:35:52,19,Ciclo 2,6,26,19.15,0,Décimo superior,Santiago de Surco,"Carro Particular, Taxi",9,30,Deporte o alguna actividad física,5,30,5,1 día,Menos de 1,5 o más,51
+6/3/2020 21:46:21,18,Ciclo 2,6,14,14.5,0,Tercio superior,Callao (Provincia Constitucional),"Taxi, Metropolitano / Corredor rojo",5,240,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,14,6,1 día,3,2,30
+6/3/2020 23:27:32,18,Ciclo 3,7,22,17,0,Décimo superior,Chorrillos,Taxi,8,30,Dormir,5,40,6,2 días,5 o más,3,44
+6/4/2020 1:12:38,20,Ciclo 7,6,21,16.89,0,Décimo superior,Santa Anita,Combi / micro,3,180,"Estudiar, Dormir, Deporte o alguna actividad física, Aprender algún idioma",6,22,4,1 día,5 o más,2,37
+6/4/2020 1:37:17,20,Ciclo 5,7,22,13.6,1,Menos de tercio superior,La Molina,Metropolitano / Corredor rojo,6,180,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos",4,28,6,1 día,3,1,40
+6/4/2020 3:31:07,22,Ciclo 3,8,24,16,0,Décimo superior,Santiago de Surco,Otro,10,4,Música ,5,30,8,1 día,1,5 o más,22
+6/4/2020 10:56:42,18,Ciclo 3,5,17,15.42,0,Tercio superior,Magdalena del Mar,Combi / micro,7,90,Estudiar,6,23,6,2 días,2,2,48
+6/4/2020 10:57:30,19,Ciclo 2,5,14,16.07,0,Décimo superior,Chorrillos,Combi / micro,5,45,Estudiar,5,8,8,1 día,5 o más,2,48
+6/4/2020 10:58:21,21,Ciclo 7,4,15,16,0,Décimo superior,Santiago de Surco,Carro Particular,9,30,Deporte o alguna actividad física,6,24,7,Ningún día,5 o más,2,30
+6/4/2020 11:04:12,18,Ciclo 3,7,22,14,0,Décimo superior,San Juan de Lurigancho,Tren eléctrico,7,140,"Estudiar, Dormir, Algún pasatiempo",6,30,6,1 día,3,1,35
+6/4/2020 11:15:33,18,Ciclo 3,7,22,12,2,Menos de tercio superior,La Molina,Metropolitano / Corredor rojo,2,105,"Estudiar, Deporte o alguna actividad física",6,32,5,2 días,2,1,65
+6/4/2020 11:19:46,18,Ciclo 3,6,18,14,0,Menos de tercio superior,La Molina,Carro Particular,5,180,"Estudiar, Pasar tiempo con familia o amigos, Aprender algún idioma",5,20,6,1 día,4,1,49
+6/4/2020 11:47:09,18,Ciclo 3,6,20,16.57,0,Décimo superior,Carabayllo,Metropolitano / Corredor rojo,5,240,"Estudiar, Pasar tiempo con familia o amigos",5,26,7,Ningún día,4,2,44
+6/4/2020 12:17:10,17,Ciclo 3,6,16,15,0,Quinto superior,Pueblo Libre,Taxi,8,120,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos",6,28,6,2 días,1,3,33
+6/4/2020 13:33:14,22,Ciclo 3,4,14,14,1,Menos de tercio superior,Barranco,Bicicleta / scooter,9,60,"Estudiar, Dormir, Deporte o alguna actividad física",5,12,7,Ningún día,Menos de 1,3,50
+6/4/2020 14:05:35,17,Ciclo 3,5,20,16,0,Quinto superior,Comas,Metropolitano / Corredor rojo,5,120,"Estudiar, Dormir, Aprender algún idioma",5,20,5,3 días,4,0,38
+6/4/2020 15:50:49,21,Ciclo 5,6,21,14,0,Menos de tercio superior,Miraflores,Bicicleta / scooter,10,13,"Estudiar, Jugar videojuegos, Dormir, Pasar tiempo con familia o amigos",5,20,6,1 día,3,5 o más,15
+6/4/2020 15:51:12,20,Ciclo 4,5,16,15.6,0,Quinto superior,Santiago de Surco,Carro Particular,5,120,"Estudiar, Jugar videojuegos, Dormir, Pasar tiempo con familia o amigos",5,20,7,1 día,1,1,24
+6/4/2020 15:52:22,21,Ciclo 5,6,20,16,0,Quinto superior,San Isidro,Carro Particular,10,35,"Dormir, Deporte o alguna actividad física",4,23,7,1 día,5 o más,5 o más,37
+6/4/2020 15:53:32,19,Ciclo 5,5,19,15.7,0,Quinto superior,Chorrillos,Combi / micro,7,60,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos",5,24,5,1 día,2,4,30
+6/4/2020 15:59:21,21,Ciclo 7,5,21,15.76,0,Tercio superior,La Molina,Carro Particular,7,+120,"Estudiar, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,34,6,1 día,4,2,41
+6/4/2020 16:48:34,19,Ciclo 5,4,17,13.06,1,Quinto superior,La Molina,Carro Particular,7,150,"Estudiar, Dormir, Pasar tiempo con familia o amigos, Aprender algún idioma",5,22,8,1 día,4,2,55
+6/4/2020 17:18:41,22,Ciclo 7,5,19,13.3,1,Menos de tercio superior,Miraflores,Bicicleta / scooter,9,50,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,20,6,1 día,4,4,40
+6/4/2020 19:04:44,18,Ciclo 3,8,25,16.3,0,Décimo superior,Miraflores,Voy caminando,9,20,"Estudiar, Jugar videojuegos, Dormir, Deporte o alguna actividad física, Pasar tiempo con familia o amigos, Aprender algún idioma",5,6,7,3 días,3,2,36
+6/4/2020 19:07:59,18,Ciclo 3,5,18,15,0,Tercio superior,Santiago de Surco,Taxi,7,50,"Estudiar, Pasar tiempo con familia o amigos",4,24,7,Ningún día,5 o más,2,31
+6/4/2020 20:58:04,19,Ciclo 4,5,17,15,0,Tercio superior,Miraflores,Combi / micro,5,8,Jugar videojuegos,4,25,7,3 días,2,2,40
