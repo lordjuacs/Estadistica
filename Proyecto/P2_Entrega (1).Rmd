@@ -30,7 +30,7 @@ Como estudiantes, consideramos que este tema es importante para nosotros y nuest
 
 ### Objetivo
 
-El objetivo de esta investigación es analizar e informar acerca del impacto del viaje desde la residencia de un alumno hasta la universidad, resaltando su efecto en los diferentes ambitos estudiantiles como el uso efectivo de su tiempo, su rendimiento y en base a esto relacionarlo tambien con los resultados que se obtengan relacionados al estrés que puedan estar pasando. Con la información revcogida se desea responder a las preguntas planteadas y llegar a las conclusiones correspondientes.
+El objetivo de esta investigación es analizar e informar acerca del impacto del viaje desde la residencia de un alumno hasta la universidad, resaltando su efecto en los diferentes ámbitos estudiantiles como el uso efectivo de su tiempo, su rendimiento académico. Ésto será también relacionado con los resultados que se obtengan relacionados al estrés que puedan estar pasando. Con la información recogida se desea responder a las preguntas planteadas y llegar a las conclusiones correspondientes.
 
 ### Factibilidad
 
@@ -72,11 +72,12 @@ N°|Pregunta|Tipo de pregunta
 4|¿Cuál es el medio de transporte más utilizado?|Descriptiva
 5|¿Qué tan estresados se sentían los alumnos de UTEC el ciclo 2019-2?|Descriptiva
 6|¿Qué actividades realizarían los alumnos con el tiempo que utilizan para transportarse?|Descriptiva
-7|¿Que porcentaje de alumnos tienen días con 3 horas o menos de clases?¿Para que porcentaje de alumnos el tiempo de transporte diario es mayor que el número de horas de clase en estos días (3 horas)?|Descriptiva
+7|¿Qué porcentaje de alumnos tienen días con 3 horas o menos de clases?¿Para que porcentaje de alumnos el tiempo de transporte diario es mayor que el número de horas de clase en estos días (3 horas)?|Descriptiva
 8|¿Existe una relación entre la edad y el tiempo que pasan en el transporte?|Exploratoria
 9|¿Existe una relación entre el número de horas que duermen los estudiantes y el nivel de estrés que presentan?|Exploratoria
 10|¿Existe alguna relación entre el tiempo que pasan en el transporte y la cantidad de cursos desaprobados del estudiante?|Exploratoria
 11|¿Existe alguna relación entre el tiempo que pasan en el transporte y el promedio del estudiante en el ciclo 2019-2?|Exploratoria
+
 12|¿Los estudiantes que tienen un mejor percentil son los que se demoran menos horas en transportarse semanalmente?|Inferencial
 13|¿Los estudiantes que viajan más a la semana dormirán una menor cantidad de horas?|Inferencial
 14|¿Es posible predecir el nivel de estrés que tendrán los alumnos en base al número de cursos y a la calificación de su experiencia en el transporte?|Predictiva
@@ -111,6 +112,9 @@ Tiempo de transporte semanal|8,10,11,12|Númerica continua
 Nivel de estrés (referencial basado en escala)|5,9,14|Numérica discreta
 
 </div>
+![Imagen 1](estres1.jpg)
+![Imagen 2](estres2.jpg)
+Recuperada del Instituto Mexicano del Seguro Social
 
 ### Base de Datos
 ```{r}
@@ -185,7 +189,7 @@ abline(mean(DF$Estres),0,col="red",title("Nivel de estrés de los alumnos de UTE
 De momento las actividades mas resaltantes que los alumnos preferirian hacer durante su tiempo de transporte son dormir y estudiar 
 
 ```{r}
-actividades <- read_csv("C:/Users/Oscar Gómez/Downloads/Actividad.csv") #medios es igual a la suma de A1, A2, A3, A4 y A5 en DF
+actividades <- read_csv("Actividad.csv") #medios es igual a la suma de A1, A2, A3, A4 y A5 en DF
 ```
 **Porcentajes de las Actividades que realizarían los estudiantes(%):**
 ```{r}

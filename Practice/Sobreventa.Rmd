@@ -1,0 +1,57 @@
+---
+title: "Proyecto de laboratorio 04"
+output: html_notebook
+---
+
+# Preámbulo
+Leer cuidadosamente la documentación de las funciones `rbinom`, `rgeom`, `rhyper`, `rnbinom` y `rpois`.
+
+Notar que hay cuatro funciones asociadas a cada entrada la `r***` sirve para generar variables aleatorias de la distribución `***`, `d***` calcula la densidad o función de masa de probabilidad, según sea el caso, `p***` calcula la función de distribución de probabilidad acumulada y `q***` es su inversa.
+
+# Instrucciones
+
+Responder cada pregunta planteada desde dos puntos de vista:
+
++ La variable aleatoria que modela la situación.
++ El valor esperado de la variable aleatoria apropiada.
+
+Algunas de las preguntas se pueden responder o aclarar mediante una visualización apropiada.
+
+La pregunta 9 es laboriosa y se plantea de manera teórica primero para poder resolverla usando **R**.
+
+Las preguntas 10 y 11 son difíciles, por lo que una visualización apropiada y una buena tabla empírica es suficiente.
+
+
+
+# Sobreventa
+
+Una aerolínea sobrevende rutinariamente un vuelo con 50 pasajeros ya que sabe que, históricamente, el 17% de las reservaciones pagadas no se presentan a la hora del vuelo.
+
+## Práctica
+
+1. Si la aerolínea vende 55 puestos ¿Cuál es la probabilidad de que algún pasajero se presente y no pueda montarse en el avión?
+
+2. Si cada pasaje cuesta S/. 220 y un pasajero que no se presenta, no tiene derecho a reembolso ¿Cuánto gana la aerolínea por concepto de venta de pasajes, asumiendo que se venden todos los pasajes disponibles?
+
+3. Si un pasajero se presenta y no puede embarcar, la aerolínea debe retornar el valor del pasaje y pagar una compensación de S/. 150 ¿Cuánto es la ganancia de la aerolínea después de compensar a los pasajeros que no pueden volar?
+
+4. Si el estado multa a la aerolínea cada vez que algún pasajero no se puede montar con S/. 2000 por vuelo ¿Cuál es la ganancia de la aerolínea después de compensar a los pasajeros y pagar las multas?
+
+5. ¿Cuánto debería ser el número de pasajes sobrevendidos si la aerolínea pretende ganar un promedio de S/. 12000 por vuelo, después de compensaciones y multas? ¿Cuál es el valor máximo de la ganancia esperada de la aerolínea?
+
+6. Si hay tres vuelos al día, siete días a la semana ¿Cuántas veces a la semana la aerolínea tiene que pagar multa?
+
+7. Si hoy la aerolínea pagó una multa ¿Cuántos días transcurren hasta que debe pagar una multa de nuevo?
+
+8. Si la aerolínea es multada cuatro veces en un período de 15 días, el estado le suspende la licencia de operación al momento de la cuarta multa, por un mes. ¿Cuál es la probabilidad de que al terminar una suspensión le suspendan la licencia de nuevo antes de concluir los 15 días del reinicio de operaciones?
+
+## Personal
+
+9. Si un pasajero se presenta ¿Cuál es la probabilidad de que no pueda montarse en el avión?
+
+## Investigación
+
+10. ¿Cuál es el tiempo entre suspensiones?
+
+11. ¿Dónde radica la dificultad fundamental para determinar desde el punto de vista teórico la variable aleatoria que rige el comportamiento del tiempo entre suspensiones?
+

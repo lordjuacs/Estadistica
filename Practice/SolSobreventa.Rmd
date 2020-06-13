@@ -1,0 +1,156 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+pbinom, x = a un numero exacto
+dbinom, x <= a un numero exacto
+
+```{r}
+r <- function(x){
+  return(round(x, digits = 2))
+}
+```
+
+## 1
+
+Variable aleatoria relevante: $x$ binomial, cuenta cuantos se presentan
+
+$X\sim\mathsf{Bin}(55, 0.83)$
+
+Para responder, hay que mirar el valor de $x$ y determinar si es mayor a 50
+```{r}
+p <- 1 - pbinom(50, size=55, prob=0.83)
+r(1 - pbinom(50, size=55, prob=0.83))
+```
+
+```{r}
+p
+```
+
+```{r}
+sum(dbinom(51:55, size=55, prob=0.83))
+```
+```{r}
+sum(choose(55,51:55)*(0.83)^(51:55)*(0.17)^(4:0))
+```
+
+
+Esperanza
+
+```{r}
+55*0.83
+```
+
+
+## 2
+
+Variable aleatoria relevante: constante
+
+Esperanza
+```{r}
+220*55
+```
+
+
+
+## 3
+
+Variable aleatoria relevante: $Y$ es una variable aleatoria discreta con rango [0,1,2,3,4,5] y función de probabilidad
+$Y$ cuenta cuantas personas no pueden volar
+
+```{r}
+p0 = pbinom(50, size = 55, prob = 0.83)
+p1 = dbinom(51, size = 55, prob = 0.83)
+p2 = dbinom(52, size = 55, prob = 0.83)
+p3 = dbinom(53, size = 55, prob = 0.83)
+p4 = dbinom(54, size = 55, prob = 0.83)
+p5 = dbinom(55, size = 55, prob = 0.83)
+p0
+p1
+p2
+p3
+p4
+p5
+
+```
+
+Esperanza de $Y$
+```{r}
+ey <- 0*p0 + 1*p1 + 2*p2 + 3*p3 + 4*p4 + 5*p5
+```
+
+```{r}
+sum(1:5*dbinom(50+1:5, size=55, prob=0.83))
+```
+
+$G = 220*55 - (220 + 150)*Y$
+$E(G) = 12100 - 370*E(Y)$
+```{r}
+12100 - 370*ey
+```
+
+```{r}
+220*55 - 370*5
+```
+
+
+## 4
+
+Variable aleatoria relevante:
+
+$G_M = 220*55 - 370*Y - 2000*Z$
+
+Con Z una bernoulli (P(x>50))
+
+Esperanza
+```{r}
+gm <- 220*55 - 370*ey - 2000*p
+```
+
+```{r}
+gm
+```
+
+
+
+## 5
+
+Variable aleatoria relevante:
+
+Esperanza
+
+## 6
+
+Variable aleatoria relevante:
+
+Esperanza
+```{r}
+g <- function(m){
+  return(
+    220*(50+m) 
+    - 370*sum(1:m*dbinom(50+1:m, size=50+m, prob=0.83))
+    - 2000*pbinom(50, size=50+m, prob=0.83, lower.tail = FALSE)     )
+}
+EG <- Vectorize(g)
+```
+
+
+
+```{r}
+g(5)
+```
+
+```{r}
+plot(1:20, EG(1:20))
+
+```
+
+
+
+
+## 7
+
+Variable aleatoria relevante:
+
+Esperanza
