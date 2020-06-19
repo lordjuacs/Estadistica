@@ -1,0 +1,41 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+p <- 0.00005
+```
+
+```{r}
+#geo
+1/p
+```
+
+```{r}
+#bloque sin errores
+r(dbinom(0, size=200, p))
+```
+
+```{r}
+#prob 1 bloque tenga al menos 1 error
+q <- pbinom(0, size = 200, prob = p, lower.tail = FALSE)
+q
+```
+
+```{r}
+#esperanza 
+r(1/q)
+```
+
+```{r}
+#mensaje con errores
+r(pbinom(0, size=100, prob = q, lower.tail = FALSE))
+```
+```{r}
+r(dnbinom(2,size=100, prob=1-q))
+```
+
+```{r}
+ r(choose(25,1)*choose(8,2)/choose(200,2))
+```
+

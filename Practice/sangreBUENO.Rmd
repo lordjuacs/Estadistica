@@ -67,7 +67,10 @@ Sangre[5,3]*200
 
 
 ```{r}
-r(pbinom(0, size = 200, prob = Sangre[,3], lower.tail = FALSE))
+pbinom(0, size = 200, prob = Sangre[,3], lower.tail = FALSE)
+```
+```{r}
+
 ```
 
 ```{r}
@@ -78,9 +81,12 @@ Sangre[6,3]*200
 ```{r}
 1/(Sangre$Prob)
 ```
+```{r}
+pgeom(199, prob=Sangre[,3])
+```
 
 ```{r}
-r(pbinom(0,size=200, prob=Sangre[,3], lower.tail = FALSE))
+pbinom(0,size=200, prob=Sangre[,3], lower.tail = FALSE)
 
 ```
 
@@ -106,6 +112,7 @@ op
 
 ```{r}
 bp<-(Sangre[2,3])/(Sangre[2,3]+Sangre[6,3])
+bp
 ```
 
 
@@ -119,3 +126,36 @@ r(dbinom(4, size=4, prob=op)*dbinom(1, size=1, prob=bp))
 r(pbinom(9, 190, prob = neg, lower.tail = FALSE))
 ```
 
+``` {r}
+200*Sangre$Prob
+```
+
+```{r}
+Sangre[3,3]
+neg
+pos
+```
+
+```{r}
+pbinom(0,size = 10, prob = Sangre[7,3]/neg, lower.tail = FALSE)
+```
+```{r}
+Sangre[3,3]/neg
+```
+```{r}
+Sangre
+```
+
+```{r}
+0.0002/sum(Sangre$Prob[4:8])
+```
+
+
+```{r}
+sum(Sangre[5:8,3])
+neg
+```
+
+```{r}
+pnbinom(197, 3, prob=Sangre[8,3])
+```

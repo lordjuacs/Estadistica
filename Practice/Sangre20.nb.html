@@ -1766,99 +1766,57 @@ library(dplyr)</code></pre>
 )</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoeHRhYmxlKFNhbmdyZSksIHR5cGU9XCJodG1sXCIsaW5jbHVkZS5yb3duYW1lcz1GQUxTRSlcblxuYGBgIn0= -->
-<pre class="r"><code>print(xtable(Sangre), type=&quot;html&quot;,include.rownames=FALSE)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlIDwtIGNiaW5kKFNhbmdyZSwgUHJvYiA9IFNhbmdyZSRGcmVjdWVuY2lhLyhzdW0oU2FuZ3JlJEZyZWN1ZW5jaWEpKSlcbmBgYCJ9 -->
+<pre class="r"><code>Sangre &lt;- cbind(Sangre, Prob = Sangre$Frecuencia/(sum(Sangre$Frecuencia)))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlIDwtIGNiaW5kKFNhbmdyZSwgUHJvYj1TYW5ncmUkRnJlY3VlbmNpYS8oc3VtKFNhbmdyZSRGcmVjdWVuY2lhKSkpXG5gYGAifQ== -->
-<pre class="r"><code>Sangre &lt;- cbind(Sangre, Prob=Sangre$Frecuencia/(sum(Sangre$Frecuencia)))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlXG5gYGAifQ== -->
-<pre class="r"><code>Sangre</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMSAtc3VtKFNhbmdyZVsxOjQsM10pXG5gYGAifQ== -->
-<pre class="r"><code>1 -sum(Sangre[1:4,3])</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuciA8LSBmdW5jdGlvbih4KXtcbiAgcmV0dXJuKHJvdW5kKHgsIDIpKVxufVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuciA8LSBmdW5jdGlvbih4KXtcbiAgcmV0dXJuKHJvdW5kKHgsMikpXG59XG5gYGAifQ== -->
 <pre class="r"><code>r &lt;- function(x){
-  return(round(x, 2))
+  return(round(x,2))
 }</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucihkYmlub20oMywgc2l6ZSA9IDIwMCwgcHJvYiA9IFNhbmdyZVs1LDNdKSlcbmBgYCJ9 -->
-<pre class="r"><code>r(dbinom(3, size = 200, prob = Sangre[5,3]))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG9zIDwtIHN1bShTYW5ncmVbMTo0LDNdKVxubmVnIDwtIDEgLSBwb3NcbnBvc1xuYGBgIn0= -->
+<pre class="r"><code>pos &lt;- sum(Sangre[1:4,3])
+neg &lt;- 1 - pos
+pos</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTc4XG4ifQ== -->
+<pre><code>[1] 0.978</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmVnXG5gYGAifQ== -->
+<pre class="r"><code>neg</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDIyXG4ifQ== -->
+<pre><code>[1] 0.022</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG9zICsgbmVnXG5gYGAifQ== -->
+<pre class="r"><code>pos + neg</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 -->
+<pre><code>[1] 1</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlWzYsM10qMjAwXG5gYGAifQ== -->
-<pre class="r"><code>Sangre[6,3]*200</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucihkYmlub20oMywgc2l6ZT0yMDAsIHByb2I9U2FuZ3JlWzgsM10pKVxuYGBgIn0= -->
+<pre class="r"><code>r(dbinom(3, size=200, prob=Sangre[8,3]))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucigxL1NhbmdyZVs2LDNdKVxuYGBgIn0= -->
-<pre class="r"><code>r(1/Sangre[6,3])</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlWyxjKDEsMyldXG5TYW5ncmVbNSwzXSoyMDBcblxuYGBgIn0= -->
-<pre class="r"><code>Sangre[,c(1,3)]
-Sangre[5,3]*200
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGJpbm9tKDAsIHNpemUgPSAyMDAsIHByb2IgPSBTYW5ncmVbLDNdLCBsb3dlci50YWlsID0gRkFMU0UpXG5gYGAifQ== -->
-<pre class="r"><code>pbinom(0, size = 200, prob = Sangre[,3], lower.tail = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuMDAwMDAwMCAwLjk5OTk5OTkgMC45NjAyNzkwIDEuMDAwMDAwMCAwLjYzMzA0MjIgMC40MjkyMzk0IDAuMDM5MjE0NCAwLjk0MDM4MTJcbiJ9 -->
-<pre><code>[1] 1.0000000 0.9999999 0.9602790 1.0000000 0.6330422 0.4292394 0.0392144 0.9403812</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMjJcbiJ9 -->
+<pre><code>[1] 0.22</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlWzYsXVxuYGBgIn0= -->
-<pre class="r"><code>Sangre[6,]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVBTMDdETUJDZGZGRXR0YXJFbmhza0VxMjZScUtJZFVFc3VuVmR0N1dhMnBIakNDN0FrdnRVbklBdDU0QUZKeWdkQnh0RlhzU1plVFB2elh1UGQ4c3BXUklBU0NESjhjdXdoSHkrdUo3TUpnQnBqRjBFS1F6cy93VzNMcnRWZ0hGdkVOOFcrSTRzY3ZQNTlYcDFmUGorN3pjLytkdngvU09ReWlROThNYkpKQTVNbjBTdFhFM3VOV2N0bDB4UVAxMW90UXBrQmxvOWwxNXEyQTNRZkhpTFZiUnBBc3RrVFEwdE54cTUySjBDeW9XcWpWQVNTYkhObXdYa1NBZkF1SlhXeGJwZ3UxYnVpK25NWG5CMm9wNjFmcDM4M1l4L25WYm10SEl1dDBKeWI3NmlLMTY1Wm9SeHU3UmxyWVUwUGdxaVRXbVVvWDZQTUZWNXBBc0hwek9EQ216TTZBRUFBQT09In0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Tipo"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Frecuencia"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Prob"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"B-","2":"0.28","3":"0.0028","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlWzYsM10qMjAwXG5gYGAifQ== -->
-<pre class="r"><code>Sangre[6,3]*200</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucigyMDAqU2FuZ3JlWzYsM10pXG5gYGAifQ== -->
+<pre class="r"><code>r(200*Sangre[6,3])</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNTZcbiJ9 -->
 <pre><code>[1] 0.56</code></pre>
@@ -1867,38 +1825,100 @@ Sangre[5,3]*200
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMS8oU2FuZ3JlJFByb2IpXG5gYGAifQ== -->
-<pre class="r"><code>1/(Sangre$Prob)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMSAtIFNhbmdyZVsxLDNdXG5gYGAifQ== -->
+<pre class="r"><code>1 - Sangre[1,3]</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdICAgIDUuNDM0NzgzICAgMTIuODIwNTEzICAgNjIuNTAwMDAwICAgIDEuNDI4NTcxICAyMDAuMDAwMDAwICAzNTcuMTQyODU3IDUwMDAuMDAwMDAwICAgNzEuNDI4NTcxXG4ifQ== -->
-<pre><code>[1]    5.434783   12.820513   62.500000    1.428571  200.000000  357.142857 5000.000000   71.428571</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGdlb20oMTk5LCBwcm9iPVNhbmdyZVssM10pXG5gYGAifQ== -->
-<pre class="r"><code>pgeom(199, prob=Sangre[,3])</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuMDAwMDAwMCAwLjk5OTk5OTkgMC45NjAyNzkwIDEuMDAwMDAwMCAwLjYzMzA0MjIgMC40MjkyMzk0IDAuMDM5MjE0NCAwLjk0MDM4MTJcbiJ9 -->
-<pre><code>[1] 1.0000000 0.9999999 0.9602790 1.0000000 0.6330422 0.4292394 0.0392144 0.9403812</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuODE2XG4ifQ== -->
+<pre><code>[1] 0.816</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGJpbm9tKDAsc2l6ZT0yMDAsIHByb2I9U2FuZ3JlWywzXSwgbG93ZXIudGFpbCA9IEZBTFNFKVxuYGBgIn0= -->
-<pre class="r"><code>pbinom(0,size=200, prob=Sangre[,3], lower.tail = FALSE)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucigxL1NhbmdyZVs4LDNdKVxuYGBgIn0= -->
+<pre class="r"><code>r(1/Sangre[8,3])</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuMDAwMDAwMCAwLjk5OTk5OTkgMC45NjAyNzkwIDEuMDAwMDAwMCAwLjYzMzA0MjIgMC40MjkyMzk0IDAuMDM5MjE0NCAwLjk0MDM4MTJcbiJ9 -->
-<pre><code>[1] 1.0000000 0.9999999 0.9602790 1.0000000 0.6330422 0.4292394 0.0392144 0.9403812</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDcxLjQzXG4ifQ== -->
+<pre><code>[1] 71.43</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlXG5gYGAifQ== -->
-<pre class="r"><code>Sangre</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMjAwKlNhbmdyZVssM11cbmBgYCJ9 -->
+<pre class="r"><code>200*Sangre[,3]</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6OH0sInJkZiI6Ikg0c0lBQUFBQUFBQUJndHlpVERtaXVCaVlHQmdabUJtQTJKV0lKT0J6VG5BME1qVWlJR0JoUW5JWTJSZ1llQUUwUlZBVmNKZ3BRd01Ba0RNQVpWZ2N0U0dzWnhnTEdaSE9KUEpIODV5MUlVcjFFVW9oQXY2NndKSlBwREpEa1pwWU9BZ2J3d0c5ajluZ3NBc2g4QUdrQU1aN0I4d1FPaUxyMXZsZGdTK3NaOVM5ZEI5blVpMS9UZUlQcGc1OXNkNy9lOWJwMFRaYi81KzdxWll1N2I5aENUZlN4OVgvckYvQmxGblh3TFZsL2FCclhmSHJoUDJXbWFQWHNzNDY5cjNyT0V3Vkh0WmdSWUVySG1KdWFuRlVPOHpRd1ZaUWpJTDhxRnNMcmVpMU9UUzFMemt6RVNZYkVCUmZoS2FNWnhGK2VWNk1LTjRRVDZIK0FvWW9tajJKZWNrRnNQc2d3bHlwU1NXSk9xbEZRSDFBM24vMExTdzV4ZVVaT2JuQVRVeGdlS0tGVTB6WXhHYWdFQnBIc2dsS2JySkdhVjUyYnJHbGlBYndQSVF3QXRsY3lDeG1TRjJNdjJIbXNVS05Zc3ROUzg5TXk4VjV2aWN4S1RVSENpSEQraGxzSS8xQ29veTgwcGdYZ0dLRnV1VjVKY2t3dFJ4SmVmbndFVEFubVA0QndCbEZvTmlwQUlBQUE9PSJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdICAzNi44MCAgMTUuNjAgICAzLjIwIDE0MC4wMCAgIDEuMDAgICAwLjU2XG5bN10gICAwLjA0ICAgMi44MFxuIn0= -->
+<pre><code>[1]  36.80  15.60   3.20 140.00   1.00   0.56
+[7]   0.04   2.80</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGJpbm9tKDAsIHNpemU9MjAwLCBwcm9iPVNhbmdyZVssM10sIGxvd2VyLnRhaWwgPSBGQUxTRSlcbmBgYCJ9 -->
+<pre class="r"><code>pbinom(0, size=200, prob=Sangre[,3], lower.tail = FALSE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuMDAwMDAwMCAwLjk5OTk5OTkgMC45NjAyNzkwIDEuMDAwMDAwMFxuWzVdIDAuNjMzMDQyMiAwLjQyOTIzOTQgMC4wMzkyMTQ0IDAuOTQwMzgxMlxuIn0= -->
+<pre><code>[1] 1.0000000 0.9999999 0.9602790 1.0000000
+[5] 0.6330422 0.4292394 0.0392144 0.9403812</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMjAwKlNhbmdyZVs2LDNdXG5gYGAifQ== -->
+<pre class="r"><code>200*Sangre[6,3]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNTZcbiJ9 -->
+<pre><code>[1] 0.56</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGJpbm9tKDAsIHNpemU9MjAwLCBwcm9iPVNhbmdyZVssM10sIGxvd2VyLnRhaWwgPSBGQUxTRSlcbmBgYCJ9 -->
+<pre class="r"><code>pbinom(0, size=200, prob=Sangre[,3], lower.tail = FALSE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuMDAwMDAwMCAwLjk5OTk5OTkgMC45NjAyNzkwIDEuMDAwMDAwMFxuWzVdIDAuNjMzMDQyMiAwLjQyOTIzOTQgMC4wMzkyMTQ0IDAuOTQwMzgxMlxuIn0= -->
+<pre><code>[1] 1.0000000 0.9999999 0.9602790 1.0000000
+[5] 0.6330422 0.4292394 0.0392144 0.9403812</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMS9TYW5ncmVbLDNdXG5gYGAifQ== -->
+<pre class="r"><code>1/Sangre[,3]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdICAgIDUuNDM0NzgzICAgMTIuODIwNTEzICAgNjIuNTAwMDAwICAgIDEuNDI4NTcxXG5bNV0gIDIwMC4wMDAwMDAgIDM1Ny4xNDI4NTcgNTAwMC4wMDAwMDAgICA3MS40Mjg1NzFcbiJ9 -->
+<pre><code>[1]    5.434783   12.820513   62.500000    1.428571
+[5]  200.000000  357.142857 5000.000000   71.428571</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmVnXG5gYGAifQ== -->
+<pre class="r"><code>neg</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDIyXG4ifQ== -->
+<pre><code>[1] 0.022</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWJkbiA8LSBTYW5ncmVbNywzXS9uZWdcbmFiZG5cbmBgYCJ9 -->
+<pre class="r"><code>abdn &lt;- Sangre[7,3]/neg
+abdn</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDA5MDkwOTA5XG4ifQ== -->
+<pre><code>[1] 0.009090909</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucihwYmlub20oMCwgc2l6ZT0xMCwgcHJvYiA9IGFiZG4sIGxvd2VyLnRhaWwgPSBGQUxTRSkpXG5gYGAifQ== -->
+<pre class="r"><code>r(pbinom(0, size=10, prob = abdn, lower.tail = FALSE))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDlcbiJ9 -->
+<pre><code>[1] 0.09</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6OH0sInJkZiI6Ikg0c0lBQUFBQUFBQUJndHlpVERtaXVCaVlHQmdabUJtQTJKV0lKT0J6VG5BME1qVWlJR0JoUW5JWTJSZ1llQUUwUlZBVmNKZ3BRd01Ba0RNQVpWZ2N0U0dzWnhnTEdaSE9KUEpIODV5MUlVcjFFVW9oQXY2NndKSlBwREpEa1pwWU9BZ2J3d0c5ajluZ3NBc2g4QUdrQU1aN0I4d1FPaUxyMXZsZGdTK3NaOVM5ZEI5blVpMS9UZUlQcGc1OXNkNy9lOWJwMFRaYi81KzdxWll1N2I5aENUZlN4OVgvckYvQmxGblh3TFZsL2FCclhmSHJoUDJXbWFQWHNzNDY5cjNyT0V3Vkh0WmdSWUVySG1KdWFuRlVPOHpRd1ZaUWpJTDhxRnNMcmVpMU9UUzFMemt6RVNZYkVCUmZoS2FNWnhGK2VWNk1LTjRRVDZIK0FvWW9tajJKZWNrRnNQc2d3bHlwU1NXSk9xbEZRSDFBM24vMExTdzV4ZVVaT2JuQVRVeGdlS0tGVTB6WXhHYWdFQnBIc2dsS2JySkdhVjUyYm9tWmlBYndQSVF3QXRsY3lDeG1TRjJNdjJIbXNVS05Zc3ROUzg5TXk4VjV2aWN4S1RVSENpSEQraGxzSS8xQ29veTgwcGdYZ0dLRnV1VjVKY2t3dFJ4SmVmbndFVEFubVA0QndESnR1RjdwQUlBQUE9PSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Tipo"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Frecuencia"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Prob"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"A+","2":"18.40","3":"0.1840"},{"1":"B+","2":"7.80","3":"0.0780"},{"1":"AB+","2":"1.60","3":"0.0160"},{"1":"O+","2":"70.00","3":"0.7000"},{"1":"A-","2":"0.50","3":"0.0050"},{"1":"B-","2":"0.28","3":"0.0028"},{"1":"AB-","2":"0.02","3":"0.0002"},{"1":"O-","2":"1.40","3":"0.0140"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[8]},"pages":{}}}
@@ -1909,48 +1929,16 @@ Sangre[5,3]*200
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG9zPC1zdW0oU2FuZ3JlWzE6NCwzXSlcbnBvc1xuYGBgIn0= -->
-<pre class="r"><code>pos&lt;-sum(Sangre[1:4,3])
-pos</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3AgPC0gU2FuZ3JlWzQsM10vKFNhbmdyZVs0LDNdICsgU2FuZ3JlWzgsM10pXG5icCA8LSBTYW5ncmVbMiwzXS8oU2FuZ3JlWzIsM10rU2FuZ3JlWzYsM10pXG5gYGAifQ== -->
+<pre class="r"><code>op &lt;- Sangre[4,3]/(Sangre[4,3] + Sangre[8,3])
+bp &lt;- Sangre[2,3]/(Sangre[2,3]+Sangre[6,3])</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTc4XG4ifQ== -->
-<pre><code>[1] 0.978</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmVnIDwtIDEgLXBvc1xubmVnXG5cbmBgYCJ9 -->
-<pre class="r"><code>neg &lt;- 1 -pos
-neg
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3AgPC0oU2FuZ3JlWzQsM10pLyhTYW5ncmVbNCwzXStTYW5ncmVbOCwzXSlcbm9wXG5gYGAifQ== -->
-<pre class="r"><code>op &lt;-(Sangre[4,3])/(Sangre[4,3]+Sangre[8,3])
-op</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTgwMzkyMlxuIn0= -->
-<pre><code>[1] 0.9803922</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYnA8LShTYW5ncmVbMiwzXSkvKFNhbmdyZVsyLDNdK1NhbmdyZVs2LDNdKVxuYnBcbmBgYCJ9 -->
-<pre class="r"><code>bp&lt;-(Sangre[2,3])/(Sangre[2,3]+Sangre[6,3])
-bp</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTY1MzQ2NVxuIn0= -->
-<pre><code>[1] 0.9653465</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucihkYmlub20oNCwgc2l6ZT00LCBwcm9iPW9wKSpkYmlub20oMSwgc2l6ZT0xLCBwcm9iPWJwKSlcbmBgYCJ9 -->
-<pre class="r"><code>r(dbinom(4, size=4, prob=op)*dbinom(1, size=1, prob=bp))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucihkYmlub20oNCwgc2l6ZT00LCBwcm9iPW9wKSpkYmlub20oMSxzaXplPTEsIHByb2I9YnApKVxuYGBgIn0= -->
+<pre class="r"><code>r(dbinom(4, size=4, prob=op)*dbinom(1,size=1, prob=bp))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuODlcbiJ9 -->
 <pre><code>[1] 0.89</code></pre>
@@ -1958,114 +1946,8 @@ bp</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucihwYmlub20oOSwgMTkwLCBwcm9iID0gbmVnLCBsb3dlci50YWlsID0gRkFMU0UpKVxuYGBgIn0= -->
-<pre class="r"><code>r(pbinom(9, 190, prob = neg, lower.tail = FALSE))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDFcbiJ9 -->
-<pre><code>[1] 0.01</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMjAwKlNhbmdyZSRQcm9iXG5gYGAifQ== -->
-<pre class="r"><code>200*Sangre$Prob</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdICAzNi44MCAgMTUuNjAgICAzLjIwIDE0MC4wMCAgIDEuMDAgICAwLjU2ICAgMC4wNCAgIDIuODBcbiJ9 -->
-<pre><code>[1]  36.80  15.60   3.20 140.00   1.00   0.56   0.04   2.80</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlWzMsM11cbmBgYCJ9 -->
-<pre class="r"><code>Sangre[3,3]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDE2XG4ifQ== -->
-<pre><code>[1] 0.016</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmVnXG5gYGAifQ== -->
-<pre class="r"><code>neg</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDIyXG4ifQ== -->
-<pre><code>[1] 0.022</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG9zXG5gYGAifQ== -->
-<pre class="r"><code>pos</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTc4XG4ifQ== -->
-<pre><code>[1] 0.978</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGJpbm9tKDAsc2l6ZSA9IDEwLCBwcm9iID0gU2FuZ3JlWzcsM10vbmVnLCBsb3dlci50YWlsID0gRkFMU0UpXG5gYGAifQ== -->
-<pre class="r"><code>pbinom(0,size = 10, prob = Sangre[7,3]/neg, lower.tail = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDg3Mjc4ODJcbiJ9 -->
-<pre><code>[1] 0.08727882</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlWzMsM10vbmVnXG5gYGAifQ== -->
-<pre class="r"><code>Sangre[3,3]/neg</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNzI3MjcyN1xuIn0= -->
-<pre><code>[1] 0.7272727</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FuZ3JlXG5gYGAifQ== -->
-<pre class="r"><code>Sangre</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6OH0sInJkZiI6Ikg0c0lBQUFBQUFBQUJndHlpVERtaXVCaVlHQmdabUJtQTJKV0lKT0J6VG5BME1qVWlJR0JoUW5JWTJSZ1llQUUwUlZBVmNKZ3BRd01Ba0RNQVpWZ2N0U0dzWnhnTEdaSE9KUEpIODV5MUlVcjFFVW9oQXY2NndKSlBwREpEa1pwWU9BZ2J3d0c5ajluZ3NBc2g4QUdrQU1aN0I4d1FPaUxyMXZsZGdTK3NaOVM5ZEI5blVpMS9UZUlQcGc1OXNkNy9lOWJwMFRaYi81KzdxWll1N2I5aENUZlN4OVgvckYvQmxGblh3TFZsL2FCclhmSHJoUDJXbWFQWHNzNDY5cjNyT0V3Vkh0WmdSWUVySG1KdWFuRlVPOHpRd1ZaUWpJTDhxRnNMcmVpMU9UUzFMemt6RVNZYkVCUmZoS2FNWnhGK2VWNk1LTjRRVDZIK0FvWW9tajJKZWNrRnNQc2d3bHlwU1NXSk9xbEZRSDFBM24vMExTdzV4ZVVaT2JuQVRVeGdlS0tGVTB6WXhHYWdFQnBIc2dsS2JySkdhVjUyYnBtUmlBYndQSVF3QXRsY3lDeG1TRjJNdjJIbXNVS05Zc3ROUzg5TXk4VjV2aWN4S1RVSENpSEQraGxzSS8xQ29veTgwcGdYZ0dLRnV1VjVKY2t3dFJ4SmVmbndFVEFubVA0QndETkFaOWNwQUlBQUE9PSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Tipo"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Frecuencia"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Prob"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"A+","2":"18.40","3":"0.1840"},{"1":"B+","2":"7.80","3":"0.0780"},{"1":"AB+","2":"1.60","3":"0.0160"},{"1":"O+","2":"70.00","3":"0.7000"},{"1":"A-","2":"0.50","3":"0.0050"},{"1":"B-","2":"0.28","3":"0.0028"},{"1":"AB-","2":"0.02","3":"0.0002"},{"1":"O-","2":"1.40","3":"0.0140"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[8]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMC4wMDAyL3N1bShTYW5ncmUkUHJvYls0OjhdKVxuYGBgIn0= -->
-<pre class="r"><code>0.0002/sum(Sangre$Prob[4:8])</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDAwMjc3MDA4M1xuIn0= -->
-<pre><code>[1] 0.0002770083</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtKFNhbmdyZVs1OjgsM10pXG5gYGAifQ== -->
-<pre class="r"><code>sum(Sangre[5:8,3])</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDIyXG4ifQ== -->
-<pre><code>[1] 0.022</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmVnXG5gYGAifQ== -->
-<pre class="r"><code>neg</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDIyXG4ifQ== -->
-<pre><code>[1] 0.022</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG5iaW5vbSgxOTcsIDMsIHByb2I9U2FuZ3JlWzgsM10pXG5gYGAifQ== -->
-<pre class="r"><code>pnbinom(197, 3, prob=Sangre[8,3])</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNTMxODkxXG4ifQ== -->
-<pre><code>[1] 0.531891</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYGBge3J9DQpsaWJyYXJ5KHh0YWJsZSkNCmxpYnJhcnkoZHBseXIpDQpgYGANCg0KYGBge3J9DQpTYW5ncmU8LWFzX3RpYmJsZShsaXN0KA0KICBUaXBvPWMoIkErIiwiQisiLCJBQisiLCJPKyIsIkEtIiwiQi0iLCJBQi0iLCJPLSIpLEZyZWN1ZW5jaWE9YygxOC40LDcuOCwxLjYsNzAuMCwwLjUsMC4yOCwwLjAyLDEuNCkNCiAgKQ0KKQ0KYGBgDQoNCg0KDQpgYGB7cn0NCnByaW50KHh0YWJsZShTYW5ncmUpLCB0eXBlPSJodG1sIixpbmNsdWRlLnJvd25hbWVzPUZBTFNFKQ0KDQpgYGANCg0KDQoNCg0KDQoNCg0KDQpgYGB7cn0NClNhbmdyZSA8LSBjYmluZChTYW5ncmUsIFByb2I9U2FuZ3JlJEZyZWN1ZW5jaWEvKHN1bShTYW5ncmUkRnJlY3VlbmNpYSkpKQ0KYGBgDQoNCmBgYHtyfQ0KU2FuZ3JlDQpgYGANCg0KYGBge3J9DQoxIC1zdW0oU2FuZ3JlWzE6NCwzXSkNCmBgYA0KDQpgYGB7cn0NCnIgPC0gZnVuY3Rpb24oeCl7DQogIHJldHVybihyb3VuZCh4LCAyKSkNCn0NCmBgYA0KDQoNCmBgYHtyfQ0KcihkYmlub20oMywgc2l6ZSA9IDIwMCwgcHJvYiA9IFNhbmdyZVs1LDNdKSkNCmBgYA0KDQpgYGB7cn0NClNhbmdyZVs2LDNdKjIwMA0KYGBgDQoNCmBgYHtyfQ0KcigxL1NhbmdyZVs2LDNdKQ0KYGBgDQpgYGB7cn0NClNhbmdyZVssYygxLDMpXQ0KU2FuZ3JlWzUsM10qMjAwDQoNCmBgYA0KDQoNCg0KYGBge3J9DQpwYmlub20oMCwgc2l6ZSA9IDIwMCwgcHJvYiA9IFNhbmdyZVssM10sIGxvd2VyLnRhaWwgPSBGQUxTRSkNCmBgYA0KYGBge3J9DQoNCmBgYA0KDQpgYGB7cn0NClNhbmdyZVs2LF0NClNhbmdyZVs2LDNdKjIwMA0KYGBgDQoNCmBgYHtyfQ0KMS8oU2FuZ3JlJFByb2IpDQpgYGANCmBgYHtyfQ0KcGdlb20oMTk5LCBwcm9iPVNhbmdyZVssM10pDQpgYGANCg0KYGBge3J9DQpwYmlub20oMCxzaXplPTIwMCwgcHJvYj1TYW5ncmVbLDNdLCBsb3dlci50YWlsID0gRkFMU0UpDQoNCmBgYA0KDQoNCmBgYHtyfQ0KU2FuZ3JlDQpgYGANCg0KYGBge3J9DQpwb3M8LXN1bShTYW5ncmVbMTo0LDNdKQ0KcG9zDQpgYGANCg0KYGBge3J9DQpuZWcgPC0gMSAtcG9zDQpuZWcNCg0KYGBgDQpgYGB7cn0NCm9wIDwtKFNhbmdyZVs0LDNdKS8oU2FuZ3JlWzQsM10rU2FuZ3JlWzgsM10pDQpvcA0KYGBgDQoNCmBgYHtyfQ0KYnA8LShTYW5ncmVbMiwzXSkvKFNhbmdyZVsyLDNdK1NhbmdyZVs2LDNdKQ0KYnANCmBgYA0KDQoNCmBgYHtyfQ0KcihkYmlub20oNCwgc2l6ZT00LCBwcm9iPW9wKSpkYmlub20oMSwgc2l6ZT0xLCBwcm9iPWJwKSkNCg0KYGBgDQoNCg0KYGBge3J9DQpyKHBiaW5vbSg5LCAxOTAsIHByb2IgPSBuZWcsIGxvd2VyLnRhaWwgPSBGQUxTRSkpDQpgYGANCg0KYGBgIHtyfQ0KMjAwKlNhbmdyZSRQcm9iDQpgYGANCg0KYGBge3J9DQpTYW5ncmVbMywzXQ0KbmVnDQpwb3MNCmBgYA0KDQpgYGB7cn0NCnBiaW5vbSgwLHNpemUgPSAxMCwgcHJvYiA9IFNhbmdyZVs3LDNdL25lZywgbG93ZXIudGFpbCA9IEZBTFNFKQ0KYGBgDQpgYGB7cn0NClNhbmdyZVszLDNdL25lZw0KYGBgDQpgYGB7cn0NClNhbmdyZQ0KYGBgDQoNCmBgYHtyfQ0KMC4wMDAyL3N1bShTYW5ncmUkUHJvYls0OjhdKQ0KYGBgDQoNCg0KYGBge3J9DQpzdW0oU2FuZ3JlWzU6OCwzXSkNCm5lZw0KYGBgDQoNCmBgYHtyfQ0KcG5iaW5vbSgxOTcsIDMsIHByb2I9U2FuZ3JlWzgsM10pDQpgYGANCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYGBge3J9DQpsaWJyYXJ5KHh0YWJsZSkNCmxpYnJhcnkoZHBseXIpDQpgYGANCg0KYGBge3J9DQpTYW5ncmU8LWFzX3RpYmJsZShsaXN0KA0KICBUaXBvPWMoIkErIiwiQisiLCJBQisiLCJPKyIsIkEtIiwiQi0iLCJBQi0iLCJPLSIpLEZyZWN1ZW5jaWE9YygxOC40LDcuOCwxLjYsNzAuMCwwLjUsMC4yOCwwLjAyLDEuNCkNCiAgKQ0KKQ0KYGBgDQpgYGB7cn0NClNhbmdyZSA8LSBjYmluZChTYW5ncmUsIFByb2IgPSBTYW5ncmUkRnJlY3VlbmNpYS8oc3VtKFNhbmdyZSRGcmVjdWVuY2lhKSkpDQpgYGANCg0KYGBge3J9DQpyIDwtIGZ1bmN0aW9uKHgpew0KICByZXR1cm4ocm91bmQoeCwyKSkNCn0NCmBgYA0KDQoNCg0KYGBge3J9DQpwb3MgPC0gc3VtKFNhbmdyZVsxOjQsM10pDQpuZWcgPC0gMSAtIHBvcw0KcG9zDQpuZWcNCnBvcyArIG5lZw0KYGBgDQoNCmBgYHtyfQ0KcihkYmlub20oMywgc2l6ZT0yMDAsIHByb2I9U2FuZ3JlWzgsM10pKQ0KYGBgDQpgYGB7cn0NCnIoMjAwKlNhbmdyZVs2LDNdKQ0KYGBgDQoNCmBgYHtyfQ0KMSAtIFNhbmdyZVsxLDNdDQpgYGANCg0KYGBge3J9DQpyKDEvU2FuZ3JlWzgsM10pDQpgYGANCg0KYGBge3J9DQoyMDAqU2FuZ3JlWywzXQ0KYGBgDQoNCmBgYHtyfQ0KcGJpbm9tKDAsIHNpemU9MjAwLCBwcm9iPVNhbmdyZVssM10sIGxvd2VyLnRhaWwgPSBGQUxTRSkNCjIwMCpTYW5ncmVbNiwzXQ0KYGBgDQoNCmBgYHtyfQ0KcGJpbm9tKDAsIHNpemU9MjAwLCBwcm9iPVNhbmdyZVssM10sIGxvd2VyLnRhaWwgPSBGQUxTRSkNCjEvU2FuZ3JlWywzXQ0KDQpgYGANCg0KYGBge3J9DQpuZWcNCmFiZG4gPC0gU2FuZ3JlWzcsM10vbmVnDQphYmRuDQpgYGANCg0KYGBge3J9DQpyKHBiaW5vbSgwLCBzaXplPTEwLCBwcm9iID0gYWJkbiwgbG93ZXIudGFpbCA9IEZBTFNFKSkNCmBgYA0KDQpgYGB7cn0NClNhbmdyZQ0KYGBgDQoNCmBgYHtyfQ0Kb3AgPC0gU2FuZ3JlWzQsM10vKFNhbmdyZVs0LDNdICsgU2FuZ3JlWzgsM10pDQpicCA8LSBTYW5ncmVbMiwzXS8oU2FuZ3JlWzIsM10rU2FuZ3JlWzYsM10pDQpgYGANCg0KDQpgYGB7cn0NCnIoZGJpbm9tKDQsIHNpemU9NCwgcHJvYj1vcCkqZGJpbm9tKDEsc2l6ZT0xLCBwcm9iPWJwKSkNCmBgYA0KDQo=</div>
 
 
 
@@ -2112,7 +1994,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("sangreBUENO.Rmd");
+  window.initializeSourceEmbed("Sangre20.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
