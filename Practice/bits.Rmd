@@ -1,0 +1,37 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+ p <- 0.00005 
+```
+
+```{r}
+1/p
+```
+
+```{r}
+p
+```
+
+```{r}
+q <- dbinom(1:200, size=200, prob = p)
+```
+
+```{r}
+1/mean(q)
+```
+
+```{r}
+q<- dbinom(0,size = 200, prob = p)
+q
+```
+
+```{r}
+round(dbinom(100,size = 100, prob = q),2)
+```
+
+```{r}
+dnbinom(100, size = 100, prob = 1-q)
+```
+

@@ -1,0 +1,231 @@
+---
+title: "Sobreventa de boletos"
+output: html_notebook
+---
+
+<style>
+  th,td{
+     padding:2px 5px 2px 5px;
+  }
+</style>
+```{r}
+
+```
+
+
+# Preámbulo
+Leer cuidadosamente la documentación de las funciones `rbinom`, `rgeom`, `rhyper`, `rnbinom` y `rpois`.
+
+Notar que hay cuatro funciones asociadas a cada entrada la `r***` sirve para generar variables aleatorias de la distribución `***`, `d***` calcula la densidad o función de masa de probabilidad, según sea el caso, `p***` calcula la función de distribución de probabilidad acumulada y `q***` es su inversa.
+
+Como en otras ociasiones, utilizaremos la función `r` para redondear correctamente a dos decimales.
+
+```{r}
+r <- function(x){
+  return(round(x, digits = 2))
+}
+```
+
+
+# Sobreventa
+
+Una aerolínea sobrevende rutinariamente un vuelo con 50 pasajeros ya que sabe que, históricamente, el 17% de las reservaciones pagadas no se presentan a la hora del vuelo.
+
+## 1 
+Si la aerolínea vende 55 puestos ¿Cuál es la probabilidad de que algún pasajero se presente y no pueda montarse en el avión?
+
+Sea $X$ el número de pasajeros que se presentan. Como los pasajeros se presentan de manera independiente y con probabilidad $1-\frac{17}{100}=\frac{83}{100}$, podemos modelar la situación con una variable aleatoria binomial.
+
+La probabilidad que buscamos es $\mathbb{P}(X>50)=\sum_{i=51}^{55} \mathbb{P}(X=i)$.
+
+La función `pbinom` es útil en este caso.
+
+```{r}
+m <- 55
+p <- pbinom(50, size = m, prob = 83/100, lower.tail = FALSE)
+```
+
+La probabilidad de que algún pasajero no pueda montarse en el avión es $\mathbb{P}(X>50)\approx$ `r p`. 
+
+Esta probabilidad, redondeada a dos decimales es: `r r(p)`
+
+## 2
+
+Si cada pasaje cuesta S/. 220 y un pasajero que no se presenta, no tiene derecho a reembolso ¿Cuánto gana la aerolínea por concepto de venta de pasajes, asumiendo que se venden todos los pasajes disponibles?
+
+Esta cantidad no es aleatoria ya que estamos suponiendo que siempre se cubre la demanda para los `r m` asientos. La ganancia bruta $G_b$ es el precio del pasaje por en número de pasajes vendidos.
+
+```{r}
+gb <- 220*m
+```
+
+Es decir, la aerolínea tiene una ganancia bruta de S/. `r format(gb,digits=6)`.
+
+Si quisiéramos mejorar el modelo, sería interesante incluir algo de aleatoriedad respecto a la demanda ¿Qué modelo creen que sería interesante?
+
+
+## 3
+
+Si un pasajero se presenta y no puede embarcar, la aerolínea debe retornar el valor del pasaje y pagar una compensación de S/. 150 ¿Cuánto es la ganancia de la aerolínea después de compensar a los pasajeros que no pueden volar?
+
+Como el número de pasajeros que se presenta es $X\sim\mathsf{Bin}(`r m`,\frac{83}{100})$, el número de pasajeros que no puede volar es $Z=\max(0,X-50)$ y la ganancia luego del reembolso y compensación es:
+$$G_c=G_b-(220+150)\cdot Z$$
+y su esperanza es $\mathsf{E}(G_c)=G_b-(220+150)\cdot \mathsf{E}(Z)$.
+
+Podemos calcular este valor fácilmente con **R**:
+
+```{r}
+1:(m - 50)
+```
+
+
+```{r}
+gc <- 220*m - sum((220 + 150)*(1:(m - 50))*dbinom((50 + 1):m, size = m, prob = 83/100))
+```
+
+Por lo que $\mathsf{E}(G_c)\approx$ `r format(gc,digits=7)`.
+
+## 4
+
+Si el estado multa a la aerolínea cada vez que algún pasajero no se puede montar con S/. 2000 por vuelo ¿Cuál es la ganancia de la aerolínea después de compensar a los pasajeros y pagar las multas?
+
+La ganancia después de la multa $G_m$ es simplemente $G_c$ menos el valor de la multa cuando algún pasajero no se puede montar.
+
+$$G_m=G_c-2000\cdot W=G_b-(220+150)\cdot Z-2000\cdot W$$
+donde $W$ vale 1 si $Z>0$ y vale 0 en caso contrario.
+
+A veces, es conveniente utilizar funciones indicadoras para hablar de algunas variables aleatorias. En general, la función indicadora de $A$, denotada por $\mathbb{I}_A:\Omega\rightarrow\{0,1\}$ se define como:
+$$\mathbb{I}_A(x)=\begin{cases}1\text{ si }x\in A\\ 0 \text{ si }x\notin A\end{cases}$$
+para $A\subseteq\Omega$.
+
+Debería estar claro que las funciones indicadoras sirven para definir variables aleatorias del tipo Bernoulli.
+
+Por lo que ahora podemos definir $W$ usando una función indicadora $W=\mathbb{I}_{\{1,2,3,4,5\}}(Z)$.
+
+Claramente $W\sim \mathsf{Ber}(\mathbb{P}(Z>0))$.
+
+Por lo que podemos decir que:
+$$G_m=G_b-(220+150)\cdot Z-2000\cdot\mathbb{I}_{\{1,2,3,4,5\}}(Z)$$
+Esta expresión es conveniente pues nos permite calcular la esperanza de $G_m$ de manera sencilla.
+
+$\mathsf{E}(G_m)=G_b-(220+150)\cdot \mathsf{E}(Z)-2000\cdot\mathsf{E}(\mathbb{I}_{\{1,2,3,4,5\}}(Z))$
+
+Una de las propiedades agradables de las funciones indicadoras es que sus esperanzas son fáciles de calcular ya que:
+
+$$\mathsf{E}(\mathbb{I}_A(X))=0\cdot\mathbb{P}(X\notin A)+1\cdot\mathbb{P}(X\in A)=\mathbb{P}(X\in A)$$
+por lo que 
+
+$\mathsf{E}(G_m)=G_b-(220+150)\cdot \mathsf{E}(Z)-2000\cdot\mathsf{E}(\mathbb{I}_{\{1,2,3,4,5\}}(Z))=G_b-(220+150)\cdot\mathsf{E}(Z)-2000\cdot\mathbb{P}(Z>0)$
+
+En **R** podemos calcular el valor de manera sencilla usando la última expresión.
+
+```{r}
+gm <- (220*m 
+       - sum((220 + 150)*(1:(m - 50))*dbinom((50 + 1):m, size = m, prob = 83/100)) 
+       - 2000*pbinom(50, size = m, prob = 83/100, lower.tail = FALSE)
+)
+```
+
+El valor esperado de la ganancia después de multas y compensaciones es $G_m=`r format(gm,digits=7)`$.
+
+## 5
+
+¿Cuánto debería ser el número de pasajes sobrevendidos si la aerolínea pretende ganar un promedio de S/. 12000 por vuelo, después de compensaciones y multas? ¿Cuál es el valor máximo de la ganancia esperada después de compensaciones y multas?
+
+Una manera de resolver este problema es graficar la ganancia esperada después de compensaciones y multas como función de el número de pasajes sobrevendidos.
+
+Al ser las variables aleatorias discretas el problema es *difícil* de resolver analíticamente pues hay que mirar los diversos valores que la esperanza puede tomar, para seleccionar los apropiados.
+
+La función `g` a continuación determina el valor esperado de la ganancia en función de el número total de pasajes vendidos, por lo que podemos utilizarla para resolver el problema.
+
+```{r}
+g <- function(m){
+  return(
+    220*m
+    - sum((220 + 150)*(1:(m - 50))*dbinom((50 + 1):m, size = m, prob = 83/100))
+    - 2000*pbinom(50, size = m, prob = 83/100, lower.tail = FALSE)
+  )  
+}
+
+ganancia <- Vectorize(g)
+
+R <- 51:65
+G <- ganancia(R)
+plot(R - 50
+     , G
+     , type = "o"
+     , col = "gray"
+     , main = "Ganancia esperada"
+     , sub = "Capacidad del avión: 50 puestos"
+     , xlab = "asientos sobrevendidos" 
+     , ylab = "ganancia esperada en S/."
+     )
+points(55 - 50, ganancia(55) , pch = 19)
+abline(h = 12000, col = "red")
+points(R[which.max(G)] - 50, G[which.max(G)], pch = 19,col = "blue")
+legend(12
+       , 11950
+       , legend = c("g. deseada","g. teórica","g. actual","g. máxima") 
+       , col = c("red", "gray", "black", "blue")
+       , pch = c(NA, 1, 19, 19)
+       , lty = c(1, 1, 0, 0)
+       , bty = "n"
+       )
+```
+En la gráfica se puede observar que el número de pasajes sobrevendidos debe ser 5 para estar lo más cerca de S/. 12000 y por encima (en este caso la ganancia esperada es de S/. `r format(g(55),digits=7)`). Es decir, lo que hace la línea aérea ya es lo mejor que puede hacer en ese sentido. Pero si lo que interesa es maximizar el valor esperado de la ganancia, la línea aérea debería vender 57 asientos y su ganancia esperada sería de S/. `r format(g(57),digits=7)`.
+
+## 6
+
+Si hay tres vuelos al día, siete días a la semana ¿Cuántas veces a la semana la aerolínea tiene que pagar multa?
+
+Sea $Y$ la variable aleatoria que cuenta cuantas veces a la semana debe pagar la multa la aerolínea. Debemos encontrar $\mathsf{E}(Y)$.
+
+Si suponemos independencia de las observaciones $Y\sim\mathsf{Bin}(21,p)$, donde $p=\mathbb{P}(X>50)$ la calculamos en la primera pregunta. Usando **R** podemos obtener el resultado:
+ 
+```{r}
+ey <- 3*7*pbinom(50, size = 55, prob = 83/100, lower.tail = FALSE)
+```
+por lo que $\mathsf{E}(Y)=21\cdot p\approx$ `r ey`. Es decir, en promedio no esperamos ver ni una multa a la semana.
+
+Este valor esperado, correctamente redondeado a dos decimales es `r r(ey)`.
+
+
+## 7
+
+Si hoy la aerolínea pagó una multa ¿Cuántos días transcurren hasta que debe pagar una multa de nuevo?
+
+La variable en cuestión *parece* una geométrica (digo parece pues la pregunta es en días y no vuelos). Es importante entender cual es el rango de la variable aleatoria.
+
+Si $T$ cuenta el número de vuelos hasta la próxima multa y suponemos independencia de las observaciones tenemos que $T\sim\mathsf{Geo}(p)$ con $p=\mathbb{P}(X>50)$ calculada previamente.
+
+Estamos interesados en $\mathsf{E}(\frac{T}{3})=\frac{\mathsf{E}(T)}{3}$ ya que hay tres vuelos al día. Sabemos que $\mathsf{E}(T)=\frac{1}{p}$ por ser $T$ geométrica.
+
+```{r}
+et <- (1/pbinom(50, size = 55, prob = 83/100, lower.tail = FALSE))/3
+```
+El valor que buscamos es $\frac{\mathsf{E}(T)}{3}\approx$ `r et` días. 
+
+Este valor, correctamente redondeado a dos decimales es: `r r(et)` días.
+
+Es decir, las multas ocurren *en promedio* aproximadamente cada diez días y medio.
+
+## 8
+
+Si la aerolínea es multada cuatro veces en un período de 15 días, el estado le suspende la licencia de operación al momento de la cuarta multa, por 30 días. ¿Cuál es la probabilidad de que al terminar una suspensión le suspendan la licencia de nuevo antes de concluir los 15 días del reinicio de operaciones?
+
+La variable de interés ahora es $V\sim\mathsf{BinNeg}(4,p)$ donde $p=\mathbb{P}(X>50)$ ya la hemos usado previamente.
+
+Como **R** define las geométricas y binomiales negativas contando el número de fracasos y no el número de intentos, debemos tener cuidado donde evaluamos.  Sabemos que 15 días corresponden a 45 vuelos, por lo que necesitamos $\mathbb{P}(V\leq 45)$.
+
+El valor que nos interesa lo podemos obtener con la función `pnbinom` ajustando cuidadosamente los diversos valores como se muestra a continuación:
+```{r}
+pnb <- pnbinom(41
+               , size = 4
+               , prob = pbinom(50, size = 55, prob = 83/100, lower.tail = FALSE)
+               )
+```
+
+Es decir $\mathbb{P}(V\leq 45)\approx$ `r pnb`.
+
+Este valor, correctamente redondeado a dos decimales es: `r r(pnb)`.
+

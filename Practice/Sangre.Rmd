@@ -1,0 +1,85 @@
+---
+title: "Laboratorio 2"
+output: html_notebook
+---
+
+# Tipos sanguíneos
+
+<style>
+  th,td{
+     padding:2px 5px 2px 5px;
+  }
+</style>
+
+La tabla a continuación denota las distintas frecuencias aproximadas en la población peruana de los diversos tipos sanguíneos más comunes. 
+
+```{r}
+library(xtable)
+library(dplyr)
+```
+
+```{r}
+Sangre<-as_tibble(list(
+  Tipo=c("A+","B+","AB+","O+","A-","B-","AB-","O-")
+  ,Frecuencia=c(18.4,7.8,1.6,70.0,0.5,0.28,0.02,1.4)
+  )
+)
+
+```
+
+```{r,results="asis"}
+print(xtable(Sangre), type="html",include.rownames=FALSE)
+```
+
+Fuente: [Club rh negativo de Perú](http://rhnegativoperu.com/donaciones-de-sangre/porcentajes-grupo-sanguineo/).
+
+
+
+
+```{r}
+prob <- cbind(Sangre, Prob=Sangre$Frecuencia/(sum(Sangre$Frecuencia)))
+prob[,c(1,3)]
+```
+```{r}
+round(dbinom(3,size = 200,prob = 0.0050),2)
+```
+
+```{r}
+200*0.0028	
+
+```
+```{r}
+1/0.0050	
+```
+
+```{r}
+prob
+```
+
+```{r}
+2*prob[,2]
+```
+```{r}
+1/prob[,3]
+```
+```{r}
+prob[7,]
+```
+
+```{r}
+pbinom(0,200,prob = prob[,3],lower.tail = FALSE)
+```
+
+
+```{r}
+prob[6,]
+200*0.0028
+
+```
+
+
+```{r}
+round(pbinom(9,size=190,prob = 0.022,lower.tail = FALSE),2)
+```
+
+
