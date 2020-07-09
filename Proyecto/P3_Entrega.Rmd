@@ -17,8 +17,8 @@ output:
 -----------|------------|----------
 Kevin Aubert|201910019|
 Andrea Chu |201910124   |
-Juan Diego Chu|201920069| X
-Oscar Gómez|201910179   | 
+Juan Diego Chu|201920069|    X
+Oscar Gómez|201910179   |    
 Joaquín Ramírez|201910277|
 
 ### Introducción
@@ -28,19 +28,16 @@ El transporte urbano de Lima está en un estado deplorable debido a años de cor
 Como estudiantes, consideramos que este tema es importante para nosotros y nuestros compañeros porque todos vivimos en Lima y debemos transportarnos a la universidad frecuentemente. Muchas de estas veces, nos topamos con el tráfico y largas horas de movilidad. Todo esto resulta en una carga físico-emocional que repercute en la vida diaria estudiantil, el cual no nos permite rendir a nuestro máximo potencial.
 
 
+
 ### Objetivo
 
-El objetivo de esta investigación es analizar e informar acerca del impacto del viaje desde la residencia de un alumno hasta la universidad, resaltando su efecto en los diferentes ámbitos estudiantiles como el uso efectivo de su tiempo, su rendimiento académico. Ésto será también relacionado con los resultados que se obtengan relacionados al estrés que puedan estar pasando. Con la información recogida se desea responder a las preguntas planteadas y llegar a las conclusiones correspondientes.
+El objetivo de esta investigación es analizar e informar acerca del impacto del viaje desde la residencia de un alumno hasta la universidad en su tiempo efectivo de trabajo y rendimiento académico. Con la información recogida, se desea responder a las preguntas planteadas y llegar a conclusiones representativas.
 
 ### Factibilidad
 
 El transporte es una actividad en la que participan todos los alumnos con frecuencia diaria (antes de la actual pandemia). La pregunta es: **¿Influye el transporte entre la residencia del alumno a la universidad en su tiempo efectivo de trabajo y rendimiento académico?** 
 
 Nuestra actual **hipótesis** es la siguiente: **Sí influye, porque la experiencia de transportarse en Lima causa estrés y cansancio, e implica una cantidad significante de tiempo, lo cual limita nuestra productividad.** De esta manera, es importante entender el comportamiento del alumno analizando el plano mental, pues es el encargado de regir nuestras acciones, lo que tendrá impacto en nuestras notas. Es así que nuestro proyecto buscará comprender el impacto en la salud mental al igual que en el rendimiento académico, valorizando al estudiante en su totalidad.
-
-Para medir el nivel de estrés utilizaremos el siguiente Cuestionario de Problemas Psicosomáticos(CPP)del Instituto Mexicano del Seguro Social:
-#![Imagen 1]#(estres1.jpg)
-#![Imagen 2]$(estres2.jpg)
 
 ### Marco Teórico
 
@@ -72,18 +69,18 @@ N°|Pregunta|Tipo de pregunta
 4|¿Cuál es el medio de transporte más utilizado?|Descriptiva
 5|¿Qué tan estresados se sentían los alumnos de UTEC el ciclo 2019-2?|Descriptiva
 6|¿Qué actividades realizarían los alumnos con el tiempo que utilizan para transportarse?|Descriptiva
-7|¿Qué porcentaje de alumnos tienen días con 3 horas o menos de clases?¿Para que porcentaje de alumnos el tiempo de transporte diario es mayor que el número de horas de clase en estos días (3 horas)?|Descriptiva
+7|¿Que porcentaje de alumnos tienen días con 3 horas o menos de clases?¿Para que porcentaje de alumnos el tiempo de transporte diario es mayor que el número de horas de clase en estos días (3 horas)?|Descriptiva
 8|¿Existe una relación entre la edad y el tiempo que pasan en el transporte?|Exploratoria
 9|¿Existe una relación entre el número de horas que duermen los estudiantes y el nivel de estrés que presentan?|Exploratoria
 10|¿Existe alguna relación entre el tiempo que pasan en el transporte y la cantidad de cursos desaprobados del estudiante?|Exploratoria
 11|¿Existe alguna relación entre el tiempo que pasan en el transporte y el promedio del estudiante en el ciclo 2019-2?|Exploratoria
-
 12|¿Los estudiantes que tienen un mejor percentil son los que se demoran menos horas en transportarse semanalmente?|Inferencial
 13|¿Los estudiantes que viajan más a la semana dormirán una menor cantidad de horas?|Inferencial
-14|¿Es posible predecir el nivel de estrés que tendrán los alumnos en base al número de cursos y a la calificación de su experiencia en el transporte?|Predictiva
-15|¿Es posible predecir la calificación sobre el transporte conociendo únicamente el número de horas que se transportan a la semana?|Predictiva
-16|¿Qué factores y condiciones en los que se desarrolla el alumno determinan la calificación que tendrás sobre el transporte?|Causal 
-17|¿De qué manera  algunos factores afectan la calificación de los alumnos sobre el transporte?|Mecanística
+14| ¿Los estudiantes que viajan menos horas a la semana en el transporte tendrán una mejor calificación  de este?|Inferencial
+15|¿Es posible predecir el nivel de estrés que tendrán los alumnos en base al número de cursos y a la calificación de su experiencia en el transporte?|Predictiva
+16|¿Es posible predecir la calificación sobre el transporte conociendo únicamente el número de horas que se transportan a la semana?|Predictiva
+17|¿Qué factores y condiciones en los que se desarrolla el alumno determinan la calificación que tendrás sobre el transporte?|Causal 
+18|¿De qué manera  algunos factores afectan la calificación de los alumnos sobre el transporte?|Mecanística
 
 
 
@@ -108,13 +105,13 @@ Tiempo de sueño|9,13,16|Numérica continua
 Cantidad de días asistidos por clases de duración de tres horas a menos|7|Numérica continua
 Horas invertidas del tiempo libre asignadas para el estudio|16,17|Numérica continua
 Tiempo dedicado a pasatiempos|11|Numérica continua
-Tiempo de transporte semanal|8,10,11,12|Númerica continua
+Tiempo de transporte semanal|8,10,11,12|Numérica continua
 Nivel de estrés (referencial basado en escala)|5,9,14|Numérica discreta
 
 </div>
+**Para medir el nivel de estrés utilizaremos el siguiente Cuestionario de Problemas Psicosomáticos(CPP)del Instituto Mexicano del Seguro Social:**
 ![Imagen 1](estres1.jpg)
 ![Imagen 2](estres2.jpg)
-Recuperada del Instituto Mexicano del Seguro Social
 
 ### Base de Datos
 ```{r}
@@ -125,7 +122,7 @@ DF<-read_csv("Base_DatosFINAL.csv")
 
 ### Preguntas Descriptivas
 ### ¿Cuál es la edad de los encuestados?
-**ANÁLISIS:** A partir de las medidas de tendencia central y el diagram de barras se puede llegar a que la moda y la mediana de la variabled es 18, mientras que la media es de 18.93. Esto significa que la variable presenta una distribución sesgada hacia la derecha (media mayor que mediana). Asimismo se obtiene que el rango de edad de los encuestados va desde los 17 años hasta los 23 años y que la mitad de los encuestados tiene 18 años o menos.
+**ANÁLISIS:** A partir de las medidas de tendencia central y el diagrama de barras se puede llegar a la conclusión que la moda y la mediana de la variables es 18, mientras que la media es de 18.93. Esto significa que la variable presenta una distribución sesgada hacia la derecha (media mayor que mediana). Asimismo se obtiene que el rango de edad de los encuestados va desde los 17 años hasta los 23 años y que la mitad de los encuestados tiene 18 años o menos.
 ```{r}
 summary(DF$Edad)
 ```
@@ -134,8 +131,7 @@ barplot(table(DF$Edad),xlab="Edad", ylab="Frecuencia",main="Edad de los encuesta
 ```
 
 ### ¿Cuánto tiempo les demora a los estudiantes de UTEC llegar a la universidad desde su lugar de residencia?
-**ANÁLISIS E HIPÓTESIS** 
-A partir de la gráfica podemos observar que el promedio de tiempo de transporte de los estudiantes es de 47.82 minutos. Además se observa que la mayoría de alumnos estan por debajo de este promedio, lo cual puede ser a causa de su lugar de residencia o su método de transporte. Sin embargo, se observa que aun hay una cantidad significante de alumnos que se demora 60 minutos o más en llegar a la universidad lo cual podría ser causado por la distancia a su residencia o un ineficiente método de transporte.
+**ANÁLISIS:** A partir de la gráfica podemos observar que el promedio de tiempo de transporte de los estudiantes es de 47.82 minutos y que la mediana es de 40 minutos; lo que significa que más de la mitad de los alumnos se demora menos de 40 minutos. Asimismo el tiempo máximo es de 150 minutos y el mínimo de 2 minutos, lo cual podría ser causado por la distancia a su residencia o al método de transporte utilizado. Finalmente mediante la relación entre media y mediana obtenemos que la distribución de datos es sesgada hacia la derecha.
 ```{r}
 summary(DF$Tiempo_Transporte/2)
 ```
@@ -146,20 +142,20 @@ abline(mean(DF$Tiempo_Transporte/2),0,col="red",title("Tiempo de viaje hasta la 
 ```
 
 ### ¿Cómo califican los estudiantes la experiencia de transporte?
-**ANÁLISIS E HIPÓTESIS** 
-La gráfica presenta la distribución de la frecuencia referente a la calificación de la experiencia de transporte de los estudiantes de la UTEC. Se puede observar que la mayoria de estudiantes califica el transporte con un valor relativamente alto con una mediana de 7 y una media de 7.009. Basandonos en esto se puede concluir que la mayoria de los estudiantes califica su experiencia de transporte como positiva.
-
-```{r}
-barplot(table(DF$Calificacion), xlab="Calificación (Mayor es mejor)", ylab="Frecuencia", las=1,cex.names=1,ylim=c(0,30), col="brown", main = "Calificación de experiencia de transporte")
-```
+**ANÁLISIS:** La gráfica presenta la distribución de la frecuencia referente a la calificación de la experiencia de transporte de los estudiantes de la UTEC. Se puede observar que la mayoría de estudiantes califica el transporte con un valor relativamente alto con una mediana de 7 y una media de 7.009. Basándonos en esto se puede concluir que la mayoría de los estudiantes califica su experiencia de transporte como positiva.
 
 ```{r}
 summary(DF$Calificacion)
 ```
 
+```{r}
+barplot(table(DF$Calificacion), xlab="Calificación (Mayor es mejor)", ylab="Frecuencia", las=1,cex.names=1,ylim=c(0,30), col="brown", main = "Calificación de experiencia de transporte")
+```
+
+
 
 ### ¿Cuál es el medio de transporte más utilizado?
-**ANÁLISIS E HIPÓTESIS:** La gráfica presenta la distribución porcentual referente a los medios de transportes más utilizados para movilizarse entre la residencia de los alumnos y la universidad. Del gráfico se puede observar que el transporte más usado es el _carro particular_ con un 31.5%, seguido muy de cerca por los transporte en _micro/combi_ y en _taxi_ con un 27.56% y 26.77% respectivamente. Por lo que dado el margen de error presente no se podría dar con certeza una respuesta, la cual podría ser cualquiera de estos 3 medios.
+**ANÁLISIS:** La gráfica presenta la distribución porcentual referente a los medios de transportes más utilizados para movilizarse entre la residencia de los alumnos y la universidad. Del gráfico se puede observar que el transporte más usado es el _carro particular_ con un 31.5%, seguido muy de cerca por los transporte en _micro/combi_ y en _taxi_ con un 27.56% y 26.77% respectivamente. Por lo que dado el margen de error presente no se podría dar con certeza una respuesta, la cual podría ser cualquiera de estos 3 medios.
 ```{r}
 medios <- read_csv("Transporte.csv") #medios es igual a la suma de M1, M2, M3 Y M4 en DF
 ```
@@ -175,18 +171,54 @@ mosaicplot(table(medios$Actividad),
 ```
 
 ### ¿Qué tan estresados se sentían los alumnos de UTEC el ciclo 2019-2?
-**ANÁLISIS E HIPÓTESIS: **En el gráfico anterior se puede apreciar que la mayoría de estudiantes de la UTEC se encuentran por debajo de la media de estrés de la universidad. Sin embargo, la media esta por encima por encima del punto medio de la escala de estrés y aun asi hay una cantidad signifante de valores por encima de esta.
-Utilizando estos resultados se puede decir que el estrés promedio de los estudiantes de la Universidad es alto. Esto puede ser causado debido al enfoque de la universidad el cual es ingeniería siendo una de las carreras mas exigentes disponibles.
+**ANÁLISIS: **En el gráfico se puede apreciar que más de la mitad de estudiantes de la UTEC tienen u nivel de estrés de 36 o menor, lo que significa que el nivel de estrés es relativamente intermedio en la población. Asimismo se sabe que la mayoría de alumnos tienen _Estrés leve_  (25 a 36) o _Estrés medio_ (37 a 48) con un porcentaje en los alumnos de 33.02% y 26.42% respectivamente. Finalmente se observa que la cantidad de alumnos con _Estrés grave_ es muy baja, ocurriendo solamente en el 4.72% de los alumnos.
+```{r}
+
+
+```
+
 
 ```{r}
-boxplot((DF$Estres),title="Nivel de estres de los Alumnos de UTEC")
-abline(mean(DF$Estres),0,col="red",title("Nivel de estrés de los alumnos de UTEC"))
+hist(DF$Estres,breaks = seq(11,83,by=12), main="Nivel de estrés de los alumnos de UTEC",
+     col=c("lightblue","lightgreen","orange","lightyellow","lightpink","brown"),lab=c("Sin","Poco","Leve","Medio","Alto","Grave"),xlab="Nivel de Estrés",ylim=c(0,58))
+legend("topright", 
+       c("Mediana", "Media"), 
+       lty=c(2, 2), 
+       col=c("red","blue"), 
+       bty = "o", title="Leyenda",bg="lightblue")
+abline(v=median(DF$Estres),col="red", lwd=3,lty=3)
+abline(v=mean(DF$Estres),col="blue", lwd=3,lty=3)
+```
+
+**Porcentaje de Niveles de Estrés en Alumnos (%):**
+
+**Sin Estrés:**
+```{r}
+round(length(DF$Estres[DF$Estres==12])/length(DF$Estres)*100,2)
+```
+**Poco Estrés:**
+```{r}
+round(length(DF$Estres[DF$Estres<25 & DF$Estres>12])/length(DF$Estres)*100,2)
+```
+**Estrés leve:**
+```{r}
+round(length(DF$Estres[DF$Estres<37 & DF$Estres>24])/length(DF$Estres)*100,2)
+```
+**Estrés medio:**
+```{r}
+round(length(DF$Estres[DF$Estres<49 & DF$Estres>36])/length(DF$Estres)*100,2)
+```
+**Estrés alto:**
+```{r}
+round(length(DF$Estres[DF$Estres<61 & DF$Estres>48])/length(DF$Estres)*100,2)
+```
+**Estrés grave:**
+```{r}
+round(length(DF$Estres[DF$Estres<73 & DF$Estres>60])/length(DF$Estres)*100,2)
 ```
 
 ### ¿Qué actividades realizarían los alumnos con el tiempo que utilizan para transportarse?
-**ANÁLISIS E HIPÓTESIS:** La gráfica muestra la representación porcentual respecto a las actividades que los alumnos realizarían con el tiempo que utilizaron para transportarse en el Ciclo 2019-2. Se puede observar que _dormir_ y _estudiar_ son las actividades dominantes, con 30% aproximadamente cada una. Dado el margen de errore no se podría decir cual sería la más elegida.
-
-De momento las actividades mas resaltantes que los alumnos preferirian hacer durante su tiempo de transporte son dormir y estudiar 
+**ANÁLISIS:** La gráfica muestra la representación porcentual respecto a las actividades que los alumnos realizarían con el tiempo que utilizaron para transportarse en el Ciclo 2019-2. Se puede observar que _dormir_ y _estudiar_ son las actividades dominantes, con 30% aproximadamente cada una. Dado el margen de error no se podría decir cual sería la más elegida.
 
 ```{r}
 actividades <- read_csv("Actividad.csv") #medios es igual a la suma de A1, A2, A3, A4 y A5 en DF
@@ -203,9 +235,8 @@ mosaicplot(table(actividades$Actividad),
 ```
 
 ### ¿Que porcentaje de alumnos tienen días con 3 horas o menos de clases?¿Para que porcentaje de alumnos el tiempo de transporte diario es mayor que el número de horas de clase en estos días (3 horas)?
-**ANÁLISIS E HIPÓTESIS**
-Según la tabala, en la que se muestra el número de dias que solo tuvieron que asisitir a clases por un período de 3 horas a menos durante el transcurso del ciclo 2019-2, podemos observar que a la mayoria solo le ocurria este suceso una vez a la semana, representando casi en su totalidad el 40% de los resultados.
-Acorde al análisis mostrado obtuvimos que aproximadamente el 6% de los entrevistadosse pasaban mas tiempo en el medio de transporte que en sus clases de duración de 3 horas o menos. De este porcetaje se puede resaltar qe se divide en dos gruupos, a los que les sucede 1 veces a la semana y a los que les sucede 2 veces, donde a los que les sucede 1 vez representan la mayor cantidad.
+**Análisis:** Según la tabla en la que se muestra el número de días que solo tuvieron que asistir a clases por un período de 3 horas a menos, durante el transcurso del ciclo 2019-2, podemos observar que a la mayoría solo le ocurría este suceso una vez a la semana, representando casi en su totalidad el 40% de los resultados.
+Acorde al análisis mostrado obtuvimos que aproximadamente el 6% de los entrevistados pasaban mas tiempo en el medio de transporte que en sus clases de duración de 3 horas o menos. De este porcentaje se puede resaltar que se divide en dos grupos, a los que les sucede 1 veces a la semana y a los que les sucede 2 veces, donde a los que les sucede 1 vez representan la mayor cantidad.
 ```{r}
 perdida_tiempo<-DF[DF$Dias_Inutiles>0,]
 ```
@@ -215,7 +246,7 @@ round(length(perdida_tiempo$Dias_Inutiles)/length(DF$Dias_Inutiles)*100,2)
 ```
 **Diagrama de barras sobre la cantidad de días a la semana con 3 horas o menos de clase de los alumnos:**
 ```{r}
-barplot(table(DF$Dias_Inutiles),xlab="Días en la Semana", ylab="Frecuencia",main="Días con 3 horas o menos de clase", col="brown",las=1,cex.names=1,ylim=c(0,50))
+barplot(table(DF$Dias_Inutiles),xlab="Días en la Semana", ylab="Frecuencia",main="Días con 3 horas o menos de clase", col="brown",las=1,cex.names=1,ylim=c(0,80))
 ```
 ```{r}
 perdida_total<-perdida_tiempo[perdida_tiempo$Tiempo_Transporte>180,]
@@ -233,79 +264,109 @@ barplot(table(perdida_total$Dias_Inutiles),xlab="Días en la Semana", ylab="Frec
 
 ### Preguntas Exploratorias
 ### ¿Existe una relación entre la edad y el tiempo que pasan en el transporte?
-**ANÁLISIS E HIPÓTESIS**
-Según la tabla podemos observar una aglomeración por parte de los estudiantes que tienen 18 años en los rangos de 0 a 8 horas semanales y de 8 a 16 horas semanales.De los 7 intervalos de edad, esta es en a que existe una reparticion mas equitativa a lo lago de estos dos rangos de edades.
- 
-Podemos observar que conforme la edad va aumentando la cantidad de horas invertidas en el tiempo de transporte disminuyen.Se puede ver que los estudiantes de 17 años llegan hasta mas 25 horas semanales , en cambio los que ya tienen 21, se aglomeran mas en el rango entre 0 a 8 horas semanales.
+**ANÁLISIS**
+Según la tabla podemos observar una aglomeración por parte de los estudiantes que tienen 18 años en los rangos de 0 a 8 horas semanales y de 8 a 16 horas semanales.De los 7 intervalos de edad, esta es en a que existe una repartición más equitativa a lo largo de estos dos rangos de edades.
+
+Se puede ver que los estudiantes de 17 años llegan hasta mas 25 horas semanales , en cambio los que ya tienen 21, se aglomeran mas en el rango entre 0 a 8 horas semanales.
+
+**HIPÓTESIS:**  
+Conforme la edad va aumentando,el de transporte semanal de los alumnos disminuye.
 ```{r}
-plot(DF$Edad,DF$Transporte_Semanal)
+smoothScatter(DF$Edad,DF$Transporte_Semanal,ylab= "Tiempo Transporte Semanal",xlab="Edad")
 ```
 
 
 ### ¿Existe una relación entre el número de horas que duermen los estudiantes y el nivel de estrés que presentan?
-**ANÁLISIS E HIPÓTESIS:** Se puede observar que todos los estudiantes que tienen un nivel de estrés menor a 20 duermen 6 horas o más.Sin embargo, no se pueden hallar más patrones en esta gráfica.
-No hay una relación entre estas variables.
+**ANÁLISIS:** Se puede observar que todos los estudiantes que tienen un nivel de estrés menor a 20 duermen 6 horas o más. Además se puede ver una cierta tendencia en la gráfica.
+
+**HIPÓTESIS:** 
+Los estudiantes que tienen un nivel de estrés mayor, duermen menos horas diariamente.
 
 ```{r}
-plot(DF$Estres,DF$Tiempo_Dormir)
+table(cut(DF$Estres,breaks = seq(11,84,by=12)))
 ```
+
 ```{r}
-DF%>% filter()%>%group_by(Tiempo_Dormir)%>%summarise(media_Tiempo=mean(Transporte_Semanal),mediana_Tiempo=median(Transporte_Semanal))->dormir_transporte
+smoothScatter(cut(DF$Estres,breaks = seq(11,83,by=12)), DF$Tiempo_Dormir,ylab= "Horas diarias de Sueño",xlab="Nivel de Estrés")
+legend("bottomright",
+       c("[1,2) -- Sin", "[2,3) -- Poco","[3,4) -- Leve","[4,5) -- Medio","[5,6) -- Alto","[6,...] -- Grave"), 
+       bty = "o", title="Leyenda - Nivel de Estrés",bg="transparent",pt.cex = 1,cex = 0.7)
+```
+
+
+```{r}
+DF%>% filter()%>%group_by(Tiempo_Dormir)%>%summarise(Media_Tiempo=mean(Transporte_Semanal),Mediana_Tiempo=median(Transporte_Semanal))->dormir_transporte
 dormir_transporte
 ```
 
 
 ### ¿Existe alguna relación entre el tiempo que pasan en el transporte y la cantidad de cursos desaprobados del estudiante?
-**ANÁLISIS E HIPÓTESIS:** No es posible hallar patrones debido a que hay muy poca información sobre alumnos desaprobados. 
+**ANÁLISIS:** No es posible hallar patrones debido a que hay muy poca información sobre alumnos desaprobados.
+
+**HIPÓTESIS:** 
 No existe una relación clara entre estas variables.
 ```{r}
-plot(DF$Tiempo_Transporte,DF$NroReprobados)
+smoothScatter(DF$Tiempo_Transporte,DF$NroReprobados,ylab= "Cursos Reprobados",xlab="Tiempo Transporte Semanal")
 ```
 
 ```{r}
-DF%>% filter()%>%group_by(NroReprobados)%>%summarise(media_Tiempo=mean(Transporte_Semanal),mediana_Tiempo=median(Transporte_Semanal))->reprobados_transporte
+DF%>% filter()%>%group_by(NroReprobados)%>%summarise(Media_Tiempo=mean(Transporte_Semanal),Mediana_Tiempo=median(Transporte_Semanal))->reprobados_transporte
 reprobados_transporte
 ```
 
 ### ¿Existe alguna relación entre el tiempo que pasan en el transporte y el promedio del estudiante en el ciclo 2019-2?
-**ANÁLISIS E HIPÓTESIS: ** En la gráfica se puede notar que un gran porcentaje de estudiantes tiene un promedio ponerado entre 14 y 16. No obstante, no es posible determinar una relación entre esta variable y la del tiempo de transporte. 
+**ANÁLISIS: ** En la gráfica se puede notar que un gran porcentaje de estudiantes tiene un promedio ponderado entre 14 y 16. No obstante, no es posible determinar una relación entre esta variable y la del tiempo de transporte. 
+
+**HIPÓTESIS:** 
 El tiempo de transporte no influye en el promedio ponderado del alumno.
 
 ```{r}
-smoothScatter(DF$Transporte_Semanal,DF$Promedio)
+smoothScatter(DF$Transporte_Semanal,DF$Promedio,ylab= "Promedio",xlab="Tiempo Transporte Semanal")
 
 ```
 
 
 
 ### ¿Existe alguna relación entre el grado de mérito del estudiante y las horas que se transporta semanalmente?
-**ANÁLISIS E HIPÓTESIS:** De esta tabla se puede observar que al estar en un percentil mayor, la mediana de tiempo de transporte semanal es menor.
+**ANÁLISIS:** De esta tabla se puede observar que al estar en un percentil mayor, la mediana de tiempo de transporte semanal es menor.
+
+**HIPÓTESIS:** 
 Mientras menos horas de transporte semanal tiene un alumno, hay una mayor probabilidad de poder encontrarse en un percentil mayor respecto a su carrera.
 ```{r}
-DF%>% filter()%>%group_by(Percentil)%>%summarise(mediana_Tiempo=median(Transporte_Semanal))->percentil_transporte
+DF%>% filter()%>%group_by(Percentil)%>%summarise(Mediana_Tiempo=median(Transporte_Semanal))->percentil_transporte
 percentil_transporte
 ```
 
 ### ¿Existe alguna relación entre las horas que se transportan semanalmente y las horas que duermen diariamente los estudiantes?
-**ANÁLISIS E HIPÓTESIS:** Con los datos obtenidos, no se puede hallar ningún patrón concreto por el momento.
-Si bien con los datos obtenidos no se ve un patrón, si obtenemos más datos, podríamos hallar uno. 
+**ANÁLISIS:** 
+Con los datos obtenidos hasta el momento pareciera que hay una tendencia en las gráfica y en la tabla; dado que mientras mientras los alumnos pasan más horas en el transporte semanalmente, menor son las horas que duermen diariamente. Ejemplo de esto parecería ser que para 3,4,6 y 8 horas diarias de sueño, la mediana en el tiempo de transporte semanal es 1025, 600, 490 y 300; por lo que uno aumentaría cuando e otro disminuye.
+
+**HIPÓTESIS:** 
+Mientras  mayor sea la cantidad de tiempo de transporte semanal, menor será las horas que duermen los alumnos diariamente. 
 
 ```{r}
-plot(DF$Transporte_Semanal,DF$Tiempo_Dormir)
+smoothScatter(DF$Transporte_Semanal,DF$Tiempo_Dormir,ylab= "Horas diarias de Sueño",xlab="Tiempo Transporte Semanal")
 ```
 ```{r}
-DF%>% filter()%>%group_by(Tiempo_Dormir)%>%summarise(mediana_Tiempo=median(Transporte_Semanal))->Dormir_transporte
-dormir_transporte
+DF%>% filter()%>%group_by(Tiempo_Dormir)%>%summarise(Mediana_Tiempo=median(Transporte_Semanal))->Dormir_transporte
+Dormir_transporte
 ```
 
 ### ¿Existe alguna relación las horas semanales de transporte con la calificación que le pone el alumno al transporte?
-**ANÁLISIS E HIPÓTESIS**En este gráfico podemos observar que hay una mayor concentración de calificaciones altas en los alumnos que tienen un menor tiempo de transporte, mientras que las calificaciones bajas están más dispersas.
+**ANÁLISIS:**
+En este gráfico podemos observar que hay una mayor concentración de calificaciones altas en los alumnos que tienen un menor tiempo de transporte, mientras que las calificaciones bajas están más dispersas.
+
+**HIPÓTESIS:**
 Si un alumno pasa menos tiempo transportándose, tendrá una mejor experiencia y por consiguiente, le podrá una calificación más alta que alguien que tiene una gran cantidad de horas de transporte.
 
 ```{r}
-plot(DF$Transporte_Semanal,DF$Calificacion)
+smoothScatter(DF$Transporte_Semanal,DF$Calificacion,ylab= "Experiencia Transporte",xlab="Tiempo Transporte Semanal")
 ```
 
+
+```{r}
+DF[DF$Transporte_Semanal==max(DF$Transporte_Semanal),]
+```
 
 ### Bibliografía:
 * https://gestion.pe/tendencias/lima-ciudades-peor-trafico-269483-noticia/ 

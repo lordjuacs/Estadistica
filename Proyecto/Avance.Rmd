@@ -4,6 +4,9 @@ output: html_notebook
 ---
 
 
+```{r}
+rm(list=ls())
+```
 
 ```{r}
 library(readr)
@@ -14,7 +17,7 @@ library(dplyr)
 
 
 ```{r}
-DF <- read_csv("Base_Datos.csv")
+DF <- read_csv("Base_DatosFINAL.csv")
 ```
 
 

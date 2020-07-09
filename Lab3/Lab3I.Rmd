@@ -1,0 +1,99 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(xtable)
+```
+
+
+```{r}
+r <- function(x){
+  return(round(x,2))
+}
+```
+
+```{r}
+r(1/5)
+```
+```{r}
+20*.2
+```
+
+```{r}
+r((20*.2*.8)^(0.5))
+```
+
+
+
+
+```{r}
+p <- 1/4
+q <- 1 - p
+```
+
+
+```{r}
+r(pbinom(5, size=10, prob=p, lower.tail = FALSE))
+```
+```{r}
+p*10*2 - 10*q
+```
+
+```{r}
+r((10*p*(1-p)*2)^0.5)
+```
+
+
+```{r}
+p <- 4/5
+```
+
+```{r}
+r(dnbinom(4,3,p))
+```
+
+```{r}
+3/p
+```
+
+
+```{r}
+(3/p)*(1-p)
+```
+
+```{r}
+r(pbinom(10, size=20, p = 1-p,lower.tail = FALSE))
+```
+
+
+
+
+```{r}
+n <- 20
+p <- 1/2
+n*p
+r(pbinom(10, size = 20, prob = p, lower.tail = FALSE))
+```
+
+```{r}
+p <- 0.27
+#geo
+r(1/p)
+r(pbinom(0,size=6, prob=p, lower.tail = FALSE))
+```
+
+```{r}
+
+```
+
+
+
+
+```{r}
+sum(choose(14:27,27)/choose(27+52,20))
+```
+
