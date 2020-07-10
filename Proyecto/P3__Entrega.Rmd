@@ -9,7 +9,7 @@ output:
 
 <div style="text-align: justify">
 ## Título corto: CommUtec
-## P2 Segunda entrega
+## P3 Tercera Entrega
 ### **Sección:** 1.01
 ### **Profesor:** José Miguel Renom
 
@@ -108,7 +108,6 @@ Tiempo dedicado a pasatiempos|11|Numérica continua
 Tiempo de transporte semanal|8,10,11,12|Numérica continua
 Nivel de estrés (referencial basado en escala)|5,9,14|Numérica discreta
 
-</div>
 **Para medir el nivel de estrés utilizaremos el siguiente Cuestionario de Problemas Psicosomáticos(CPP)del Instituto Mexicano del Seguro Social:**
 ![Imagen 1](estres1.jpg)
 ![Imagen 2](estres2.jpg)
@@ -164,7 +163,7 @@ barplot(table(DF$Calificacion), xlab="Calificación (Mayor es mejor)", ylab="Fre
 ### ¿Cuál es el medio de transporte más utilizado?
 **ANÁLISIS:** La gráfica presenta la distribución porcentual referente a los medios de transportes más utilizados para movilizarse entre la residencia de los alumnos y la universidad. Del gráfico se puede observar que el transporte más usado es el _micro/combi_ con un 28%, seguido  por los transporte del _carro particular_ y del _taxi_ con un 20% y 14.8% respectivamente.
 ```{r}
-medios <- read_csv("Transporte.csv") #medios es igual a la suma de M1, M2, M3 Y M4 en DF
+medios <- read_csv("TransporteF.csv") #medios es igual a la suma de M1, M2, M3 Y M4 en DF
 ```
 **Porcentajes de los medios de transporte (%):**
 ```{r}
@@ -178,7 +177,8 @@ mosaicplot(table(medios$Actividad),
 ```
 
 ### ¿Qué tan estresados se sentían los alumnos de UTEC el ciclo 2019-2?
-**ANÁLISIS: **En el gráfico se puede apreciar que aproximadamente la mitad de estudiantes de la UTEC tienen un nivel de estrés por encima del leve, lo que significa que el nivel de estrés es relativamente intermedio en la población. Asimismo se sabe que la mayoría de alumnos tienen _Estrés leve  (25 a 36) o _Estrés medio (37 a 48)_ con un porcentaje en los alumnos de 30% y 29.44% respectivamente. Finalmente se observa que la cantidad de alumnos con _Estrés grave_ es muy baja, ocurriendo solamente en el 8.33% de los alumnos.
+**ANÁLISIS: **En el gráfico se puede apreciar que aproximadamente la moda entre los alumnos de UTEC es un nivel de estrés leve, mientras que la mediana es un nivel de estrés medio. Asimismo se sabe que la mayoría de alumnos tienen _Estrés leve  (25 a 36) o Estrés medio (37 a 48)_ con un porcentaje en los alumnos de 30% y 29.44% respectivamente. Finalmente se observa que la cantidad de alumnos con _Estrés grave_ es muy baja, ocurriendo solamente en el 8.33% de los alumnos.
+
 ```{r}
 rangos_estres <- round(table((cut(DF$Estres,breaks=seq(12,83,by=12), include.lowest = TRUE)))/nrow(DF),4)*100
 ```
@@ -188,12 +188,12 @@ library(RColorBrewer)
 coul <- brewer.pal(5, "Set2") 
 barplot(table((cut(DF$Estres,breaks=seq(12,83,by=12), include.lowest = TRUE))), ylim = c(0,60),col =coul, space = 0,names.arg = c("Poco","Leve","Medio","Alto","Grave"),xlab="Nivel de Estrés", ylab="Frequency",main="Nivel de estrés de los alumnos de UTEC")
 legend("topright", 
-       c("Mediana", "Media"), 
+       c("Mediana"), 
        lty=c(2, 2), 
-       col=c("red","blue"), 
+       col=c("red"), 
        bty = "o", title="Leyenda",bg="lightblue")
 abline(v=5*median(DF$Estres)/72,col="red", lwd=3,lty=3)
-abline(v=5*mean(DF$Estres)/72,col="blue", lwd=3,lty=3)
+
 
 ```
 
@@ -226,7 +226,7 @@ rangos_estres[5]
 **ANÁLISIS:** La gráfica muestra la representación porcentual respecto a las actividades que los alumnos realizarían con el tiempo que utilizaron para transportarse en el Ciclo 2019-2. Se puede observar que _dormir_ y _estudiar_ son las actividades dominantes, con 36.42% aproximadamente cada una.
 
 ```{r}
-actividades <- read_csv("Actividad.csv") #medios es igual a la suma de A1, A2, A3, A4 y A5 en DF
+actividades <- read_csv("ActividadF.csv") #medios es igual a la suma de A1, A2, A3, A4 y A5 en DF
 ```
 **Porcentajes de las Actividades que realizarían los estudiantes(%):**
 ```{r}
@@ -247,6 +247,7 @@ Acorde al análisis mostrado obtuvimos que aproximadamente el 11.11% de los entr
 ```{r}
 perdida_tiempo<-DF[DF$Dias_Inutiles>0,]
 ```
+**Porcentaje de los días donde los alumnos tiene clases por 3 horas o menos:**
 ```{r}
 round(100*(table(DF$Dias_Inutiles)/nrow(DF)),2)
 ```
@@ -256,10 +257,12 @@ round(100*(table(DF$Dias_Inutiles)/nrow(DF)),2)
 ```{r}
 round(length(perdida_tiempo$Dias_Inutiles)/length(DF$Dias_Inutiles)*100,2)
 ```
+
 **Diagrama de barras sobre la cantidad de días a la semana con 3 horas o menos de clase de los alumnos:**
 ```{r}
 barplot(table(DF$Dias_Inutiles),xlab="Días en la Semana", ylab="Frecuencia",main="Días con 3 horas o menos de clase", col="brown",las=1,cex.names=1,ylim=c(0,80))
 ```
+
 Acorde al análisis mostrado obtuvimos que aproximadamente el 6% de los entrevistados pasaban más tiempo en el medio de transporte que en sus clases de duración de 3 horas o menos. De este porcentaje se puede resaltar que se divide en dos grupos, a los que les sucede 1 veces a la semana y a los que les sucede 2 veces, donde a los que les sucede 1 vez representan la mayor cantidad.
 
 ```{r}
@@ -275,115 +278,291 @@ color1 <- brewer.pal(5, "Set1")
 barplot(table(perdida_total$Dias_Inutiles),xlab="Días en la Semana", ylab="Frecuencia",main="Días con 3 horas o menos de clase \n de alumnos con tiempo de transporte mayor a 3 horas", col=color1,las=1,cex.names=1,ylim=c(0,13))
 ```
 
+### Parámetros del estudio
 
+**Tamaño de Muestra:** 180 encuestados
 
-### Preguntas Exploratorias
-### ¿Existe una relación entre la edad y el tiempo que pasan en el transporte?
-**ANÁLISIS**
-Según la tabla podemos observar una aglomeración por parte de los estudiantes que tienen 18 años en los rangos de 0 a 8 horas semanales y de 8 a 16 horas semanales.De los 8 intervalos de edad, esta es en a que existe una repartición más equitativa a lo largo de estos dos rangos de edades.
+**Nivel de Confianza:** 95%
+Elegimos un nivel de confianza del 95% puesto que esto significa que si hubiésemos hecho 20 muestreos y creado 20 intervalos de confianza; se esperaría que 19 de ellos contengan la media de la población. Lo cual representa un porcentaje bastante aceptable para una investigación. Además, 95% es el valor que usualmente se utiliza en este tipo de trabajos.
 
-Se puede ver que los estudiantes de 17 años llegan a tener hasta más  de25 horas semanales , en cambio los que ya tienen 21, se aglomeran mas en el rango entre 0 a 8 horas semanales.
+**Nivel de Significancia:** 0.05
+El nivel de signifcacia para este caso estará dado por $\alpha=0.05$, el cuál participa en el cálculo del nivel de confianza según la ecuación $1-\alpha= \text{Nivel de confianza}$.
 
-**HIPÓTESIS:**  
-Conforme la edad va aumentando,el de transporte semanal de los alumnos disminuye.
+**Tolerancia:**
+La tolerancia (epsilon) está dada en la fórmula:
+$$\mathbb{P}(\left\vert \overline{X}_n - \mu \right\vert \leq \varepsilon)\geq 1-\alpha$$
+De la cual se llega a:
+
+$$\varepsilon=\frac{Z_a\sigma}{\sqrt{n}}$$ 
+$$a=\alpha/2$$
+Pero como Z es:
 ```{r}
-smoothScatter(DF$Edad,DF$Transporte_Semanal,ylab= "Tiempo Transporte Semanal",xlab="Edad")
+alfa<- 0.05 
+n=180
+z<- qnorm(alfa/2, lower.tail = FALSE)
+round(z,2)
+```
+Finalmente la tolerancia quedaría como:
+$$\varepsilon=\frac{1.96 \sigma}{\sqrt{180}}$$
+Donde se utiliza el valor de la desviación estándar de cada variable para $sigma$.
+
+
+### Intervalos de confianza 
+La fórmula de los intervalos de confianza es la siguiente:
+$$[\overline{X}-\varepsilon, \overline{X}+\varepsilon]$$ 
+Usamos la fórmula para hallar los intervalos de confianza de las principaes variables del estudio:
+
+**EDAD:**
+```{r}
+E1<-mean(DF$Edad)-1.96*(sd(DF$Edad)/sqrt(180))
+E2<-mean(DF$Edad)+1.96*(sd(DF$Edad)/sqrt(180)) 
+E1
+E2
+```
+**Intervalo de Confianza Edad=** [18.93599, 19.41956]
+
+**TIEMPO DE TRANSPORTE**
+```{r}
+T1<-mean(DF$Tiempo_Transporte)-1.96*(sd(DF$Tiempo_Transporte)/sqrt(180))
+T2<-mean(DF$Tiempo_Transporte)+1.96*(sd(DF$Tiempo_Transporte)/sqrt(180))
+T1
+T2
+```
+**Intervalo de Confianza Tiempo de Transporte=** [93.50854, 113.7248]
+
+**TIEMPO DE TRANSPORTE SEMANAL**
+```{r}
+TS1<-mean(DF$Transporte_Semanal)-1.96*(sd(DF$Transporte_Semanal)/sqrt(180))
+TS2<-mean(DF$Transporte_Semanal)+1.96*(sd(DF$Transporte_Semanal)/sqrt(180))
+TS1
+TS2
+```
+**Intervalo de Confianza del Tiempo de Transporte Semanal=** [470.9605, 576.8729]
+
+**PROMEDIO PONDERADO:**
+```{r}
+P1<-mean(DF$Promedio)-1.96*(sd(DF$Promedio)/sqrt(180))
+P2<-mean(DF$Promedio)+1.96*(sd(DF$Promedio)/sqrt(180))
+P1
+P2
+```
+**Intervalo de Confianza del Promedio Ponderado=** [14.69495, 15.2175]
+
+**HORAS DE SUEÑO:**
+```{r}
+HS1<-mean(DF$Tiempo_Dormir)-1.96*(sd(DF$Tiempo_Dormir)/sqrt(180))
+HS2<-mean(DF$Tiempo_Dormir)+1.96*(sd(DF$Tiempo_Dormir)/sqrt(180))
+HS1
+HS2
+```
+**Intervalo de Confianza de Horas de Sueño=** [6.064808, 6.401858]
+
+**NÚMERO DE REPROBADOS**
+```{r}
+NR1<-mean(DF$NroReprobados)-1.96*(sd(DF$NroReprobados)/sqrt(180))
+NR2<-mean(DF$NroReprobados)+1.96*(sd(DF$NroReprobados)/sqrt(180))
+NR1
+NR2
+```
+**Intervalo de Confianza de Número de Reprobados=** [0.2222577, 0.3888535]
+
+### Preguntas Inferenciales
+### ¿Existe una relación entre la edad y el tiempo de transporte diario?
+**Relevancia en el estudio: **Esta pregunta es relevante al estudio ya que nos permite hallar si es que hay una relación entre la edad de los estudiantes y el tiempo que les toma transportarse hacia la universidad. Esto nos puede ayudar a verificar si nuestra hipótesis nula se cumple y si hay otros factores aparte de la edad que alteren la relación de estas variables.
+
+```{r}
+summary(DF$Edad)
 ```
 
-
-### ¿Existe una relación entre el número de horas que duermen los estudiantes y el nivel de estrés que presentan?
-**ANÁLISIS:** Se puede observar que todos los estudiantes que tienen un nivel de _estrés poco_ duermen 5 horas o más. Además se puede ver una cierta tendencia en la gráfica.
-
-**HIPÓTESIS:** 
-Los estudiantes que tienen un nivel de estrés mayor, duermen menos horas diariamente.
+Tomaremos como referencia el valor de la media de la edad **(19.18 años)**, los valores por encima de esta serán calificados como alumnos mayores y los valores por debajo de esta como alumnos menores. Esta pregunta es relevante porque nos permite hallar una relación o vinculo con los alumnos de últimos ciclos y su tiempo de transporte diario.
 
 ```{r}
-table((cut(DF$Estres,breaks=seq(12,83,by=12), include.lowest = TRUE)))
+mayores<-(DF[which(DF$Edad>19.18),])
+menores<-(DF[which(DF$Edad<=19.18),])
+summary(mayores$Tiempo_Transporte)
 ```
+Asimismo, consideraremos un alto tiempo de transporte cuando este se ubique por encima de la media de **106.20 minutos**.
+
+
+**H0:** A mayor la edad de los estudiantes, el tiempo de transporte diario es mayor.
+
+**H1:** A mayor la edad de los estudiantes, el tiempo de transporte diario es menor.
+
+**Nivel de confianza:** 95%
+
+**alpha**=0.05
+
+```{r}
+t.test(mayores$Tiempo_Transporte,mu=106.2, alternative="greater", conf.level = 0.95)
+```
+
+**ANÁLISIS: **Como p-value es mayor que nuestro alpha **(0.5>0.05)** no se puede descartar satisfactoriamente la hipótesis nula declarándola estadisticamente insignificante. Utilizando el boxplot a continuación se traza su mediana y se puede apoyar al descarte de ambas hipótesis ya que el tiempo y la edad del estudiante no tienen una relación observable en este gráfico.
 
 
 ```{r}
-smoothScatter((cut(DF$Estres,breaks=seq(12,83,by=12), include.lowest = TRUE)), DF$Tiempo_Dormir,ylab= "Horas diarias de Sueño",xlab="Nivel de Estrés", col = coul)
-legend("bottomright",
-       c("1 -- Poco", "2 -- Leve","3 -- Medio","4 -- Alto","5 -- Grave"), 
-       bty = "o", title="Leyenda",bg="transparent",pt.cex = 1,cex = 0.7)
+  boxplot(DF$Tiempo_Transporte~DF$Edad,main="Tiempo transporte diario vs edad", xlab= "Edad",ylab="Tiempo transporte diario (min)")
+abline(h=median(DF$Tiempo_Transporte),col="red")
+legend("topright", c("Mediana"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
 ```
 
-
-```{r}
-DF%>% filter()%>%group_by(Tiempo_Dormir)%>%summarise(Media_Tiempo=mean(Transporte_Semanal),Mediana_Tiempo=median(Transporte_Semanal))->dormir_transporte
-dormir_transporte
-```
 
 
 ### ¿Existe alguna relación entre el tiempo que pasan en el transporte y la cantidad de cursos desaprobados del estudiante?
-**ANÁLISIS:** Se puede observar que los estudiantes con tiempo de transporte semanal menor a 1000 tienden a reprobar 0 cursos.
+**Relevancia para el estudio:**Esta Pregunta es relevante al estudio ya que nos permite averiguar la relación que tienen los estudiantes que se toman más tiempo en transportarse hacia la universidad y cuantos cursos desaprobados tuvieron. Además de estas dos variables, también nos permitirá relacionar el tiempo de transporte con promedio ponderado ya que un curso reprobado reducirá este. 
 
-**HIPÓTESIS:** 
-No existe una relación clara entre estas variables.
-```{r}
-smoothScatter(DF$Transporte_Semanal,DF$NroReprobados,ylab= "Cursos Reprobados",xlab="Tiempo Transporte Semanal")
-```
+Filtraremos los resultados para obtener a los estudiantes que reprobaron uno o más cursos, luego analizaremos si hay una relación entre el numero de reprobados y el tiempo de transporte hacia la universidad.
 
 ```{r}
-DF%>% filter()%>%group_by(NroReprobados)%>%summarise(Media_Tiempo=mean(Transporte_Semanal),Mediana_Tiempo=median(Transporte_Semanal))->reprobados_transporte
-reprobados_transporte
+jalados<-(DF[which(DF$NroReprobados>=1),])
+summary(jalados$Tiempo_Transporte)
 ```
+Utilizaremos el valor de la media del tiempo  **(118.2)** para diferenciar a la mitad superior e inferior, en tiempo de transporte, de las personas que reprobaron uno o más cursos. 
+
+**H0: ** Los alumnos que pasan un mayor tiempo al transportarse hacia la universidad tendrán un mayor número de cursos desaprobados.
+
+
+**H1:** Los alumnos que pasan un mayor tiempo al transportarse hacia la universidad tendrán un menor número de cursos desaprobados.
+
+**Nivel de confianza:** 95%
+
+**alpha**=0.05
+
+```{r}
+t.test(jalados$Tiempo_Transporte,mu=118.2,alternative = "greater",conf.level = 0.95)
+```
+**ANÁLISIS: **Como el p-value es mayor a nuestro alpha, **(0.5008>0.05)**, no es posible descartar satisfactoriamente la hipótesis nula declarándola estadísticamente insignificante. Sin embargo, al graficar un boxplot se puede observar una ligera tendencia relacionando un mayor tiempo de transporte con un incremento de cursos desaprobados. Utilizando esta información se podría apoyar nuestra hipótesis nula pero es necesario realizar pruebas adicionales.
+
+```{r}
+boxplot(DF$Tiempo_Transporte~DF$NroReprobados,main="Tiempo transporte diario (min) vs Cursos Reprobados", xlab= "Cursos reprobados",ylab="Tiempo transporte diario (min)")
+abline(h=median(DF$Tiempo_Transporte),col="red")
+legend("topright", c("Mediana"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
+```
+
 
 ### ¿Existe alguna relación entre el tiempo que pasan en el transporte y el promedio del estudiante en el ciclo 2019-2?
-**ANÁLISIS: ** En la gráfica se puede notar que un gran porcentaje de estudiantes tiene un promedio ponderado entre 14 y 16. 
+**Relevancia:**Esta pregunta es relevante hacia la investigación ya que nos permite relacionar el tiempo de transporte con el promedio ponderado del alumno. Además, esta pregunta ayuda a complementar la pregunta anterior ya que brinda mayor detalle sobre el encuestado. 
+```{r}
+summary(DF$Tiempo_Transporte)
+```
+Utilizaremos la media de tiempo de transporte **(103.6 minutos)** para separar a los alumnos con mayor tiempo de transporte hacia la universidad.
 
-**HIPÓTESIS:** 
-El tiempo de transporte no influye en el promedio ponderado del alumno.
 
 ```{r}
-smoothScatter(DF$Transporte_Semanal,DF$Promedio,ylab= "Promedio",xlab="Tiempo Transporte Semanal")
+promdemora<-(DF[which(DF$Tiempo_Transporte>103.6),])
+summary(promdemora$Promedio)
+```
+Utilizaremos la mediana del promedio ponderado para hallar a los alumnos con promedio ponderado menor a esta.
 
+**H0:**  Los alumnos que pasan más tiempo transportándose tendrán un menor promedio ponderado.
+
+**H1: **El tiempo ponderado sí influye en el promedio ponderado del alumno
+
+**Nivel de confianza:** 95%
+
+**alpha**=0.05
+```{r}
+t.test(promdemora$Promedio, mu=14.44, alternative = "greater",conf.level = 0.95)
 ```
 
+**ANÁLISIS: **Como el p-value es mayor a nuestro alpha, **(0.4917>0.05)**, no es posible descartar satisfactoriamente la hipótesis nula declarándola estadisticamente insignificante. Al filtrar a los estudiantes por tiempos de **0-100 Minutos**, **100-200 Minutos** y **200-300 Minutos** observamos que la media y la mediana no varían de una manera que apoye nuestra hipótesis nula. 
+```{r}
+t_0_100<-(DF[which(DF$Tiempo_Transporte<=100),])
+t_100_200<-(DF[which(DF$Tiempo_Transporte>100 & DF$Tiempo_Transporte<=200),])
+t_200_300<-(DF[which(DF$Tiempo_Transporte>200),])
+"Mediana y media del promedio para un tiempo de transporte entre 0 y 100 minutos"
+summary(t_0_100$Promedio)
+"Mediana y media del promedio para un tiempo de transporte entre 100 y 200 minutos"
+summary(t_100_200$Promedio)
+"Mediana y media del promedio para un tiempo de transporte entre 200 y 300 minutos"
+summary(t_200_300$Promedio)
+```
 
 
 ### ¿Existe alguna relación entre el grado de mérito del estudiante y las horas que se transporta semanalmente?
-**ANÁLISIS:** De esta tabla se puede observar que al estar en un percentil mayor, la mediana de tiempo de transporte semanal es menor.
-
-**HIPÓTESIS:** 
-Mientras menos horas de transporte semanal tiene un alumno, hay una mayor probabilidad de poder encontrarse en un percentil mayor respecto a su carrera.
+**Relevancia para el estudio: **Esta pregunta es relevante al estudio ya que nos permite hallar la relación entre el grado de mérito del estudiante y las horas que se transporta al día. Esto es importante al estudio ya que permite diferenciar mas allá del promedio ponderado ya que cada carrera tiene diferentes promedios.
 ```{r}
-DF%>% filter()%>%group_by(Percentil)%>%summarise(Mediana_Tiempo=median(Transporte_Semanal))->percentil_transporte
-percentil_transporte
+summary(DF$Tiempo_Transporte)
 ```
+
+Para responder esta pregunta se tomará de referencia la media del tiempo de transporte diario: **103.6** minutos, y nos referiremos a ‘transportarse por poco tiempo’ a tener un tiempo de transporte menor a este valor. Además, consideraremos ‘grado de mérito alto’ a los percentiles de décimo, quinto y tercio superior.
+
+**H0:** Los alumnos que se transportan por poco tiempo tendrán un grado de mérito alto.
+**H1:** Los alumnos que se transportan por poco tiempo no tendrán un grado de mérito más bajo
+
+**Nivel de confianza:** 95%
+
+**alpha**=0.05
+
+
+```{r}
+DF%>%filter(Percentil!="Menos de tercio superior")->percentil
+
+```
+
+```{r}
+t.test(percentil$Tiempo_Transporte, mu=103.6, alternative="less", conf.level = 0.95)
+```
+
+Como el p-value es mayor a alpha **0.5013>0.05**, no se puede rechazar la hipótesis H0. Esta hipótesis se puede apoyar en el siguiente gráfico. La media de transporte está representada por la línea roja. Se puede observar que la media de tiempo de transporte diario de los percentiles mayores (décimo, quinto y tercio superior) se encuentran debajo de la media, mientras que la media de los percentiles bajos se encuentra encima de la media. 
+
+```{r}
+boxplot(DF$Tiempo_Transporte~DF$Percentil, main="Tiempo de transporte por percentil", ylab="Tiempo de transporte (min)", xlab="Percentil")
+abline(h=mean(DF$Tiempo_Transporte), col="red")
+```
+
 
 ### ¿Existe alguna relación entre las horas que se transportan semanalmente y las horas que duermen diariamente los estudiantes?
-**ANÁLISIS:** 
-Con los datos obtenidos hasta el momento pareciera que hay una tendencia en las gráfica y en la tabla; dado que mientras mientras los alumnos pasan menos horas en el tráfico de la ciudad, más tiempo tendrá para dormir cada día.
-
-**HIPÓTESIS:** 
-Mientras  mayor sea la cantidad de tiempo de transporte semanal, menor será las horas que duermen los alumnos diariamente. 
+**Relevancia para el estudio:** Esta pregunta es relevante al estudio ya que nos permite relacionar el tiempo de sueño de un estudiante con las horas que este duerme a la semana. Estudios demuestran que la falta de sueño afecta la salud, el rendimiento académico y el nivel de estrés y queríamos ver si había una relación directa entre tiempo de sueño y tiempo de transporte semanal. 
+```{r}
+summary(DF$Tiempo_Dormir)
+```
+Utilizaremos la media de **6.233h** como punto medio para separar a los estudiantes que duermen más o menos que el promedio.
 
 ```{r}
-smoothScatter(DF$Transporte_Semanal,DF$Tiempo_Dormir,ylab= "Horas diarias de Sueño",xlab="Tiempo Transporte Semanal")
+duermemenos<-(DF[which(DF$Tiempo_Dormir<6.233),])
+summary(duermemenos$Tiempo_Transporte)
 ```
-```{r}
-DF%>% filter()%>%group_by(Tiempo_Dormir)%>%summarise(Mediana_Tiempo=median(Transporte_Semanal))->Dormir_transporte
-Dormir_transporte
-```
+Utilizaremos la media del tiempo de transporte de los estudiantes que duermen menos de 6.233h para verificar nuestra hipótesis **(116.9 min)**.
 
-### ¿Existe alguna relación las horas semanales de transporte con la calificación que le pone el alumno al transporte?
-**ANÁLISIS:**
-En este gráfico podemos observar que hay una mayor concentración de calificaciones altas en los alumnos que tienen un menor tiempo de transporte, mientras que las calificaciones bajas están más dispersas.
 
-**HIPÓTESIS:**
-Si un alumno pasa menos tiempo transportándose, tendrá una mejor experiencia y por consiguiente, le podrá una calificación más alta que alguien que tiene una gran cantidad de horas de transporte.
 
-```{r}
-smoothScatter(DF$Transporte_Semanal,DF$Calificacion,ylab= "Experiencia Transporte",xlab="Tiempo Transporte Semanal")
-```
+**H0: **A menor tiempo de sueño del estudiante, mayor será el tiempo de transporte hacia la universidad.
 
+**H1: **A menor tiempo de sueño del estudiante, menor será el tiempo de transporte hacia la universidad.
+
+**Nivel de confianza:** 95%
+
+**alpha**=0.05
 
 ```{r}
-DF[DF$Transporte_Semanal==max(DF$Transporte_Semanal),]
+t.test(duermemenos$Tiempo_Transporte,mu=116.9,alternative = "greater", conf.level = 0.95)
 ```
+**ANÁLISIS: ** Como el p-value es mayor a nuestro alpha, **(0.4997>0.05)**, no es posible descartar satisfactoriamente la hipótesis nula declarándola estadísticamente insignificante. Se filtraron los resultados en dos rangos de tiempo de sueño **5h o menos** y **6h o más** y los resultados de la media y la mediana apoyaban nuestra hipótesis nula demostrando que los alumnos que dormían 6h o más tenían un menor tiempo de transporte que los estudiantes que dormían 5h o menos.
+
+```{r}
+boxplot(DF$Tiempo_Transporte~DF$Tiempo_Dormir, main="Tiempo de transporte por horas de sueño", ylab="Tiempo de transporte (min)", xlab="Horas de Sueño (h)")
+abline(h=mean(DF$Tiempo_Transporte), col="red")
+```
+```{r}
+s_3_5<-(DF[which(DF$Tiempo_Dormir<=5.5),])
+s_6_8<-(DF[which(DF$Tiempo_Dormir>5.5),])
+"Mediana y media del tiempo de transporte para 5 horas o menos de sueño"
+summary(s_3_5$Tiempo_Transporte)
+
+"Mediana y media del tiempo de transporte para 6 horas o más de sueño"
+summary(s_6_8$Tiempo_Transporte)
+```
+
+### Conclusiones parte inferencial
+
+
+**1.** No se halló una relación clara entre las variables de edad de los encuestados y tiempo de viaje, debido a que no se puede descartar satisfactoriamente la hipótesis 0 y no hay suficiente información que demuestre que la hipótesis 1 no se deba rechazar. 
+
+**2.**Al analizar el efecto del tiempo de transporte en la cantidad de cursos desaprobados y en el promedio ponderado, no se puede descartar satisfactoriamente la hipótesis nula, y al graficar los datos se hallaron ligeras tendencias. Sin embargo, aún es necesario analizar a más profundidad las relaciones entre estas variables, lo cual se podría lograr usando otros métodos, como la regresión. 
+
+**3.** Se pueden generar diferentes relaciones entre las variables pero consideramos que la más relevante es el tiempo de transporte semanal y el número de cursos reprobados y el percentil al que pertenece el alumno. Estas se vinculan ya que se observa cierta tendencia al mayor tiempo de transporte semanal, mayor la cantidad de cursos reprobados y menor el percentil académico. En posteriores entregas sería interesante comprobar estas relaciones con métodos como el de regresión. Asimismo estas relaciones tienen una relación directa con el estudio, puesto que permiten relacionar el rendimiento académico del alumno con el tiempo de transporte diario.
 
 ### Bibliografía:
 * https://gestion.pe/tendencias/lima-ciudades-peor-trafico-269483-noticia/ 
 * https://amp.milenio.com/especiales/estres-cronico-como-identificarlo
+</div>

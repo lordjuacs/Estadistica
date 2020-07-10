@@ -5,15 +5,14 @@ output: html_notebook
 
 
 ```{r}
-rm(list=ls())
-```
-
-```{r}
 library(readr)
 library(dplyr)
 ```
 
 
+```{r}
+rm(list=ls())
+```
 
 
 ```{r}
@@ -21,10 +20,13 @@ DF <- read_csv("Base_DatosFINAL.csv")
 ```
 
 
+```{r}
+DF[,17:20]
+```
 
 
 ```{r}
-dormir <- DF[,20:24]=="Dormir"
+dormir <- DF[,21:25]=="Dormir"
 ```
 
 
@@ -51,7 +53,7 @@ barplot(table(DF3$Dormir))
 
 
 ```{r}
-estudiar <- DF[,20:24]=="Estudiar"
+estudiar <- DF[,21:25]=="Estudiar"
 Estudiar <- c()
 i <- 1
 while(i <= nrow(estudiar)){
@@ -74,7 +76,7 @@ DF3 <- cbind(DF3,Estudiar=Estudiar)
 
 
 ```{r}
-video <- DF[,20:24]=="Jugar videojuegos"
+video <- DF[,21:25]=="Jugar videojuegos"
 
 Video <- c()
 i <- 1
@@ -94,7 +96,7 @@ DF3 <- cbind(DF3,Videojuegos=Video)
 
 
 ```{r}
-deporte <- DF[,20:24]=="Deporte o alguna actividad fisica"
+deporte <- DF[,21:25]=="Deporte o alguna actividad fisica"
 Deporte <- c()
 i <- 1
 while(i <= nrow(deporte)){
@@ -112,7 +114,7 @@ DF3 <- cbind(DF3,Deporte=Deporte)
 
 
 ```{r}
-familiaamigos <- DF[,20:24]=="Pasar tiempo con familia o amigos"
+familiaamigos <- DF[,21:25]=="Pasar tiempo con familia o amigos"
 
 FamiliaAmigos <- c()
 i <- 1
@@ -130,7 +132,7 @@ DF3 <- cbind(DF3,FamiliaAmigos=FamiliaAmigos)
 
 
 ```{r}
-idioma <- DF[,20:24]=="Aprender algun idioma"
+idioma <- DF[,21:25]=="Aprender algun idioma"
 
 Idioma <- c()
 i <- 1
@@ -147,7 +149,7 @@ DF3 <- cbind(DF3,Idioma=Idioma)
 ```
 
 ```{r}
-a1 <- DF[,20:24]!=c("Deporte o alguna actividad fisica")
+a1 <- DF[,21:25]!=c("Deporte o alguna actividad fisica")
 i <-1
 while(i<=nrow(a1)){
   if(is.na(a1[i,1])){
@@ -171,7 +173,7 @@ while(i<=nrow(a1)){
 
 
 ```{r}
-a2 <- DF[,20:24]!=c("Dormir")
+a2 <- DF[,21:25]!=c("Dormir")
 i <-1
 while(i<=nrow(a2)){
   if(is.na(a2[i,1])){
@@ -195,7 +197,7 @@ while(i<=nrow(a2)){
 
 
 ```{r}
-a3 <- DF[,20:24]!=c("Aprender algun idioma")
+a3 <- DF[,21:25]!=c("Aprender algun idioma")
 i <-1
 while(i<=nrow(a3)){
   if(is.na(a3[i,1])){
@@ -219,7 +221,7 @@ while(i<=nrow(a3)){
 
 
 ```{r}
-a4 <- DF[,20:24]!=c("Pasar tiempo con familia o amigos")
+a4 <- DF[,21:25]!=c("Pasar tiempo con familia o amigos")
 i <-1
 while(i<=nrow(a4)){
   if(is.na(a4[i,1])){
@@ -243,7 +245,7 @@ while(i<=nrow(a4)){
 
 
 ```{r}
-a5 <- DF[,20:24]!=c("Estudiar")
+a5 <- DF[,21:25]!=c("Estudiar")
 i <-1
 while(i<=nrow(a5)){
   if(is.na(a5[i,1])){
@@ -267,7 +269,7 @@ while(i<=nrow(a5)){
 
 
 ```{r}
-a6 <- DF[,20:24]!=c("Jugar videojuegos")
+a6 <- DF[,21:25]!=c("Jugar videojuegos")
 i <-1
 while(i<=nrow(a6)){
   if(is.na(a6[i,1])){
@@ -320,6 +322,7 @@ sum(DF3$Videojuegos)->videojuegos
 sum(DF3$FamiliaAmigos)->familiaamigos
 sum(DF3$Idioma)->idioma
 sum(DF3$Otro)->otro
+sum(DF3$Deporte)->deporte
 ```
 
 ```{r}
@@ -380,15 +383,28 @@ while(otro){
 }
 ```
 
+```{r}
+while(deporte){
+  alt <- rbind(alt,"Deporte")
+  deporte <- deporte -1
+}
+```
+
 
 ```{r}
 table(alt$Actividad)
 ```
 
+```{r}
+write_csv(alt, "Actividad.csv")
+
+```
+
+
 # ¿Qué actividades realizarían los alumnos con el tiempo que utilizan para transportarse?
 Este gráfico de barras muestra la representación porcentual respecto a las actividades que los alumnos realizarían con el tiempo que utilizan para transportarse. Se puede observar que dormir y estudiar son las actividades preferidas, con 30% aproximadamente cada una.
 ```{r}
-barplot(table(alt$Actividad)/nrow(alt)*100, main="Actividades a realizar con el tiempo utilizado para el transporte", col = c("lightblue","pink","lightgreen", "orange", "gray"), width = c(1,2),ylim=c(0,100))
+barplot(table(alt$Actividad)/nrow(alt)*100, main="Actividades a realizar con el tiempo utilizado para el transporte", col = c("lightblue","pink","lightgreen", "orange", "gray"), width = c(1,2),ylim=c(0,30))
 ```
 
 
@@ -398,13 +414,8 @@ barplot(table(alt$Actividad)/nrow(alt)*100, main="Actividades a realizar con el 
 
 
 
-
-
-
-
-
 ```{r}
-carro <- DF[,16:19]=="Carro Particular"
+carro <- DF[,17:20]=="Carro Particular"
 carro
 ```
 
@@ -423,16 +434,17 @@ while(i <= nrow(carro)){
 ```
 
 ```{r}
-DF3 <- cbind(DF,Carro=Carro)
+DF3 <- cbind(DF3,Carro=Carro)
 ```
 
 ```{r}
-barplot(table(DF3$Dormir))
+DF3$Dormir
 ```
 
 
+
 ```{r}
-taxi <- DF[,16:19]=="Taxi"
+taxi <- DF[,17:20]=="Taxi"
 Taxi <- c()
 i <- 1
 while(i <= nrow(taxi)){
@@ -455,7 +467,7 @@ DF3 <- cbind(DF3,Taxi=Taxi)
 
 
 ```{r}
-metropolitano <- DF[,16:19]=="Metropolitano / Corredor rojo"
+metropolitano <- DF[,17:20]=="Metropolitano / Corredor rojo"
 
 Metropolitano <- c()
 i <- 1
@@ -468,13 +480,13 @@ while(i <= nrow(metropolitano)){
   i = i + 1
 }
 
-DF3 <- cbind(DF3[,1:27],Metropolitano=Metropolitano)
+DF3 <- cbind(DF3,Metropolitano=Metropolitano)
 
 ```
 
 
 ```{r}
-micro <- DF[,16:19]=="Combi / micro"
+micro <- DF[,17:20]=="Combi / micro"
 Micro <- c()
 i <- 1
 while(i <= nrow(micro)){
@@ -492,7 +504,7 @@ DF3 <- cbind(DF3,Micro=Micro)
 
 
 ```{r}
-bici <- DF[,16:19]=="Bicicleta / scooter"
+bici <- DF[,17:20]=="Bicicleta / scooter"
 
 Bici <- c()
 i <- 1
@@ -510,7 +522,7 @@ DF3 <- cbind(DF3,Bici=Bici)
 
 
 ```{r}
-camino <- DF[,16:19]=="Voy caminando"
+camino <- DF[,17:20]=="Voy caminando"
 
 Camino <- c()
 i <- 1
@@ -527,7 +539,7 @@ DF3 <- cbind(DF3,Camino=Camino)
 ```
 
 ```{r}
-a1 <- DF[,16:19]!=c("Carro Particular")
+a1 <- DF[,17:20]!=c("Carro Particular")
 i <-1
 while(i<=nrow(a1)){
   if(is.na(a1[i,1])){
@@ -549,7 +561,7 @@ while(i<=nrow(a1)){
 
 
 ```{r}
-a2 <- DF[,16:19]!=c("Taxi")
+a2 <- DF[,17:20]!=c("Taxi")
 i <-1
 while(i<=nrow(a2)){
   if(is.na(a2[i,1])){
@@ -571,7 +583,7 @@ while(i<=nrow(a2)){
 
 
 ```{r}
-a3 <- DF[,16:19]!=c("Metropolitano / Corredor rojo")
+a3 <- DF[,17:20]!=c("Metropolitano / Corredor rojo")
 i <-1
 while(i<=nrow(a3)){
   if(is.na(a3[i,1])){
@@ -593,7 +605,7 @@ while(i<=nrow(a3)){
 
 
 ```{r}
-a4 <- DF[,16:19]!=c("Combi / micro")
+a4 <- DF[,17:20]!=c("Combi / micro")
 i <-1
 while(i<=nrow(a4)){
   if(is.na(a4[i,1])){
@@ -615,7 +627,7 @@ while(i<=nrow(a4)){
 
 
 ```{r}
-a5 <- DF[,16:19]!=c("Bicicleta / scooter")
+a5 <- DF[,17:20]!=c("Bicicleta / scooter")
 i <-1
 while(i<=nrow(a5)){
   if(is.na(a5[i,1])){
@@ -637,7 +649,7 @@ while(i<=nrow(a5)){
 
 
 ```{r}
-a6 <- DF[,16:19]!=c("Voy caminando")
+a6 <- DF[,17:20]!=c("Voy caminando")
 i <-1
 while(i<=nrow(a6)){
   if(is.na(a6[i,1])){
@@ -686,6 +698,7 @@ sum(DF3$Taxi) -> taxi
 sum(DF3$Micro)->micro
 sum(DF3$Metropolitano)->metro
 sum(DF3$Camino)->camino
+sum(DF3$Bici) -> bici
 sum(DF3$OtroTransporte)->otrotransporte
 ```
 
@@ -733,13 +746,17 @@ while(micro){
   alt2 <- rbind(alt2,"Micro/combi")
   micro <- micro -1
 }
-while(familiaamigos){
-  alt2 <- rbind(alt2,"Familia/amigos")
-  familiaamigos <- familiaamigos-1
+while(metro){
+  alt2 <- rbind(alt2,"Metropolitano/corredor")
+  metro <- metro-1
 }
 while(camino){
   alt2 <- rbind(alt2,"A pie")
   camino <- camino -1
+}
+while(bici){
+  alt2 <- rbind(alt2,"Bicicleta")
+  bici <- bici -1
 }
 while(otrotransporte){
   alt2 <- rbind(alt2,"Otro transporte")
@@ -755,16 +772,11 @@ table(alt2$Actividad)/nrow(alt2)*100
 # ¿Cuál es el medio de transporte más utilizado?
 La gráfica presenta la distribución porcentual referente a los medios de transportes más utilizados para movilizarse entre la residencia de los alumnos y la universidad. Del gráfico se puede observar que el transporte más usado es el carro particular, seguido muy de cerca por el transporte en _micro/combi_.
 ```{r}
-barplot(table(alt2$Actividad)/nrow(alt2)*100, main="Medio de transporte", col = c("lightblue","pink","lightgreen", "orange", "gray"), width = c(1,2),ylim=c(0,100))
+barplot(table(alt2$Actividad)/nrow(alt2)*100, main="Medio de transporte", col = c("lightblue","pink","lightgreen", "orange", "gray"), width = c(1,2),ylim=c(0,30))
 ```
 
 ```{r}
 write_csv(alt2, "Transporte.csv")
 ```
 
-
-```{r}
-write_csv(alt, "Actividad.csv")
-
-```
 

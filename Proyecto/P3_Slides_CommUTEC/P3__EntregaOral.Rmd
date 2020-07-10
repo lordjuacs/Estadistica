@@ -1,0 +1,222 @@
+---
+title: "P3 - CommUTEC"
+author:  Kevin Aubert, Andrea Chu, Juan Diego Chu, Oscar Gómez & Joaquín Ramírez
+date: July 10, 2020
+output: ioslides_presentation
+---
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+library(readr)
+library(dplyr)
+DF<-read_csv("Base_DatosFINAL.csv")
+```
+
+# Parámetros del estudio
+
+## Parámetros
+
+**Tamaño de Muestra:** 180 encuestados
+
+**Nivel de Confianza:** 95%
+Elegimos un nivel de confianza del 95% puesto que esto significancia que si hubiésemos hecho 20 muestreos y creado 20 intervalos de confianza; se esperaría que 19 de ellos contengan la media de la población. Lo cual representa un porcentaje bastante aceptable para una investigación. Además, 95% es el valor que usualmente se utiliza en este tipo de trabajos.
+
+**Nivel de Significancia:** 0.05
+El nivel de significancia para este caso estará dado por $\alpha=0.05$, el cuál participa en el cálculo del nivel de confianza según la ecuación $1-\alpha= \text{Nivel de confianza}$.
+
+## Parámetros
+
+**Tolerancia:**
+La tolerancia (epsilon) está dada en la fórmula:
+$$\mathbb{P}(\left\vert \overline{X}_n - \mu \right\vert \leq \varepsilon)\geq 1-\alpha$$
+
+De la cual se llega a:
+$$\varepsilon=\frac{Z_a\sigma}{\sqrt{n}}$$ 
+$$a=\alpha/2$$
+Pero como Z es:
+```{r echo=FALSE}
+alfa<- 0.05 
+n=180
+z<- qnorm(alfa/2, lower.tail = FALSE)
+round(z,2)
+```
+
+## Parámetros
+Finalmente la tolerancia quedaría como:
+$$\varepsilon=\frac{1.96 \sigma}{\sqrt{180}}$$
+
+# Intervalos de confianza 
+## Intervalos de confianza
+$$[\overline{X}-\varepsilon, \overline{X}+\varepsilon]$$ 
+
+_EDAD:_
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+E1<-mean(DF$Edad)-1.96*(sd(DF$Edad)/sqrt(180))
+E2<-mean(DF$Edad)+1.96*(sd(DF$Edad)/sqrt(180)) 
+#E1
+#E2
+```
+$$E_1 = 18.93599 \ \ \ \ \ \ \ E_2 = 19.41956$$
+$$\text{Intervalo de Confianza Edad} =[18.93599, 19.41956]$$
+
+
+_TIEMPO DE TRANSPORTE_
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+T1<-mean(DF$Tiempo_Transporte)-1.96*(sd(DF$Tiempo_Transporte)/sqrt(180))
+T2<-mean(DF$Tiempo_Transporte)+1.96*(sd(DF$Tiempo_Transporte)/sqrt(180))
+#T1
+#T2
+```
+$$T_1 = 93.50854 \ \ \ \ \ \ \ T_2 = 113.7248$$
+$$\text{Intervalo de Confianza Tiempo de Transporte}$$
+$$= [93.50854, 113.7248]$$
+
+## Intervalos de confianza
+_TIEMPO DE TRANSPORTE SEMANAL_
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+TS1<-mean(DF$Transporte_Semanal)-1.96*(sd(DF$Transporte_Semanal)/sqrt(180))
+TS2<-mean(DF$Transporte_Semanal)+1.96*(sd(DF$Transporte_Semanal)/sqrt(180))
+#TS1
+#TS2
+```
+$$T_{S_1}=470.9605 \ \ \ \ \ \ \ T_{S_2}=576.8729$$
+
+$$\text{Intervalo de Confianza del Tiempo de Transporte Semanal}$$
+$$= [470.9605, 576.8729]$$
+
+_PROMEDIO PONDERADO:_
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+P1<-mean(DF$Promedio)-1.96*(sd(DF$Promedio)/sqrt(180))
+P2<-mean(DF$Promedio)+1.96*(sd(DF$Promedio)/sqrt(180))
+##P1
+##P2
+```
+$$P_1=14.69495 \ \ \ \ \ \ \ P_2=15.2175$$
+$$\text{Intervalo de Confianza del Promedio Ponderado}$$
+$$= [14.69495, 15.2175]$$
+
+## Intervalos de confianza
+_HORAS DE SUEÑO:_
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+HS1<-mean(DF$Tiempo_Dormir)-1.96*(sd(DF$Tiempo_Dormir)/sqrt(180))
+HS2<-mean(DF$Tiempo_Dormir)+1.96*(sd(DF$Tiempo_Dormir)/sqrt(180))
+#HS1
+#HS2
+```
+$$H_{S_1}=6.064808 \ \ \ \ \ \ \ H_{S_2}=6.401858$$
+$$\text{Intervalo de Confianza de Horas de Sueño}$$ 
+$$=[6.064808, 6.401858]$$
+
+_NÚMERO DE REPROBADOS_
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+NR1<-mean(DF$NroReprobados)-1.96*(sd(DF$NroReprobados)/sqrt(180))
+NR2<-mean(DF$NroReprobados)+1.96*(sd(DF$NroReprobados)/sqrt(180))
+#NR1
+#NR2
+```
+$$N_{R_1}=0.2222577 \ \ \ \ \ \ \ N_{R_2}=0.3888535$$
+$$\text{Intervalo de Confianza de Número de Reprobados}$$
+$$= [0.2222577, 0.3888535]$$
+
+# Pruebas de hipótesis 
+## ¿Existe una relación entre la edad y el tiempo de transporte diario?
+<font size="4">
+**H0:** A mayor la edad de los estudiantes, el tiempo de transporte diario es mayor.
+
+**H1:** A mayor la edad de los estudiantes, el tiempo de transporte diario es menor.
+
+**Como p-value es mayor que nuestro alpha, (0.2469>0.05)** no se puede descartar satisfactoriamente la hipótesis nula declarándola estadísticamente insignificante.</font>
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3.5, fig.width=4.5, fig.align='center'}
+boxplot(DF$Tiempo_Transporte~DF$Edad,main="Tiempo transporte diario vs edad", xlab= "Edad",ylab="Tiempo transporte diario (min)")
+abline(h=median(DF$Tiempo_Transporte),col="red")
+legend("topright", c("Mediana"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
+```
+
+## ¿Existe alguna relación entre el tiempo que pasan en el transporte y la cantidad de cursos desaprobados del estudiante?
+<font size="5"> **H0: ** Los alumnos que pasan un mayor tiempo al transportarse hacia la universidad tendrán un mayor número de cursos desaprobados.
+
+**H1:** Los alumnos que pasan un mayor tiempo al transportarse hacia la universidad tendrán un menor número de cursos desaprobados.
+
+**Como el p-value es mayor a nuestro alpha,(0.56>0.05)**, no es posible descartar satisfactoriamente la hipótesis nula declarándola estadísticamente insignificante.</font>
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+boxplot(DF$Tiempo_Transporte~DF$NroReprobados,main="Tiempo transporte diario (min) vs Cursos Reprobados", xlab= "Cursos reprobados",ylab="Tiempo transporte diario (min)")
+abline(h=median(DF$Tiempo_Transporte),col="red")
+legend("topright", c("Mediana"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
+```
+
+## ¿Existe alguna relación entre el tiempo que pasan en el transporte y el promedio del estudiante en el ciclo 2019-2?
+<font size="4">**H0:**  Los alumnos que pasan más tiempo transportándose tendrán un menor promedio ponderado.
+
+**H1:**El tiempo ponderado sí influye en el promedio ponderado del alumno.
+
+ **Como el p-value es mayor a nuestro alpha,(0.9859>0.05)**, no es posible descartar satisfactoriamente la hipótesis nula declarándola estadísticamente insignificante.</font>
+
+## 
+```{r echo=FALSE}
+t_0_100<-(DF[which(DF$Tiempo_Transporte<=100),])
+t_100_200<-(DF[which(DF$Tiempo_Transporte>100 & DF$Tiempo_Transporte<=200),])
+t_200_300<-(DF[which(DF$Tiempo_Transporte>200),])
+"Mediana y media del promedio para un tiempo de transporte entre 0 y 100 minutos"
+summary(t_0_100$Promedio)
+"Mediana y media del promedio para un tiempo de transporte entre 100 y 200 minutos"
+summary(t_100_200$Promedio)
+"Mediana y media del promedio para un tiempo de transporte entre 200 y 300 minutos"
+summary(t_200_300$Promedio)
+```
+
+## ¿Existe alguna relación entre el grado de mérito del estudiante y las horas que se transporta semanalmente?
+
+<font size="4">**H0:** Los alumnos que se transportan por poco tiempo tendrán un grado de mérito alto.
+
+**H1:** Los alumnos que se transportan por poco tiempo no tendrán un grado de mérito más bajo.
+
+**Como el p-value es mayor a alpha 0.7848>0.05**, no se puede rechazar la hipótesis H0.</font>
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE,fig.align='center'}
+boxplot(DF$Tiempo_Transporte~DF$Percentil, main="Tiempo de transporte por percentil", ylab="Tiempo de transporte (min)", xlab="Percentil")
+abline(h=mean(DF$Tiempo_Transporte), col="red")
+```
+
+## ¿Existe alguna relación entre las horas que se transportan semanalmente y las horas que duermen diariamente los estudiantes?
+<font size="4">**H0: **A menor tiempo de sueño del estudiante, mayor será el tiempo de transporte hacia la universidad.
+
+**H1: **A menor tiempo de sueño del estudiante, menor será el tiempo de transporte hacia la universidad.
+
+**Como el p-value es mayor a nuestro alpha,(0.1904>0.05)**, no es posible descartar satisfactoriamente la hipótesis nula declarándola estadísticamente insignificante.</font>
+
+## 
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center"}
+boxplot(DF$Tiempo_Transporte~DF$Tiempo_Dormir, main="Tiempo de transporte por horas de sueño", ylab="Tiempo de transporte (min)", xlab="Horas de Sueño (h)")
+abline(h=mean(DF$Tiempo_Transporte), col="red")
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+s_3_5<-(DF[which(DF$Tiempo_Dormir<=5.5),])
+s_6_8<-(DF[which(DF$Tiempo_Dormir>5.5),])
+"Mediana y media del tiempo de transporte para 5 horas o menos de sueño"
+summary(s_3_5$Tiempo_Transporte)
+
+"Mediana y media del tiempo de transporte para 6 horas o más de sueño"
+summary(s_6_8$Tiempo_Transporte)
+```
+
+# Conclusiones
+## Conclusiones
+
+**1.** No se halló una relación clara entre las variables de edad de los encuestados y tiempo de viaje, debido a que no se puede descartar satisfactoriamente la hipótesis 0 y no hay suficiente información que demuestre que la hipótesis 1 no se deba rechazar. 
+
+**2.**Al analizar el efecto del tiempo de transporte en la cantidad de cursos desaprobados y en el promedio ponderado, no se puede descartar satisfactoriamente la hipótesis nula, y al graficar los datos se hallaron ligeras tendencias. Sin embargo, aún es necesario analizar a más profundidad las relaciones entre estas variables, lo cual se podría lograr usando otros métodos, como la regresión. 
+
+## Conclusiones
+**3.** Se pueden generar diferentes relaciones entre las variables pero consideramos que la más relevante es el tiempo de transporte semanal y el nivel de estrés y rendimiento académico. Éstas se vinculan ya que se puede observar una ligera tendencia entre mayor tiempo de transporte y menor tiempo de sueño que a largo plazo coincidía con los estudiantes que tenían un estrés mayor a la mediana de estrés y un promedio ponderado menor a la mediana de promedio.
+
+# Bibliografía
+
+##
+
+* https://gestion.pe/tendencias/lima-ciudades-peor-trafico-269483-noticia/ 
+
+* https://amp.milenio.com/especiales/estres-cronico-como-identificarlo
