@@ -1,0 +1,470 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+```{r}
+```
+
+# Preliminares
+
+## Pruebas de protección al consumidor
+
+### Conformidad de nivel
+
+El nivel nominal de cada botella es el reportado en la etiqueta.
+
+Para medir el nivel de una botella se utiliza un cilindro graduado que permite determinar el volumen de gaseosa al $cm^3$ más cercano.
+
+Una botella pasa la prueba de *conformidad de nivel* si su nivel es mayor o igual que el nivel nominal.
+
+Una muestra pasa la prueba de *conformidad de nivel* si no se puede rechazar la hipótesis **El nivel promedio es mayor o igual que el nivel nominal** con un nivel de significancia del $2 \%$.
+
+### Conformidad de transparencia
+
+El nivel de transparencia normalizada de cada botella debería estar generalmente por debajo de $0.06$, el estándar de exportación y raras veces exceder el valor de $0.08$. Bajo ninguna circunstancia debe exceder el valor de $0.1$ que corresponde al estándar internacional.
+
+Una botella pasa la prueba de *conformidad de transparencia* si su transparencia es menor que $0.06$.
+
+Una muestra pasa la prueba de *conformidad de transparencia* si no se puede rechazar la hipótesis **la transparencia promedio es menor o igual que $0.06$** con un nivel de significancia del $2 \%$.
+```{r}
+r(mean(M$faltante))
+```
+
+```{r}
+r((mean(M$faltante)-2)/(sd(M$faltante)/sqrt(nrow(M))))
+```
+```{r}
+r(pt((mean(M$faltante)-2)/(sd(M$faltante)/sqrt(nrow(M))), df = nrow(M)-1)*2)
+
+```
+```{r}
+t.test(M$faltante,mu=2 , conf.level = 0.95)
+r(0.7469)
+```
+
+
+### Prueba de faltante
+
+El faltante de una botella es el volumen por debajo de la capacidad nominal de la botella.
+
+Una botella pasa la *prueba de faltante* si su faltante es $0$.
+
+Una muestra pasa la *prueba de faltante* si no se puede rechazar la hipótesis **el faltante promedio es estadísticamente menor o igual a $2\,cm^3$** con un nivel de significancia del $5 \%$.
+
+### Prueba de turbidez
+
+Una botella pasa la *prueba de turbidez* si su turbidez es menor o igual que $3$.
+
+Una muestra pasa la *prueba de turbidez* si no se puede rechazar la hipótesis **la turbidez promedio es menor o igual que 3** con un nivel de significancia del $5 \%$.
+
+
+### Fracción deficiente
+
+La fracción deficiente de una muestra es el número de botellas con nivel por debajo al nivel nominal, normalizado por el tamaño de la muestra.
+
+Una muestra pasa la prueba de *fracción deficiente* si no se puede rechazar la hipótesis **la fracción deficiente es menor o igual que 0.1** con un nivel de significancia del $5 \%$.
+
+
+```{r}
+t.test(M$faltante,mu=2 , conf.level = 0.95)
+
+```
+```{r}
+r((mean(M$impura)-0.01)/(sd(M$impura)/sqrt(nrow(M))))
+```
+```{r}
+t.test(M$impura, mu=0.01)
+```
+
+### Fracción impura
+
+La fracción impura de una muestra es el número de botellas con transparencia por encima de $0.08$, normalizado por el tamaño de la muestra.
+
+Una muestra pasa la prueba de *fracción impura* si no se puede rechazar la hipótesis **la fracción impura es menor o igual que 0.01** con un nivel de significancia del $5 \%$.
+
+## Problema
+
+Debido a denuncias anónimas por parte de consumidores, protección al consumidor ha decidido llevar a cabo unas pruebas de rutina sobre la calidad del producto que ofrece una compañía local que fabrica y embotella gaseosa para exportación y consumo interno.
+
+La compañía afirma que sigue rigurosos estándares de calidad en el lavado, preparación y embotellado de su gaseosa, por lo que ha puesto un lote de $10000$ botellas a disposición de un auditor externo para llevar a cabo pruebas de control de calidad sobre el mismo.
+
+El auditor externo ha solicitado que la selección del lote se haga de manera aleatoria entre los lotes disponibles para evitar manipulación por parte de la empresa y el lote seleccionado corresponde en el tiempo con las denuncias presentadas.
+
+La tarea del auditor externo es determinar si las denuncias formuladas son razonables, para sugerir correctivos o identificar responsabilidades.
+
+Si se consigue suficiente evidencia de manejo indebido en el proceso de fabricación, el auditor externo puede sugerir pruebas más estrictas que las planteadas, cuyos resultados podrían derivar en penalidades para la compañia en caso de obtener resultados desfavorables en las mismas.
+
+Para la primera (y posiblemente última) etapa, el auditor externo ha decidido tomar una muestra aleatoria de $100$ botellas del lote seleccionado y llevar a cabo diversas pruebas sobre estas.
+
+Las pruebas son independientes entre si y existe un orden en el cual se pueden efectuar de manera todas las pruebas se hacen sobre la misma muestra.
+
+# Laboratorio
+
+## Instrucciones
+
+Todos los resultados enteros deben responderse de manera exacta.
+
+Todos los resultados numéricos que tienen decimales deben ser redondeados correctamente a dos decimales. Para esto puede ser util la función `round` con el parámetro `digits=2`. Como de costumbre, recuerden que siempre pueden hacer `? round` para más detalles.
+
+Si no lo han hecho aún, lean la ayuda de las funciones `t.test` y `prop.test` para entender como **R** plantea estas las pruebas de hipótesis.
+
+Si deciden usar la función `prop.test`, asegurense de usar el parámetro `correct=FALSE`.
+
+Los archivos "Lote.csv" y "Muestra.csv" contienen, respectivamente, todas las variables de interés respecto a las botellas del lote seleccionado y los números de botella de las botellas seleccionadas para la muestra.
+
+## Carga de datos
+
+Primero cargaremos los datos del lote y muestra.
+
+```{r Carga}
+L<-read.csv(file="Lote.csv")
+colnames(L)[1]<-"numero"
+Bot<-read.csv(file="Muestra.csv")[,2]
+```
+
+## Descripción de los datos
+
+En la primera fase, solo debe trabajar con la muestra, por lo que es conveniente tenerla en su propio *data frame*.
+
+```{r Muestra}
+M<-L[Bot,]
+n<-nrow(M)
+```
+
+La función `summary` permite resumir las características básicas de la muestra.
+```{r}
+summary(M)
+```
+
+Unas gráficas pueden ayudar a entender a que nos enfrentamos. Las líneas punteadas corresponden a los diversos valores específicados en las pruebas que menciona el enunciado.
+
+```{r}
+boxplot(M$nivel,main="Nivel")
+abline(h=750,col="blue",lty=3)
+boxplot(M$transparencia,main="Transparencia",ylim=c(0,0.1))
+abline(h=c(0.06,0.08,0.1),col=c("blue","gray","red"),lty=3)
+boxplot(M$faltante,main="Faltante")
+abline(h=2,col="blue",lty=3)
+boxplot(M$turbidez,main="Turbidez")
+abline(h=3,col="blue",lty=3)
+barplot(table(M$deficiente)/n,main="Deficientes",names.arg=c("fracción no-deficiente","fracción deficiente"),col=c("white","yellow"))
+abline(h=0.1,col="blue",lty=3)
+barplot(table(M$impura)/n,main="Impuras",names.arg=c("fracción no-impura","fracción impura"),col=c("white","yellow"))
+abline(h=0.01,col="blue",lty=3)
+```
+
+Finalmente, podemos hacer unos histogramas de las variables numéricas de la mustra para tener una idea de como se distribuyen los valores. 
+
+```{r}
+hist(M$nivel,main="Nivel",prob=TRUE,ylab="densidad",xlab="nivel observado")
+abline(v=750,col="blue",lty=3,sub=paste("Tamaño de la muestra:",n))
+hist(M$transparencia,main="Transparencia",xlim=c(0,0.1),prob=TRUE,ylab="densidad",xlab="transparencia observada",sub=paste("Tamaño de la muestra:",n))
+abline(v=c(0.06,0.08,0.1),col=c("blue","gray","red"),lty=3)
+hist(M$faltante,main="Faltante",prob=TRUE,ylab="densidad",xlab="faltante observado",sub=paste("Tamaño de la muestra:",n))
+abline(v=2,col="blue",lty=3)
+hist(M$turbidez,main="Turbidez",prob=TRUE,ylab="densidad",xlab="turbidez observada",sub=paste("Tamaño de la muestra:",n))
+abline(v=3,col="blue",lty=3)
+```
+
+## Estimación e inferencia
+
+Haga su análisis aquí y responda a las preguntas planteadas en **L2018.1.3.I** y **L2018.1.3.E**.
+
+¡Buena suerte!
+
+
+
+```{r}
+?t.test
+?prop.test
+```
+
+```{r}
+ intervalo_desconocido<-function(media,s, n,confianza=0.95){
+   alpha <- 1- confianza
+   tcritico <- qt(alpha/2, df = n-1)
+   liminf <- media + tcritico*s/sqrt(n)
+   limsup <- media - tcritico*s/sqrt(n)
+   cat("(",liminf,limsup,")")
+   return (limsup-liminf)
+ }
+```
+
+```{r}
+ intervalo_conocido<-function(media,sd, n,confianza=0.95){
+   alpha <- 1- confianza
+   zcritico <- qnorm(alpha/2, lower.tail = FALSE)
+   liminf <- media + zcritico*sd/sqrt(n)
+   limsup <- media - zcritico*sd/sqrt(n)
+   cat("(",liminf,limsup,")")
+   return (limsup-liminf)
+ }
+```
+
+
+```{r}
+qt(0.05, df=99)*-1 - qt(0.05, df=99)
+round(qt(0.05, df=10000000000000)*-1 - qt(0.05, df=10000000000000),2)
+```
+
+```{r}
+intervalo_desconocido(media = mean(M$faltante), s = sd(M$faltante), n= nrow(M))
+round(2.784442 ,2)
+```
+
+```{r}
+intervalo_desconocido(media = mean(M$nivel), s = sd(M$nivel), n= nrow(M))
+round(748.6353 ,2)
+```
+
+```{r}
+intervalo_desconocido(media = sum(M$impura)/nrow(M), s = sd(M$nivel), n= nrow(M))
+round(748.6353 ,2)
+```
+
+```{r}
+summary(M)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+alpha <- 0.02
+zcritico <- qnorm(alpha/2, lower.tail = FALSE)
+(sum(M$deficiente)/nrow(M)) + zcritico*sqrt((sum(M$deficiente)/nrow(M))*(1-(sum(M$deficiente)/nrow(M)))/nrow(M)) - (sum(M$deficiente)/nrow(M)) + zcritico*sqrt((sum(M$deficiente)/nrow(M))*(1-(sum(M$deficiente)/nrow(M)))/nrow(M))
+```
+
+```{r}
+round(0.1661345,2)
+```
+
+```{r}
+r <- function(x){return(round(x,2))}
+```
+
+```{r}
+intervalo_desconocido(mean(M$transparencia), sd(M$transparencia), n=100, confianza = 0.98)
+r(0.0471949 )
+```
+
+```{r}
+intervalo_desconocido(mean(M$turbidez), sd(M$turbidez), n=100, confianza = 0.95)
+r(1.883154 )
+```
+
+```{r}
+sum(L$impura)
+```
+```{r}
+sum(M$impura)/nrow(M)
+ qnorm(0.02/2, lower.tail = FALSE)
+```
+
+```{r}
+p <- sum(M$impura)/nrow(M)
+n <- 100
+zp <- qnorm(0.02/2, lower.tail = FALSE)
+p + zp*sqrt(p*(1-p)/n)
+p - zp*sqrt(p*(1-p)/n)
+r(0.06968452)
+```
+
+
+
+```{r}
+r((qt(p=0.05/2,df=100-1, lower.tail = FALSE)*2)/sqrt(100))
+```
+
+
+
+
+
+
+```{r}
+M$faltante
+```
+
+```{r}
+t.test(x=M$faltante, conf.level = 0.95)
+r(2.784442)
+```
+
+
+
+
+```{r}
+intervalo_desconocido(mean(M$faltante), s = sd(M$faltante), n=nrow(M))
+```
+
+
+
+
+```{r}
+r(1.435558 )
+```
+
+```{r}
+length(M$impura)
+nrow(M)
+```
+
+```{r}
+sum(M$impura)/100
+```
+
+```{r}
+p <- sum(M$impura)/nrow(M)
+p
+r(p + qnorm(0.02/2, lower.tail = FALSE)*sqrt(p*(1-p)/nrow(M)))
+r(p - qnorm(0.02/2, lower.tail = FALSE)*sqrt(p*(1-p)/nrow(M)))
+
+```
+
+
+
+```{r}
+r(mean(M$transparencia))
+
+r((mean(M$transparencia)-0.06)/(sd(M$transparencia)/sqrt(nrow(M))))
+r(pt((mean(M$transparencia)-0.06)/(sd(M$transparencia)/sqrt(nrow(M))), df=100-1))
+```
+
+
+
+
+
+
+```{r}
+t.test(M$transparencia, mu=0.06, conf.level = 0.98, alternative = "less")
+4.883e-13 < 0.02
+
+```
+
+```{r}
+
+```
+
+```{r}
+t.test(M$impura, mu = 0.01, conf.level = 0.95, alternative = "less")
+```
+
+```{r}
+mean(M$impura)
+r((mean(M$impura)-0.01)/(sd(M$impura)/sqrt(nrow(M))))
+r(pt((mean(M$impura)-0.01)/(sd(M$impura)/sqrt(nrow(M))), df=100-1))
+r(pt((mean(M$impura)-0.01)/(sd(M$impura)/sqrt(nrow(M))), df=100-1)) >= 0.05
+
+```
+
+
+
+
+```{r}
+t.test(M$nivel, mu=750, alternative = "less")
+```
+```{r}
+r(pt((mean(M$nivel)-750)/(sd(M$nivel)/sqrt(nrow(M))), df=100-1))
+r((mean(M$nivel)-750)/(sd(M$nivel)/sqrt(nrow(M))))
+r(mean(M$nivel))
+
+```
+
+
+```{r}
+mean(M$faltante)
+r(pt((mean(M$faltante)-2)/(sd(M$faltante)/sqrt(nrow(M))), df=nrow(M)-1))
+t.test(M$faltante, mu = 2, conf.level = 0.95, alternative = "less")
+r(pt((mean(M$faltante)-2)/(sd(M$faltante)/sqrt(nrow(M))), df=nrow(M)-1)) < 0.05
+```
+
+```{r}
+r(mean(M$impura))
+r((mean(M$impura)-0.01)/(sd(M$impura)/sqrt(nrow(M))))
+r(pt((mean(M$impura)-0.01)/(sd(M$impura)/sqrt(nrow(M))), df=nrow(M)-1))
+t.test(M$impura, mu=0.01, conf.level = 0.95, alternative = "less")
+```
+
+
+
+
+
+```{r}
+qt(0.05/2, df=100-1, lower.tail = FALSE)
+r((2*qt(0.02/2, df=100-1, lower.tail = FALSE))/sqrt(100))
+```
+
+
+
+
+
+
+
+
+```{r}
+intervalo_desconocido(mean(M$transparencia),s = sd(M$transparencia), confianza = 0.98, n=nrow(M))
+```
+
+```{r}
+r(0.0367851)
+r(0.0471949 )
+```
+
+
+```{r}
+t.test(M$transparencia, conf.level = 0.98)
+```
+```{r}
+intervalo_desconocido(mean(M$transparencia),s = sd(M$transparencia), confianza = 0.98, n=nrow(M))
+```
+
+
+```{r}
+p <- sum(M$deficiente)/nrow(M)
+p
+r(p + qnorm(0.02/2, lower.tail = FALSE)*sqrt(p*(1-p)/nrow(M)))
+r(p - qnorm(0.02/2, lower.tail = FALSE)*sqrt(p*(1-p)/nrow(M)))
+
+```
+```{r}
+
+```
+
+
+
+
+```{r}
+r(pt((mean(M$nivel)-750)/(sd(M$nivel)/sqrt(nrow(M))), df=100-1))
+r((mean(M$nivel)-750)/(sd(M$nivel)/sqrt(nrow(M))))
+r(mean(M$nivel))
+```
+
+```{r}
+t.test(M$nivel, mu = 750, alternative = "less", conf.level = 0.98)
+```
+```{r}
+#p-value < alpha
+0.2559 < 0.02 
+```
+
+
+```{r}
+r((mean(M$impura)-0.01)/sqrt(0.01*(1-0.01)/nrow(M)))
+pt(2.01, df=100-1)
+```
+```{r}
+prop.test(x=c(3), p = 0.01, n=c(100), conf.level = 0.95, alternative = "less", correct = FALSE)
+```
+
