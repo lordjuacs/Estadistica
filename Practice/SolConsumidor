@@ -1,0 +1,381 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Preliminares
+
+## Pruebas de protección al consumidor
+
+### Conformidad de nivel
+
+El nivel nominal de cada botella es el reportado en la etiqueta.
+
+Para medir el nivel de una botella se utiliza un cilindro graduado que permite determinar el volumen de gaseosa al $cm^3$ más cercano.
+
+Una botella pasa la prueba de *conformidad de nivel* si su nivel es mayor o igual que el nivel nominal.
+
+Una muestra pasa la prueba de *conformidad de nivel* si no se puede rechazar la hipótesis **El nivel promedio es mayor o igual que el nivel nominal** con un nivel de significancia del $2 \%$.
+
+### Conformidad de transparencia
+
+El nivel de transparencia normalizada de cada botella debería estar generalmente por debajo de $0.06$, el estándar de exportación y raras veces exceder el valor de $0.08$. Bajo ninguna circunstancia debe exceder el valor de $0.1$ que corresponde al estándar internacional.
+
+Una botella pasa la prueba de *conformidad de transparencia* si su transparencia es menor que $0.06$.
+
+Una muestra pasa la prueba de *conformidad de transparencia* si no se puede rechazar la hipótesis **la transparencia promedio es menor o igual que $0.06$** con un nivel de significancia del $2 \%$.
+
+### Prueba de faltante
+
+El faltante de una botella es el volumen por debajo de la capacidad nominal de la botella.
+
+Una botella pasa la *prueba de faltante* si su faltante es $0$.
+
+Una muestra pasa la *prueba de faltante* si no se puede rechazar la hipótesis **el faltante promedio es estadísticamente menor o igual a $2\,cm^3$** con un nivel de significancia del $5 \%$.
+
+### Prueba de turbidez
+
+Una botella pasa la *prueba de turbidez* si su turbidez es menor o igual que $3$.
+
+Una muestra pasa la *prueba de turbidez* si no se puede rechazar la hipótesis **la turbidez promedio es menor o igual que 3** con un nivel de significancia del $5 \%$.
+
+
+### Fracción deficiente
+
+La fracción deficiente de una muestra es el número de botellas con nivel por debajo al nivel nominal, normalizado por el tamaño de la muestra.
+
+Una muestra pasa la prueba de *fracción deficiente* si no se puede rechazar la hipótesis **la fracción deficiente es menor o igual que 0.1** con un nivel de significancia del $5 \%$.
+
+### Fracción impura
+
+La fracción impura de una muestra es el número de botellas con transparencia por encima de $0.08$, normalizado por el tamaño de la muestra.
+
+Una muestra pasa la prueba de *fracción impura* si no se puede rechazar la hipótesis **la fracción impura es menor o igual que 0.01** con un nivel de significancia del $5 \%$.
+
+## Problema
+
+Debido a denuncias anónimas por parte de consumidores, protección al consumidor ha decidido llevar a cabo unas pruebas de rutina sobre la calidad del producto que ofrece una compañía local que fabrica y embotella gaseosa para exportación y consumo interno.
+
+La compañía afirma que sigue rigurosos estándares de calidad en el lavado, preparación y embotellado de su gaseosa, por lo que ha puesto un lote de $10000$ botellas a disposición de un auditor externo para llevar a cabo pruebas de control de calidad sobre el mismo.
+
+El auditor externo ha solicitado que la selección del lote se haga de manera aleatoria entre los lotes disponibles para evitar manipulación por parte de la empresa y el lote seleccionado corresponde en el tiempo con las denuncias presentadas.
+
+La tarea del auditor externo es determinar si las denuncias formuladas son razonables, para sugerir correctivos o identificar responsabilidades.
+
+Si se consigue suficiente evidencia de manejo indebido en el proceso de fabricación, el auditor externo puede sugerir pruebas más estrictas que las planteadas, cuyos resultados podrían derivar en penalidades para la compañia en caso de obtener resultados desfavorables en las mismas.
+
+Para la primera (y posiblemente última) etapa, el auditor externo ha decidido tomar una muestra aleatoria de $100$ botellas del lote seleccionado y llevar a cabo diversas pruebas sobre estas.
+
+Las pruebas son independientes entre si y existe un orden en el cual se pueden efectuar de manera todas las pruebas se hacen sobre la misma muestra.
+
+# Laboratorio
+
+## Instrucciones
+
+Todos los resultados enteros deben responderse de manera exacta.
+
+Todos los resultados numéricos que tienen decimales deben ser redondeados correctamente a dos decimales. Para esto puede ser util la función `round` con el parámetro `digits=2`. Como de costumbre, recuerden que siempre pueden hacer `? round` para más detalles.
+
+Si no lo han hecho aún, lean la ayuda de las funciones `t.test` y `prop.test` para entender como **R** plantea estas las pruebas de hipótesis.
+
+Si deciden usar la función `prop.test`, asegurense de usar el parámetro `correct=FALSE`.
+
+Los archivos "Lote.csv" y "Muestra.csv" contienen, respectivamente, todas las variables de interés respecto a las botellas del lote seleccionado y los números de botella de las botellas seleccionadas para la muestra.
+
+## Carga de datos
+
+Primero cargaremos los datos del lote y muestra.
+
+```{r Carga}
+L<-read.csv(file="Lote.csv")
+colnames(L)[1]<-"numero"
+Bot<-read.csv(file="Muestra.csv")[,2]
+```
+
+## Descripción de los datos
+
+En la primera fase, solo debe trabajar con la muestra, por lo que es conveniente tenerla en su propio *data frame*.
+
+```{r Muestra}
+M<-L[Bot,]
+n<-nrow(M)
+```
+
+La función `summary` permite resumir las características básicas de la muestra.
+```{r}
+summary(M)
+```
+
+Unas gráficas pueden ayudar a entender a que nos enfrentamos. Las líneas punteadas corresponden a los diversos valores específicados en las pruebas que menciona el enunciado.
+
+```{r}
+boxplot(M$nivel,main="Nivel")
+abline(h=750,col="blue",lty=3)
+boxplot(M$transparencia,main="Transparencia",ylim=c(0,0.1))
+abline(h=c(0.06,0.08,0.1),col=c("blue","gray","red"),lty=3)
+boxplot(M$faltante,main="Faltante")
+abline(h=2,col="blue",lty=3)
+boxplot(M$turbidez,main="Turbidez")
+abline(h=3,col="blue",lty=3)
+barplot(table(M$deficiente)/n,main="Deficientes",names.arg=c("fracción no-deficiente","fracción deficiente"),col=c("white","yellow"))
+abline(h=0.1,col="blue",lty=3)
+barplot(table(M$impura)/n,main="Impuras",names.arg=c("fracción no-impura","fracción impura"),col=c("white","yellow"))
+abline(h=0.01,col="blue",lty=3)
+```
+
+Finalmente, podemos hacer unos histogramas de las variables numéricas de la mustra para tener una idea de como se distribuyen los valores. 
+
+```{r}
+hist(M$nivel,main="Nivel",prob=TRUE,ylab="densidad",xlab="nivel observado")
+abline(v=750,col="blue",lty=3,sub=paste("Tamaño de la muestra:",n))
+hist(M$transparencia,main="Transparencia",xlim=c(0,0.1),prob=TRUE,ylab="densidad",xlab="transparencia observada",sub=paste("Tamaño de la muestra:",n))
+abline(v=c(0.06,0.08,0.1),col=c("blue","gray","red"),lty=3)
+hist(M$faltante,main="Faltante",prob=TRUE,ylab="densidad",xlab="faltante observado",sub=paste("Tamaño de la muestra:",n))
+abline(v=2,col="blue",lty=3)
+hist(M$turbidez,main="Turbidez",prob=TRUE,ylab="densidad",xlab="turbidez observada",sub=paste("Tamaño de la muestra:",n))
+abline(v=3,col="blue",lty=3)
+```
+
+## Estimación e inferencia
+
+Haga su análisis aquí y responda a las preguntas planteadas en **L2018.1.3.I** y **L2018.1.3.E**.
+
+¡Buena suerte!
+
+# Preguntas
+
+## Introductorias
+
+### 1. Pregunta 1. 
+¿Qué tipo de muestreo realiza el auditor externo?
+
+Como se selecciona un lote al azar y luego se selecciona una muestra aleatoria dentro de ese lote, tenemos un muestreo por conglomerados.
+
+### 2. Pregunta 2. 
+¿Qué hace el fragmento de código *Carga*?
+
+El fragmento carga los datos, reetiqueta la primera columna del lote y elimina una columna superflua de los datos de la muestra.
+
+### 3. Pregunta 3.
+
+## Intervalos de confianza
+
+### 4. Pregunta 4a. 
+Si utilizamos una confianza del $98 \%$ ¿Cuál es el ancho del intervalo de confianza para la media en desviaciones estándar estimadas?
+
+```{r}
+a4a<-2*qt(0.01,df=100-1,lower.tail=FALSE)/sqrt(100)
+a4a
+round(a4a,digits=2)
+```
+
+### 5. Pregunta 4b. 
+Si utilizamos una confianza del $95 \%$ ¿Cuál es el ancho del intervalo de confianza para la media en desviaciones estándar estimadas?
+
+```{r}
+a4b<-2*qt(0.025,df=100-1,lower.tail=FALSE)/sqrt(100)
+a4b
+round(a4b,digits=2)
+```
+
+### 6. Pregunta 4c
+
+Si utilizamos una confianza del $98 \%$ ¿Cuál es el ancho del intervalo de confianza para la proporción en desviaciones estándar estimadas?
+
+```{r}
+a4c<-2*qnorm(0.01,lower.tail=FALSE)/sqrt(100)
+a4c
+round(a4c,digits=2)
+```
+
+### 7. Pregunta 4d
+
+Si utilizamos una confianza del $95 \%$ ¿Cuál es el ancho del intervalo de confianza para la proporción en desviaciones estándar estimadas?
+
+```{r}
+a4d<-2*qnorm(0.025,lower.tail=FALSE)/sqrt(100)
+a4d
+round(a4d,digits=2)
+```
+
+### 8. Pregunta 5. 
+
+Por comodidad vamos a tomar la muestra directamente para evitar tener que usar el modo de acceso de índices sobre el lote cada vez.
+
+```{r}
+M<-L[Bot,]
+n<-nrow(M)
+```
+
+Es conveniente escribir un par de funciones que ayuden a evitar la repetición insensata de código.
+
+```{r}
+MostrarICmedia<-function(X,conf){
+  n<-length(X)
+  t<-qt((1-conf)/2,df=n-1,lower.tail=FALSE)
+  izq<-mean(X)-t*sd(X)/sqrt(n)
+  der<-mean(X)+t*sd(X)/sqrt(n)
+  cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
+  invisible(c(izq,der))
+}
+```
+
+```{r}
+MostrarICproporcion<-function(X,conf){
+  n<-length(X)
+  z<-qnorm((1-conf)/2,lower.tail=FALSE)
+  pbar<-mean(X)
+  izq<-pbar-z*sqrt(pbar*(1-pbar)/n)
+  der<-pbar+z*sqrt(pbar*(1-pbar)/n)
+  cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
+  invisible(c(izq,der))
+}
+```
+
+La función `invisible` funciona de manera similar al `return` pero no muestra el valor de retorno, pero el retorno puede ser asignado a una variable, como de costumbre.
+
+### 9. Pregunta 6a.
+
+El intervalo del $98 \%$ de confianza para el nivel es:
+
+```{r}
+MostrarICmedia(M$nivel,0.98)
+```
+
+### 10. Pregunta 6b.
+
+El intervalo del $98 \%$ de confianza para la transparencia es:
+
+```{r}
+MostrarICmedia(M$transparencia,0.98)
+```
+
+### 11. Pregunta 6c.
+
+El intervalo del $95 \%$ de confianza para el faltante es:
+
+```{r}
+MostrarICmedia(M$faltante,0.95)
+```
+
+### 12. Pregunta 6d.
+
+El intervalo del $95 \%$ de confianza para la turbidez es:
+
+```{r}
+MostrarICmedia(M$turbidez,0.95)
+```
+
+```{r}
+mean(L$turbidez)
+median(L$turbidez)
+```
+
+
+
+### 13. Pregunta 7a.
+
+El intervalo del $98 \%$ de confianza para la proporcion de botellas deficientes es:
+
+```{r}
+MostrarICproporcion(M$deficiente,0.98)
+```
+
+### 14. Pregunta 7b.
+
+El intervalo del $98 \%$ de confianza para la proporcion de botellas impuras es:
+
+```{r}
+MostrarICproporcion(M$impura,0.98)
+```
+
+### 15. Pregunta 8a.
+
+Los valores para responder esta pregunta se extraen de la salida de la función `t.test` y se redondean apropiadamente a dos decimales.
+
+```{r}
+t.test(M$nivel,mu=750,alternative="less",conf.level=0.98)
+``` 
+
+La respuesta es: 
+
+En la prueba de conformidad de nivel, el promedio es de **749.66**, el valor del estadístico es de **-0.66** y el p-valor correspondiente es **0.26** por lo que podemos decir que **no rechazamos H0** a un nivel de significancia de **0.02**.
+
+
+### 16. Pregunta 8b.
+
+Los valores para responder esta pregunta se extraen de la salida de la función `t.test` y se redondean apropiadamente a dos decimales.
+
+```{r}
+t.test(M$transparencia,mu=0.06,alternative="greater",conf.level=0.98)
+```
+
+La respuesta es:
+
+En la prueba de conformidad de transparencia, el promedio es de **0.04**, el valor del estadístico es de **-8.18** y el p-valor correspondiente es **1.00** por lo que podemos decir que **no rechazamos H0** a un nivel de significancia de **0.02**.
+
+### 17. Pregunta 8c.
+
+Los valores para responder esta pregunta se extraen de la salida de la función `t.test` y se redondean apropiadamente a dos decimales.
+
+```{r}
+t.test(M$faltante,mu=2,alternative="greater",conf.level=0.95)
+```
+
+La respuesta es:
+
+En la prueba de faltante, el promedio es de **2.11**, el valor del estadístico es de **0.32** y el p-valor correspondiente es **0.37** por lo que podemos decir que **no rechazamos H0** a un nivel de significancia de **0.05**.
+
+### 18. Pregunta 8d.
+
+Los valores para responder esta pregunta se extraen de la salida de la función `t.test` y se redondean apropiadamente a dos decimales.
+
+```{r}
+t.test(M$turbidez,mu=3,alternative = "greater",conf.level=0.95)
+```
+
+La respuesta es:
+
+En la prueba de turbidez, el promedio es de **3.44**, el valor del estadístico es de **0.56** y el p-valor correspondiente es **0.29** por lo que podemos decir que **no rechazamos H0** a un nivel de significancia de **0.05**.
+
+
+## 19. Pregunta 9a.
+
+Los valores para responder esta pregunta se extraen de la salida de la función `prop.test` y se redondean apropiadamente a dos decimales.
+
+```{r}
+prop.test(sum(M$deficiente),n,p=0.1,alternative="greater",conf.level=0.95,correct=FALSE)
+```
+
+En este caso, se debe tener cuidado pues el estadístico reportado en prop.test es chi cuadrado con un grado de libertad (es decir, el cuadrado de una normal estándar) en vez de t.
+
+Para obtener el valor que buscamos basta con sacar la raíz cuadrada.
+
+La respuesta es:
+
+En la prueba de fracción deficiente, el promedio es de **0.15**, el valor del estadístico es de **1.67** y el p-valor correspondiente es **0.05** por lo que podemos decir que **no rechazamos H0** a un nivel de significancia de **0.05**.
+
+## 20. Pregunta 9b.
+
+Los valores para responder esta pregunta se extraen de la salida de la función `prop.test` y se redondean apropiadamente a dos decimales.
+
+```{r}
+prop.test(sum(M$impura),n,p=0.01,alternative="greater",conf.level=0.95,correct=FALSE)
+```
+
+
+En este caso, se debe tener cuidado pues el estadístico reportado en prop.test es chi cuadrado con un grado de libertad (es decir, el cuadrado de una normal estándar) en vez de t.
+
+Para obtener el valor que buscamos basta con sacar la raíz cuadrada.
+
+En la prueba de fracción impura, el promedio es de **0.03**, el valor del estadístico es de **2.01** y el p-valor correspondiente es **0.02** por lo que podemos decir que **rechazamos H0** a un nivel de significancia de **0.05**.
+
+## 21. Pregunta 10.
+
+En esta pregunta resumimos las conclusiones que puede sacar el auditor externo.
+
+La respuesta es:
+
+En vista de que la muestra **falló algunas pruebas** el auditor externo debería recomendar **aplicar una batería de pruebas más estrictas** pues **encontró evidencia** de desviaciones estadísticamente significativas en la muestra examinada.
+
+

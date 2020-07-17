@@ -1,0 +1,32 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+pnorm(45,mean = 43, sd=0.8, lower.tail = FALSE)
+```
+
+```{r}
+propor(0.01,400,confianza = 0.98)
+```
+
+```{r}
+prop.test(1,10,p = 0.01,correct = FALSE,conf.level = 0.98,alternative = "greater")
+```
+
+```{r}
+r(sqrt(8.1818))
+```
+```{r}
+r(((0.1)-0.01)/sqrt(0.01*(1-0.01)/10))
+```
+
+```{r}
+r(qnorm(0.02, lower.tail = FALSE))
+```
+
+```{r}
+0.002116<0.02
+```
+

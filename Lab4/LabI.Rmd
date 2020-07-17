@@ -1,0 +1,82 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+ICmediaTstudent
+```
+
+
+```{r}
+library(readr)
+M <- read_csv("sacos.csv")
+```
+
+```{r}
+nrow(M)
+des <- 0.8
+sd(M$X)
+```
+```{r}
+alpha <- 0.02
+zmed <- qnorm(alpha/2, lower.tail = FALSE)
+r(((des*zmed)/0.1)^2)
+mean(M$X)
+```
+```{r}
+r(pnorm(2/des, lower.tail = FALSE))
+```
+
+```{r}
+intervalo_conocido
+```
+
+
+```{r}
+intervalo_conocido(media=43.91, sd=0.8, n=16,confianza = 0.98)
+r(43.44473)
+r(44.37527)
+```
+
+
+
+
+```{r}
+intervalo_conocido(media=44.01, sd=1.61, n=16,confianza = 0.98)
+r(43.07364)
+r(44.94636)
+```
+```{r}
+r(sd(M$X))
+```
+
+
+
+
+```{r}
+r((mean(M$X)-43)/(sd(M$X)/sqrt(nrow(M))))
+```
+
+
+
+```{r}
+alpha <- 0.02
+  #valor critico
+r(qnorm(alpha, lower.tail = FALSE))
+```
+
+
+```{r}
+pnorm(qnorm(alpha, lower.tail = FALSE),lower.tail = FALSE)
+```
+
+
+```{r}
+  t.test(M$X, mu = 43, conf.level = 0.98, alternative = "greater")
+```
+
+
+
+
+
+

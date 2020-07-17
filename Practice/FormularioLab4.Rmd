@@ -1,0 +1,140 @@
+---
+title: "Funciones para Lab4"
+output: html_notebook
+---
+
+Ancho del intervalo para la **proporcion** en sd estimadas
+```{r}
+a4c<-2*qnorm(alpha/2 ,lower.tail=FALSE)/sqrt(n)
+```
+
+
+Ancho del intervalo para la **MEDIA** en sd estimadas
+
+```{r}
+a4b<-2*qt(alpha/2,df=n-1,lower.tail=FALSE)/sqrt(n)
+```
+
+**INTERVALOS DE CONFIANZA**
+```{r}
+ICmediaTstudent<-function(X,conf){
+  n<-length(X)
+  t<-qt((1-conf)/2,df=n-1,lower.tail=FALSE)
+  izq<-mean(X)-t*sd(X)/sqrt(n)
+  der<-mean(X)+t*sd(X)/sqrt(n)
+  cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
+  invisible(c(izq,der))
+}
+```
+
+```{r}
+ICmediaZeta<-function(X,conf){
+  n<-length(X)
+  z<-qnorm((1-conf)/2,lower.tail=FALSE)
+  izq<-mean(X)-t*sd(X)/sqrt(n)
+  der<-mean(X)+t*sd(X)/sqrt(n)
+  cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
+  invisible(c(izq,der))
+}
+
+```
+
+
+```{r}
+{r}
+ICproporcion<-function(X,conf){
+  n<-length(X)
+  z<-qnorm((1-conf)/2,lower.tail=FALSE)
+  pbar<-mean(X)
+  izq<-pbar-z*sqrt(pbar*(1-pbar)/n)
+  der<-pbar+z*sqrt(pbar*(1-pbar)/n)
+  cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
+  invisible(c(izq,der))
+}
+```
+
+
+ej:
+```{r}
+MostrarICmedia(M$faltante,0.95)
+```
+
+
+**t.test**
+```{r}
+t.test(M$nivel,mu=750,alternative="less",conf.level=0.98)
+```
+
+si dice q debe ser mu<=, "greater"
+si dice q debe ser mu>=, "less"
+
+valor del estadístico= t
+p-value >= alpha, **NO** rechazamos H0
+p-value < alpha, **SI** rechazamos H0
+
+
+**prop.test**
+```{r}
+prop.test(aciertos ,n ,p=0.1, alternative="greater",conf.level=0.95,correct=FALSE)
+```
+p = proporcion de hipotesis, ej. la fracción deficiente es menor o igual que 0.1
+
+si dice q debe ser p<=, "greater"
+si dice q debe ser p>=, "less"
+
+valor del estadistico = sqrt(X squared), aka, sacarle la raíz cuadrada
+
+
+-------------------------------------------------
+
+**funciones del toro juacs**
+
+```{r}
+intervalo_desconocido<-function(media, s, n,confianza=0.95){
+   alpha <- 1- confianza
+   tcritico <- qt(alpha/2, df = n-1)
+   liminf <- media + tcritico*s/sqrt(n)
+   limsup <- media - tcritico*s/sqrt(n)
+   cat("(",liminf,limsup,")")
+   return (limsup-liminf)
+ }
+```
+
+
+```{r}
+intervalo_conocido<-function(media,sd, n,confianza=0.95){
+   alpha <- 1- confianza
+   zcritico <- qnorm(alpha/2, lower.tail = FALSE)
+   liminf <- media - zcritico*sd/sqrt(n)
+   limsup <- media + zcritico*sd/sqrt(n)
+   cat("(",liminf,limsup,")")
+   return (limsup-liminf)
+}
+```
+
+
+#proporción
+```{r}
+propor <- function(p,n, confianza = 0.95){
+   alpha <- 1- confianza
+   zcritico <- qnorm(alpha/2, lower.tail = FALSE)
+   liminf <- p - zcritico*sqrt(p*(1-p)/n)
+   limsup <- p + zcritico*sqrt(p*(1-p)/n)
+   cat("(",liminf,limsup,")")
+   cat("\n(",r(liminf),r(limsup),")\n")
+
+   return (limsup-liminf)
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
