@@ -1,0 +1,284 @@
+---
+title: "P4 - CommUTEC"
+author:  Kevin Aubert, Andrea Chu, Juan Diego Chu, Oscar Gómez & Joaquín Ramírez
+date: July 24, 2020
+output: ioslides_presentation
+---
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+library(readr)
+library(dplyr)
+DF<-read_csv("Base_DatosFINAL.csv")
+```
+  
+# Parámetros del estudio
+
+## Parámetros
+
+**Tamaño de Muestra:** 180 encuestados
+
+**Nivel de Confianza:** 95%
+Elegimos un nivel de confianza del 95% puesto que esto significancia que si hubiésemos hecho 20 muestreos y creado 20 intervalos de confianza; se esperaría que 19 de ellos contengan la media de la población. Lo cual representa un porcentaje bastante aceptable para una investigación. Además, 95% es el valor que usualmente se utiliza en este tipo de trabajos.
+
+**Nivel de Significancia:** 0.05
+El nivel de significancia para este caso estará dado por $\alpha=0.05$, el cuál participa en el cálculo del nivel de confianza según la ecuación $1-\alpha= \text{Nivel de confianza}$.
+
+# Análisis exploratorio e inferencial
+
+# ¿Existe alguna relación entre el tiempo que pasan en el transporte y la cantidad de cursos desaprobados del estudiante?
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+boxplot(DF$Tiempo_Transporte~DF$NroReprobados,main="Tiempo transporte diario (min) vs Cursos Reprobados", xlab= "Cursos reprobados",ylab="Tiempo transporte diario (min)")
+abline(h=median(DF$Tiempo_Transporte),col="red")
+legend("topright", c("Mediana"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
+```
+
+##
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+chisq.test(table(DF$Tiempo_Transporte, DF$NroReprobados))
+
+```
+
+# ¿Existe alguna relación las horas semanales de transporte con la calificación que le pone el alumno al transporte?
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+smoothScatter(DF$Transporte_Semanal,DF$Calificacion,ylab= "Experiencia Transporte",xlab="Tiempo Transporte diario")
+```
+
+##
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+chisq.test(table(DF$Transporte_Semanal, DF$Calificacion))
+
+```
+
+# ¿Existe alguna relación entre las horas que se transportan semanalmente y las horas que duermen los estudiantes?
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+smoothScatter(DF$Transporte_Semanal,DF$Tiempo_Dormir,ylab= "Horas diarias de Sueño",xlab="Tiempo Transporte diario", main="Tiempo de transporte semanal por horas de sueño")
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+dmenos<-(DF[which(DF$Tiempo_Dormir<=5),])
+dmas<-(DF[which(DF$Tiempo_Dormir>=6),])
+#summary(DF$Transporte_Semanal)
+boxplot(dmenos$Transporte_Semanal,dmas$Transporte_Semanal,names= c("5h o menos","6h o más"), main="Tiempo de transporte semanal por horas de sueño", ylab="Tiempo de transporte semanal (min)", xlab="Horas de Sueño (h)")
+abline(h=mean(DF$Transporte_Semanal), col="red")
+```
+
+##
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+t.test(dmenos$Transporte_Semanal,mu=450,alternative = "less", conf.level = 0.95)
+```
+
+
+# ¿Existe una relación entre el número de horas que duermen los estudiantes y el nivel de estrés que presentan?
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+boxplot(DF$Estres~DF$Tiempo_Dormir,main="Nivel de estrés vs horas de sueño", xlab= "Tiempo de sueño diario (h)",ylab="Estrés (CPP)")
+abline(h=median(DF$Estres),col="red")
+legend("topright", c("Mediana"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+library(RColorBrewer)
+coul <- brewer.pal(5, "Set2") 
+smoothScatter((cut(DF$Estres,breaks=seq(12,83,by=12), include.lowest = TRUE)), DF$Tiempo_Dormir,ylab= "Horas diarias de Sueño",xlab="Nivel de Estrés", col = coul)
+legend("bottomright",
+       c("1 -- Poco", "2 -- Leve","3 -- Medio","4 -- Alto","5 -- Grave"), 
+       bty = "o", title="Leyenda",bg="transparent",pt.cex = 1,cex = 0.7)
+```
+
+##
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+Estresmayor<-(DF[which(DF$Estres>48),])
+summary(Estresmayor$Tiempo_Dormir)
+t.test(Estresmayor$Tiempo_Dormir,mu=5.907,alternative="greater", conf.level = 0.95)
+```
+
+
+# Relaciones potencialmente interesantes entre variables
+
+## Relaciones potencialmente interesantes entre variables
+1. Nivel de Estrés y Horas de Sueño diarias
+
+2. Tiempo de Transporte diario y Número de Cursos reprobados
+
+3. Tiempo de Transporte semanal y Horas de Sueño diarias
+
+4. Tiempo de Transporte semanal y Calificación del Transporte
+
+
+# Regresión
+
+#  1. Nivel de Estrés y Horas de Sueño diarias
+
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+Estres_Sueño=lm(DF$Tiempo_Dormir~DF$Estres)
+summary(Estres_Sueño)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(Estres_Sueño)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+t.test(Estres_Sueño$coefficients)
+```
+
+# 2. Tiempo de Transporte diario y Número de Cursos reprobados
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+Trans_Repr <- lm(DF$NroReprobados~DF$Tiempo_Transporte)
+summary(Trans_Repr)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE,  fig.align='center'}
+smoothScatter(DF$Tiempo_Transporte,DF$NroReprobados,xlab= "Tiempo de transporte (min)",ylab="Número de Cursos desaprobados",main="Tiempo de transporte vs Cursos desaprobados")
+abline(h=median(DF$NroReprobados),col="red")
+abline(Trans_Repr, col='orange')
+legend("topright", c("Mediana", "Tendencia"),lty=c(1, 1), col=c("red","orange"),title="Leyenda",bg="white")
+
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(Trans_Repr)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+t.test(Trans_Repr$coefficients)
+```
+
+# 3. Tiempo de Transporte semanal y Horas de Sueño diarias
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+Trans_Sueño=lm(DF$Tiempo_Dormir~DF$Transporte_Semanal)
+summary(Trans_Sueño)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+smoothScatter(DF$Transporte_Semanal,DF$Tiempo_Dormir,xlab= "Tiempo de transporte (min)",ylab="Horas de Sueño",main="Tiempo de transporte vs Horas de Sueño")
+abline(Trans_Sueño, col='orange')
+legend("topright", c("Tendencia"),lty=c(1, 1), col=c("orange"),title="Leyenda",bg="white")
+
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(Trans_Sueño)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+t.test(Trans_Sueño$coefficients)
+```
+
+# 4. Tiempo de Transporte semanal y Calificación del Transporte
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+Trans_Calif=lm(DF$Calificacion~DF$Transporte_Semanal)
+summary(Trans_Calif)
+```
+
+## 
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+smoothScatter(DF$Transporte_Semanal,DF$Calificacion,xlab= "Tiempo de transporte (min)",ylab="Calificación",main="Calificación vs Tiempo de transporte")
+abline(h=median(DF$Transporte_Semanal),col="red")
+abline(Trans_Calif, col='orange')
+legend("topright", c("Mediana", "Tendencia"),lty=c(1, 1), col=c("red","orange"),title="Leyenda",bg="white")
+
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(Trans_Calif)
+```
+
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+t.test(Trans_Calif$coefficients)
+```
+
+# Horas de Sueño en función del Nivel de Estres y el Tiempo de Transporte Semanal
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+R_Sueño=lm(DF$Tiempo_Dormir~DF$Transporte_Semanal+DF$Estres)
+summary(R_Sueño)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(R_Sueño)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+t.test(R_Sueño$coefficients)
+
+```
+
+# Calificación en función del Tiempo de Transporte Semanal y el principal Medio de Transporte
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+R_Calif1=lm(DF$Calificacion~DF$Transporte_Semanal+DF$M1)
+summary(R_Calif1)
+```
+
+## Continuación
+
+ -- Residual standard error: 1.766 on 171 degrees of freedom
+ 
+ -- Multiple R-squared:  0.3884, Adjusted R-squared:  0.3598
+ 
+ -- F-statistic: 13.58 on 8 and 171 DF,  p-value: 3.804e-15
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(R_Calif1)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+t.test(R_Calif1$coefficients)
+```
+
+
+# Conclusiones
+
+## Conclusiones
+
+**#**  Se encontró dependencia de algunas variables con respecto a otras, siendo las más significativas:
+-El nivel de estrés explica el 7.6% de la variación en las horas de sueño diarias.
+-El tiempo de transporte semanal explica el 29.78% de la variación de la calificación del transporte.
+-El modelo con las variables independientes nivel de estrés y tiempo de transporte semanal explica el 10.36% de la variación de las horas de sueño diarias.
+
+**#** De los modelos entre variables planteadas no se pudo rechazar estadísticamente al 5% de signifancia la no dependencia del número de cursos reprobados con respecto al tiempo de transporte diario.
+
+**#** Respecto a los modelos obtenidos por regresión, no se encontró ninguno que sea lo sufientemente robusto como para realizar predicción sobre alguna variable dependiente.
+
+# Bibliografía
+
+##
+
+* https://gestion.pe/tendencias/lima-ciudades-peor-trafico-269483-noticia/ 
+
+* https://amp.milenio.com/especiales/estres-cronico-como-identificarlo

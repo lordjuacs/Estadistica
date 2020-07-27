@@ -1,0 +1,66 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+X <- c(20,40,20,30,10,10,20,20,20,30)
+sum(X)
+Y <- c(30,60,40,60,30,40,40,50,30,70)
+sum(Y)
+#b1 <- r*sd(Y)/sd(X)
+#b0 <- mean(Y) -b1*mean(X)
+```
+
+```{r}
+sx <- sd(X)
+sy <- sd(Y)
+n <- length(X)
+r <- sum((X-mean(X))*(Y-mean(Y)))/((n-1)*sx*sy)
+r
+cor(X,Y)
+
+```
+
+```{r}
+plot(lm(X~Y))
+summary(lm(X~Y))
+```
+
+```{r}
+sqrt(0.5761)
+sqrt(0.5231)
+```
+```{r}
+qt(0.05/2, lower.tail = FALSE, df=8)
+r*sqrt(n-2)/sqrt(1-r^2)
+```
+
+```{r}
+a <- lm(X~Y)
+plot(X,Y)
+abline(a)
+```
+
+```{r}
+lm(X~Y)
+```
+
+```{r}
+plot(X,Y)
+abline(0.1081, 0.4865, col="red")
+```
+
+
+
+
+```{r}
+height <- c(176, 154, 138, 196, 132, 176, 181, 169, 150, 175)
+bodymass <- c(82, 49, 53, 112, 47, 69, 77, 71, 62, 78)
+plot(bodymass, height, pch = 16, cex = 1.3, col = "blue", main = "HEIGHT PLOTTED AGAINST BODY MASS", xlab = "BODY MASS (kg)", ylab = "HEIGHT (cm)")
+abline(lm(height ~ bodymass))
+r2 <- cor(bodymass,height)
+b1 <- r2*sd(height)/sd(bodymass)
+b0 <- mean(height) -b1*mean(bodymass)
+#abline(b0,b1)
+```
+
