@@ -195,6 +195,10 @@ legend("topright", c("Mediana"),lty=c(1), col=c("red"),title="Leyenda",bg="white
 ```
 
 ## Comparando 0 vs 1 desaprobados
+**H0:** los alumnos que tienen un curso desaprobado pasarán más tiempo al transportarse.
+**H1:** los alumnos que tienen un curso desaprobado pasarán menos tiempo al transportarse.
+
+## Comparando 0 vs 1 desaprobados
 ```{r echo=FALSE,message=FALSE,warning=FALSE}
 jalados1<-(DF[which(DF$NroReprobados<=1),])
 summary(jalados1$Tiempo_Transporte)
@@ -210,6 +214,10 @@ abline(h=c(mean(jalados1$Tiempo_Transporte)),col=c("red"),lty=3)
 legend("topright", c("Media de 0 y 1 jalado"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
 ```
 
+
+## Comparando 0 vs 2 desaprobados
+**H0:** los alumnos que tienen dos curso desaprobados pasarán más tiempo al transportarse.
+**H1:** los alumnos que tienen un curso desaprobado pasarán menos tiempo al transportarse.
 
 ## Comparando 0 vs 2 desaprobados
 ```{r echo=FALSE,message=FALSE,warning=FALSE}
