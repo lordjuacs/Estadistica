@@ -1,0 +1,490 @@
+---
+title: "P5 Final - CommUTEC"
+author:  Kevin Aubert, Andrea Chu, Juan Diego Chu, Oscar Gómez & Joaquin Ramirez
+date: July 29, 2020
+output: ioslides_presentation
+---
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+library(readr)
+library(dplyr)
+library(RColorBrewer)
+DF<-read_csv("Base_DatosFINAL.csv")
+```
+  
+# Objetivo del estudio
+
+## Objetivo
+
+El objetivo de esta investigación es analizar e informar acerca del impacto del viaje desde la residencia de un alumno hasta la universidad en su tiempo efectivo de trabajo, rendimiento académico y estilo de vida. 
+
+# Variables identificadas
+
+##
+Variable|Relación con pregunta|Tipo de variable
+-----------------------------|--------------------|----------------
+Calificación de la Experiencia de transporte|2,9,10,11,12,13|Categórica ordinal
+Tiempo de transporte diario|1,7,12,13|Numérica continua
+Cantidad de cursos desaprobados|7|Numérica discreta
+Medios de transporte|3,12,13|Categórica nominal
+Cantidad de días con clases|8,9,11,12,13|Numérica discreta
+Cantidad de horas semanales de clases|12,13|Numérica continua
+Horas de sueño diarias|5,6,8,10|Numérica continua
+Distrito de Residencia|12,13|Categórica nominal
+Tiempo de transporte semanal|8,9,11,12,13|Numérica continua
+Nivel de estrés (referencial basado en escala)|4,6,10|Categórica ordinal
+
+
+# Análisis Descriptivo
+
+# ¿Cuánto tiempo les demora a los estudiantes de UTEC llegar a la universidad desde su lugar de residencia?
+
+##
+**Análisis:** promedio de estudiantes se tarda 51.81 min y la mediana es 45 min. Máx: 150 min. Mín: 2 min. Distribución sesgada hacia la derecha.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+boxplot(DF$Tiempo_Transporte/2)
+abline(mean(DF$Tiempo_Transporte/2),0,col="red",title("Tiempo de viaje hasta la Universidad"), lwd=2)
+legend("topright", 
+       c("Media"), 
+       lty=1, 
+       col=c("red"), 
+       bty = "o", title="Leyenda",bg="transparent")
+```
+
+# ¿Cómo califican los estudiantes la experiencia de transporte?
+
+##
+**Análisis:** mediana de 7 y media de 6.572, calificaciones relativamente altas. Experiencia de transporte positiva.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+col <- brewer.pal(9, "RdYlGn")
+barplot(table(DF$Calificacion), xlab="Calificación (Mayor es mejor)", ylab="Frecuencia", las=1,cex.names=1,ylim=c(0,35), col=c("red",col), main = "Calificación de experiencia de transporte")
+```
+
+# ¿Cuál es el medio de transporte más utilizado?
+
+##
+**Análisis:** el transporte más usado es el micro/combi con un 28%, seguido por los transporte del carro particular y del taxi con un 20% y 14.8% respectivamente.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+medios <- read_csv("TransporteF.csv") #medios es igual a la suma de M1, M2, M3 Y M4 en DF
+mosaicplot(sort(table(medios$Actividad)),
+ main="¿Qué transporte utilizan los estudiantes de UTEC?",
+ col=col, las=1,cex.axis = 0.5)
+```
+
+# ¿Qué tan estresados se sentían los alumnos de UTEC el ciclo 2019-2?
+
+##
+**Análisis:**  la moda entre los alumnos de UTEC es un nivel de estrés leve y la mediana es un nivel de estrés medio. La mayoría de alumnos tienen Estrés leve (25 a 36) o Estrés medio (37 a 48), 30% y 29.44% respectivamente. La cantidad de alumnos con Estrés grave es muy baja, ocurriendo solamente en el 8.33% de los alumnos.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+rangos_estres <- round(table((cut(DF$Estres,breaks=seq(12,83,by=12), include.lowest = TRUE)))/nrow(DF),4)*100
+coul <- brewer.pal(5, "YlOrRd")
+barplot(table((cut(DF$Estres,breaks=seq(12,83,by=12), include.lowest = TRUE))), ylim = c(0,60),col =coul, space = 0,names.arg = c("Poco","Leve","Medio","Alto","Grave"),xlab="Nivel de Estrés", ylab="Frequency",main="Nivel de estrés de los alumnos de UTEC")
+legend("topright", 
+       c("Mediana"), 
+       lty=c(2, 2), 
+       col=c("red"), 
+       bty = "o", title="Leyenda",bg="lightblue")
+abline(v=5*median(DF$Estres)/72,col="red", lwd=3,lty=3)
+```
+
+# ¿Cuántas horas de sueño tienen los alumnos de UTEC?
+
+##
+**Análisis:** la mediana es 6 horas diarias de sueño, lo que significa que al menos la mitad de los alumnos duerme menos de 6 horas. Son escasos los casos de estudiantes durmiendo horas mínimas como 3 o 4. El estudiante promedio de UTEC no está durmiendo las horas mínimas (8) recomendadas por expertos para poder mantener su cuerpo sano.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+coul <- brewer.pal(6, "YlOrRd") 
+coulf=c()
+for (i in 1:6){
+  coulf=c(coulf,coul[7-i])
+}
+barplot(table((cut(DF$Tiempo_Dormir,breaks=seq(2,8,by=1)))), ylim = c(0,70),col =coulf, space = 0,names.arg = c(3:8),xlab="Horas de Sueño", ylab="Frequency",main="Horas de sueño de los alumnos de UTEC")
+legend("topright", 
+       c("Mediana"), 
+       lty=c(2, 2), 
+       col=c("red"), 
+       bty = "o", title="Leyenda",bg="lightblue")
+abline(v=median(DF$Tiempo_Dormir)/2 + 0.5,col="red", lwd=3,lty=3)
+```
+
+# Parámetros del estudio
+
+## Parámetros
+
+**Tipo de Muestreo:** por conveniencia
+
+**Tamaño de Muestra:** 180 encuestados
+
+**Desviación estándar:**
+Para las pruebas de t.test consideramos en la desviación estándar de la muestra, como la desviación estándar real, dado que la muestra supera los 30 individuos.
+
+**Nivel de Confianza:** 95%
+Elegimos un nivel de confianza del 95% puesto que esto significancia que si hubiésemos hecho 20 muestreos y creado 20 intervalos de confianza; se esperaría que 19 de ellos contengan la media de la población. Lo cual representa un porcentaje bastante aceptable para una investigación. Además, 95% es el valor que usualmente se utiliza en este tipo de trabajos.
+
+**Nivel de Significancia:** 0.05
+El nivel de significancia para este caso estará dado por $\alpha=0.05$, el cuál participa en el cálculo del nivel de confianza según la ecuación $1-\alpha= \text{Nivel de confianza}$.
+
+## Parámetros
+
+**Tolerancia:**
+La tolerancia (epsilon) está dada en la fórmula:
+$$\mathbb{P}(\left\vert \overline{X}_n - \mu \right\vert \leq \varepsilon)\geq 1-\alpha$$
+
+De la cual se llega a:
+$$\varepsilon=\frac{Z_a\sigma}{\sqrt{n}}$$ 
+$$a=\alpha/2$$
+Pero como Z es:
+```{r echo=FALSE}
+alfa<- 0.05 
+n=180
+z<- qnorm(alfa/2, lower.tail = FALSE)
+round(z,2)
+```
+
+## Parámetros
+Finalmente la tolerancia quedaría como:
+$$\varepsilon=\frac{1.96 \sigma}{\sqrt{180}}$$
+
+
+# Intervalos de confianza 
+
+## Intervalos de confianza
+
+_TIEMPO DE TRANSPORTE DIARIO_
+$$T_1 = 93.50854 \ \ \ \ \ \ \ T_2 = 113.7248$$
+$$\text{Intervalo de Confianza Tiempo de Transporte}$$
+$$= [93.50854, 113.7248]$$
+_TIEMPO DE TRANSPORTE SEMANAL_
+$$T_{S_1}=470.9605 \ \ \ \ \ \ \ T_{S_2}=576.8729$$
+$$\text{Intervalo de Confianza del Tiempo de Transporte Semanal}$$
+$$= [470.9605, 576.8729]$$
+## Intervalos de confianza
+_HORAS DE SUEÑO:_
+$$H_{S_1}=6.064808 \ \ \ \ \ \ \ H_{S_2}=6.401858$$
+$$\text{Intervalo de Confianza de Horas de Sueño}$$ 
+$$=[6.064808, 6.401858]$$
+_NÚMERO DE CURSOS REPROBADOS_
+$$C_{R_1}=0.2222592 \ \ \ \ \ \ \ C_{R_2}=0.3888519$$
+$$\text{Intervalo de Número de Cursos Reprobados}$$ 
+$$=[0.2222592, 0.3888519]$$
+
+
+# Análisis exploratorio e inferencial
+
+# ¿Existe alguna relación entre el tiempo que pasan en el transporte y la cantidad de cursos desaprobados del estudiante?
+
+##
+**H0: ** Los alumnos que pasan un mayor tiempo al transportarse hacia la universidad tendrán un mayor número de cursos desaprobados.
+
+**H1:** Los alumnos que pasan un mayor tiempo al transportarse hacia la universidad tendrán un menor número de cursos desaprobados.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+boxplot(DF$Tiempo_Transporte~DF$NroReprobados,main="Tiempo transporte diario (min) vs Cursos Reprobados", xlab= "Cursos reprobados",ylab="Tiempo transporte diario (min)")
+abline(h=median(DF$Tiempo_Transporte),col="red")
+legend("topright", c("Mediana"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
+```
+
+## Comparando 0 vs 1 desaprobados
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+jalados1<-(DF[which(DF$NroReprobados<=1),])
+summary(jalados1$Tiempo_Transporte)
+#chisq.test(table(DF$Tiempo_Transporte, DF$NroReprobados))
+t.test(jalados1$Tiempo_Transporte,mu=104,alternative = "greater",conf.level = 0.95)
+```
+El p-value es mayor a nuestro alpha (0.5031>0.05)
+
+## Comparando 0 vs 1 desaprobados
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+boxplot(jalados1$Tiempo_Transporte~jalados1$NroReprobados,main="Tiempo transporte diario (min) vs Cursos Reprobados", xlab= "Cursos reprobados",ylab="Tiempo transporte diario (min)")
+abline(h=c(mean(jalados1$Tiempo_Transporte)),col=c("red"),lty=3)
+legend("topright", c("Media de 0 y 1 jalado"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
+```
+
+
+## Comparando 0 vs 2 desaprobados
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+jalados2<-(DF[which(DF$NroReprobados!=1),])
+summary(jalados2$Tiempo_Transporte)
+t.test(jalados2$Tiempo_Transporte,mu=98.7,alternative = "greater",conf.level = 0.95)
+
+```
+El p-value es mayor a nuestro alpha (0.5002>0.05)
+
+## Comparando 0 vs 2 desaprobados
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.height=3, fig.width=4}
+boxplot(jalados2$Tiempo_Transporte~jalados2$NroReprobados,main="Tiempo transporte diario (min) vs Cursos Reprobados", xlab= "Cursos reprobados",ylab="Tiempo transporte diario (min)")
+abline(h=c(mean(jalados2$Tiempo_Transporte)),col=c("red"),lty=3)
+legend("topright", c("Media de 0 y 2 jalados"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
+```
+**ANÁLISIS:** Se puede observar que las medias de ambos boxplots son diferentes indicando una tendencia a que los estudiantes con mayor tiempo de transporte tienden a desaprobar mas cursos.
+
+# ¿Existe alguna relación las horas semanales de transporte con la calificación que le pone el alumno al transporte?
+
+##
+**H0:** Si un alumno pasa menos tiempo transportándose le pondrá una calificación más alta a su experiencia en transporte.
+
+**H1:** Si un alumno pasa mas tiempo en el transporte, su calificación de su experiencia será menor.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+smoothScatter(DF$Transporte_Semanal,DF$Calificacion,ylab= "Experiencia Transporte",xlab="Tiempo Transporte diario")
+```
+
+##
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+chisq.test(table(DF$Transporte_Semanal, DF$Calificacion))
+```
+El p-value es menor al alpha (0.0001608<0.05), entonces se rechaza la hipótesis nula. Por lo que a un nivel de significancia del 5% se puede decir que las variables son dependientes y que existe una relación entre ellas.
+
+# ¿Existe alguna relación entre las horas que se transportan semanalmente y las horas que duermen los estudiantes?
+
+##
+**H0:** A menor tiempo de sueño del estudiante, mayor será el tiempo de transporte hacia la universidad.
+
+**H1:** A menor tiempo de sueño del estudiante, menor será el tiempo de transporte hacia la universidad.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+smoothScatter(DF$Transporte_Semanal,DF$Tiempo_Dormir,ylab= "Horas diarias de Sueño",xlab="Tiempo Transporte diario", main="Tiempo de transporte semanal por horas de sueño")
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+dmenos<-(DF[which(DF$Tiempo_Dormir<=5),])
+dmas<-(DF[which(DF$Tiempo_Dormir>=6),])
+#summary(DF$Transporte_Semanal)
+boxplot(dmenos$Transporte_Semanal,dmas$Transporte_Semanal,names= c("5h o menos","6h o más"), main="Tiempo de transporte semanal por horas de sueño", ylab="Tiempo de transporte semanal (min)", xlab="Horas de Sueño (h)")
+abline(h=mean(DF$Transporte_Semanal), col="red")
+```
+
+##
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+t.test(dmenos$Transporte_Semanal,mu=450,alternative = "less", conf.level = 0.95)
+```
+Como el p-value es mayor a nuestro alpha, (0.9815>0.05), no es posible descartar satisfactoriamente la hipótesis nula declarándola estadísticamente insignificante. Se filtraron los resultados en dos rangos de tiempo de sueño 5h o menos y 6h o más y los resultados de la media y la mediana apoyaban nuestra hipótesis nula demostrando que los alumnos que dormían 6h o más tenían un menor tiempo de transporte que los estudiantes que dormían 5h o menos.
+
+##
+**H0:** Las variables son independientes
+
+**H1:** Las variables son dependientes
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+chisq.test(table(DF$Transporte_Semanal, DF$Tiempo_Dormir))
+```
+El p-value es menor al alpha (0.03458<0.05), entonces se rechaza la hipótesis nula. 
+
+
+
+# ¿Existe una relación entre el número de horas que duermen los estudiantes y el nivel de estrés que presentan?
+
+##
+**H0:** Los que tienen un nivel de estrés mayor duermen menos.
+
+**H1:** El tiempo que duerme un alumno no afecta su nivel de estrés.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+coul <- brewer.pal(5, "Set2") 
+smoothScatter((cut(DF$Estres,breaks=seq(12,83,by=12), include.lowest = TRUE)), DF$Tiempo_Dormir,ylab= "Horas diarias de Sueño",xlab="Nivel de Estrés", col = coul)
+legend("bottomright",
+       c("1 -- Poco", "2 -- Leve","3 -- Medio","4 -- Alto","5 -- Grave"), 
+       bty = "o", title="Leyenda",bg="transparent",pt.cex = 1,cex = 0.7)
+```
+
+##
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+Estresmayor<-(DF[which(DF$Estres>48),])
+summary(Estresmayor$Tiempo_Dormir)
+t.test(Estresmayor$Tiempo_Dormir,mu=5.907,alternative="greater", conf.level = 0.95)
+```
+Como el p-value es mayor a nuestro alpha, (0.5>0.05), no es posible descartar satisfactoriamente la hipótesis nula declarándola estadísticamente insignificante. Entonces se puede decir que a un nivel de significancia del 5% es posible decir que los alumnos que que tienen un nivel de estrés mayor duermen menos. Asimismo en la gráfica a continuación se observa una tendencia que indica que las personas que tienen menos horas de sueño tienen un nivel de estrés mayor confirmando nuestra hipótesis y relacionando directamente un mayor nivel de estrés con menor horas de sueño
+
+##
+**H0:** Las variables son independientes 
+
+**H1:** Las variables son dependientes
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+boxplot(DF$Estres~DF$Tiempo_Dormir,main="Nivel de estrés vs horas de sueño", xlab= "Tiempo de sueño diario (h)",ylab="Estrés (CPP)")
+abline(h=median(DF$Estres),col="red")
+legend("topright", c("Mediana"),lty=c(1), col=c("red"),title="Leyenda",bg="white")
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+chisq.test(table(DF$Estres, DF$Tiempo_Dormir))
+```
+El p-value es mayor a la significancia, entonces no se puede rechazar la hipótesis nula.
+
+
+
+# Relaciones potencialmente interesantes entre variables
+
+## Relaciones potencialmente interesantes entre variables
+1. Horas de Sueño diarias en función del Nivel de Estrés
+
+2. Horas de Sueño diarias en función del Tiempo de Transporte semanal
+
+3. Número de Cursos reprobados en función del Tiempo de Transporte diario
+
+4. Calificación del Transporte en función del Tiempo de Transporte semanal
+
+
+# Regresión
+
+#  1. Horas de Sueño diarias en función del Nivel de Estrés
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+DF$Estres[DF$Estres<25]="A"
+DF$Estres[DF$Estres>24 & DF$Estres<37]="B"
+DF$Estres[DF$Estres>36 & DF$Estres<49]="C"
+DF$Estres[DF$Estres>48 & DF$Estres<61]="D"
+DF$Estres[DF$Estres>60 & DF$Estres<73]="E"
+Estres_Sueño=lm(DF$Tiempo_Dormir~DF$Estres)
+summary(Estres_Sueño)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(Estres_Sueño)
+```
+
+##
+**Análisis:**
+
+Se observa un p.value igual a 0.0074, por lo que al ser menor a la significancia se rechaza la hipótesis nula, la cual era la no dependencia de la variable horas de sueño con el nivel de estrés. Asimismo si bien en la gráfica de residuos se observa homocedasticidad en los errores, en la segunda gráfica no se observa una distribución normal (valores alejados de la línea entrecortada) por lo que que se concluye que el modelo no es adecuado para realizar inferencia.
+
+# 2. Número de Cursos desaprobados en función del Tiempo de Transporte diario
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+Trans_Repr=lm(DF$NroReprobados~DF$Tiempo_Transporte)
+summary(Trans_Repr)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE,  fig.align='center'}
+smoothScatter(DF$Tiempo_Transporte,DF$NroReprobados,xlab= "Tiempo de transporte (min)",ylab="Número de Cursos desaprobados",main="Tiempo de transporte vs Cursos desaprobados")
+abline(h=median(DF$NroReprobados),col="red")
+abline(Trans_Repr, col='orange')
+legend("topright", c("Mediana", "Tendencia"),lty=c(1, 1), col=c("red","orange"),title="Leyenda",bg="white")
+
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE,  fig.align='center'}
+smoothScatter(DF$Tiempo_Transporte,DF$NroReprobados,xlab= "Tiempo de transporte (min)",ylab="Número de Cursos desaprobados",main="Tiempo de transporte vs Cursos desaprobados")
+abline(h=median(DF$NroReprobados),col="red")
+abline(Trans_Repr, col='orange')
+legend("topright", c("Mediana", "Tendencia"),lty=c(1, 1), col=c("red","orange"),title="Leyenda",bg="white")
+```
+
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(Trans_Repr)
+```
+
+##
+**Análisis:**
+
+El modelo obtenido se observa un p.value igual a 0.2591, por lo que al ser mayor a la significancia no se rechaza la hipótesis nula, que es la no dependencia del número de reprobados con respecto al tiempo de transporte diario. Asimismo, al observar la tendencia (resultado de la regresión) en el gráfico y la heterocedasticidad en los residuos del modelo se respalda el no rechazo a la hipótesis nula y se concluye que el número de cursos reprobados por el estudiante es independiente del tiempo de transporte diario.
+
+# 3. Horas de Sueño diarias en función del Tiempo de Transporte Semanal
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+Trans_Sueño=lm(DF$Tiempo_Dormir~DF$Transporte_Semanal)
+summary(Trans_Sueño)
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+smoothScatter(DF$Transporte_Semanal,DF$Tiempo_Dormir,xlab= "Tiempo de transporte (min)",ylab="Horas de Sueño",main="Tiempo de transporte vs Horas de Sueño")
+abline(Trans_Sueño, col='orange')
+legend("topright", c("Tendencia"),lty=c(1, 1), col=c("orange"),title="Leyenda",bg="white")
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(Trans_Sueño)
+```
+
+##
+**Análisis:**
+
+El modelo obtenido se observa un p.value igual a 0.002633, por lo que al ser menor a la significancia se rechaza la hipótesis nula, la cual era la no dependencia de la variable horas de sueño con respecto al tiempo de transporte diario. Asimismo, en vista de la heterocedasticidad de los errores se concluye que el modelo no permite explicar la variación de la variable de manera adecuada. Por lo que se concluye que el modelo no es adecuado para realizar inferencia sobre la variable.
+
+# 4. Calificación del Transporte en función del Tiempo de Transporte semanal 
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+Trans_Calif=lm(DF$Calificacion~DF$Transporte_Semanal)
+summary(Trans_Calif)
+```
+
+## 
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+smoothScatter(DF$Transporte_Semanal,DF$Calificacion,xlab= "Tiempo de transporte (min)",ylab="Calificación",main="Calificación vs Tiempo de transporte")
+abline(h=median(DF$Transporte_Semanal),col="red")
+abline(Trans_Calif, col='orange')
+legend("topright", c("Mediana", "Tendencia"),lty=c(1, 1), col=c("red","orange"),title="Leyenda",bg="white")
+
+```
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(Trans_Calif)
+```
+
+##
+**Análisis**:
+
+El modelo obtenido se observa un p.value igual a 2.349e-15, por lo que al ser menor a la significancia se rechaza la hipótesis nula, la cual era la no dependencia de la variable.
+
+Asimismo, al observar el gráfico de los residuos del modelo se observa heterocedasticidad y en el gráfico de la normal se observan los valores muy dispersos de la tendencia que deberían seguir por lo que se concluye que el modelo no es adecuado para realizar inferencia sobre la variable.
+
+# 5. Calificación en función del Tiempo de Transporte Semanal y el principal Medio de Transporte
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+R_Calif1=lm(DF$Calificacion~DF$Transporte_Semanal+DF$M1)
+summary(R_Calif1)
+```
+
+## Continuación
+
+ -- Residual standard error: 1.766 on 171 degrees of freedom
+ 
+ -- Multiple R-squared:  0.3884, Adjusted R-squared:  0.3598
+ 
+ -- F-statistic: 13.58 on 8 and 171 DF,  p-value: 3.804e-15
+
+##
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=4, fig.align='topleft'}
+plot(R_Calif1)
+```
+
+##
+**Análisis:**
+
+El modelo obtenido se observa un p.value igual a 3.804e-15, por lo que al ser menor a la significancia se rechaza la hipótesis nula, la cual era la no dependencia de la variable.
+
+Asimismo, en el gráfico de residuos del modelo se puede observar heterocedasticidad en los residuos por lo que se concluye que el modelo no es adecuado para realizar inferencia sobre la variable.
+
+# Conclusiones
+
+En el presente trabajo tenía como objetivo analizar la relación del tiempo de transporte de los estudiantes hacia la universidad con distintos aspectos de la vida de los mismos como nivel de estrés, horas de sueño diarias o número de cursos desaprobados en el último ciclo de la universidad. Estas posibles relaciones se analizaron mediante el planteamiento de preguntas que fueron respondidas desde el punto de vista estadístisco obteniéndose las siguientes conclusiones:
+
+De acuerdo al análisis descriptivo, se obtuvo que el tiempo de transporte promedio de los estudiantes en UTEC es de 51.81 minutos con una mediana de 7 en la calificación del mismo, lo cual puede traducirse como una experiencia de transporte buena por parte del alumno. Asimismo el medio de transporte más utilizado por los alumnos de la UTEC es el microbús, seguido por el uso de un carro particular.
+
+De acuerdo a las pruebas de hipótesis realizadas para un nivel de significancia de 0.05 se encontraron relaciones entre algunas variables, siendo las más robustas e importantes para el  estudio las siguientes:
+
+-La relación existente entre la calificación de la experiencia del transporte y el tiempo semanal del mismo: Donde la calificación disminuiría cuando el tiempo de transporte aumenta, lo cual podría explicarse puesto que un mayor tiempo de transporte suele generar una mayor incomodidad en el estudiante.
+
+-La relación existente entre horas de sueño diarias y el tiempo semanal de transporte: Donde las horas de sueño disminuirían cuando aumenta el tiempo de transporte, lo cual podría explicarse ya que el tiempo requerido para una actividad se utilizaría en la otra.
+
+De acuerdo a los modelos obtenidos por regresión, no se encontró ninguno que sea lo suficientemente robusto como para realizar inferencia o predicción sobre alguna variable debido principalmente a la heterocedasticidad en los residuos de estos y a la falta de una distribución normal en sus residuos estandarizados.
+
+
+
+
+# Bibliografía
+
+##
+
+* https://gestion.pe/tendencias/lima-ciudades-peor-trafico-269483-noticia/ 
+
+* https://amp.milenio.com/especiales/estres-cronico-como-identificarlo

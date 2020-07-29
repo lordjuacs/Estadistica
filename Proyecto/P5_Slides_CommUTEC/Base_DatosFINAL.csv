@@ -1,0 +1,181 @@
+,Edad,Cursos,Promedio,NroReprobados,Percentil,Distrito,Calificacion,Tiempo_Transporte,Dias_Clase,Horas_Clase,Tiempo_Dormir,Dias_Inutiles,Horas_Estudio,Horas_Extracurricular,Estres,M1,M2,M3,M4,A1,A2,A3,A4,A5,Transporte_Semanal
+1,18,6,17.2,0,1 Decimo ,Jesus Maria,6,90,5,26,8,0,5 o mas,1,40,Carro Particular,Combi / micro,NA,NA,Estudiar,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,"Netflix, cursos online, leer",NA,450
+2,18,8,17,0,1 Decimo ,Miraflores,8,16,5,28,5,0,2,1,35,Combi / micro,Bicicleta / scooter,Voy caminando,NA,Dormir,NA,NA,NA,NA,80
+3,18,8,19.38,0,1 Decimo ,San Isidro,7,100,5,32,6,0,3,1,41,Taxi,Combi / micro,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Aprender algun idioma,NA,500
+4,18,6,17.84,0,1 Decimo ,San Isidro,8,60,5,27,8,1,2,1,26,Combi / micro,NA,NA,NA,Estudiar,Dormir,NA,NA,NA,300
+5,18,7,15,0,2 Quinto,San Miguel,7,180,4,26,6,1,3,2,39,Taxi,Metropolitano / Corredor rojo,Combi / micro,NA,Estudiar,Jugar videojuegos,Dormir,Aprender algun idioma,NA,720
+6,18,7,17.25,0,1 Decimo ,La Molina,7,130,5,24,7,2,4,1,12,Carro Particular,Taxi,NA,NA,Estudiar,Pasar tiempo con familia o amigos,"Dibujar, leer libros",NA,NA,650
+7,18,6,17.62,0,1 Decimo ,Santiago de Surco,7,60,5,12,5,3,3,2,36,Carro Particular,Voy caminando,NA,NA,Estudiar,Dormir,NA,NA,NA,300
+8,18,6,16.7,0,1 Decimo ,La Molina,7,170,5,20,5,1,5 o mas,2,24,Carro Particular,Taxi,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,850
+9,18,7,14.85,0,3 Tercio,Santiago de Surco,3,90,5,30,6,0,4,2,30,Carro Particular,Taxi,Metropolitano / Corredor rojo,Combi / micro,Estudiar,Jugar videojuegos,Dormir,NA,NA,450
+10,17,8,15.2,0,2 Quinto,Santiago de Surco,10,60,4,34,8,0,3,1,72,Carro Particular,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,NA,NA,240
+11,18,5,16,0,1 Decimo ,San Borja,5,60,5,12,5,2,3,2,65,Carro Particular,Taxi,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,300
+12,19,6,18,0,1 Decimo ,Santiago de Surco,5,80,4,24,7,0,3,1,20,Carro Particular,Combi / micro,NA,NA,Dormir,NA,NA,NA,NA,320
+13,20,4,14.5,0,3 Tercio,Magdalena del Mar,6,80,5,3,8,1,3,3,58,Taxi,Combi / micro,NA,NA,Estudiar,Jugar videojuegos,NA,NA,NA,400
+14,18,6,16.56,0,1 Decimo ,Cercado de Lima,7,40,6,6,5,1,3,2,24,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Pasar tiempo con familia o amigos,NA,240
+15,17,6,16,0,1 Decimo ,Ate,6,150,5,26,7,1,5 o mas,2,36,Carro Particular,Metropolitano / Corredor rojo,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,750
+16,19,3,13,1,4 Menos Tercio,La Molina,6,210,4,12,5,2,2,1,31,Taxi,Metropolitano / Corredor rojo,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,NA,NA,840
+18,20,5,16.27,0,2 Quinto,Santiago de Surco,8,40,5,19,7,2,5 o mas,5,24,Combi / micro,Bicicleta / scooter,Voy caminando,NA,Dormir,NA,NA,NA,NA,200
+19,19,7,16.7,0,1 Decimo ,Lurin,10,70,3,28,7,0,1,2,24,Taxi,NA,NA,NA,Estudiar,Dormir,NA,NA,NA,210
+20,19,4,15.3,0,2 Quinto,San Isidro,7,60,4,20,8,1,1,3,17,Carro Particular,Taxi,Combi / micro,NA,Dormir,Pasar tiempo con familia o amigos,NA,NA,NA,240
+21,18,7,10.65,2,4 Menos Tercio,Los Olivos,8,120,5,18,7,2,3,0,60,Metropolitano / Corredor rojo,NA,NA,NA,Dormir,NA,NA,NA,NA,600
+22,19,6,15.79,0,2 Quinto,Cieneguilla,7,90,4,28,7,0,2,1,33,Combi / micro,Bicicleta / scooter,Voy caminando,NA,Dormir,NA,NA,NA,NA,360
+23,18,6,15.34,0,3 Tercio,Santiago de Surco,10,80,4,26,5,0,3,1,60,Taxi,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,NA,NA,320
+24,19,6,16.56,0,1 Decimo ,Barranco,10,30,5,23,8,2,2,5,18,Carro Particular,Voy caminando,NA,NA,Estudiar,Dormir,NA,NA,NA,150
+25,18,6,13.08,2,4 Menos Tercio,Miraflores,10,30,6,26,8,3,3,3,24,Carro Particular,NA,NA,NA,Dormir,NA,NA,NA,NA,180
+26,18,8,15.42,0,3 Tercio,San Borja,6,72,4,27,7,4,1,2,23,Taxi,Combi / micro,Bicicleta / scooter,NA,Montar tabla,NA,NA,NA,NA,288
+27,17,7,15.4,0,2 Quinto,San Juan de Lurigancho,4,120,5,25,6,2,3,2,48,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,600
+28,18,6,15.6,0,3 Tercio,San Borja,10,50,5,22,7,2,1,0,56,Carro Particular,Taxi,Combi / micro,NA,Jugar videojuegos,Dormir,NA,NA,NA,250
+29,19,7,15.3,0,3 Tercio,Santiago de Surco,7,100,6,30,7,4,3,2,20,Carro Particular,Combi / micro,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,600
+30,18,6,16.5,0,1 Decimo ,Santiago de Surco,10,10,6,26,8,2,1,5,15,Bicicleta / scooter,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,NA,60
+31,18,6,15.49,0,3 Tercio,San Borja,10,100,4,24,6,1,2,1,28,Carro Particular,Taxi,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,400
+32,19,6,16.68,0,1 Decimo ,Santiago de Surco,7,90,5,22,7,1,4,0,16,Combi / micro,Bicicleta / scooter,NA,NA,Estudiar,Jugar videojuegos,Pasar tiempo con familia o amigos,NA,NA,450
+33,20,6,16,0,3 Tercio,Lurigancho-Chosica,7,210,5,20,5,1,4,1,23,Taxi,Metropolitano / Corredor rojo,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,NA,NA,1050
+34,20,7,14.87,0,3 Tercio,Miraflores,9,60,5,30,6,0,1,3,37,Taxi,Bicicleta / scooter,Voy caminando,NA,Jugar videojuegos,Dormir,Pasar tiempo con familia o amigos,NA,NA,300
+35,21,6,16.97,0,1 Decimo ,San Miguel,4,90,4,12,6,0,3,2,27,Taxi,Combi / micro,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,NA,NA,360
+36,21,5,13.5,0,3 Tercio,San Isidro,8,30,5,21,6,1,2,2,25,Carro Particular,Metropolitano / Corredor rojo,Bicicleta / scooter,NA,Dormir,Pasar tiempo con familia o amigos,NA,NA,NA,150
+37,17,6,11,2,4 Menos Tercio,Jesus Maria,6,120,6,18.5,6,2,2,1,48,Taxi,Combi / micro,NA,NA,Deporte o alguna actividad fisica,Aprender algun idioma,NA,NA,NA,720
+38,18,7,15.6,0,3 Tercio,San Miguel,5,120,5,20,4,5,3,1,35,Combi / micro,NA,NA,NA,Estudiar,Jugar videojuegos,Aprender algun idioma,NA,NA,600
+39,19,4,14,0,2 Quinto,San Isidro,10,30,4,20,6,2,1,2,33,Carro Particular,NA,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,NA,NA,120
+40,18,7,16.25,0,2 Quinto,La Molina,5,240,4,26,6,1,3,3,24,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Dormir,Pasar tiempo con familia o amigos,NA,NA,960
+41,19,6,11.33,2,4 Menos Tercio,Santiago de Surco,8,135,5,20,7,0,4,2,36,Carro Particular,Combi / micro,Voy caminando,NA,Estudiar,Deporte o alguna actividad fisica,NA,NA,NA,675
+42,19,6,15.14,0,3 Tercio,San Borja,8,70,5,28,8,1,Menos de 1,2,34,Carro Particular,NA,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,NA,NA,350
+43,22,3,15,0,3 Tercio,Santiago de Surco,6,30,3,9,5,2,Menos de 1,2,42,Carro Particular,NA,NA,NA,Dormir,NA,NA,NA,NA,90
+44,18,7,14,2,1 Decimo ,San Isidro,6,30,5,18,6,1,5 o mas,2,23,Carro Particular,Metropolitano / Corredor rojo,NA,NA,Dormir,NA,NA,NA,NA,150
+45,19,7,15.25,0,3 Tercio,Chorrillos,9,30,5,40,6,1,4,1,40,Carro Particular,Taxi,Combi / micro,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,150
+46,19,6,13.9,1,4 Menos Tercio,San Borja,10,45,6,21,7,1,5 o mas,0,39,Carro Particular,NA,NA,NA,Estudiar,Dormir,NA,NA,NA,270
+47,19,6,15,0,4 Menos Tercio,San Borja,6,150,5,28,6,1,1,2,40,Taxi,Combi / micro,NA,NA,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Aprender algun idioma,NA,750
+48,19,7,14,1,4 Menos Tercio,San Isidro,8,30,5,28,6,1,1,2,24,Bicicleta / scooter,NA,NA,NA,Estudiar,Dormir,NA,NA,NA,150
+49,18,7,14,0,3 Tercio,Santiago de Surco,5,160,5,27,5,2,3,0,60,Taxi,Combi / micro,NA,NA,Estudiar,Dormir,NA,NA,NA,800
+50,18,7,16.2,0,1 Decimo ,San Borja,6,120,5,12,8,1,5 o mas,1,68,Taxi,Metropolitano / Corredor rojo,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Aprender algun idioma,600
+51,20,6,14.63,0,3 Tercio,Barranco,5,5,5,30,6,1,2,3,34,Voy caminando,NA,NA,NA,No se,NA,NA,NA,NA,25
+52,17,7,18,0,1 Decimo ,San Martin de Porres,6,210,5,4,6,2,5 o mas,1,42,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Dormir,Pasar tiempo con familia o amigos,Aprender algun idioma,NA,1050
+53,22,5,16.17,0,1 Decimo ,San Juan de Miraflores,7,140,5,24,6,2,5 o mas,1,36,Combi / micro,NA,NA,NA,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Aprender algun idioma,NA,700
+54,17,6,15.8,0,1 Decimo ,Callao (Provincia Constitucional),5,300,5,28,7,0,5 o mas,1,40,Metropolitano / Corredor rojo,Voy caminando,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,1500
+55,18,6,15,0,2 Quinto,San Juan de Miraflores,8,80,4,18,8,0,Menos de 1,3,16,Taxi,Combi / micro,Tren electrico,NA,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,320
+56,21,6,14.3,0,3 Tercio,La Molina,5,120,6,21,6,1,5 o mas,3,48,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,720
+57,19,7,13.11,1,4 Menos Tercio,Magdalena del Mar,8,50,5,30,6,5,1,2,24,Carro Particular,Combi / micro,Bicicleta / scooter,NA,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Aprender algun idioma,NA,250
+58,21,6,16.3,0,2 Quinto,La Molina,9,120,6,22,8,0,2,2,14,Carro Particular,NA,NA,NA,Jugar videojuegos,Dormir,Pasar tiempo con familia o amigos,NA,NA,720
+59,18,6,14.68,0,4 Menos Tercio,Santiago de Surco,7,70,5,23,6,1,1,2,26,Taxi,NA,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,NA,NA,350
+60,18,6,14,2,3 Tercio,Santiago de Surco,5,80,6,30,6,2,2,2,48,Carro Particular,Taxi,Metropolitano / Corredor rojo,Combi / micro,Estudiar,Jugar videojuegos,Deporte o alguna actividad fisica,NA,NA,480
+61,21,6,13.23,1,4 Menos Tercio,San Juan de Lurigancho,6,200,5,26,6,0,5 o mas,3,26,Carro Particular,NA,NA,NA,Estudiar,Pasar tiempo con familia o amigos,Aprender algun idioma,NA,NA,1000
+62,19,5,13,0,4 Menos Tercio,La Molina,6,120,5,18,7,2,2,2,25,Carro Particular,Taxi,Metropolitano / Corredor rojo,Bicicleta / scooter,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,600
+63,17,4,16,0,4 Menos Tercio,Los Olivos,5,180,5,15,6,1,4,1,50,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Pasar tiempo con familia o amigos,Aprender algun idioma,NA,NA,900
+64,18,5,14,0,4 Menos Tercio,Miraflores,10,10,5,20,8,4,3,2,13,Bicicleta / scooter,Voy caminando,NA,NA,Deporte o alguna actividad fisica,NA,NA,NA,NA,50
+65,23,4,13,1,3 Tercio,Villa Maria del Triunfo,7,120,5,15,7,4,2,1,60,Tren electrico,NA,NA,NA,Estudiar,Dormir,Pasar tiempo con familia o amigos,Aprender algun idioma,NA,600
+66,17,6,14,0,3 Tercio,Santiago de Surco,1,80,5,29,6,0,3,1,60,Carro Particular,Metropolitano / Corredor rojo,Combi / micro,NA,Estudiar,Dormir,Pasar tiempo con familia o amigos,NA,NA,400
+67,18,8,15.28,0,2 Quinto,Rimac,7,240,5,24,5,1,3,1,38,Carro Particular,Taxi,Metropolitano / Corredor rojo,NA,Estudiar,NA,NA,NA,NA,1200
+68,18,6,14,1,3 Tercio,Santiago de Surco,9,40,5,6,8,2,4,3,36,Bicicleta / scooter,NA,NA,NA,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,NA,NA,200
+69,18,8,17,0,1 Decimo ,Santiago de Surco,7,60,5,32,8,5,3,1,70,Taxi,NA,NA,NA,Deporte o alguna actividad fisica,NA,NA,NA,NA,300
+70,17,5,16.5,0,1 Decimo ,Callao (Provincia Constitucional),5,300,6,20,3,2,5 o mas,2,60,Metropolitano / Corredor rojo,Combi / micro,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,1800
+71,17,6,14,0,3 Tercio,Villa Maria del Triunfo,5,120,5,18,6,2,3,2,28,Tren electrico,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Aprender algun idioma,600
+72,18,7,14.52,0,3 Tercio,Chorrillos,6,90,5,26,6,1,4,2,36,Combi / micro,Bicicleta / scooter,NA,NA,Estudiar,Jugar videojuegos,Dormir,Pasar tiempo con familia o amigos,NA,450
+73,18,7,17.47,0,1 Decimo ,Barranco,9,10,5,30,5,0,5 o mas,1,33,Voy caminando,NA,NA,NA,Estudiar,Pasar tiempo con familia o amigos,NA,NA,NA,50
+74,22,5,12,1,3 Tercio,San Isidro,9,40,5,21,7,3,1,4,30,Carro Particular,NA,NA,NA,Practica Pre Profesional,NA,NA,NA,NA,200
+75,18,7,16,0,2 Quinto,San Isidro,8,50,5,30,3,1,3,0,37,Metropolitano / Corredor rojo,NA,NA,NA,Dormir,NA,NA,NA,NA,250
+76,20,6,14.6,0,4 Menos Tercio,Villa Maria del Triunfo,7,90,5,23,4,1,4,2,34,Combi / micro,Tren electrico,NA,NA,Estudiar,Deporte o alguna actividad fisica,Aprender algun idioma,NA,NA,450
+77,19,5,16.56,0,1 Decimo ,Santiago de Surco,10,75,4,23,7,0,5 o mas,1,31,Taxi,NA,NA,NA,Estudiar,NA,NA,NA,NA,300
+78,23,4,12.69,0,4 Menos Tercio,Jesus Maria,7,60,5,17,8,4,3,2,24,Carro Particular,Bicicleta / scooter,NA,NA,Estudiar,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Pasear a mi perrita,NA,300
+79,23,5,15,0,3 Tercio,San Borja,4,100,5,15,8,3,5 o mas,1,37,Carro Particular,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Aprender algun idioma,500
+80,19,6,19.15,0,1 Decimo ,Santiago de Surco,9,30,5,30,5,1,Menos de 1,5,51,Carro Particular,Taxi,NA,NA,Deporte o alguna actividad fisica,NA,NA,NA,NA,150
+81,18,6,14.5,0,3 Tercio,Callao (Provincia Constitucional),5,240,5,14,6,1,3,2,30,Taxi,Metropolitano / Corredor rojo,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Aprender algun idioma,1200
+82,18,7,17,0,1 Decimo ,Chorrillos,8,30,5,40,6,2,5 o mas,3,44,Taxi,NA,NA,NA,Dormir,NA,NA,NA,NA,150
+83,20,6,16.89,0,1 Decimo ,Santa Anita,3,180,6,22,4,1,5 o mas,2,37,Combi / micro,NA,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Aprender algun idioma,NA,1080
+84,20,7,13.6,1,4 Menos Tercio,La Molina,6,180,4,28,6,1,3,1,40,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,720
+85,22,8,16,0,1 Decimo ,Santiago de Surco,10,4,5,30,8,1,1,5,22,Otro,NA,NA,NA,Musica,NA,NA,NA,NA,20
+86,18,5,15.42,0,3 Tercio,Magdalena del Mar,7,90,6,23,6,2,2,2,48,Combi / micro,NA,NA,NA,Estudiar,NA,NA,NA,NA,540
+87,19,5,16.07,0,1 Decimo ,Chorrillos,5,45,5,8,8,1,5 o mas,2,48,Combi / micro,NA,NA,NA,Estudiar,NA,NA,NA,NA,225
+88,21,4,16,0,1 Decimo ,Santiago de Surco,9,30,6,24,7,0,5 o mas,2,30,Carro Particular,NA,NA,NA,Deporte o alguna actividad fisica,NA,NA,NA,NA,180
+89,18,7,14,0,1 Decimo ,San Juan de Lurigancho,7,140,6,30,6,1,3,1,35,Tren electrico,NA,NA,NA,Estudiar,Dormir,Algun pasatiempo,NA,NA,840
+90,18,7,12,2,4 Menos Tercio,La Molina,2,105,6,32,5,2,2,1,65,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Deporte o alguna actividad fisica,NA,NA,NA,630
+91,18,6,14,0,4 Menos Tercio,La Molina,5,180,5,20,6,1,4,1,49,Carro Particular,NA,NA,NA,Estudiar,Pasar tiempo con familia o amigos,Aprender algun idioma,NA,NA,900
+92,18,6,16.57,0,1 Decimo ,Carabayllo,5,240,5,26,7,0,4,2,44,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Pasar tiempo con familia o amigos,NA,NA,NA,1200
+93,17,6,15,0,2 Quinto,Pueblo Libre,8,120,6,28,6,2,1,3,33,Taxi,NA,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,720
+94,22,4,14,1,4 Menos Tercio,Barranco,9,60,5,12,7,0,Menos de 1,3,50,Bicicleta / scooter,NA,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,NA,NA,300
+95,17,5,16,0,2 Quinto,Comas,5,120,5,20,5,3,4,0,38,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Dormir,Aprender algun idioma,NA,NA,600
+96,21,6,14,0,4 Menos Tercio,Miraflores,10,13,5,20,6,1,3,5,15,Bicicleta / scooter,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Pasar tiempo con familia o amigos,NA,65
+97,20,5,15.6,0,2 Quinto,Santiago de Surco,5,120,5,20,7,1,1,1,24,Carro Particular,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Pasar tiempo con familia o amigos,NA,600
+98,21,6,16,0,2 Quinto,San Isidro,10,35,4,23,7,1,5 o mas,5,37,Carro Particular,NA,NA,NA,Dormir,Deporte o alguna actividad fisica,NA,NA,NA,140
+99,19,5,15.7,0,2 Quinto,Chorrillos,7,60,5,24,5,1,2,4,30,Combi / micro,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,300
+100,21,5,15.76,0,3 Tercio,La Molina,7,120,5,34,6,1,4,2,41,Carro Particular,NA,NA,NA,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Aprender algun idioma,600
+101,19,4,13.06,1,2 Quinto,La Molina,7,150,5,22,8,1,4,2,55,Carro Particular,NA,NA,NA,Estudiar,Dormir,Pasar tiempo con familia o amigos,Aprender algun idioma,NA,750
+102,22,5,13.3,1,4 Menos Tercio,Miraflores,9,50,5,20,6,1,4,4,40,Bicicleta / scooter,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,250
+103,18,8,16.3,0,1 Decimo ,Miraflores,9,20,5,6,7,3,3,2,36,Voy caminando,NA,NA,NA,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,100
+104,18,5,15,0,3 Tercio,Santiago de Surco,7,50,4,24,7,0,5 o mas,2,31,Taxi,NA,NA,NA,Estudiar,Pasar tiempo con familia o amigos,NA,NA,NA,200
+105,19,5,15,0,3 Tercio,Miraflores,5,8,4,25,7,3,2,2,40,Combi / micro,NA,NA,NA,Jugar videojuegos,NA,NA,NA,NA,32
+106,19,6,14.5,0,3 Tercio,La Molina,6,180,5,22,7,1,3,2,27,Metropolitano / Corredor rojo,NA,NA,NA,Estudiar,Dormir,NA,NA,NA,900
+107,20,6,16,0,2 Quinto,San Borja,10,40,4,18,6,2,Menos de 1,3,33,Carro Particular,NA,NA,NA,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,NA,160
+108,19,7,16,0,1 Decimo ,La Molina,7,100,5,32,6,0,4,2,27,Carro Particular,Carro Particular,Carro Particular,Carro Particular,Estudiar,Jugar videojuegos,Deporte o alguna actividad fisica,Estudiar,Jugar videojuegos,500
+109,20,5,17,0,2 Quinto,Los Olivos,7,230,6,30,7,2,5 o mas,5,47,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Estudiar,1380
+110,20,6,14,1,4 Menos Tercio,Callao (Provincia Constitucional),3,160,5,20,5,2,4,2,50,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Aprender algun idioma,800
+111,18,5,16.8,0,1 Decimo ,Miraflores,8,10,5,24,5,5,4,2,35,Carro Particular,Carro Particular,Carro Particular,Carro Particular,Dormir,Dormir,Dormir,Dormir,Dormir,50
+112,18,7,15.3,0,2 Quinto,San Borja,7,180,5,28,6,0,2,3,37,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Jugar videojuegos,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Aprender algun idioma,Jugar videojuegos,900
+113,19,6,13,0,4 Menos Tercio,La Molina,6,180,5,30,8,0,2,2,30,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Jugar videojuegos,Dormir,900
+114,18,6,17.25,0,1 Decimo ,San Borja,10,90,5,22,7,3,4,2,32,Carro Particular,Carro Particular,Carro Particular,Carro Particular,Estudiar,Deporte o alguna actividad fisica,Estudiar,Deporte o alguna actividad fisica,Estudiar,450
+115,19,6,16.3,0,2 Quinto,San Borja,3,60,5,32,5,2,4,5,39,Carro Particular,Carro Particular,Carro Particular,Carro Particular,Estudiar,Dormir,Estudiar,Dormir,Estudiar,300
+116,19,7,13,0,4 Menos Tercio,La Molina,5,150,5,35,6,1,2,1,36,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Dormir,Deporte o alguna actividad fisica,Estudiar,Dormir,750
+117,19,7,18,0,1 Decimo ,Jesus Maria,7,20,6,10,3,4,3,1,35,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,120
+118,18,6,17.5,0,1 Decimo ,Santiago de Surco,6,15,6,25,7,2,3,3,40,Voy caminando,Voy caminando,Voy caminando,Voy caminando,Dormir,Dormir,Dormir,Dormir,Dormir,90
+119,18,3,11.5,0,4 Menos Tercio,San Isidro,10,10,4,16,8,1,3,2,48,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Estar con una flaquita,Estar con una flaquita,Estar con una flaquita,Estar con una flaquita,Estar con una flaquita,40
+120,21,5,16.58,1,3 Tercio,Pueblo Libre,6,200,5,20,7,1,2,1,47,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,1000
+121,21,5,15.42,0,3 Tercio,San Borja,5,60,5,21,8,1,2,1,50,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Pasar tiempo con familia o amigos,Pasar tiempo con familia o amigos,Pasar tiempo con familia o amigos,Pasar tiempo con familia o amigos,Pasar tiempo con familia o amigos,300
+122,19,6,14.2,1,4 Menos Tercio,Barranco,5,70,5,20,7,2,1,4,35,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,350
+123,18,7,16.4,0,1 Decimo ,San Borja,5,60,5,12,8,0,5 o mas,1,20,Taxi,Taxi,Taxi,Taxi,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Aprender algun idioma,300
+124,17,6,16.22,0,2 Quinto,La Molina,7,30,3,22,7,2,1,2,43,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,90
+125,24,6,16.61,0,2 Quinto,Chorrillos,9,80,5,23,7,1,2,2,50,Carro Particular,Carro Particular,Carro Particular,Carro Particular,Aprender algun idioma,Aprender algun idioma,Aprender algun idioma,Aprender algun idioma,Aprender algun idioma,400
+126,18,7,15,0,3 Tercio,Santiago de Surco,5,160,5,25,5,2,3,0,60,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Dormir,Deporte o alguna actividad fisica,Estudiar,Dormir,800
+127,18,7,12,2,4 Menos Tercio,La Molina,4,210,6,32,5,2,1,0,50,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Estudiar,1260
+128,21,4,16,0,1 Decimo ,Miraflores,8,35,5,21,8,2,2,3,48,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Dormir,Dormir,Dormir,Dormir,Dormir,175
+129,18,6,14,0,4 Menos Tercio,Villa Maria del Triunfo,6,120,5,20,7,0,1,1,25,Tren electrico,Tren electrico,Tren electrico,Tren electrico,Estudiar,Dormir,Pasar tiempo con familia o amigos,Estudiar,Dormir,600
+130,24,7,15.4,1,1 Decimo ,Ate,3,120,5,25,7,0,2,2,50,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Jugar videojuegos,Deporte o alguna actividad fisica,Estudiar,Jugar videojuegos,600
+131,20,6,15.9,0,1 Decimo ,La Molina,3,55,5,24,6,1,2,2,52,Carro Particular,Carro Particular,Carro Particular,Carro Particular,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Estudiar,275
+132,18,4,14.4,0,3 Tercio,Cieneguilla,7,70,5,20,3,1,Menos de 1,1,63,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,350
+133,19,7,15,1,3 Tercio,Cercado de Lima,6,120,5,30,4,0,3,1,54,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Estudiar,600
+134,19,6,11.57,2,4 Menos Tercio,Santiago de Surco,10,140,5,32,7,0,4,1,36,Voy caminando,Voy caminando,Voy caminando,Voy caminando,Estudiar,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,Estudiar,700
+135,20,5,14.82,0,4 Menos Tercio,San Borja,9,50,6,19,7,2,1,5,15,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Deporte o alguna actividad fisica,Estudiar,Deporte o alguna actividad fisica,Estudiar,300
+136,18,6,15.34,0,3 Tercio,Santiago de Surco,10,60,4,26,5,0,4,1,45,Taxi,Taxi,Taxi,Taxi,Estudiar,Jugar videojuegos,Dormir,Estudiar,Jugar videojuegos,240
+137,19,6,12,1,4 Menos Tercio,San Juan de Lurigancho,5,200,5,30,5,1,2,2,45,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Jugar videojuegos,Dormir,Estudiar,Jugar videojuegos,1000
+138,17,7,13,1,4 Menos Tercio,Santa Anita,5,210,5,36,5,0,2,1,36,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Dormir,Deporte o alguna actividad fisica,Aprender algun idioma,Dormir,Deporte o alguna actividad fisica,1050
+139,18,6,14,0,3 Tercio,Santiago de Surco,9,20,5,11,8,2,2,2,45,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Dormir,Dormir,Dormir,Dormir,Dormir,100
+140,17,6,13.86,0,3 Tercio,Chorrillos,2,100,5,35,7,2,5 o mas,2,60,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,500
+141,19,6,15,0,4 Menos Tercio,San Borja,4,120,5,28,6,1,2,4,68,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,600
+142,18,5,13,1,2 Quinto,Santiago de Surco,3,60,6,23,5,1,4,2,69,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Dormir,Deporte o alguna actividad fisica,Estudiar,Dormir,360
+143,18,5,13,1,2 Quinto,Santiago de Surco,3,60,6,23,5,1,4,2,69,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Dormir,Deporte o alguna actividad fisica,Estudiar,Dormir,360
+144,18,6,14,1,4 Menos Tercio,San Borja,8,60,5,15,5,2,3,1,17,Taxi,Taxi,Taxi,Taxi,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,300
+145,17,7,15.4,0,2 Quinto,San Juan de Lurigancho,5,150,5,20,6,5,3,2,48,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Pasar tiempo con familia o amigos,750
+146,20,7,15.3,0,3 Tercio,Miraflores,8,40,5,30,7,1,1,2,45,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Dormir,Pasar tiempo con familia o amigos,Dormir,Pasar tiempo con familia o amigos,Dormir,200
+147,21,5,12,0,4 Menos Tercio,La Molina,4,240,5,22,5,2,2,0,68,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Dormir,Estudiar,Dormir,Estudiar,1200
+148,18,7,12,2,4 Menos Tercio,Miraflores,10,8,5,30,4,1,4,3,58,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Estudiar,Dormir,Pasar tiempo con familia o amigos,Estudiar,Dormir,40
+149,21,5,11.6,0,4 Menos Tercio,Jesus Maria,7,60,6,22,6,1,2,1,54,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Jugar videojuegos,Dormir,Jugar videojuegos,Dormir,Jugar videojuegos,360
+150,22,4,11.25,1,4 Menos Tercio,Barranco,7,25,5,18,7,1,1,2,35,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Jugar videojuegos,Deporte o alguna actividad fisica,Jugar videojuegos,Deporte o alguna actividad fisica,Jugar videojuegos,125
+151,21,6,15.7,0,1 Decimo ,San Isidro,6,70,5,22,6,1,1,3,38,Carro Particular,Carro Particular,Carro Particular,Carro Particular,Estudiar,Jugar videojuegos,Dormir,Deporte o alguna actividad fisica,Estudiar,350
+152,21,7,12.8,1,4 Menos Tercio,El Agustino,8,150,5,23,6,1,2,1,50,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Dormir,Deporte o alguna actividad fisica,Dormir,Deporte o alguna actividad fisica,Dormir,750
+153,22,6,11.7,0,4 Menos Tercio,Lurigancho-Chosica,2,200,6,20,6,1,2,0,48,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Dormir,Estudiar,Dormir,Estudiar,1200
+154,19,6,16.51,0,2 Quinto,Barranco,10,30,5,30,7,1,2,0,43,Carro Particular,Carro Particular,Carro Particular,Carro Particular,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,150
+155,22,6,11.7,0,4 Menos Tercio,Lurigancho-Chosica,2,200,6,20,6,1,2,0,48,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,1200
+156,21,6,12.1,1,4 Menos Tercio,Chaclacayo,6,180,5,20,6,0,1,0,38,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Dormir,Dormir,Dormir,Dormir,Dormir,900
+157,22,5,18.5,0,1 Decimo ,San Isidro,8,40,5,30,6,0,3,0,24,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Descansar,Descansar,Descansar,Descansar,Descansar,200
+158,20,6,16,0,3 Tercio,Lurigancho-Chosica,2,220,5,25,5,1,3,1,47,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,1100
+159,21,6,15,0,4 Menos Tercio,San Juan de Lurigancho,5,180,5,30,7,1,1,2,37,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,900
+160,20,5,12,1,4 Menos Tercio,Miraflores,10,30,6,3,4,4,2,1,30,Carro Particular,Carro Particular,Carro Particular,Carro Particular,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,180
+161,21,5,14.37,1,3 Tercio,Cercado de Lima,6,120,5,8,6,2,5 o mas,0,48,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Dormir,Dormir,Dormir,Dormir,Dormir,600
+162,21,4,13,1,3 Tercio,Chorrillos,8,45,4,16,7,3,5 o mas,5,26,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Bicicleta / scooter,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,180
+163,19,9,16.75,0,1 Decimo ,Comas,1,240,6,40,7,5,5 o mas,2,72,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,1440
+164,19,6,17.87,0,1 Decimo ,Miraflores,8,15,5,18,7,4,2,2,48,Voy caminando,Voy caminando,Voy caminando,Voy caminando,Dormir,Dormir,Dormir,Dormir,Dormir,75
+165,19,6,12.36,1,4 Menos Tercio,Ate,3,240,4,14,5,1,2,0,63,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,960
+166,18,7,18.09,0,1 Decimo ,Miraflores,9,60,6,30,6,2,3,2,50,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,360
+167,23,8,15.82,0,2 Quinto,Surquillo,6,100,5,28,6,1,2,1,34,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,500
+168,23,4,12,1,4 Menos Tercio,San Martin de Porres,4,300,5,40,6,2,2,1,65,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Pasar tiempo con familia o amigos,Pasar tiempo con familia o amigos,Pasar tiempo con familia o amigos,Pasar tiempo con familia o amigos,Pasar tiempo con familia o amigos,1500
+169,19,5,13.5,0,4 Menos Tercio,Santiago de Surco,4,120,5,22,5,1,1,0,36,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Dormir,Dormir,Dormir,Dormir,Dormir,600
+170,18,6,14,1,3 Tercio,Callao (Provincia Constitucional),4,180,6,23,6,2,1,1,30,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,1080
+171,18,7,13.9,1,3 Tercio,Pueblo Libre,7,180,5,7,6,0,2,3,29,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,900
+172,20,5,12.5,1,4 Menos Tercio,Villa Maria del Triunfo,9,135,5,30,7,1,2,2,40,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,675
+173,20,6,15.8,0,4 Menos Tercio,Chorrillos,4,120,5,22,5,1,4,2,34,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Dormir,Dormir,Dormir,Dormir,Dormir,600
+174,17,7,17.6,0,1 Decimo ,Miraflores,6,90,6,6,7,2,4,2,22,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Dormir,Dormir,Dormir,Dormir,Dormir,540
+175,17,4,19,0,4 Menos Tercio,San Martin de Porres,3,240,5,38,6,4,4,3,68,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,1200
+176,20,6,15.68,0,2 Quinto,Santa Anita,6,120,6,24,6,1,3,1,49,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,720
+177,18,7,14.7,0,4 Menos Tercio,Santiago de Surco,6,90,6,26,6,1,2,2,40,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,540
+178,23,4,13.2,0,4 Menos Tercio,Chorrillos,4,120,4,23,6,1,2,1,48,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Estudiar,Estudiar,Estudiar,Estudiar,Estudiar,480
+179,24,5,13.4,1,4 Menos Tercio,Villa El Salvador,3,200,5,20,4,1,1,1,65,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Metropolitano / Corredor rojo,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,Jugar videojuegos,1000
+180,20,6,13.4,1,3 Tercio,Jesus Maria,6,120,5,14,6,1,2,1,59,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Dormir,Dormir,Dormir,Dormir,Dormir,600
+181,19,7,15.8,0,3 Tercio,Magdalena del Mar,7,180,5,24,6,0,1,0,34,Combi / micro,Combi / micro,Combi / micro,Combi / micro,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,Deporte o alguna actividad fisica,900
