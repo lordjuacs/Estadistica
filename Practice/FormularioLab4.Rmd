@@ -31,8 +31,8 @@ ICmediaTstudent<-function(X,conf){
 ICmediaZeta<-function(X,conf){
   n<-length(X)
   z<-qnorm((1-conf)/2,lower.tail=FALSE)
-  izq<-mean(X)-t*sd(X)/sqrt(n)
-  der<-mean(X)+t*sd(X)/sqrt(n)
+  izq<-mean(X)-z*sd(X)/sqrt(n)
+  der<-mean(X)+z*sd(X)/sqrt(n)
   cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
   invisible(c(izq,der))
 }

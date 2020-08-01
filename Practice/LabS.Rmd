@@ -1,0 +1,353 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(stringi)
+```
+
+```{r}
+r <- function(x){
+  return(round(x,2))
+}
+```
+
+
+```{r}
+DF <- read_csv("Promocion.csv")
+```
+
+
+```{r}
+DF
+```
+
+```{r}
+sum(is.na(DF))
+```
+
+```{r}
+sum(complete.cases(DF))
+```
+
+
+
+
+```{r}
+sum(!is.na(DF$Edad))
+```
+
+```{r}
+r(mean(DF$Estatura))
+r(sd(DF$Estatura))
+min(DF$Estatura)
+max(DF$Estatura)
+r(median(DF$Estatura))
+
+```
+```{r}
+r(r(sd(DF$Estatura))/r(mean(DF$Estatura)))
+r(sd(DF$Estatura)/mean(DF$Estatura))
+```
+
+
+
+
+
+
+
+```{r}
+sum(!is.na(DF$PGC))
+```
+
+
+
+```{r}
+r(mean(DF$PGC, na.rm = TRUE))
+r(sd(DF$PGC, na.rm = TRUE))
+min(DF$PGC, na.rm = TRUE)
+median(DF$PGC, na.rm = TRUE)
+max(DF$PGC, na.rm = TRUE)
+
+r(sd(DF$PGC, na.rm = TRUE)/mean(DF$PGC, na.rm = TRUE))
+```
+
+
+
+
+```{r}
+hist(DF$Tiempo)
+abline(v=mean(DF$Tiempo), col="blue")
+abline(v=median(DF$Tiempo), col="black")
+mean(DF$Tiempo)>median(DF$Tiempo)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+sum(DF$Motivo=="Apariencia", na.rm=TRUE)
+sum(DF$Motivo=="Médico", na.rm=TRUE)
+```
+
+```{r}
+p <- 0.82
+r(13*p)
+```
+
+
+```{r}
+
+r(pbinom(9, size=13, prob=0.82, lower.tail = FALSE))
+```
+
+
+```{r}
+```
+
+
+```{r}
+sum(DF$Sexo=="M")
+```
+
+
+```{r}
+mas <- sum(DF$Sexo=="M")/nrow(DF)
+fem <- sum(DF$Sexo=="F")/nrow(DF)
+```
+```{r}
+mas
+fem
+```
+
+
+```{r}
+N <-53
+n<- 26
+k<- 3
+choose(N,3)*choose(N-n,k-3)/choose(N,k)
+```
+
+
+Ancho del intervalo para la **proporcion** en sd estimadas
+```{r}
+a4c<-2*qnorm(alpha/2 ,lower.tail=FALSE)/sqrt(n)
+```
+
+
+Ancho del intervalo para la **MEDIA** en sd estimadas
+
+```{r}
+a4b<-2*qt(alpha/2,df=n-1,lower.tail=FALSE)/sqrt(n)
+```
+
+**INTERVALOS DE CONFIANZA**
+```{r}
+ICmediaTstudent<-function(X,conf){
+  n<-length(X)
+  t<-qt((1-conf)/2,df=n-1,lower.tail=FALSE)
+  izq<-mean(X)-t*sd(X)/sqrt(n)
+  der<-mean(X)+t*sd(X)/sqrt(n)
+  cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
+  invisible(c(izq,der))
+}
+```
+
+```{r}
+ICmediaZeta<-function(X,conf){
+  n<-length(X)
+  z<-qnorm((1-conf)/2,lower.tail=FALSE)
+  izq<-mean(X,na.rm=TRUE)-z*sd(X, na.rm=TRUE)/sqrt(n)
+  der<-mean(X,na.rm=TRUE)+z*sd(X,na.rm=TRUE)/sqrt(n)
+  cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
+  invisible(c(izq,der))
+}
+
+```
+
+```{r}
+hombreEstatura
+```
+
+```{r}
+hombreEstatura <- subset(DF, DF$Sexo=="M")
+ICmediaZeta(hombreEstatura,0.97)
+```
+
+
+```{r}
+{r}
+ICproporcion<-function(X,conf){
+  n<-length(X)
+  z<-qnorm((1-conf)/2,lower.tail=FALSE)
+  pbar<-mean(X)
+  izq<-pbar-z*sqrt(pbar*(1-pbar)/n)
+  der<-pbar+z*sqrt(pbar*(1-pbar)/n)
+  cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
+  invisible(c(izq,der))
+}
+```
+
+
+ej:
+```{r}
+MostrarICmedia(M$faltante,0.95)
+```
+
+
+**t.test**
+```{r}
+t.test(M$nivel,mu=750,alternative="less",conf.level=0.98)
+```
+
+si dice q debe ser mu<=, "greater"
+si dice q debe ser mu>=, "less"
+
+valor del estadístico= t
+p-value >= alpha, **NO** rechazamos H0
+p-value < alpha, **SI** rechazamos H0
+
+
+**prop.test**
+```{r}
+prop.test(aciertos ,n ,p=0.1, alternative="greater",conf.level=0.95,correct=FALSE)
+```
+p = proporcion de hipotesis, ej. la fracción deficiente es menor o igual que 0.1
+
+si dice q debe ser p<=, "greater"
+si dice q debe ser p>=, "less"
+
+valor del estadistico = sqrt(X squared), aka, sacarle la raíz cuadrada
+
+
+-------------------------------------------------
+
+**funciones del toro juacs**
+
+```{r}
+intervalo_desconocido<-function(media, s, n,confianza=0.95){
+   alpha <- 1- confianza
+   tcritico <- qt(alpha/2, df = n-1)
+   liminf <- media + tcritico*s/sqrt(n)
+   limsup <- media - tcritico*s/sqrt(n)
+   cat("(",liminf,limsup,")")
+   return (limsup-liminf)
+ }
+```
+
+
+```{r}
+intervalo_conocido<-function(media,sd, n,confianza=0.95){
+   alpha <- 1- confianza
+   zcritico <- qnorm(alpha/2, lower.tail = FALSE)
+   liminf <- media - zcritico*sd/sqrt(n)
+   limsup <- media + zcritico*sd/sqrt(n)
+   cat("(",liminf,limsup,")")
+   return (limsup-liminf)
+}
+```
+
+
+#proporción
+```{r}
+propor <- function(p,n, confianza = 0.95){
+   alpha <- 1- confianza
+   zcritico <- qnorm(alpha/2, lower.tail = FALSE)
+   liminf <- p - zcritico*sqrt(p*(1-p)/n)
+   limsup <- p + zcritico*sqrt(p*(1-p)/n)
+   cat("(",liminf,limsup,")")
+   cat("\n(",r(liminf),r(limsup),")\n")
+
+   return (limsup-liminf)
+}
+```
+
+
+n<-length(X, na.rm=TRUE)
+  z<-qnorm((1-conf)/2,lower.tail=FALSE)
+  izq<-mean(X,na.rm=TRUE)-t*sd(X, na.rm=TRUE)/sqrt(n)
+  der<-mean(X,na.rm=TRUE)+t*sd(X,na.rm=TRUE)/sqrt(n)
+  cat("(",round(izq,digits=2),",",round(der,digits=2),")\n")
+  invisible(c(izq,der))
+```{r}
+z <- qnorm((1-0.97)/2,lower.tail=FALSE)
+izq<-mean(DF$Estatura,na.rm=TRUE)-z*sd(DF$Estatura, na.rm=TRUE)/sqrt(n)
+der<-mean(DF$Estatura,na.rm=TRUE)+z*sd(DF$Estatura, na.rm=TRUE)/sqrt(n)
+r(izq)
+r(der)
+```
+
+```{r}
+mean(DF$Estatura)
+```
+
+```{r}
+intervalo_conocido(media=mean(DF$Estatura), s=sd(DF$Estatura), length(DF$Estatura), confianza = 0.97)
+```
+
+```{r}
+data.frame(subset(DF,DF$Sexo=="M"))
+```
+
+```{r}
+ICmediaTstudent(hombreEstatura$Estatura,0.97)
+```
+
+  
+```{r}
+sexo <- subset(DF, !is.na(DF$Sexo))$Sexo
+masa <- subset(DF, !is.na(DF$Masa))$Masa
+
+```
+
+```{r}
+lm(sexo, masa)
+```
+
+  
+```{r}
+boxplot(DF$Sexo, DF$Masa)
+```
+  
+  
+  
+```{r}
+boxplot(masa)
+```
+  
+```{r}
+estatura = DF$Estatura/100
+estatura
+```
+  
+```{r}
+boxplot(DF$Masa~DF$Sexo)
+```
+  
+```{r}
+edad <- subset(DF, !is.na(DF$Edad))$Edad
+pgc <- subset(DF, !is.na(DF$PGC))$PGC
+```
+  
+
+```{r}
+cor(DF$Edad,DF$PGC)
+summary(lm(DF$PGC~DF$Masa/estatura^2))
+```
+
+```{r}
+r(0.5068)
+```
+  
+  
